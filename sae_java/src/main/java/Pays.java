@@ -22,11 +22,6 @@ public class Pays {
 
     public String getPays() {
         return pays;
-    }
-
-   
-    public int getmedailles_total(){
-        int somme = 0;
             somme += getmedailles_or() +getmedailles_argent() + getmedailles_bronze();
         return somme ;
     }
