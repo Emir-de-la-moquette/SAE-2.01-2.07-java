@@ -1,4 +1,3 @@
-package 1;
 
 /**
  * Hello world!
