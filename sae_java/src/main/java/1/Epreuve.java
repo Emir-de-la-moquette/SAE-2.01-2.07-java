@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collection;
 
 public class Epreuve {
 
@@ -96,15 +97,38 @@ public class Epreuve {
         typeEpreuve = getTypeEpreuve();
 
         if(typeEpreuve == "Duel") {
-
         }
 
         if(typeEpreuve == "Score") {
-            
+            // tant que il ya des joueur restant dans les.équipe
+            List<Equipe> Classement = new ArrayList<>();
+            while len(this.lesEquipes != 0) {
+                /* on crée un match
+                 * on fait joué le match
+                 * puis on compare les scores
+                 * 
+                 * après chaque matchs :
+                 * on replace dans les.LesEquipes les scores les plus élevé sauf les 3 dernier.
+                 * les 3 dernier son ajouter au classement (l'idée est de simplement inverser les index de Classement pour obtenir notre vrai classement)  
+                 */ 
+
+                MatchScore match = new Match(this.lesEquipes);
+                this.scoresEquipes = match.deroulerMatch();
+                resultat = Collection.sort(this.scoreEqiuipes) // !! a remplacer par un compare + doit comparer uniquement le score !!
+                this.lesEquipes.clear();
+                this.scoresEquipes = match.deroulerMatch();
+                resultat = Collection.sort(this.scoreEqiuipes)
+                this.lesEquipes.clear();
+                // !! en fait, ça marche pas pasq, dans lesEquipe il nous faut que des type "Equipe", donc il faut séparer des scores !!
+                for (int i = 0 ; i < this.scoreEquipes.size(); i++) {
+                    if (i < this.scoreEquipes.size()-3)
+                        this.lesEquipes.add(i);
+                    else {Classement.add(i);} 
+                    }
+                }
+                return Classement;
+            }
         }
-
-
-    }
 
     @Override
     public String ToString() {
