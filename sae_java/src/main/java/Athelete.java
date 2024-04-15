@@ -1,4 +1,4 @@
-public class Athelte {
+public class Athlete {
 
     private String nomA;
     private String prenomA;
