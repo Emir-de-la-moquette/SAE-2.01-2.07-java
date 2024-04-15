@@ -87,7 +87,7 @@ public class Epreuve {
 
     // affiche les équipes participant à l'épreuve       
     public List<Equipe> AfficheLesEquipes() {
-        return lesEquipes;
+        return this.lesEquipes;
     }
 
 
@@ -102,7 +102,10 @@ public class Epreuve {
         if(typeEpreuve == "Score") {
             // tant que il ya des joueur restant dans les.équipe
             List<Equipe> Classement = new ArrayList<>();
-            while len(this.lesEquipes != 0) {
+            // on défini le nombre de matchs à réaliser
+            nbDeMatchs = round(len(this.lesEquipes)/3);
+            if (nbDeMatchs == 0) {nbDeMatchs = 1;}
+            for (int i = 0 ; i < nbDeMatchs ; i++ ) {
                 /* on crée un match
                  * on fait joué le match
                  * puis on compare les scores
@@ -114,7 +117,7 @@ public class Epreuve {
 
                 MatchScore match = new Match(this.lesEquipes);
                 this.scoresEquipes = match.deroulerMatch();
-                resultat = Collection.sort(this.scoreEqiuipes) // !! a remplacer par un compare + doit comparer uniquement le score !!
+                resultat = Collection.sort(this.scoreEquipes) // !! a remplacer par un compare + doit comparer uniquement le score !!
                 this.lesEquipes.clear();
                 this.scoresEquipes = match.deroulerMatch();
                 resultat = Collection.sort(this.scoreEqiuipes)
