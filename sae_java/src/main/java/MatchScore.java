@@ -8,7 +8,7 @@ public class MatchScore extends Match{
     }
 
     @Override
-    public EquipeScore<Equipe,Integer> deroulerMatch(Equipe equipe){
+    public EquipeScore<Equipe,Double> deroulerMatch(Equipe equipe){
         if (equipe.size() >= 1){
                 for (Athelete athelete : equipe){
                     score += (this.moyenneAthletique + this.coefficientAgilite*athlete.agilite + this.coefficientEndurance*athlete.endurance + this.coefficientForce*athlete.force)*RandomNumberInRange.getRandom(0.6, 1.2);
