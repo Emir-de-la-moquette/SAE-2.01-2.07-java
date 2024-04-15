@@ -1,4 +1,6 @@
-private String nomA;
+public class Athelte {
+
+    private String nomA;
     private String prenomA;
     private String sexeA;
     private int agilite;
