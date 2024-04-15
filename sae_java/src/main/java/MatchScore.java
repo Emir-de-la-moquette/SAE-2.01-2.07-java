@@ -1,3 +1,5 @@
+import main.java.RandomNumberInRange;
+
 public class MatchScore extends Match{
     double score = 0;
 
@@ -7,21 +9,13 @@ public class MatchScore extends Match{
 
     @Override
     public EquipeScore<Equipe,Integer> deroulerMatch(Equipe equipe){
-        int x = equipe.size();
-        switch (x) {
-            case x = 1:
+        if (equipe.size() >= 1){
+                for (Athelete athelete : equipe){
+                    score += (this.moyenneAthletique + this.coefficientAgilite*athlete.agilite + this.coefficientEndurance*athlete.endurance + this.coefficientForce*athlete.force)*RandomNumberInRange.getRandom(0.6, 1.2);
+                }
+                score = score/equipe.size();
+                return new EquipeScore<>(equipe, score);
                 
-                break;
-            
-            case x > 1:
-
-                break;
-        
-            default:
-                return new EquipeScore<>(null, null);
-        }
-        if (equipe.size() < 1) {
-            
         }
         
         return new EquipeScore<>(equipe, 0);
