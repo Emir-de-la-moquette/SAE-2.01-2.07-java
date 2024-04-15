@@ -9,7 +9,7 @@ public class MatchDuel extends Match{
 
 
 /*
- *    A réaliser
+ *    A réaliser (c'est juste un copier collé de matchscore)
  */
 
     @Override
@@ -25,4 +25,7 @@ public class MatchDuel extends Match{
         
         return new EquipeScore<>(equipe, 0);
     }
+    
+    /*     Rajouter le toString()      */
+
 }

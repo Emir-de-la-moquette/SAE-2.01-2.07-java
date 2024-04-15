@@ -21,4 +21,6 @@ public class MatchScore extends Match{
         return new EquipeScore<>(equipe, 0);
     }
 
+    /*     Rajouter le toString()      */
+
 }
