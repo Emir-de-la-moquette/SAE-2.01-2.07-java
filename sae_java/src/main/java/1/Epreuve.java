@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Collection;
 
+
 public class Epreuve {
 
     private String nomEpreuve;
@@ -12,6 +13,7 @@ public class Epreuve {
     private List<Pair<Equipe, Integer>> scoreDesEquipes;
 
     private List<Equipe> lesEquipes;
+    private List<"???"> scoresEquipes;
     private Sport leSport;
 
     
@@ -30,19 +32,14 @@ public class Epreuve {
     }
 
     public String getNomEpreuve() {
-        return nomEpreuve;
+        return R2nomEpreuve;
     }
 
     public void setNomEpreuve(String nomEpreuve) {
         this.nomEpreuve = nomEpreuve;
     }
 
-    public String getSexeEpreuve() {
-        return sexeEpreuve;
-    }
-
-    public void setSexeEpreuve(String sexeEpreuve) {
-        this.sexeEpreuve = sexeEpreuve;
+    public StriR2xeEpreuve = sexeEpreuve;
     }
 
     public String getCategorieEpreuve() {
@@ -63,7 +60,7 @@ public class Epreuve {
 
 
     public Sport getLesSports() {
-        return lesSports;
+        return this.lesSports;
     }
 
     public void setLesSports(Sport lesSports) {
@@ -97,13 +94,22 @@ public class Epreuve {
         typeEpreuve = getTypeEpreuve();
 
         if(typeEpreuve == "Duel") {
+            List<Equipe> Classement = new ArrayList<>();
+            Collection.shuffle(this.lesEquipes);
+            for (int i = 0 ; i<len(this.lesEquipes)-1 ; i++) {
+                j=i+1;
+                MatchDuel match = new Match(this.lesEquipes.get(i), this.lesEquipes.get(j));
+            }
+
+
+
         }
 
         if(typeEpreuve == "Score") {
             // tant que il ya des joueur restant dans les.équipe
             List<Equipe> Classement = new ArrayList<>();
             // on défini le nombre de matchs à réaliser
-            nbDeMatchs = round(len(this.lesEquipes)/3);
+            int nbDeMatchs = round(len(this.lesEquipes)/3);
             if (nbDeMatchs == 0) {nbDeMatchs = 1;}
             for (int i = 0 ; i < nbDeMatchs ; i++ ) {
                 /* on crée un match
@@ -117,10 +123,10 @@ public class Epreuve {
 
                 MatchScore match = new Match(this.lesEquipes);
                 this.scoresEquipes = match.deroulerMatch();
-                resultat = Collection.sort(this.scoreEquipes) // !! a remplacer par un compare + doit comparer uniquement le score !!
+                List<"???"> resultat = Collection.sort(this.scoreEquipes) // !! a remplacer par un compare + doit comparer uniquement le score !!
                 this.lesEquipes.clear();
                 this.scoresEquipes = match.deroulerMatch();
-                resultat = Collection.sort(this.scoreEqiuipes)
+                List<"???"> resultat = Collection.sort(this.scoreEquipes)
                 this.lesEquipes.clear();
                 // !! en fait, ça marche pas pasq, dans lesEquipe il nous faut que des type "Equipe", donc il faut séparer des scores !!
                 for (int i = 0 ; i < this.scoreEquipes.size(); i++) {
