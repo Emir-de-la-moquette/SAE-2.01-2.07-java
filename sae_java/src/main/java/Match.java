@@ -1,15 +1,19 @@
 public class Match {
-    double coefficientAgilite = 0.33;
-    double coefficientEndurance = 0.33;
-    double coefficientForce = 0.33;
-    double moyenneAthletique = 0;
+    protected Sport sport;
+
+    protected String nomMatch;
+
+    private static int numMatch;
 
     public Match(Sport sport){
-        this.coefficientAgilite = sport.agilite;
-        this.coefficientEndurance = sport.endurance;
-        this.coefficientForce = sport.force;
-        this.moyenneAthletique = sport.moyenneAthletique;
+        this.sport = sport;
+
+        Match.numMatch+=1;
+
+        this.nomMatch = this.sport.getNomSport() + " Match n°" + numMatch;
     }
+
+    public static void clearNum(){ Match.numMatch=0;};
 
     public EquipeScore<Equipe,Integer> deroulerMatch(Equipe equipe){
         return new EquipeScore<>(equipe, 0);
