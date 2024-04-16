@@ -30,6 +30,5 @@ public class MatchScore extends Match{
         text += " et cette à réalisé un score de " + this.score;
     }
 
-    /*     Rajouter le toString()      */
 
 }
