@@ -3,57 +3,60 @@ import java.util.List;
 
 
 public class Pays {
-    private String pays;
-    private List<Athelete> lesathelete;
-    private List<Equipes> lesEquipes;
+    private String Nompays;
 
-    public Pays(String pays) {
-        this.pays = pays;
+    private List<Athlete> lesathelete;
+    private List<Equipe> lesEquipes;
+
+    public Pays(String NomPays) {
+        this.Nompays = NomPays;
     }
 
-    public boolean ajouterAthelete(Athelete athelete){
+    public boolean ajouterAthelete(Athlete athelete){
         return lesathelete.add(athelete);
         
     }
     
-    public boolean retirerAthelete(Athelete athelete){
+    public boolean retirerAthelete(Athlete athelete){
         return lesathelete.remove(athelete);
     }
 
-    public String getPays() {
-        return pays;
-            somme += getmedailles_or() +getmedailles_argent() + getmedailles_bronze();
-        return somme ;
+    public String getNompays() {
+        return Nompays;
     }
 
-    
+    public void setNompays(String nompays) {
+        Nompays = nompays;
+    }
+
+
 
     public int getmedailles_or(){
         int nbmedaille_or=0;
-        for (Equipes groupes : lesEquipes){
-            nbmedaille_or += groupes.getMedaillesOr();
+        for (Equipe groupes : lesEquipes){
+            nbmedaille_or += groupes.getNbMedailleOr();
         }
         return nbmedaille_or;
     }
 
     public int getmedailles_argent(){
         int nbmedaille_Argent=0;
-        for (Equipes groupes : lesEquipes){
-            nbmedaille_Argent += groupes.getMedaillesArgent();
+        for (Equipe groupes : lesEquipes){
+            nbmedaille_Argent += groupes.getNbMedailleArgent();
     }
     return nbmedaille_Argent;
     }
     
     public int getmedailles_bronze(){
         int nbmedaille_bronze=0;
-        for (Equipes groupes : lesEquipes){
-            nbmedaille_bronze += groupes.getMedaillesBronze();
+        for (Equipe groupes : lesEquipes){
+            nbmedaille_bronze += groupes.getNbMedailleBronze();
     }
     return nbmedaille_bronze;
     }
 
     public String toString()  {
-        return this.pays + "a" ;
+        return this.Nompays;
     }
 
 }

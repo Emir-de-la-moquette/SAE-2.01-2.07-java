@@ -72,3 +72,4 @@ public class Athlete {
             return this.nomA + this.prenomA + " est une femme avec : " + this.agilite + " d'agilité, " + this.endurance + " d'endurance, et " + this.force + " de force.";
         }
     }
+}

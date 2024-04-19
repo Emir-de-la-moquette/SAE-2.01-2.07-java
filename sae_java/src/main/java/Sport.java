@@ -53,8 +53,8 @@ public class Sport {
         this.valeurForce = valeurForce;
     }
     @Override
-    public String tostring(){
-        String textAgilite;
+    public String toString(){
+        /*String textAgilite;
         switch (this.valeurAgilite) {
             case valeurAgilite<0.33:
                 textAgilite= "très peu demandant en agilite";
@@ -64,7 +64,9 @@ public class Sport {
                 break;
             default:
                 text = "ne demande pas d'agilite";
-                break;
-          }
+                break;*/
+                return "a";
+
     }
 }
+

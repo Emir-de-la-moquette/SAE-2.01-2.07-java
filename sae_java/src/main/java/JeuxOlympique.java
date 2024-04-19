@@ -5,6 +5,9 @@ import java.util.List;
 public class JeuxOlympique {
     private String lieu;
     private int annee;
+
+    private List<Epreuve> lesEpreuve;
+    private List<Sport> lesSports;
     
     public JeuxOlympique(String lieu, int annee) {
         this.lieu = lieu;
