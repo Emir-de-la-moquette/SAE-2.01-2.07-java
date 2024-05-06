@@ -20,7 +20,7 @@ public class MatchScore extends Match{
     public void deroulerMatch(Integer tentatives){
         if (this.equipe1.size() >= 1 && this.equipe2.size() >= 1){
             if (this.sport.aReglePersonalisee()){
-                while (!this.sport.conditionVictoire(score1, score2)){
+                while (!this.sport.conditionVictoire(score1, score2)){      // AJOUTER LES 2 METHODES UTILISEE A SPORT 
                     scoreBase();
                 }
             }
