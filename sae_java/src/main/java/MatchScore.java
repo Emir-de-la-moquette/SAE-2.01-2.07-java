@@ -5,17 +5,21 @@ public class MatchScore extends Match{
     private Equipe equipe;
 
     public MatchScore(Sport sport, Equipe equip){
-        super(sport, equip);
+        super(sport);
         this.equipe = equip;
     }
 
     public double getScore(){return this.score;}
 
     @Override
-    public void deroulerMatch(){
+    public void deroulerMatch(Integer tentatives){
+        tentatives = tentatives != null ? tentatives : 1;
         if (this.equipe.size() >= 1){
                 for (Athelete athelete : this.equipe){
-                    score += (this.sport.getMoyenneAthletique() + this.getCoefficientAgilite()*athlete.getAgilite() + this.sport.getCoefficientEndurance()*athlete.getEndurance() + this.sport.CoefficientForce()*athlete.getForce())*RandomNumberInRange.getRandom(0.6, 1.2);
+                    for (int i; i<tentatives; i++){
+                    double scoretp = (this.sport.getMoyenneAthletique() + this.getCoefficientAgilite()*athlete.getAgilite() + this.sport.getCoefficientEndurance()*athlete.getEndurance() + this.sport.CoefficientForce()*athlete.getForce())*RandomNumberInRange.getRandom(0.6, 1.2);
+                    if (score < scoretp){score = scoretp;}
+                    }
                 }
                 score = score/equipe.size();
                 
