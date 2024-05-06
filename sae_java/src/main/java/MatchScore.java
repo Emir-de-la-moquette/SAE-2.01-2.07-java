@@ -17,7 +17,11 @@ public class MatchScore extends Match{
         if (this.equipe.size() >= 1){
                 for (Athelete athelete : this.equipe){
                     for (int i; i<tentatives; i++){
-                    double scoretp = (this.sport.getMoyenneAthletique() + this.getCoefficientAgilite()*athlete.getAgilite() + this.sport.getCoefficientEndurance()*athlete.getEndurance() + this.sport.CoefficientForce()*athlete.getForce())*RandomNumberInRange.getRandom(0.6, 1.2);
+                    double scoretp = (this.sport.getMoyenneAthletique() 
+                                        + (this.sport.getCoefficientAgilite()*athlete.getAgilite())/(50/this.sport.getMoyenneAthletique()) 
+                                        + (this.sport.getCoefficientEndurance()*athlete.getEndurance()/(50/this.sport.getMoyenneAthletique())) 
+                                        + (this.sport.CoefficientForce()*athlete.getForce()/(50/this.sport.getMoyenneAthletique())))
+                                        * RandomNumberInRange.getRandom(0.6, 1.2);
                     if (score < scoretp){score = scoretp;}
                     }
                 }

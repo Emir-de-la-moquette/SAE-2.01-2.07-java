@@ -1,8 +1,8 @@
 import main.java.RandomNumberInRange;
 
 public class MatchScore extends Match{
-    double score1 = 0;
-    double score2 = 0;
+    private double score1 = 0;
+    private double score2 = 0;
     private Equipe equipe1;
     private Equipe equipe2;
 
@@ -19,12 +19,63 @@ public class MatchScore extends Match{
     @Override
     public void deroulerMatch(Integer tentatives){
         if (this.equipe1.size() >= 1 && this.equipe2.size() >= 1){
-                for (Athelete athelete : this.equipe1){
-                    double scoretp = (this.sport.getMoyenneAthletique() + this.getCoefficientAgilite()*athlete.getAgilite() + this.sport.getCoefficientEndurance()*athlete.getEndurance() + this.sport.CoefficientForce()*athlete.getForce())*RandomNumberInRange.getRandom(0.6, 1.2);
-                    if (score < scoretp){score = scoretp;}
+            if (this.sport.aReglePersonalisee()){
+                while (!this.sport.conditionVictoire(score1, score2)){
+                    scoreBase();
                 }
-                score = score/equipe.size();
-                
+            }
+            else{
+                deroulementDefault();
+            }
+        }
+    }
+
+    private void deroulementDefault(){
+        for (int i = 0; i<Math.round(RandomNumberInRange.getRandom(4, 12)); i++){
+            scoreBase();
+        }
+        if (score1-score2 == 0){
+            double actionFinaleEquipe1 = 0;
+            double actionFinaleEquipe2 = 0;
+            for (Athelete athelete : this.equipe1){
+                actionFinaleEquipe1 += (this.getCoefficientAgilite()*athlete.getAgilite() + this.sport.getCoefficientEndurance()*athlete.getEndurance() + this.sport.CoefficientForce()*athlete.getForce())*RandomNumberInRange.getRandom(0.6, 1.2);
+            }
+            for (Athelete athelete : this.equipe2){
+                actionFinaleEquipe2 += (this.getCoefficientAgilite()*athlete.getAgilite() + this.sport.getCoefficientEndurance()*athlete.getEndurance() + this.sport.CoefficientForce()*athlete.getForce())*RandomNumberInRange.getRandom(0.6, 1.2);
+            }
+            double res = actionFinaleEquipe1-actionFinaleEquipe2;
+            switch (true) {
+                case res < 0:
+                    this.score2 += this.sport.getpoint();
+                    break;
+                case res > 0:
+                    this.score1 += this.sport.getpoint();
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    private void scoreBase(){
+        double actionEquipe1 = 0;
+        double actionEquipe2 = 0;
+        for (Athelete athelete : this.equipe1){
+            actionEquipe1 += (this.getCoefficientAgilite()*athlete.getAgilite() + this.sport.getCoefficientEndurance()*athlete.getEndurance() + this.sport.CoefficientForce()*athlete.getForce())*RandomNumberInRange.getRandom(0.6, 1.2);
+        }
+        for (Athelete athelete : this.equipe2){
+            actionEquipe2 += (this.getCoefficientAgilite()*athlete.getAgilite() + this.sport.getCoefficientEndurance()*athlete.getEndurance() + this.sport.CoefficientForce()*athlete.getForce())*RandomNumberInRange.getRandom(0.6, 1.2);
+        }
+        double res = actionEquipe1-actionEquipe2;
+        switch (true) {
+            case res < 0-(actionEquipe1/10):
+                this.score2 += this.sport.getpoint();
+                break;
+            case res > 0+(actionEquipe2/10):
+                this.score1 += this.sport.getpoint();
+                break;
+            default:
+                break;
         }
     }
 
