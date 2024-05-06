@@ -66,10 +66,10 @@ public class Athlete {
     @Override
     public String toString(){
         if (this.sexeA == "H"){
-            return this.nomA + this.prenomA + " est un homme avec : " + this.agilite + " d'agilité, " + this.endurance + " d'endurance, et " + this.force + " de force.";
+            return this.nomA +" "+ this.prenomA + " est un homme avec : " + this.agilite + " d'agilité, " + this.endurance + " d'endurance, et " + this.force + " de force.";
         }
         else {
-            return this.nomA + this.prenomA + " est une femme avec : " + this.agilite + " d'agilité, " + this.endurance + " d'endurance, et " + this.force + " de force.";
+            return this.nomA +" " + this.prenomA + " est une femme avec : " + this.agilite + " d'agilité, " + this.endurance + " d'endurance, et " + this.force + " de force.";
         }
     }
 }
