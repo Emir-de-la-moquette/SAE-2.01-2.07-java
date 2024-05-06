@@ -35,6 +35,9 @@ public class MatchScore extends Match{
             scoreBase();
         }
         if (score1-score2 == 0){
+
+            // Mort subite du match, point de la victoire
+
             double actionFinaleEquipe1 = 0;
             double actionFinaleEquipe2 = 0;
             for (Athelete athelete : this.equipe1){
@@ -58,6 +61,9 @@ public class MatchScore extends Match{
     }
 
     private void scoreBase(){
+
+        // Test des équipes pour ajouter le point
+
         double actionEquipe1 = 0;
         double actionEquipe2 = 0;
         for (Athelete athelete : this.equipe1){
@@ -68,8 +74,11 @@ public class MatchScore extends Match{
         }
         double res = actionEquipe1-actionEquipe2;
         switch (true) {
+
+            // Afin de laisser une chance de défense, il y a un pallier de 10% afin de marquer le point, l'obtention du nombre de point est définie dans sport
+
             case res < 0-(actionEquipe1/10):
-                this.score2 += this.sport.getpoint();
+                this.score2 += this.sport.getpoint();   // AJOUTER LA METHODE GETPOINT A SPORT (c'est une liste de score possible selon le sport donné, si il y en a plusieurs cela en renvoit un random/ ou presque)
                 break;
             case res > 0+(actionEquipe2/10):
                 this.score1 += this.sport.getpoint();
