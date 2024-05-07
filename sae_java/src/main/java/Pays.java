@@ -33,7 +33,7 @@ public class Pays {
 
     public int getmedailles_or(){
         int nbmedaille_or=0;
-        for (Equipe groupes : lesEquipes){
+        for (Equipe groupes : this.lesEquipes){
             nbmedaille_or += groupes.getNbMedailleOr();
         }
         return nbmedaille_or;
@@ -41,7 +41,7 @@ public class Pays {
 
     public int getmedailles_argent(){
         int nbmedaille_Argent=0;
-        for (Equipe groupes : lesEquipes){
+        for (Equipe groupes : this.lesEquipes){
             nbmedaille_Argent += groupes.getNbMedailleArgent();
     }
     return nbmedaille_Argent;
@@ -49,14 +49,14 @@ public class Pays {
     
     public int getmedailles_bronze(){
         int nbmedaille_bronze=0;
-        for (Equipe groupes : lesEquipes){
+        for (Equipe groupes : this.lesEquipes){
             nbmedaille_bronze += groupes.getNbMedailleBronze();
     }
     return nbmedaille_bronze;
     }
 
     public String toString()  {
-        return this.Nompays + " possede" + String.valueOf(getmedailles_bronze()) +" de medailles bronze , " + String.valueOf(getmedailles_argent()) + " de medailles argent et " + String.valueOf(getmedailles_or()) + "de medailles argent" ;
+        return this.Nompays; //+ " possede" + String.valueOf(this.getmedailles_bronze()) +" de medailles bronze , " + String.valueOf(this.getmedailles_argent()) + " de medailles argent et " + String.valueOf(this.getmedailles_or()) + "de medailles argent" ;
     }
 
 }

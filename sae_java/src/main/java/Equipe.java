@@ -58,4 +58,9 @@ public class Equipe {
     public void setNbMedailleBronze(int nbMedailleBronze) {
         this.nbMedailleBronze = nbMedailleBronze;
     }
+
+    @Override
+    public String toString() {
+        return "l'équipe du "+ this.lePays;
+    }
 }  

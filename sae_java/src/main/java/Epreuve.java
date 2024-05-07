@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.lang.Math;
 
 
+
 public class Epreuve {
 
     private String nomEpreuve;
@@ -91,6 +92,15 @@ public class Epreuve {
     }
 
 
+    public List<Equipe> reverse(List<Equipe> Classement){
+        for (int k = 0, j = Classement.size() - 1; k < j; k++) 
+        {
+            Classement.add(k, Classement.remove(j));
+        }
+        return Classement;
+        
+    }
+
     public List<Equipe> lanceEpreuve() {
         List<Equipe> Classement = new ArrayList<>();
 
@@ -107,10 +117,13 @@ public class Epreuve {
         }*/
 
         if(typeEpreuve == "Score") {
+            System.out.println(this.lesEquipes);
+
             // tant que il ya des joueur restant dans les.équipe
             List<MatchScore> scoresEquipes = new ArrayList<>();
             // on défini le nombre de matchs à réaliser
             int nbDeMatchs = Math.round((this.lesEquipes.size())/3);
+            System.out.println(nbDeMatchs);
             if (nbDeMatchs == 0) {nbDeMatchs = 1;}
             for (int i = 0 ; i < nbDeMatchs ; i++ ) {
                 /* on crée un match
@@ -125,21 +138,34 @@ public class Epreuve {
                     MatchScore match = new MatchScore(this.leSport ,this.lesEquipes.get(j));
                     match.deroulerMatch();
                     scoresEquipes.add(match);
+
+                    System.out.println(scoresEquipes+"\n\n");
+                    System.out.println(lesEquipes.size()+"\n");
                 }
                 Comparator<MatchScore> compare = new CompareMatchScore();
                 Collections.sort(scoresEquipes, compare); // !! a remplacer par un compare + doit comparer uniquement le score !!
                 this.lesEquipes.clear();
 
+                
+
                 for (int posMatch = 0 ; posMatch < scoresEquipes.size(); posMatch++) {
                     if (posMatch < scoresEquipes.size()-3)
                         this.lesEquipes.add(scoresEquipes.get(posMatch).getEquipe());
-                    else {Classement.add(scoresEquipes.get(posMatch).getEquipe());} 
+                        if (i-1 == nbDeMatchs) {
+                            Classement.add(this.lesEquipes.get(posMatch));
+                        }
+                    else {Classement.add(scoresEquipes.get(posMatch).getEquipe());}
+
+                    System.out.println(reverse(Classement)+"\n\n\n");
+                    System.out.println(scoresEquipes.size()+"\n\n");
+                    
+
                 }
             }
-                return Classement;
+                return reverse(Classement);
         }
 
-        return Classement;
+        else {return Classement;}
     }
 
     @Override
