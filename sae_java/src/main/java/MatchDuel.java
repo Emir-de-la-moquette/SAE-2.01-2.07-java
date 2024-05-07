@@ -1,12 +1,12 @@
 import main.java.RandomNumberInRange;
 
-public class MatchScore extends Match{
+public class MatchDuel extends Match{
     private double score1 = 0;
     private double score2 = 0;
     private Equipe equipe1;
     private Equipe equipe2;
 
-    public MatchScore(Sport sport, Equipe equip1, Equipe equip2){
+    public MatchDuel(Sport sport, Equipe equip1, Equipe equip2){
         super(sport);
         this.equipe1 = equip1;
         this.equipe2 = equip2;
