@@ -4,13 +4,21 @@ public class Sport {
     private Double valeurAgilite;
     private Double valeurEndurance;
     private Double valeurForce;
+    private Double moyenneAthletique;
 
-    public Sport(String nomSport, int nbJoueur, Double valeurAgilite, Double valeurEndurance, Double valeurForce){
+    public Sport(String nomSport, int nbJoueur, Double valeurAgilite, Double valeurEndurance, Double valeurForce, Double moyenneAthletique){
         this.nomSport = nomSport;
         this.nbJoueur = nbJoueur;
         this.valeurAgilite = valeurAgilite;
         this.valeurEndurance = valeurEndurance;
         this.valeurForce = valeurForce;
+        this.moyenneAthletique = moyenneAthletique;
+    }
+
+
+    
+    public Double getMoyenneAthletique() {
+        return this.moyenneAthletique;
     }
 
     public String getNomSport() {

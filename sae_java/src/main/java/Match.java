@@ -15,5 +15,5 @@ public class Match {
 
     public static void clearNum(){ Match.numMatch=0;};
 
-    public void deroulerMatch(Equipe equipe){}
+    public void deroulerMatch(){}
 }

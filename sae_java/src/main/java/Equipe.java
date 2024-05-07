@@ -1,26 +1,44 @@
+import java.util.*;
+
 public class Equipe {
 
     private int taille;
-    private String pays;
-
+    private Pays lePays;
 
     private int nbMedailleOr =0;
     private int nbMedailleArgent =0;
     private int nbMedailleBronze =0;
+
+    private List<Athlete> lesAthletes;
     
-    public Equipe(int taille, String pays) {
+
+    public Equipe(int taille, Pays pays) {
         this.taille = taille;
-        this.pays = pays;
+        this.lePays = pays;
+        this.lesAthletes = new ArrayList<>();
+    }
+
+    public List<Athlete> getLesAthletes() {
+        return lesAthletes;
     }
 
     
     public int getTaille() {
-        return taille;
+        return this.taille;
     }
 
-    public String getPays() {
-        return pays;
+    public Pays getPays() {
+        return this.lePays;
     }
+
+    public void ajouteAthletes(Athlete athlete) { // sécurité a revoir
+        this.lesAthletes.add(athlete);
+    }
+
+    public void retireAthletes(Athlete athlete) { // sécurité a revoir
+        this.lesAthletes.remove(athlete);
+    }
+    
     
     public int getNbMedailleOr() {
         return nbMedailleOr;

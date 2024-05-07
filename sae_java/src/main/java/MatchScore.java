@@ -1,4 +1,4 @@
-import java.util.Comparator;
+
 
 public class MatchScore extends Match{
     private double score = 0;
@@ -13,13 +13,13 @@ public class MatchScore extends Match{
 
     public double getScore(){return this.score;}
 
-    public Equipe getEquipe() {return this.equipe;}
+    public Equipe getEquipe(){return this.equipe;}
 
     @Override
     public void deroulerMatch(/*Integer tentatives*/){
         //tentatives = tentatives != null ? tentatives : 1;
-        if (this.equipe.size() >= 1){
-                for (Athlete athelete : this.equipe){
+        if (this.equipe.getLesAthletes().size() >= 1){
+                for (Athlete athlete : this.equipe.getLesAthletes()){
                     //for (int i; i<tentatives; i++){
                     double scoretp = (this.sport.getMoyenneAthletique() 
                                         + (this.sport.getValeurAgilite()*athlete.getAgilite())/(50/this.sport.getMoyenneAthletique()) 

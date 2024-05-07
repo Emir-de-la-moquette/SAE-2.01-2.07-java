@@ -92,7 +92,7 @@ public class Epreuve {
 
 
     public List<Equipe> lanceEpreuve() {
-
+        List<Equipe> Classement = new ArrayList<>();
 
         /*if(typeEpreuve == "Duel") {
             List<Equipe> Classement = new ArrayList<>();
@@ -108,7 +108,6 @@ public class Epreuve {
 
         if(typeEpreuve == "Score") {
             // tant que il ya des joueur restant dans les.équipe
-            List<Equipe> Classement = new ArrayList<>();
             List<MatchScore> scoresEquipes = new ArrayList<>();
             // on défini le nombre de matchs à réaliser
             int nbDeMatchs = Math.round((this.lesEquipes.size())/3);
@@ -139,6 +138,8 @@ public class Epreuve {
             }
                 return Classement;
         }
+
+        return Classement;
     }
 
     @Override

@@ -1,4 +1,4 @@
-public class MatchDuel extends Match{
+/*public class MatchDuel extends Match{
     private double score1 = 0;
     private double score2 = 0;
     private Equipe equipe1;
@@ -10,7 +10,7 @@ public class MatchDuel extends Match{
         this.equipe2 = equip2;
     }
 
-    /* A faire (voir le calcul du score pour chaaque sport) */
+    A faire (voir le calcul du score pour chaaque sport) 
 
     @Override
     public void deroulerMatch(Integer tentatives){
@@ -100,4 +100,4 @@ public class MatchDuel extends Match{
     }
 
 
-}
+}*/
