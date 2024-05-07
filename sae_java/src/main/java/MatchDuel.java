@@ -12,8 +12,6 @@ public class MatchScore extends Match{
         this.equipe2 = equip2;
     }
 
-    public double getScore(){return this.score;}
-
     /* A faire (voir le calcul du score pour chaaque sport) */
 
     @Override
@@ -87,6 +85,13 @@ public class MatchScore extends Match{
                 break;
         }
     }
+
+    public double getScoreEquipe1() {return score1;}
+    
+        
+    public double getScoreEquipe2() {return score2;}
+        
+    
 
     @Override
     public String toString(){
