@@ -1,19 +1,21 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.lang.Math;
 
 
 public class Epreuve {
 
     private String nomEpreuve;
     private String sexeEpreuve;
+
+
     private String categorieEpreuve;
     private String typeEpreuve;
 
-    private List<Pair<Equipe, Integer>> scoreDesEquipes;
-
     private List<Equipe> lesEquipes;
-    private List<"???"> scoresEquipes;
+    //private List<Match> scoresEquipes;
     private Sport leSport;
 
     
@@ -24,23 +26,25 @@ public class Epreuve {
         this.categorieEpreuve = categorieEpreuve;
         this.typeEpreuve = typeEpreuve;
 
-        this.sport = sport;
+        this.leSport = sport;
 
-        this.scoreDesEquipes = new ArrayList<>();
+        //this.scoresEquipes = new ArrayList<>();
         this.lesEquipes = new ArrayList<>();
 
     }
 
+    public String getSexeEpreuve() {
+        return sexeEpreuve;
+    }
+
     public String getNomEpreuve() {
-        return R2nomEpreuve;
+        return this.nomEpreuve;
     }
 
     public void setNomEpreuve(String nomEpreuve) {
         this.nomEpreuve = nomEpreuve;
     }
 
-    public StriR2xeEpreuve = sexeEpreuve;
-    }
 
     public String getCategorieEpreuve() {
         return categorieEpreuve;
@@ -59,19 +63,18 @@ public class Epreuve {
     }
 
 
-    public Sport getLesSports() {
-        return this.lesSports;
+    public Sport getLeSports() {
+        return this.leSport;
     }
 
-    public void setLesSports(Sport lesSports) {
-        this.lesSports = lesSports;
+    public void setLeSports(Sport lesSports) {
+        this.leSport = lesSports;
     }
     
     // @param : une équipe
     // fait participer une équipe à l'épreuve
     public void participer(Equipe equipe) {
-        if (equipe.size() == leSport.getNomSport())
-            this.lesEquipes.add(equipe);
+        this.lesEquipes.add(equipe);
 
     }
 
@@ -88,12 +91,10 @@ public class Epreuve {
     }
 
 
-    public void lanceEpreuve() {
+    public List<Equipe> lanceEpreuve() {
 
 
-        typeEpreuve = getTypeEpreuve();
-
-        if(typeEpreuve == "Duel") {
+        /*if(typeEpreuve == "Duel") {
             List<Equipe> Classement = new ArrayList<>();
             Collection.shuffle(this.lesEquipes);
             for (int i = 0 ; i<len(this.lesEquipes)-1 ; i++) {
@@ -103,13 +104,14 @@ public class Epreuve {
 
 
 
-        }
+        }*/
 
         if(typeEpreuve == "Score") {
             // tant que il ya des joueur restant dans les.équipe
             List<Equipe> Classement = new ArrayList<>();
+            List<MatchScore> scoresEquipes = new ArrayList<>();
             // on défini le nombre de matchs à réaliser
-            int nbDeMatchs = round(len(this.lesEquipes)/3);
+            int nbDeMatchs = Math.round((this.lesEquipes.size())/3);
             if (nbDeMatchs == 0) {nbDeMatchs = 1;}
             for (int i = 0 ; i < nbDeMatchs ; i++ ) {
                 /* on crée un match
@@ -120,27 +122,27 @@ public class Epreuve {
                  * on replace dans les.LesEquipes les scores les plus élevé sauf les 3 dernier.
                  * les 3 dernier son ajouter au classement (l'idée est de simplement inverser les index de Classement pour obtenir notre vrai classement)  
                  */ 
-
-                MatchScore match = new Match(this.lesEquipes);
-                this.scoresEquipes = match.deroulerMatch();
-                List<"???"> resultat = Collection.sort(this.scoreEquipes) // !! a remplacer par un compare + doit comparer uniquement le score !!
-                this.lesEquipes.clear();
-                this.scoresEquipes = match.deroulerMatch();
-                List<"???"> resultat = Collection.sort(this.scoreEquipes)
-                this.lesEquipes.clear();
-                // !! en fait, ça marche pas pasq, dans lesEquipe il nous faut que des type "Equipe", donc il faut séparer des scores !!
-                for (int i = 0 ; i < this.scoreEquipes.size(); i++) {
-                    if (i < this.scoreEquipes.size()-3)
-                        this.lesEquipes.add(i);
-                    else {Classement.add(i);} 
-                    }
+                for (int j = 0 ; j < this.lesEquipes.size() ; j++){
+                    MatchScore match = new MatchScore(this.leSport ,this.lesEquipes.get(j));
+                    match.deroulerMatch();
+                    scoresEquipes.add(match);
                 }
-                return Classement;
+                Comparator<MatchScore> compare = new CompareMatchScore();
+                Collections.sort(scoresEquipes, compare); // !! a remplacer par un compare + doit comparer uniquement le score !!
+                this.lesEquipes.clear();
+
+                for (int posMatch = 0 ; posMatch < scoresEquipes.size(); posMatch++) {
+                    if (posMatch < scoresEquipes.size()-3)
+                        this.lesEquipes.add(scoresEquipes.get(posMatch).getEquipe());
+                    else {Classement.add(scoresEquipes.get(posMatch).getEquipe());} 
+                }
             }
+                return Classement;
         }
+    }
 
     @Override
-    public String ToString() {
-        return getCategorieEpreuve() + getNomEpreuve() + getSexeEpreuve();
+    public String toString() {
+        return this.categorieEpreuve + " " + this.nomEpreuve + " " + this.sexeEpreuve;
     }
 }

@@ -1,5 +1,3 @@
-import main.java.RandomNumberInRange;
-
 public class MatchDuel extends Match{
     private double score1 = 0;
     private double score2 = 0;

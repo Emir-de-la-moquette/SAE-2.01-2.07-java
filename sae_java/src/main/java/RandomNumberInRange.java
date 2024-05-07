@@ -1,5 +1,3 @@
-package main.java;
-
 public class RandomNumberInRange {
 	public static double getRandom(double min, double max) {
 

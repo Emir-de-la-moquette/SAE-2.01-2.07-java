@@ -1,14 +1,25 @@
 public class Equipe {
 
     private int taille;
+    private String pays;
 
 
     private int nbMedailleOr =0;
     private int nbMedailleArgent =0;
     private int nbMedailleBronze =0;
     
-    public Equipe(int taille) {
+    public Equipe(int taille, String pays) {
         this.taille = taille;
+        this.pays = pays;
+    }
+
+    
+    public int getTaille() {
+        return taille;
+    }
+
+    public String getPays() {
+        return pays;
     }
     
     public int getNbMedailleOr() {
