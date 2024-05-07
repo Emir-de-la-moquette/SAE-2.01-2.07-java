@@ -56,7 +56,7 @@ public class Pays {
     }
 
     public String toString()  {
-        return this.Nompays;
+        return this.Nompays + " possede" + String.valueOf(getmedailles_bronze()) +" de medailles bronze , " + String.valueOf(getmedailles_argent()) + " de medailles argent et " + String.valueOf(getmedailles_or()) + "de medailles argent" ;
     }
 
 }
