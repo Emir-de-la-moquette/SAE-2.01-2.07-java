@@ -5,4 +5,9 @@ public class RandomNumberInRange {
      		double random = ((range * Math.random()) + min);
 		return random;
 	}
+
+	public static int getRandomInt(int min, int max) {
+		int randomInt = (int)getRandom(min, max);
+		return randomInt;
+	}
 }

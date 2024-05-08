@@ -8,7 +8,7 @@
 
 public class Executable {
     public static void main(String [] args) {
-        Sport chifoumi = new Sport("chifoumi", 1, 0.7, 0.1, 0.1, 1.0);
+        Sport chifoumi = new Sport("chifoumi", 1, 0.7, 0.1, 0.1, 1.0,2);
 
         Pays dadakistan = new Pays("datakistan");
         Pays titikistan = new Pays("titikistan");

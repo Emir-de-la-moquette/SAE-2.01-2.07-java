@@ -5,8 +5,9 @@ public class Sport {
     private Double valeurEndurance;
     private Double valeurForce;
     private Double moyenneAthletique;
+    private int nbdePointmax;
 
-    public Sport(String nomSport, int nbJoueur, Double valeurAgilite, Double valeurEndurance, Double valeurForce, Double moyenneAthletique){
+    public Sport(String nomSport, int nbJoueur, Double valeurAgilite, Double valeurEndurance, Double valeurForce, Double moyenneAthletique, int nbdePointmax){
         this.nomSport = nomSport;
         this.nbJoueur = nbJoueur;
         this.valeurAgilite = valeurAgilite;
@@ -15,7 +16,9 @@ public class Sport {
         this.moyenneAthletique = moyenneAthletique;
     }
 
-
+    public int getpoint() {
+        return RandomNumberInRange.getRandomInt(1, this.nbdePointmax);
+    }
     
     public Double getMoyenneAthletique() {
         return this.moyenneAthletique;
@@ -59,6 +62,16 @@ public class Sport {
 
     public void setValeurForce(Double valeurForce) {
         this.valeurForce = valeurForce;
+    }
+
+
+    public boolean reglePersonalisee(){
+        return false ; // à definir
+    }
+
+
+    public boolean conditionVictoire(Double a, Double b){
+        return false; //à définir
     }
     @Override
     public String toString(){
