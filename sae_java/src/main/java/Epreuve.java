@@ -117,13 +117,13 @@ public class Epreuve {
         }*/
 
         if(typeEpreuve == "Score") {
-            System.out.println(this.lesEquipes);
+            //System.out.println(this.lesEquipes);
 
             // tant que il ya des joueur restant dans les.équipe
             List<MatchScore> scoresEquipes = new ArrayList<>();
             // on défini le nombre de matchs à réaliser
             int nbDeMatchs = Math.round((this.lesEquipes.size())/3);
-            System.out.println(nbDeMatchs);
+            //System.out.println(nbDeMatchs);
             if (nbDeMatchs == 0) {nbDeMatchs = 1;}
             for (int i = 0 ; i < nbDeMatchs ; i++ ) {
                 /* on crée un match
@@ -134,38 +134,46 @@ public class Epreuve {
                  * on replace dans les.LesEquipes les scores les plus élevé sauf les 3 dernier.
                  * les 3 dernier son ajouter au classement (l'idée est de simplement inverser les index de Classement pour obtenir notre vrai classement)  
                  */ 
+                scoresEquipes.clear();
                 for (int j = 0 ; j < this.lesEquipes.size() ; j++){
                     MatchScore match = new MatchScore(this.leSport ,this.lesEquipes.get(j));
                     match.deroulerMatch();
                     scoresEquipes.add(match);
 
-                    System.out.println(scoresEquipes+"\n\n");
-                    System.out.println(lesEquipes.size()+"\n");
+                    //System.out.println(scoresEquipes+"\n\n");
+                    //System.out.println(lesEquipes.size()+"\n");
                 }
                 Comparator<MatchScore> compare = new CompareMatchScore();
-                Collections.sort(scoresEquipes, compare); // !! a remplacer par un compare + doit comparer uniquement le score !!
+                Collections.sort(scoresEquipes, compare); 
+                //System.out.println("score tri = "+scoresEquipes+"\n\n");
                 this.lesEquipes.clear();
 
-                
 
                 for (int posMatch = 0 ; posMatch < scoresEquipes.size(); posMatch++) {
-                    if (posMatch < scoresEquipes.size()-3)
-                        this.lesEquipes.add(scoresEquipes.get(posMatch).getEquipe());
-                        if (i-1 == nbDeMatchs) {
-                            Classement.add(this.lesEquipes.get(posMatch));
-                        }
-                    else {Classement.add(scoresEquipes.get(posMatch).getEquipe());}
+                    if (posMatch < 3){
+                        Classement.add(scoresEquipes.get(posMatch).getEquipe());
+                    } else {this.lesEquipes.add(scoresEquipes.get(posMatch).getEquipe());}
 
-                    System.out.println(reverse(Classement)+"\n\n\n");
-                    System.out.println(scoresEquipes.size()+"\n\n");
+                    //System.out.println("le classement est "+Classement+"\n\n\n");
+                    //System.out.println("E contient"+this.lesEquipes+"\n\n");
                     
-
+                }
+                //System.out.println("il reste " + i + "sur " + nbDeMatchs);
+                if (this.lesEquipes.size() != 0 && i+1 == nbDeMatchs) {
+                    //System.out.println("oui je passe dans la boucle");
+                    for (Equipe EquipeRestente : this.lesEquipes) {
+                        Classement.add(EquipeRestente);
+                    }
                 }
             }
-                return reverse(Classement);
-        }
+            Classement = reverse(Classement);
+            Classement.get(1).ajouteMedailleOr();
+            Classement.get(2).ajouteMedailleArgent();
+            Classement.get(3).ajouteMedailleBronze();
+            return Classement;
+            }
 
-        else {return Classement;}
+               else {return Classement;}
     }
 
     @Override

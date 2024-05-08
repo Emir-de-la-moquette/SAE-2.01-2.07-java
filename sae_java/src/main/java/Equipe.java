@@ -43,20 +43,20 @@ public class Equipe {
     public int getNbMedailleOr() {
         return nbMedailleOr;
     }
-    public void setNbMedailleOr(int nbMedailleOr) {
-        this.nbMedailleOr = nbMedailleOr;
+    public void ajouteMedailleOr() {
+        this.nbMedailleOr += 1;
     }
     public int getNbMedailleArgent() {
         return nbMedailleArgent;
     }
-    public void setNbMedailleArgent(int nbMedailleArgent) {
-        this.nbMedailleArgent = nbMedailleArgent;
+    public void ajouteMedailleArgent() {
+        this.nbMedailleArgent += 1;
     }
     public int getNbMedailleBronze() {
         return nbMedailleBronze;
     }
-    public void setNbMedailleBronze(int nbMedailleBronze) {
-        this.nbMedailleBronze = nbMedailleBronze;
+    public void ajouteMedailleBronze() {
+        this.nbMedailleBronze += 1;
     }
 
     @Override

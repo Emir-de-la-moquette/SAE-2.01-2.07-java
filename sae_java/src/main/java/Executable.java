@@ -52,7 +52,8 @@ public class Executable {
         chifoumimi.participer(e5);
         chifoumimi.participer(e6);
         chifoumimi.participer(e7);
-        System.out.println(chifoumimi.lanceEpreuve());
+        //System.out.println(chifoumimi.lanceEpreuve());
+        System.out.println(dadakistan.getmedailles_bronze());
         
     }
     
