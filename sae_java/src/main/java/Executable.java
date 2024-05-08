@@ -26,8 +26,6 @@ public class Executable {
         Athlete atl41 = new Athlete("d", "e", "H", 15, 6, 6);
 
 
-
-
         Equipe e1 = new Equipe(1, dadakistan);
         Equipe e2 = new Equipe(1, an2);
         Equipe e3 = new Equipe(1, titikistan);
@@ -35,6 +33,17 @@ public class Executable {
         Equipe e5 = new Equipe(1, an1);
         Equipe e6 = new Equipe(1, dadakistan);
         Equipe e7 = new Equipe(1, an3);
+
+
+        dadakistan.ajouterEquipe(e1);
+        an2.ajouterEquipe(e2);
+        titikistan.ajouterEquipe(e3);
+        dadakistan.ajouterEquipe(e4);
+        an1.ajouterEquipe(e5);
+        dadakistan.ajouterEquipe(e6);
+        an3.ajouterEquipe(e7);
+        System.out.println(dadakistan.afficheLesEquipes());
+
 
         e1.ajouteAthletes(atl4);
         e2.ajouteAthletes(atl3);
@@ -52,7 +61,7 @@ public class Executable {
         chifoumimi.participer(e5);
         chifoumimi.participer(e6);
         chifoumimi.participer(e7);
-        //System.out.println(chifoumimi.lanceEpreuve());
+        chifoumimi.lanceEpreuve();
         System.out.println(dadakistan.getmedailles_bronze());
         
     }

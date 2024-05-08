@@ -1,24 +1,31 @@
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class Pays {
     private String Nompays;
 
-    private List<Athlete> lesathelete;
     private List<Equipe> lesEquipes;
+
+
 
     public Pays(String NomPays) {
         this.Nompays = NomPays;
+        this.lesEquipes = new ArrayList<>(); 
     }
 
-    public boolean ajouterAthelete(Athlete athelete){
-        return lesathelete.add(athelete);
+    public List<Equipe> afficheLesEquipes() {
+        return this.lesEquipes;
+    }
+
+    public boolean ajouterEquipe(Equipe equip){
+        return lesEquipes.add(equip);
         
     }
     
-    public boolean retirerAthelete(Athlete athelete){
-        return lesathelete.remove(athelete);
+    public boolean retirerEquipe(Equipe equip){
+        return lesEquipes.remove(equip);
     }
 
     public String getNompays() {
