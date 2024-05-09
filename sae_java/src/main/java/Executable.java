@@ -53,7 +53,7 @@ public class Executable {
         e6.ajouteAthletes(atl31);
         e7.ajouteAthletes(atl41);
 
-        Epreuve chifoumimi = new Epreuve("chifoumimi", "Homme" , "junior", "Score", chifoumi);
+        Epreuve chifoumimi = new Epreuve("chifoumimi", "Homme" , "junior", "Duel", chifoumi);
         chifoumimi.participer(e1);
         chifoumimi.participer(e2);
         chifoumimi.participer(e3);

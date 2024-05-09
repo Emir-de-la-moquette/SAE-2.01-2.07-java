@@ -4,11 +4,24 @@ public class MatchDuel extends Match{
     private Equipe equipe1;
     private Equipe equipe2;
 
+
     public MatchDuel(Sport sport, Equipe equip1, Equipe equip2){
         super(sport);
         this.equipe1 = equip1;
         this.equipe2 = equip2;
     }
+
+
+    public double getScoreEquipe1() {return score1;}
+    
+        
+    public double getScoreEquipe2() {return score2;}
+
+
+    public Equipe getEquipe1() {return equipe1;}
+
+    public Equipe getEquipe2() {return equipe2;}
+
 
     @Override
     public void deroulerMatch(/*Integer tentatives*/){
@@ -72,10 +85,6 @@ public class MatchDuel extends Match{
 
     }
 
-    public double getScoreEquipe1() {return score1;}
-    
-        
-    public double getScoreEquipe2() {return score2;}
         
     
 

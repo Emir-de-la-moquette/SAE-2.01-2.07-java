@@ -1,8 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Collections;
 import java.util.Comparator;
 import java.lang.Math;
+import java.lang.reflect.Array;
+import java.util.HashMap;
 
 
 
@@ -104,17 +107,73 @@ public class Epreuve {
     public List<Equipe> lanceEpreuve() {
         List<Equipe> Classement = new ArrayList<>();
 
-        /*if(typeEpreuve == "Duel") {
-            List<Equipe> Classement = new ArrayList<>();
-            Collection.shuffle(this.lesEquipes);
-            for (int i = 0 ; i<len(this.lesEquipes)-1 ; i++) {
-                j=i+1;
-                MatchDuel match = new Match(this.lesEquipes.get(i), this.lesEquipes.get(j));
+        if(typeEpreuve == "Duel") {
+            boolean resteDesMatch=true;
+            Collections.shuffle(this.lesEquipes);
+            HashMap<Integer, List<Equipe>> pallierEquipe = new HashMap<Integer, List<Equipe>>();
+            HashMap<Integer, List<MatchDuel>> pallierMatch = new HashMap<Integer, List<MatchDuel>>();
+            for(int nbPallier = 0 ; nbPallier<this.lesEquipes.size() ; nbPallier++){
+                List<Equipe> listeEquipe = new ArrayList<>();
+                pallierEquipe.put(nbPallier, listeEquipe);
+            }
+            pallierEquipe.put(0, this.lesEquipes);
+            while (resteDesMatch){
+                for (Map.Entry<Integer, List<Equipe>> entry : pallierEquipe.entrySet()) {
+                    Integer cleEqip = entry.getKey();
+                    List<Equipe> valeursEqip = entry.getValue();
+                    if (valeursEqip.size()!=0){
+                        List<MatchDuel> matchs = new ArrayList<>();
+                        for (int i=0 ; i<valeursEqip.size() ; i+=2) {                          
+                            if(valeursEqip.size()%2==0){
+                                MatchDuel match = new MatchDuel(this.leSport, valeursEqip.get(i), valeursEqip.get(i+1));
+                                matchs.add(match);
+                            } else { 
+                                if(valeursEqip.size() != i+1){
+                                MatchDuel match = new MatchDuel(this.leSport, valeursEqip.get(i), valeursEqip.get(i+1));
+                                matchs.add(match);
+                                }
+                            }         
+                        }
+                        pallierMatch.put(cleEqip,matchs);
+                    }    
+                }
+
+                for (Map.Entry<Integer, List<MatchDuel>> entryMatch : pallierMatch.entrySet()) {
+                    Integer cleMatch = entryMatch.getKey();
+                    List<MatchDuel> valeursMatch = entryMatch.getValue();
+                    if (valeursMatch.size()!=0){
+                        List<Equipe> equipe = new ArrayList<>();
+                        for (MatchDuel resMatch : valeursMatch) {
+                            if (resMatch.getScoreEquipe1() < resMatch.getScoreEquipe2()){
+
+                                pallierEquipe.put(resMatch.getEquipe1());
+
+                            }
+
+
+                        }
+                    }
+
+                }
+
+
+
+
+               
+               
+
+            }
+                
+            
+
+
+            
+
             }
 
 
 
-        }*/
+        
 
         if(typeEpreuve == "Score") {
             //System.out.println(this.lesEquipes);
@@ -173,7 +232,7 @@ public class Epreuve {
             return Classement;
             }
 
-               else {return Classement;}
+        else {return Classement;}
     }
 
     @Override
