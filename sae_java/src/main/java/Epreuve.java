@@ -112,10 +112,6 @@ public class Epreuve {
             Collections.shuffle(this.lesEquipes);
             HashMap<Integer, List<Equipe>> pallierEquipe = new HashMap<Integer, List<Equipe>>();
             HashMap<Integer, List<MatchDuel>> pallierMatch = new HashMap<Integer, List<MatchDuel>>();
-            for(int nbPallier = 0 ; nbPallier<this.lesEquipes.size() ; nbPallier++){
-                List<Equipe> listeEquipe = new ArrayList<>();
-                pallierEquipe.put(nbPallier, listeEquipe);
-            }
             pallierEquipe.put(0, this.lesEquipes);
             while (resteDesMatch){
                 for (Map.Entry<Integer, List<Equipe>> entry : pallierEquipe.entrySet()) {
@@ -144,9 +140,11 @@ public class Epreuve {
                     if (valeursMatch.size()!=0){
                         List<Equipe> equipe = new ArrayList<>();
                         for (MatchDuel resMatch : valeursMatch) {
+                            List<Equipe> listeMatchDessus = new ArrayList<>();
+                            List<Equipe> listeMatchDessous = new ArrayList<>();
                             if (resMatch.getScoreEquipe1() < resMatch.getScoreEquipe2()){
 
-                                pallierEquipe.put(resMatch.getEquipe1());
+                                listeMatchDessous.add(resMatch.getEquipe1()); // a finir
 
                             }
 
@@ -155,6 +153,18 @@ public class Epreuve {
                     }
 
                 }
+                for (Map.Entry<Integer, List<Equipe>> entry : pallierEquipe.entrySet()) {
+                    Integer cleEqip = entry.getKey();
+                    resteDesMatch=false;
+                    List<Equipe> valeursEqip = entry.getValue();
+                    for (Equipe valeur : valeursEqip) {
+                        if()         // a finir
+                                          
+                    }
+                    
+                }
+
+
 
 
 
