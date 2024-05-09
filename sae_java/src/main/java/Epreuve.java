@@ -116,28 +116,34 @@ public class Epreuve {
             while (resteDesMatch){
                 for (Map.Entry<Integer, List<Equipe>> entry : pallierEquipe.entrySet()) {
                     Integer cleEqip = entry.getKey();
-                    List<Equipe> valeursEqip = entry.getValue();
+                    List<Equipe> valeursEqip = entry.getValue();                                                       // CREE LES MATCHDUEL
                     if (valeursEqip.size()!=0){
-                        List<MatchDuel> matchs = new ArrayList<>();
+                        List<MatchDuel> listematchs = new ArrayList<>();
                         for (int i=0 ; i<valeursEqip.size() ; i+=2) {                          
                             if(valeursEqip.size()%2==0){
                                 MatchDuel match = new MatchDuel(this.leSport, valeursEqip.get(i), valeursEqip.get(i+1));
-                                matchs.add(match);
+                                listematchs.add(match);
                             } else { 
                                 if(valeursEqip.size() != i+1){
                                 MatchDuel match = new MatchDuel(this.leSport, valeursEqip.get(i), valeursEqip.get(i+1));
-                                matchs.add(match);
+                                listematchs.add(match);
                                 }
                             }         
                         }
-                        pallierMatch.put(cleEqip,matchs);
+                        pallierMatch.put(cleEqip,listematchs);
                     }    
                 }
+                pallierEquipe.clear();
 
+
+                List<Integer> clePallierEquipe = new ArrayList<>(pallierEquipe.keySet());
+                Collections.sort(clePallierEquipe);
+
+                
                 for (Map.Entry<Integer, List<MatchDuel>> entryMatch : pallierMatch.entrySet()) {
                     Integer cleMatch = entryMatch.getKey();
                     List<MatchDuel> valeursMatch = entryMatch.getValue();
-                    if (valeursMatch.size()!=0){
+                    if (valeursMatch.size()!=0){                                                           // MODIFIE LE PALLIER DES EQUIPE EN FONCTION DES MATCH
                         List<Equipe> equipe = new ArrayList<>();
                         for (MatchDuel resMatch : valeursMatch) {
                             List<Equipe> listeMatchDessus = new ArrayList<>();
@@ -153,37 +159,27 @@ public class Epreuve {
                     }
 
                 }
-                for (Map.Entry<Integer, List<Equipe>> entry : pallierEquipe.entrySet()) {
-                    Integer cleEqip = entry.getKey();
-                    resteDesMatch=false;
-                    List<Equipe> valeursEqip = entry.getValue();
-                    for (Equipe valeur : valeursEqip) {
-                        if()         // a finir
-                                          
+                resteDesMatch=false;
+                for (Integer cle : clePallierEquipe){                                                          // VERIFIE SI LA BOUCLE EST FINI ET CREE LE CLASSEMENT
+                    List<Equipe> listeEquipe = pallierEquipe.get(cle);
+                    for (Equipe equipe : listeEquipe){
+                        if(listeEquipe.size() == 1){
+                            Classement.add(equipe);
+                        }
+                        else {resteDesMatch=true;}
                     }
-                    
                 }
-
-
-
-
-
-
-               
-               
-
+                if (resteDesMatch=true)
+                    Classement.clear();
+                    
             }
+            Classement.get(1).ajouteMedailleOr();
+            Classement.get(2).ajouteMedailleArgent();
+            Classement.get(3).ajouteMedailleBronze();
+            return Classement;
+        }
                 
-            
 
-
-            
-
-            }
-
-
-
-        
 
         if(typeEpreuve == "Score") {
             //System.out.println(this.lesEquipes);
@@ -240,7 +236,7 @@ public class Epreuve {
             Classement.get(2).ajouteMedailleArgent();
             Classement.get(3).ajouteMedailleBronze();
             return Classement;
-            }
+        }
 
         else {return Classement;}
     }
