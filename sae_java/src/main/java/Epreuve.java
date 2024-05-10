@@ -108,6 +108,7 @@ public class Epreuve {
         List<Equipe> Classement = new ArrayList<>();
 
         if(typeEpreuve == "Duel") {
+            System.out.println("bonjour");
             boolean resteDesMatch=true;
             Collections.shuffle(this.lesEquipes);
             HashMap<Integer, List<Equipe>> pallierEquipe = new HashMap<Integer, List<Equipe>>();
@@ -135,35 +136,73 @@ public class Epreuve {
                 }
                 pallierEquipe.clear();
 
-
                 List<Integer> clePallierEquipe = new ArrayList<>(pallierEquipe.keySet());
+                List<Integer> clePallierMatch = new ArrayList<>(pallierMatch.keySet());
                 Collections.sort(clePallierEquipe);
+                Collections.sort(clePallierMatch);
 
-                
-                for (Map.Entry<Integer, List<MatchDuel>> entryMatch : pallierMatch.entrySet()) {
-                    Integer cleMatch = entryMatch.getKey();
-                    List<MatchDuel> valeursMatch = entryMatch.getValue();
-                    if (valeursMatch.size()!=0){                                                           // MODIFIE LE PALLIER DES EQUIPE EN FONCTION DES MATCH
-                        List<Equipe> equipe = new ArrayList<>();
-                        for (MatchDuel resMatch : valeursMatch) {
-                            List<Equipe> listeMatchDessus = new ArrayList<>();
-                            List<Equipe> listeMatchDessous = new ArrayList<>();
-                            if (resMatch.getScoreEquipe1() < resMatch.getScoreEquipe2()){
+                List<MatchDuel> valeurMatchPallier0 = new ArrayList<>();
+                List<MatchDuel> valeurMatchPallier1 = new ArrayList<>();
+                List<MatchDuel> valeurMatchPallier2 = new ArrayList<>();
+                List<Equipe> listePallier = new ArrayList<>();
 
-                                listeMatchDessous.add(resMatch.getEquipe1()); // a finir
-
+                for (Integer cleMatch : clePallierMatch){                                                          
+                    valeurMatchPallier0 = pallierMatch.get(cleMatch);
+                    valeurMatchPallier1 = pallierMatch.get(cleMatch+1);
+                    
+                    // debut
+                    if (cleMatch==clePallierMatch.get(0)){
+                        for (MatchDuel resMatchPallier0 : valeurMatchPallier0){
+                            if (resMatchPallier0.getScoreEquipe1() < resMatchPallier0.getScoreEquipe2()){ // on ajoute le perdant du pallier
+                                listePallier.add(resMatchPallier0.getEquipe2());
+                            } else {
+                                    listePallier.add(resMatchPallier0.getEquipe1());
                             }
-
-
                         }
+                        listePallier.clear();
                     }
 
+                        // milieu
+                    for (MatchDuel resMatchPallier0 : valeurMatchPallier0){
+                        if (resMatchPallier0.getScoreEquipe1() < resMatchPallier0.getScoreEquipe2()){ // on ajoute le gagnant
+                            listePallier.add(resMatchPallier0.getEquipe2());
+                        } else {listePallier.add(resMatchPallier0.getEquipe1());}    
+                    }                                                                                             // AFFECTE LES EQUIPE A LEUR PALLIER SELON LES MATCH
+                    for (MatchDuel resMatchPallier1 : valeurMatchPallier1){
+                        if (resMatchPallier1.getScoreEquipe1() < resMatchPallier1.getScoreEquipe2()){ // on ajoute le perdant
+                            listePallier.add(resMatchPallier1.getEquipe1());
+                        } else {listePallier.add(resMatchPallier1.getEquipe2());}    
+                    }
+                    pallierEquipe.put(cleMatch+1, listePallier);
+
+                        //fin
+                    listePallier.clear();
+                    valeurMatchPallier0.clear();
+                    valeurMatchPallier1.clear();
+
+                    if (cleMatch+1 == clePallierMatch.size()){
+                        for (MatchDuel resMatchPallier1 : valeurMatchPallier1){
+                            if (resMatchPallier1.getScoreEquipe1() < resMatchPallier1.getScoreEquipe2()){ // on ajoute le gagnant
+                                listePallier.add(resMatchPallier1.getEquipe2());
+                            } else {
+                                    listePallier.add(resMatchPallier1.getEquipe1());
+                            }
+                        }
+                    
+                        pallierEquipe.put(cleMatch+2, listePallier);
+                        listePallier.clear();
+                        break;
+                    }
+                
+                    
+                    
                 }
+                
                 resteDesMatch=false;
-                for (Integer cle : clePallierEquipe){                                                          // VERIFIE SI LA BOUCLE EST FINI ET CREE LE CLASSEMENT
-                    List<Equipe> listeEquipe = pallierEquipe.get(cle);
-                    for (Equipe equipe : listeEquipe){
-                        if(listeEquipe.size() == 1){
+                for (Integer cleEquipe : clePallierEquipe){                                                          // VERIFIE SI LA BOUCLE EST FINI ET CREE LE CLASSEMENT
+                    List<Equipe> listeEquipe2 = pallierEquipe.get(cleEquipe);
+                    for (Equipe equipe : listeEquipe2){
+                        if(listeEquipe2.size() == 1){
                             Classement.add(equipe);
                         }
                         else {resteDesMatch=true;}
