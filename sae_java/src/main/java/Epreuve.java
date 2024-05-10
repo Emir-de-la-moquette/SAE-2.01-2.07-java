@@ -187,8 +187,7 @@ public class Epreuve {
                             } else {
                                     listePallier.add(resMatchPallier1.getEquipe1());
                             }
-                        }
-                    
+                        } 
                         pallierEquipe.put(cleMatch+2, listePallier);
                         listePallier.clear();
                         break;
