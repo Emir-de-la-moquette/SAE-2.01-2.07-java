@@ -9,6 +9,8 @@ public class MatchDuel extends Match{
         super(sport);
         this.equipe1 = equip1;
         this.equipe2 = equip2;
+        this.score1 = 2;    // a enlever, c'est juste pour teste
+        this.score2 = 3;    //
     }
 
 
@@ -91,7 +93,7 @@ public class MatchDuel extends Match{
     @Override
     public String toString(){
         String text;
-        text = "Le match " + this.nomMatch;
+        text = "Le match " + this.nomMatch + ": " + this.equipe1 + " / " + this.equipe2 + " ; " + this.score1 + " / " + this.score2;
         /*text += ", fait participer l'équipe : " + this.equipe;
         text += " et cette à réalisé un score de " + this.score;*/
         return text;
