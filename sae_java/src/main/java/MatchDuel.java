@@ -9,8 +9,8 @@ public class MatchDuel extends Match{
         super(sport);
         this.equipe1 = equip1;
         this.equipe2 = equip2;
-        this.score1 = 2;    // a enlever, c'est juste pour teste
-        this.score2 = 3;    //
+        this.score1 = 0;    // a enlever, c'est juste pour teste
+        this.score2 = 0;    //
     }
 
 
@@ -28,7 +28,7 @@ public class MatchDuel extends Match{
     @Override
     public void deroulerMatch(/*Integer tentatives*/){
         if (this.equipe1.getLesAthletes().size() >= 1 && this.equipe2.getLesAthletes().size() >= 1){
-            if (this.sport.reglePersonalisee()){
+            if (this.sport.hasReglePersonalisee()){
                 while (!this.sport.conditionVictoire(score1, score2)){      // AJOUTER LES 2 METHODES UTILISEE A SPORT 
                     scoreBase();
                 }

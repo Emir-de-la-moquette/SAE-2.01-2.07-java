@@ -14,6 +14,7 @@ public class Sport {
         this.valeurEndurance = valeurEndurance;
         this.valeurForce = valeurForce;
         this.moyenneAthletique = moyenneAthletique;
+        this.nbdePointmax = nbdePointmax;
     }
 
     public int getpoint() {
@@ -65,7 +66,7 @@ public class Sport {
     }
 
 
-    public boolean reglePersonalisee(){
+    public boolean hasReglePersonalisee(){
         return false ; // à definir
     }
 
@@ -73,6 +74,7 @@ public class Sport {
     public boolean conditionVictoire(Double a, Double b){
         return false; //à définir
     }
+
     @Override
     public String toString(){
         /*String textAgilite;

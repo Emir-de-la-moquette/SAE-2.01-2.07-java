@@ -114,10 +114,8 @@ public class Epreuve {
             HashMap<Integer, Equipe> pallierEquipeSansMatch = new HashMap<Integer, Equipe>();
             HashMap<Integer, List<MatchDuel>> pallierMatch = new HashMap<Integer, List<MatchDuel>>();            
             pallierEquipe.put(0, this.lesEquipes);
-            int l=0;
-            while (l==0){
-                l+=1;
-                System.out.println(l);
+            
+            while (resteDesMatch){
                 for (Map.Entry<Integer, List<Equipe>> entry : pallierEquipe.entrySet()) {
                     Integer cleEqip = entry.getKey();
                     List<Equipe> valeursEqip = entry.getValue();                                                       // CREE LES MATCHDUEL
@@ -153,7 +151,6 @@ public class Epreuve {
 
                 List<MatchDuel> valeurMatchPallier0 = new ArrayList<>();
                 List<MatchDuel> valeurMatchPallier1 = new ArrayList<>();
-                List<Equipe> listePallier = new ArrayList<>();
 
                 for (Integer cleMatch : clePallierMatch){                                                          
                     valeurMatchPallier0 = pallierMatch.get(cleMatch);
@@ -163,45 +160,42 @@ public class Epreuve {
                     
                     // debut
                     if (cleMatch==clePallierMatch.get(0)){
+                        List<Equipe> newPallier1 = new ArrayList<>();
                         for (MatchDuel resMatchPallier0 : valeurMatchPallier0){
                             if (resMatchPallier0.getScoreEquipe1() < resMatchPallier0.getScoreEquipe2()){ // on ajoute le perdant du pallier
-                                listePallier.add(resMatchPallier0.getEquipe2());
+                                newPallier1.add(resMatchPallier0.getEquipe2());
                             } else {
-                                    listePallier.add(resMatchPallier0.getEquipe1());
+                                newPallier1.add(resMatchPallier0.getEquipe1());
                             }
                         }
                         if (pallierEquipeSansMatch.get(cleMatch) != null)
-                            listePallier.add(pallierEquipeSansMatch.get(cleMatch));
-                        System.out.println("liste pallier: "+listePallier+"\n");
+                        newPallier1.add(pallierEquipeSansMatch.get(cleMatch));
+                        System.out.println("liste pallier: "+newPallier1+"\n");
                         System.out.println("aled");
-                        pallierEquipe.put(cleMatch, listePallier);
-                        System.out.println("pallier Equipe lors du début: "+pallierEquipe+"\n");
-                        listePallier.clear();
+                        pallierEquipe.put(cleMatch, newPallier1);
                         
                     }
 
                         // milieu
+                    List<Equipe> newPallier2 = new ArrayList<>();
                     for (MatchDuel resMatchPallier0 : valeurMatchPallier0){
                         if (resMatchPallier0.getScoreEquipe1() < resMatchPallier0.getScoreEquipe2()){ // on ajoute le gagnant
-                            listePallier.add(resMatchPallier0.getEquipe2());
-                        } else {listePallier.add(resMatchPallier0.getEquipe1());}    
-                        System.out.println(listePallier);
+                            newPallier2.add(resMatchPallier0.getEquipe2());
+                        } else {newPallier2.add(resMatchPallier0.getEquipe1());}    
                     }
                     if (valeurMatchPallier1 != null) {                                                                                      // AFFECTE LES EQUIPE A LEUR PALLIER SELON LES MATCH
                         for (MatchDuel resMatchPallier1 : valeurMatchPallier1){
                             if (resMatchPallier1.getScoreEquipe1() < resMatchPallier1.getScoreEquipe2()){ // on ajoute le perdant
-                                listePallier.add(resMatchPallier1.getEquipe1());
-                            } else {listePallier.add(resMatchPallier1.getEquipe2());}               
+                                newPallier2.add(resMatchPallier1.getEquipe1());
+                            } else {newPallier2.add(resMatchPallier1.getEquipe2());}               
                         }
                         if (pallierEquipeSansMatch.get(cleMatch+1) != null)
-                            listePallier.add(pallierEquipeSansMatch.get(cleMatch+1));
+                            newPallier2.add(pallierEquipeSansMatch.get(cleMatch+1));
                         
                     }
-                    pallierEquipe.put(cleMatch+1, listePallier);
+                    pallierEquipe.put(cleMatch+1, newPallier2);
 
 
-
-                    listePallier.clear();
                     valeurMatchPallier0.clear();
 
                         //fin
@@ -209,21 +203,21 @@ public class Epreuve {
                     if (valeurMatchPallier1 != null)    
                         valeurMatchPallier1.clear();
 
+                    List<Equipe> newPallier3 = new ArrayList<>();
                     if (cleMatch+1 == clePallierMatch.size()){
                         if (valeurMatchPallier1 != null) {
                             for (MatchDuel resMatchPallier1 : valeurMatchPallier1){
                                 if (resMatchPallier1.getScoreEquipe1() < resMatchPallier1.getScoreEquipe2()){ // on ajoute le gagnant
-                                    listePallier.add(resMatchPallier1.getEquipe2());
+                                    newPallier3.add(resMatchPallier1.getEquipe2());
                                 } else {
-                                        listePallier.add(resMatchPallier1.getEquipe1());
+                                    newPallier3.add(resMatchPallier1.getEquipe1());
                                 }
                             } 
                         }
                         if (pallierEquipeSansMatch.get(cleMatch+2) != null)
-                            listePallier.add(pallierEquipeSansMatch.get(cleMatch+2));
+                        newPallier3.add(pallierEquipeSansMatch.get(cleMatch+2));
 
-                        pallierEquipe.put(cleMatch+2, listePallier);
-                        listePallier.clear();
+                            pallierEquipe.put(cleMatch+2, newPallier3);
                         break;
                     }     
                 }

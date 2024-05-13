@@ -7,7 +7,7 @@ public class RandomNumberInRange {
 	}
 
 	public static int getRandomInt(int min, int max) {
-		int randomInt = (int)getRandom(min, max);
+		int randomInt = (int)Math.round(getRandom(min, max)+0.01);
 		return randomInt;
 	}
 }
