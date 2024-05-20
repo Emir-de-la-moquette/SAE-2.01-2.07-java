@@ -107,45 +107,41 @@ public class Epreuve {
     public List<Equipe> lanceEpreuve() {
         List<Equipe> Classement = new ArrayList<>();
 
+        //System.out.println(this.lesEquipes);
+
         if(typeEpreuve == "Duel") {
             boolean resteDesMatch=true;
             Collections.shuffle(this.lesEquipes);
             HashMap<Integer, List<Equipe>> pallierEquipe = new HashMap<Integer, List<Equipe>>();
-            HashMap<Integer, Equipe> pallierEquipeSansMatch = new HashMap<Integer, Equipe>();
             HashMap<Integer, List<MatchDuel>> pallierMatch = new HashMap<Integer, List<MatchDuel>>();            
             pallierEquipe.put(0, this.lesEquipes);
             
-            while (resteDesMatch){
+            while (resteDesMatch == true){
+                HashMap<Integer, Equipe> pallierEquipeSansMatch = new HashMap<Integer, Equipe>();
                 for (Map.Entry<Integer, List<Equipe>> entry : pallierEquipe.entrySet()) {
                     Integer cleEqip = entry.getKey();
                     List<Equipe> valeursEqip = entry.getValue();                                                       // CREE LES MATCHDUEL
                     if (valeursEqip.size()!=0){
                         List<MatchDuel> listematchs = new ArrayList<>();
-                        for (int i=0 ; i<valeursEqip.size() ; i+=2) {                          
-                            if(valeursEqip.size()%2==0){
-                                MatchDuel match = new MatchDuel(this.leSport, valeursEqip.get(i), valeursEqip.get(i+1));
-                                match.deroulerMatch();
-                                listematchs.add(match);
-                            } else { 
-                                if(valeursEqip.size() != i+1){
-                                MatchDuel match = new MatchDuel(this.leSport, valeursEqip.get(i), valeursEqip.get(i+1));
-                                match.deroulerMatch();
-                                listematchs.add(match);
-                                } else { if (valeursEqip.size() == i)
-                                    pallierEquipeSansMatch.put(cleEqip, valeursEqip.get(i));
-                                }
-                            }         
+                        for (int i=0 ; i<valeursEqip.size() ; i+=2) { 
+                            if(valeursEqip.size() == i+1){
+                                pallierEquipeSansMatch.put(cleEqip, valeursEqip.get(i));
+                                break;
+                            }
+                            MatchDuel match = new MatchDuel(this.leSport, valeursEqip.get(i), valeursEqip.get(i+1));
+                            match.deroulerMatch();
+                            listematchs.add(match);
                         }
-                        pallierMatch.put(cleEqip,listematchs);
-                    }    
+                        pallierMatch.put(cleEqip,listematchs);  
+                    }
                 }
-
                 List<Integer> clePallierEquipe = new ArrayList<>(pallierEquipe.keySet());
                 List<Integer> clePallierMatch = new ArrayList<>(pallierMatch.keySet());
                 Collections.sort(clePallierEquipe);
                 Collections.sort(clePallierMatch);
 
                 System.out.println("pallier match: "+pallierMatch+"\n");
+                System.out.println("pallierEquipeSansmatch: "+pallierEquipeSansMatch+"\n");
 
                 pallierEquipe.clear();
 
@@ -156,6 +152,10 @@ public class Epreuve {
                     valeurMatchPallier0 = pallierMatch.get(cleMatch);
                     valeurMatchPallier1 = pallierMatch.get(cleMatch+1);
 
+                    //System.out.println("la cle" +cleMatch);
+                    //System.out.println("m0 " +valeurMatchPallier0);
+                    //System.out.println("m1 " +valeurMatchPallier1);
+
                     
                     
                     // debut
@@ -163,15 +163,15 @@ public class Epreuve {
                         List<Equipe> newPallier1 = new ArrayList<>();
                         for (MatchDuel resMatchPallier0 : valeurMatchPallier0){
                             if (resMatchPallier0.getScoreEquipe1() < resMatchPallier0.getScoreEquipe2()){ // on ajoute le perdant du pallier
-                                newPallier1.add(resMatchPallier0.getEquipe2());
-                            } else {
                                 newPallier1.add(resMatchPallier0.getEquipe1());
+                            } else {
+                                newPallier1.add(resMatchPallier0.getEquipe2());
                             }
                         }
                         if (pallierEquipeSansMatch.get(cleMatch) != null)
                         newPallier1.add(pallierEquipeSansMatch.get(cleMatch));
                         System.out.println("liste pallier: "+newPallier1+"\n");
-                        System.out.println("aled");
+                        //System.out.println("aled");
                         pallierEquipe.put(cleMatch, newPallier1);
                         
                     }
@@ -196,12 +196,7 @@ public class Epreuve {
                     pallierEquipe.put(cleMatch+1, newPallier2);
 
 
-                    valeurMatchPallier0.clear();
-
                         //fin
-
-                    if (valeurMatchPallier1 != null)    
-                        valeurMatchPallier1.clear();
 
                     List<Equipe> newPallier3 = new ArrayList<>();
                     if (cleMatch+1 == clePallierMatch.size()){
@@ -222,6 +217,7 @@ public class Epreuve {
                     }     
                 }
                 
+
                 System.out.println("pallier Equipe: "+pallierEquipe+"\n");
 
                 pallierMatch.clear();
@@ -230,16 +226,22 @@ public class Epreuve {
                 for (Integer cleEquipe : clePallierEquipe){                                                    // VERIFIE SI LA BOUCLE EST FINI ET CREE LE CLASSEMENT
                     List<Equipe> listeEquipe2 = pallierEquipe.get(cleEquipe);
                     for (Equipe equipe : listeEquipe2){
-                        if(listeEquipe2.size() == 1){
+                        System.out.println("oui");
+                        System.out.println(listeEquipe2);
+                        System.out.println(resteDesMatch);
+                        if(listeEquipe2.size()==1){
                             Classement.add(equipe);
                         }
                         else {resteDesMatch=true;}
                     }
                 }
-                if (resteDesMatch=true)
-                    Classement.clear();
 
-                //System.out.println("Equipe: "+pallierEquipe);          
+                if(resteDesMatch){Classement.clear();}
+                System.out.println(resteDesMatch);
+                System.out.println(Classement);
+
+                
+
             }
             if (Classement.size()>1)
                 Classement.get(1).ajouteMedailleOr();
