@@ -140,8 +140,7 @@ public class Epreuve {
                 Collections.sort(clePallierEquipe);
                 Collections.sort(clePallierMatch);
 
-                System.out.println("pallier match: "+pallierMatch+"\n");
-                System.out.println("pallierEquipeSansmatch: "+pallierEquipeSansMatch+"\n");
+
 
                 pallierEquipe.clear();
 
@@ -170,7 +169,6 @@ public class Epreuve {
                         }
                         if (pallierEquipeSansMatch.get(cleMatch) != null)
                         newPallier1.add(pallierEquipeSansMatch.get(cleMatch));
-                        System.out.println("liste pallier: "+newPallier1+"\n");
                         //System.out.println("aled");
                         pallierEquipe.put(cleMatch, newPallier1);
                         
@@ -218,17 +216,12 @@ public class Epreuve {
                 }
                 
 
-                System.out.println("pallier Equipe: "+pallierEquipe+"\n");
-
                 pallierMatch.clear();
                 
                 resteDesMatch=false;
                 for (Integer cleEquipe : clePallierEquipe){                                                    // VERIFIE SI LA BOUCLE EST FINI ET CREE LE CLASSEMENT
                     List<Equipe> listeEquipe2 = pallierEquipe.get(cleEquipe);
                     for (Equipe equipe : listeEquipe2){
-                        System.out.println("oui");
-                        System.out.println(listeEquipe2);
-                        System.out.println(resteDesMatch);
                         if(listeEquipe2.size()==1){
                             Classement.add(equipe);
                         }
@@ -237,8 +230,6 @@ public class Epreuve {
                 }
 
                 if(resteDesMatch){Classement.clear();}
-                System.out.println(resteDesMatch);
-                System.out.println(Classement);
 
                 
 

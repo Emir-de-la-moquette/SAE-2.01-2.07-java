@@ -25,7 +25,7 @@ public class Executable {
         Athlete atl41 = new Athlete("d", "e", "H", 15, 6, 6);
 
         Epreuve chifoumimi = new Epreuve("chifoumimi", "Homme" , "junior", "Duel", chifoumi);
-        for (int i = 0 ; i < 5 ; i++){
+        for (int i = 0 ; i < 10 ; i++){
             Pays a = new Pays("pays: " + i);
             Athlete atl1 = new Athlete("a", "b", "H", 17, 5, 7);
             Equipe e1 = new Equipe(1, a);
