@@ -90,7 +90,7 @@ public class Epreuve {
     }
 
     // affiche les équipes participant à l'épreuve       
-    public List<Equipe> AfficheLesEquipes() {
+    public List<Equipe> afficheLesEquipes() {
         return this.lesEquipes;
     }
 

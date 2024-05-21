@@ -5,7 +5,14 @@ public class Sport {
     private Double valeurEndurance;
     private Double valeurForce;
     private Double moyenneAthletique;
+    private Double recordMondial;
     private int nbdePointmax;
+
+    // REGLE PERSONALISE
+    private boolean hasregle;
+    private int nbPointVictoireTotale;
+    private int nbPointMiniPourVictoire;
+    private int ecartDePointMini;
 
     public Sport(String nomSport, int nbJoueur, Double valeurAgilite, Double valeurEndurance, Double valeurForce, Double moyenneAthletique, int nbdePointmax){
         this.nomSport = nomSport;
@@ -66,27 +73,52 @@ public class Sport {
 
 
     public boolean reglePersonalisee(){
-        return false ; // à definir
+        return hasregle ; // à definir
     }
 
 
     public boolean conditionVictoire(Double a, Double b){
-        return false; //à définir
+        return false; //à définir (voir attributs)
     }
+
+    public void setRegle(int nbPointVictoireTotale, int nbPointMiniPourVictoire, int ecartDePointMini){
+        
+    }
+
+
     @Override
     public String toString(){
-        /*String textAgilite;
-        switch (this.valeurAgilite) {
-            case valeurAgilite<0.33:
-                textAgilite= "très peu demandant en agilite";
-                break;
-            case valeurAgilite>0.33 && valeurAgilite<0.66:
-                textAgilite = "assez demandant en agilite";
-                break;
-            default:
-                text = "ne demande pas d'agilite";
-                break;*/
-                return "a";
+        String textAgilite;
+        String textForce;
+        String textEndurance;
+        
+            if (valeurAgilite<0.33)
+                textAgilite= " est très demandant en agilite";
+                
+            else if(valeurAgilite<0.66)
+                textAgilite = " est assez demandant en agilite";
+        
+            else textAgilite = " ne demande pas d'agilite";
+
+
+            if (valeurForce<0.33)
+                textForce= " est très demandant en force";
+                
+            else if(valeurForce<0.66)
+                textForce = " est assez demandant en force";
+        
+            else textForce = " ne demande pas de force";
+
+
+            if (valeurEndurance<0.33)
+                textEndurance= " est très demandante en endurance";
+                
+            else if(valeurEndurance<0.66)
+                textEndurance = " est assez demandant en endurance";
+        
+            else textEndurance = " ne demande pas d'endurence";
+
+            return "la catégorie " + nomSport + textAgilite + " , aussi elle " + textEndurance + " , et enfin elle " + textForce; 
 
     }
 }
