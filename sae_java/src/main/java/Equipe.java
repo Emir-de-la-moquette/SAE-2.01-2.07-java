@@ -61,6 +61,6 @@ public class Equipe {
 
     @Override
     public String toString() {
-        return "l'équipe du "+ this.lePays;
+        return "l'équipe de "+ this.lePays;
     }
 }  
