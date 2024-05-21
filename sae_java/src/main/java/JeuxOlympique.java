@@ -1,11 +1,13 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collections;
 
 
 public class JeuxOlympique {
     private String lieu;
     private int annee;
 
+    private List<Pays>  lesPays;
     private List<Epreuve> lesEpreuve;
     private List<Sport> lesSports;
     
@@ -33,17 +35,47 @@ public class JeuxOlympique {
         this.annee = annee;
     }
 
-    public void ajouteSport() {
+    public void ajouteSport(Sport sport) {
+        this.lesSports.add(sport);
 
     }
 
-    public boolean simulJO() {
-        return true;
+    public void ajouteEpreuve(Epreuve epreuve) {
+        this.lesEpreuve.add(epreuve);
+
+    }
+
+    public void retireSport(Sport sport) {
+        this.lesSports.remove(sport);
+
+    }
+
+    public void retireEpreuve(Epreuve epreuve) {
+        this.lesEpreuve.remove(epreuve);
+
+    }
+
+    public void ajoutePays(Pays pays) {
+        this.lesPays.add(pays);
+
+    }
+
+    
+    public void retirePays(Pays pays) {
+        this.lesPays.add(pays);
+
+    }
+
+    public void simulJO() {
+        for (Epreuve epreuve : this.lesEpreuve) {
+            epreuve.lanceEpreuve();
+        }
     }
 
 
     /*@return une liste des pays */
     public void classement() {
+
 
     }
 

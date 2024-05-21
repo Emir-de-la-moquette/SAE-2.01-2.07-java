@@ -62,6 +62,15 @@ public class Pays {
     return nbmedaille_bronze;
     }
 
+    public int getmedailles_total(){
+        int nbmedaille=0;
+        for (Equipe groupes : this.lesEquipes){
+            nbmedaille += groupes.getNbMedailleBronze();
+            nbmedaille += groupes.getNbMedailleArgent();
+            nbmedaille += groupes.getNbMedailleOr();
+    }
+    return nbmedaille;
+    }
     public String toString()  {
         return this.Nompays; //+ " possede" + String.valueOf(this.getmedailles_bronze()) +" de medailles bronze , " + String.valueOf(this.getmedailles_argent()) + " de medailles argent et " + String.valueOf(this.getmedailles_or()) + "de medailles argent" ;
     }

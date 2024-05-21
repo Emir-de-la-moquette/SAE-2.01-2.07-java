@@ -21,6 +21,7 @@ public class Sport {
         this.valeurEndurance = valeurEndurance;
         this.valeurForce = valeurForce;
         this.moyenneAthletique = moyenneAthletique;
+        this.nbdePointmax = nbdePointmax;
     }
 
     public int getpoint() {

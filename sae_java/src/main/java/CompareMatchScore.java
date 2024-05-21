@@ -7,4 +7,6 @@ double malo1 = m1.getScore()*1000;
 double malo2 = m2.getScore()*1000;
 return (int)(malo1 - malo2);
 }
+
 }
+
