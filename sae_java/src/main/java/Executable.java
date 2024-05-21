@@ -15,12 +15,12 @@ public class Executable {
 
         Sport chifoumi = new Sport("chifoumi", 1, 0.7, 0.1, 0.1, 1.0,2);
         Sport ppc = new Sport("pierrepapierciseaux", 1, 0.7, 0.1, 0.1, 1.0,2);
-        Sport tennis = new Sport("tennis", 2, 0.4, 0.4, 0.2, 6.0,6);
+        Sport tennis = new Sport("tennis", 2, 0.4, 0.4, 0.2, 1.0,6);
 
 
-        Epreuve chifoumimi = new Epreuve("chifoumimi", "Homme" , "junior", "Score", chifoumi);
-        Epreuve pierrepapierciseaux = new Epreuve("pierrepapierciseaux", "Homme" , "junior", "Score", ppc);
-        Epreuve Tennis = new Epreuve("teniis", "F", "senior", "Duel", tennis);
+        Epreuve chifoumimi = new Epreuve("chifoumimi", "Homme" , "junior", "Duel", chifoumi);
+        Epreuve pierrepapierciseaux = new Epreuve("pierrepapierciseaux", "Homme" , "junior", "Duel", ppc);
+        Epreuve Tennis = new Epreuve("teniis", "F", "senior", "Score", tennis);
 
 
         JO2024.ajouteSport(chifoumi);
@@ -46,10 +46,10 @@ public class Executable {
 
 // Hommes
         Athlete atl1 = new Athlete("John", "Doe", "M", 20, 20, 20);
-        Athlete atl2 = new Athlete("Mike", "Johnson", "M", 7, 8, 9);
+        Athlete atl2 = new Athlete("Mike", "Johnson", "M", 10, 10, 10);
 
-        Athlete atl3 = new Athlete("Luke", "Brown", "M", 13, 11, 10);
-        Athlete atl4 = new Athlete("Chris", "Evans", "M", 15, 14, 16);
+        Athlete atl3 = new Athlete("Luke", "Brown", "M", 10, 10, 10);
+        Athlete atl4 = new Athlete("Chris", "Evans", "M", 10, 10, 10);
 
         Athlete atl5 = new Athlete("David", "Garcia", "M", 9, 7, 8);
         Athlete atl6 = new Athlete("James", "Smith", "M", 17, 15, 13);
@@ -92,10 +92,10 @@ public class Executable {
         Equipe equipeCNchiffoumi = new Equipe(1, chine);
 
 
-        france.ajouterEquipe(equipeFRchiffoumi);
-        pologne.ajouterEquipe(equipePLchiffoumi);
-        chine.ajouterEquipe(equipeCNchiffoumi);
-        etats_unis.ajouterEquipe(equipeUSchiffoumi);
+        france.participer(equipeFRchiffoumi);
+        pologne.participer(equipePLchiffoumi);
+        chine.participer(equipeCNchiffoumi);
+        etats_unis.participer(equipeUSchiffoumi);
 
 
 
@@ -109,13 +109,16 @@ public class Executable {
         chifoumimi.participer(equipeCNchiffoumi);
         chifoumimi.participer(equipeUSchiffoumi);
 
-        //System.out.println(chifoumimi.lanceEpreuve());
+        pierrepapierciseaux.participer(equipeFRchiffoumi);
+        pierrepapierciseaux.participer(equipePLchiffoumi);
+
+        System.out.println(chifoumimi.lanceEpreuve());
         
 
 
-        JO2024.simulJO();
-        Comparator compOr = new CompareMedailleOr();
-        System.out.print(JO2024.classement(compOr));
+        //JO2024.simulJO();
+        //Comparator compOr = new CompareMedailleOr();
+        //System.out.print(JO2024.classement(compOr));
 
 
 

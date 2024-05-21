@@ -8,7 +8,6 @@ import java.lang.reflect.Array;
 import java.util.HashMap;
 
 
-
 public class Epreuve implements Participation{
 
     private String nomEpreuve;
@@ -22,7 +21,6 @@ public class Epreuve implements Participation{
     //private List<Match> scoresEquipes;
     private Sport leSport;
 
-    
 
     public Epreuve(String nomEpreuve, String sexeEpreuve, String categorieEpreuve, String typeEpreuve, Sport sport) {
         this.nomEpreuve = nomEpreuve;
@@ -111,6 +109,8 @@ public class Epreuve implements Participation{
     public List<Equipe> lanceEpreuve() {
         List<Equipe> Classement = new ArrayList<>();
 
+        if(this.lesEquipes.size()==0)
+            return null;
         //System.out.println(this.lesEquipes);
 
         if(typeEpreuve == "Duel") {
