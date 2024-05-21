@@ -88,7 +88,4 @@ public class JeuxOlympique {
     public String toString() {
         return "les JO de" + this.lieu + "de" + this.annee;
     }
-
-
-
 }
