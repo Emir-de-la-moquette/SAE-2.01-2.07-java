@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 
 
-public class Epreuve {
+public class Epreuve implements Participation{
 
     private String nomEpreuve;
     private String sexeEpreuve;
@@ -77,6 +77,7 @@ public class Epreuve {
     
     // @param : une équipe
     // fait participer une équipe à l'épreuve
+    @Override
     public void participer(Equipe equipe) {
         this.lesEquipes.add(equipe);
 
@@ -84,6 +85,7 @@ public class Epreuve {
 
     // @param : une équipe
     // retire une équipe à l'épreuve
+    @Override
     public void retirer(Equipe equipe) {
         this.lesEquipes.remove(equipe);
 

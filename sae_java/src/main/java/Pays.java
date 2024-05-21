@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Pays {
+public class Pays implements Participation{
     private String Nompays;
 
     private List<Equipe> lesEquipes;
@@ -19,13 +19,13 @@ public class Pays {
         return this.lesEquipes;
     }
 
-    public boolean ajouterEquipe(Equipe equip){
-        return lesEquipes.add(equip);
+    public void participer(Equipe equip){
+        lesEquipes.add(equip);
         
     }
     
-    public boolean retirerEquipe(Equipe equip){
-        return lesEquipes.remove(equip);
+    public void retirer(Equipe equip){
+        lesEquipes.remove(equip);
     }
 
     public String getNompays() {
