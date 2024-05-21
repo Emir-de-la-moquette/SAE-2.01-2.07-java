@@ -127,7 +127,7 @@ public class Executable {
             Pays a = new Pays("pays: " + i);
             Athlete atl1 = new Athlete("a", "b", "H", 17, 5, 7);
             Equipe e1 = new Equipe(1, a);
-            a.ajouterEquipe(e1);
+            a.participer(e1);
             e1.ajouteAthletes(atl1);
             chifoumimi.participer(e1);
         }*/
