@@ -73,17 +73,26 @@ public class Sport {
     }
 
 
-    public boolean reglePersonalisee(){
-        return hasregle ; // à definir
+    public boolean hasReglePersonalisee(){
+        return hasregle ; 
     }
 
 
     public boolean conditionVictoire(Double a, Double b){
-        return false; //à définir (voir attributs)
+        if(a>=nbPointVictoireTotale || b>=nbPointVictoireTotale)
+        return true;
+        if(a>=nbPointMiniPourVictoire && (a-b)>=ecartDePointMini)
+        return true;
+        if(b>=nbPointMiniPourVictoire && (b-a)>=ecartDePointMini)
+        return true;
+        else return false;
     }
 
     public void setRegle(int nbPointVictoireTotale, int nbPointMiniPourVictoire, int ecartDePointMini){
-        
+        this.nbPointVictoireTotale = nbPointVictoireTotale;
+        this.nbPointMiniPourVictoire = nbPointMiniPourVictoire;
+        this.ecartDePointMini = ecartDePointMini;
+        this.hasregle = true;
     }
 
 
