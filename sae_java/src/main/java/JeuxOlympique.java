@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
+import java.util.Comparator;
 
 
 public class JeuxOlympique {
@@ -14,6 +15,9 @@ public class JeuxOlympique {
     public JeuxOlympique(String lieu, int annee) {
         this.lieu = lieu;
         this.annee = annee;
+        this.lesPays = new ArrayList<>();
+        this.lesEpreuve = new ArrayList<>();
+        this.lesSports = new ArrayList<>();
     }
     
     public String getLieu() {
@@ -74,9 +78,9 @@ public class JeuxOlympique {
 
 
     /*@return une liste des pays */
-    public void classement() {
-
-
+    public List<Pays> classement(Comparator<Pays> compare) {
+        Collections.sort(this.lesPays, compare);
+        return this.lesPays;
     }
 
 

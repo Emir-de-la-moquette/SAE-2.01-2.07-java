@@ -78,7 +78,9 @@ public class Epreuve {
     // @param : une équipe
     // fait participer une équipe à l'épreuve
     public void participer(Equipe equipe) {
-        this.lesEquipes.add(equipe);
+        if (equipe.estALaBonneTaille())
+            this.lesEquipes.add(equipe);
+        else{System.out.println("l'équipe n'a pas la bonne taille");}
 
     }
 

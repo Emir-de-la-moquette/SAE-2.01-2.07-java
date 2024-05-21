@@ -22,7 +22,13 @@ public class Equipe {
         return lesAthletes;
     }
 
-    
+    public boolean estALaBonneTaille(){
+        if (this.lesAthletes.size() == this.taille)
+            return true;
+        else{return false;}
+    }
+
+
     public int getTaille() {
         return this.taille;
     }
