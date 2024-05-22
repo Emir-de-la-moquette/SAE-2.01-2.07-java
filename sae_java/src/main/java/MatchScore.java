@@ -6,8 +6,8 @@ public class MatchScore extends Match{
 
 
 
-    public MatchScore(Sport sport, Equipe equip){
-        super(sport);
+    public MatchScore(Sport sport, Equipe equip, double moy, double rec){
+        super(sport, moy, rec);
         this.equipe = equip;
     }
 
@@ -21,11 +21,22 @@ public class MatchScore extends Match{
         if (this.equipe.getLesAthletes().size() >= 1){
                 for (Athlete athlete : this.equipe.getLesAthletes()){
                     //for (int i; i<tentatives; i++){
-                    double scoretp = (this.sport.getMoyenneAthletique() 
-                                        + (this.sport.getValeurAgilite()*athlete.getAgilite())/(50/this.sport.getMoyenneAthletique()) 
-                                        + (this.sport.getValeurEndurance()*athlete.getEndurance()/(50/this.sport.getMoyenneAthletique())) 
-                                        + (this.sport.getValeurForce()*athlete.getForce()/(50/this.sport.getMoyenneAthletique())))
+                    boolean inv  = this.recordMondial<this.moyenneAthletique;
+                    double scoretp = 0.0;
+                    if(!inv){
+                    scoretp = (this.moyenneAthletique 
+                                        + (this.sport.getValeurAgilite()*athlete.getAgilite())/(50/this.moyenneAthletique) 
+                                        + (this.sport.getValeurEndurance()*athlete.getEndurance()/(50/this.moyenneAthletique)) 
+                                        + (this.sport.getValeurForce()*athlete.getForce()/(50/this.moyenneAthletique)))
                                         * RandomNumberInRange.getRandom(0.6, 1.2);
+                    } else {
+                    scoretp = (this.moyenneAthletique 
+                                        - (this.sport.getValeurAgilite()*athlete.getAgilite())/(50/this.moyenneAthletique) 
+                                        - (this.sport.getValeurEndurance()*athlete.getEndurance()/(50/this.moyenneAthletique)) 
+                                        - (this.sport.getValeurForce()*athlete.getForce()/(50/this.moyenneAthletique)))
+                                        * RandomNumberInRange.getRandom(0.6, 1.2);
+                    }
+                    
                     if (score < scoretp){score = scoretp;}
                     //}
                 }

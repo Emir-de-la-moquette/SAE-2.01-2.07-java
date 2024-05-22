@@ -21,12 +21,30 @@ public class Epreuve implements Participation{
     //private List<Match> scoresEquipes;
     private Sport leSport;
 
+    private double moyenneAthletique;
+    private double recordMondial;
+
 
     public Epreuve(String nomEpreuve, String sexeEpreuve, String categorieEpreuve, String typeEpreuve, Sport sport) {
         this.nomEpreuve = nomEpreuve;
         this.sexeEpreuve = sexeEpreuve;
         this.categorieEpreuve = categorieEpreuve;
         this.typeEpreuve = typeEpreuve;
+
+        this.leSport = sport;
+
+        //this.scoresEquipes = new ArrayList<>();
+        this.lesEquipes = new ArrayList<>();
+
+    }
+
+    public Epreuve(String nomEpreuve, String sexeEpreuve, String categorieEpreuve, String typeEpreuve, Sport sport, double moy, double rec) {
+        this.nomEpreuve = nomEpreuve;
+        this.sexeEpreuve = sexeEpreuve;
+        this.categorieEpreuve = categorieEpreuve;
+        this.typeEpreuve = typeEpreuve;
+        this.moyenneAthletique = moy;
+        this.recordMondial = rec;
 
         this.leSport = sport;
 
@@ -45,6 +63,19 @@ public class Epreuve implements Participation{
 
     public void setNomEpreuve(String nomEpreuve) {
         this.nomEpreuve = nomEpreuve;
+    }
+
+    public double getMoyenneAthlet(){
+        return this.moyenneAthletique;
+    }
+    public double getRecordMondil(){
+        return this.recordMondial;
+    }
+    public void setMoyenneAthlet(double moye){
+        this.moyenneAthletique = moye;
+    }
+    public void setRecordMondil(double rec){
+        this.recordMondial = rec;
     }
 
 
@@ -270,7 +301,7 @@ public class Epreuve implements Participation{
                  */ 
                 scoresEquipes.clear();
                 for (int j = 0 ; j < this.lesEquipes.size() ; j++){
-                    MatchScore match = new MatchScore(this.leSport ,this.lesEquipes.get(j));
+                    MatchScore match = new MatchScore(this.leSport ,this.lesEquipes.get(j), this.moyenneAthletique, this.recordMondial);
                     match.deroulerMatch();
                     scoresEquipes.add(match);
 
