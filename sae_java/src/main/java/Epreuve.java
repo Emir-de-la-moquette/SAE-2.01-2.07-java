@@ -4,7 +4,6 @@ import java.util.Map;
 import java.util.Collections;
 import java.util.Comparator;
 import java.lang.Math;
-import java.lang.reflect.Array;
 import java.util.HashMap;
 
 
@@ -19,6 +18,8 @@ public class Epreuve implements Participation<Equipe>{
 
     private List<Equipe> lesEquipes;
     private List<Match> lesMatchs;
+
+
     //private List<Match> scoresEquipes;
     private Sport leSport;
 
@@ -74,6 +75,11 @@ public class Epreuve implements Participation<Equipe>{
     public double getRecordMondil(){
         return this.recordMondial;
     }
+
+    public List<Match> getLesMatchs() {
+        return lesMatchs;
+    }
+
     public void setMoyenneAthlet(double moye){
         this.moyenneAthletique = moye;
     }
@@ -300,11 +306,11 @@ public class Epreuve implements Participation<Equipe>{
             if (nbDeMatchs == 0) {nbDeMatchs = 1;}
             for (int i = 0 ; i < nbDeMatchs ; i++ ) {
                 /* on crée un match
-                 * on fait joué le match
+                 * on fait jouer le match
                  * puis on compare les scores
                  * 
                  * après chaque matchs :
-                 * on replace dans les.LesEquipes les scores les plus élevé sauf les 3 dernier.
+                 * on replace dans this.LesEquipes les scores les plus élevés sauf les 3 dernier.
                  * les 3 dernier son ajouter au classement (l'idée est de simplement inverser les index de Classement pour obtenir notre vrai classement)  
                  */ 
                 scoresEquipes.clear();
