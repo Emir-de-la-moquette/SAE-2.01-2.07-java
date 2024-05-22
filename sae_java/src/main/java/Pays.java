@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Pays implements Participation{
+public class Pays implements Participation<Equipe>{
     private String Nompays;
 
     private List<Equipe> lesEquipes;
@@ -19,11 +19,12 @@ public class Pays implements Participation{
         return this.lesEquipes;
     }
 
+    @Override
     public void participer(Equipe equip){
         lesEquipes.add(equip);
         
     }
-    
+    @Override
     public void retirer(Equipe equip){
         lesEquipes.remove(equip);
     }

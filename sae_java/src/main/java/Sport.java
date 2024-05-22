@@ -10,9 +10,9 @@ public class Sport {
 
     // REGLE PERSONALISE
     private boolean hasregle;
-    private int nbPointVictoireTotale;
-    private int nbPointMiniPourVictoire;
-    private int ecartDePointMini;
+    private Integer nbPointVictoireTotale;
+    private Integer nbPointMiniPourVictoire;
+    private Integer ecartDePointMini;
 
     public Sport(String nomSport, int nbJoueur, Double valeurAgilite, Double valeurEndurance, Double valeurForce, Double moyenneAthletique, int nbdePointmax){
         this.nomSport = nomSport;
@@ -20,7 +20,6 @@ public class Sport {
         this.valeurAgilite = valeurAgilite;
         this.valeurEndurance = valeurEndurance;
         this.valeurForce = valeurForce;
-        this.moyenneAthletique = moyenneAthletique;
         this.nbdePointmax = nbdePointmax;
     }
 
@@ -28,9 +27,6 @@ public class Sport {
         return RandomNumberInRange.getRandomInt(1, this.nbdePointmax);
     }
     
-    public Double getMoyenneAthletique() {
-        return this.moyenneAthletique;
-    }
 
     public String getNomSport() {
         return nomSport;
@@ -79,13 +75,16 @@ public class Sport {
 
 
     public boolean conditionVictoire(Double a, Double b){
-        if(a>=nbPointVictoireTotale || b>=nbPointVictoireTotale)
-        return true;
-        if(a>=nbPointMiniPourVictoire && (a-b)>=ecartDePointMini)
-        return true;
-        if(b>=nbPointMiniPourVictoire && (b-a)>=ecartDePointMini)
-        return true;
-        else return false;
+        if((a>=nbPointVictoireTotale || b>=nbPointVictoireTotale) && nbPointVictoireTotale != null)
+            return true;
+        if(ecartDePointMini != null)
+        {
+            if(a>=nbPointMiniPourVictoire && (a-b)>=ecartDePointMini )
+                return true;
+            if(b>=nbPointMiniPourVictoire && (b-a)>=ecartDePointMini)
+                return true;
+        }
+        return false;
     }
 
     public void setRegle(int nbPointVictoireTotale, int nbPointMiniPourVictoire, int ecartDePointMini){

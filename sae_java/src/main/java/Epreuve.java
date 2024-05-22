@@ -8,7 +8,7 @@ import java.lang.reflect.Array;
 import java.util.HashMap;
 
 
-public class Epreuve implements Participation{
+public class Epreuve implements Participation<Equipe>{
 
     private String nomEpreuve;
     private String sexeEpreuve;
@@ -18,6 +18,7 @@ public class Epreuve implements Participation{
     private String typeEpreuve;
 
     private List<Equipe> lesEquipes;
+    private List<Match> lesMatchs;
     //private List<Match> scoresEquipes;
     private Sport leSport;
 
@@ -35,6 +36,7 @@ public class Epreuve implements Participation{
 
         //this.scoresEquipes = new ArrayList<>();
         this.lesEquipes = new ArrayList<>();
+        this.lesMatchs = new ArrayList<>();
 
     }
 
@@ -50,6 +52,7 @@ public class Epreuve implements Participation{
 
         //this.scoresEquipes = new ArrayList<>();
         this.lesEquipes = new ArrayList<>();
+        this.lesMatchs = new ArrayList<>();
 
     }
 
@@ -127,6 +130,10 @@ public class Epreuve implements Participation{
         return this.lesEquipes;
     }
 
+    public List<Match> afficheLesMatchs() {
+        return this.lesMatchs;
+    }
+
 
     public List<Equipe> reverse(List<Equipe> Classement){
         for (int k = 0, j = Classement.size() - 1; k < j; k++) 
@@ -165,6 +172,7 @@ public class Epreuve implements Participation{
                             }
                             MatchDuel match = new MatchDuel(this.leSport, valeursEqip.get(i), valeursEqip.get(i+1));
                             match.deroulerMatch();
+                            lesMatchs.add(match);
                             listematchs.add(match);
                         }
                         pallierMatch.put(cleEqip,listematchs);  
@@ -303,7 +311,11 @@ public class Epreuve implements Participation{
                 for (int j = 0 ; j < this.lesEquipes.size() ; j++){
                     MatchScore match = new MatchScore(this.leSport ,this.lesEquipes.get(j), this.moyenneAthletique, this.recordMondial);
                     match.deroulerMatch();
+                    lesMatchs.add(match);
                     scoresEquipes.add(match);
+
+                    System.out.println("NOUVEAU RECORD MONDIAL !!!!!!!!!");
+                    this.recordMondial = match.getScore();
 
                     //System.out.println(scoresEquipes+"\n\n");
                     //System.out.println(lesEquipes.size()+"\n");
