@@ -6,16 +6,16 @@
  * jusqu'au jour ou on fera de l'IHM
  */
 
-import java.util.Comparator;
+import java.util.*;
 
 public class Executable {
     public static void main(String [] args) {
 
         JeuxOlympique JO2024 = new JeuxOlympique("France", 2024);
 
-        Sport chifoumi = new Sport("chifoumi", 1, 0.7, 0.1, 0.1, 1.0,2);
-        Sport ppc = new Sport("pierrepapierciseaux", 1, 0.7, 0.1, 0.1, 1.0,2);
-        Sport tennis = new Sport("tennis", 2, 0.4, 0.4, 0.2, 1.0,6);
+        Sport chifoumi = new Sport("chifoumi", 1, 0.7, 0.1, 0.1, 2);
+        Sport ppc = new Sport("pierrepapierciseaux", 1, 0.7, 0.1, 0.1, 2);
+        Sport tennis = new Sport("tennis", 2, 0.4, 0.4, 0.2, 6);
 
 
         Epreuve chifoumimi = new Epreuve("chifoumimi", "Homme" , "junior", "Score", chifoumi);
@@ -97,10 +97,10 @@ public class Executable {
 
 
 
-        equipeFRchiffoumi.ajouteAthletes(atl1);
-        equipePLchiffoumi.ajouteAthletes(atl2);
-        equipeCNchiffoumi.ajouteAthletes(atl3);
-        equipeUSchiffoumi.ajouteAthletes(atl4);
+        equipeFRchiffoumi.participer(atl1);
+        equipePLchiffoumi.participer(atl2);
+        equipeCNchiffoumi.participer(atl3);
+        equipeUSchiffoumi.participer(atl4);
 
         chifoumimi.participer(equipeFRchiffoumi);
         chifoumimi.participer(equipePLchiffoumi);
@@ -111,11 +111,15 @@ public class Executable {
         pierrepapierciseaux.participer(equipePLchiffoumi);
 
 
-        System.out.println(chifoumimi.lanceEpreuve());
+        List<Equipe> resultchifoumi = chifoumimi.lanceEpreuve();
+        for(Equipe equip : resultchifoumi){
+            System.out.println(equip.toString());
+        }
+        System.out.println(resultchifoumi);
         //JO2024.simulJO();
         //System.out.println(chifoumimi.getLesMatchs());
-        //Comparator compOr = new CompareMedailleOr();
-        //System.out.print(JO2024.classement(compOr));
+        Comparator compOr = new CompareMedailleOr();
+        System.out.print(JO2024.classement(compOr));
         
 
 

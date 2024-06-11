@@ -23,8 +23,8 @@ public class Epreuve implements Participation<Equipe>{
     //private List<Match> scoresEquipes;
     private Sport leSport;
 
-    private double moyenneAthletique;
-    private double recordMondial;
+    private double moyenneAthletique = 1.0;
+    private double recordMondial = 1.0;
 
 
     public Epreuve(String nomEpreuve, String sexeEpreuve, String categorieEpreuve, String typeEpreuve, Sport sport) {
@@ -350,12 +350,12 @@ public class Epreuve implements Participation<Equipe>{
                 }
             }
             Classement = reverse(Classement);
+            if (Classement.size()>0)
+                Classement.get(0).ajouteMedailleOr();
             if (Classement.size()>1)
-                Classement.get(1).ajouteMedailleOr();
+                Classement.get(1).ajouteMedailleArgent();
             if (Classement.size()>2)
-                Classement.get(2).ajouteMedailleArgent();
-            if (Classement.size()>3)
-                Classement.get(3).ajouteMedailleBronze();
+                Classement.get(2).ajouteMedailleBronze();
             return Classement;
         }
 
