@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Equipe {
+public class Equipe implements Participation{
 
     private int taille;
     private Pays lePays;
@@ -37,11 +37,11 @@ public class Equipe {
         return this.lePays;
     }
 
-    public void ajouteAthletes(Athlete athlete) { // sécurité a revoir
+    public void participer(Athlete athlete) { // sécurité a revoir
         this.lesAthletes.add(athlete);
     }
 
-    public void retireAthletes(Athlete athlete) { // sécurité a revoir
+    public void retirer(Athlete athlete) { // sécurité a revoir
         this.lesAthletes.remove(athlete);
     }
     
