@@ -321,8 +321,9 @@ public class Epreuve implements Participation<Equipe>{
                     lesMatchs.add(match);
                     scoresEquipes.add(match);
 
+                    if(match.getScore()>this.recordMondial){
                     System.out.println("NOUVEAU RECORD MONDIAL !!!!!!!!!");
-                    this.recordMondial = match.getScore();
+                    this.recordMondial = match.getScore();}
 
                     //System.out.println(scoresEquipes+"\n\n");
                     //System.out.println(lesEquipes.size()+"\n");
