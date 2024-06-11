@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Collections;
 import java.util.Comparator;
 import java.lang.Math;
@@ -10,24 +11,27 @@ import java.util.HashMap;
 public class Epreuve implements Participation<Equipe>{
 
     private String nomEpreuve;
-    private String sexeEpreuve;
+    private char sexeEpreuve;
 
 
     private String categorieEpreuve;
     private String typeEpreuve;
 
     private List<Equipe> lesEquipes;
-    private List<Match> lesMatchs;
 
+    // Liste de match/liste d'équipe/
+    private List<Match> lesMatchs;
+    private HashMap<Integer, List<MatchDuel>> pallierMatch;
 
     //private List<Match> scoresEquipes;
     private Sport leSport;
 
     private double moyenneAthletique = 1.0;
     private double recordMondial = 1.0;
+    
 
 
-    public Epreuve(String nomEpreuve, String sexeEpreuve, String categorieEpreuve, String typeEpreuve, Sport sport) {
+    public Epreuve(String nomEpreuve, char sexeEpreuve, String categorieEpreuve, String typeEpreuve, Sport sport) {
         this.nomEpreuve = nomEpreuve;
         this.sexeEpreuve = sexeEpreuve;
         this.categorieEpreuve = categorieEpreuve;
@@ -41,7 +45,7 @@ public class Epreuve implements Participation<Equipe>{
 
     }
 
-    public Epreuve(String nomEpreuve, String sexeEpreuve, String categorieEpreuve, String typeEpreuve, Sport sport, double moy, double rec) {
+    public Epreuve(String nomEpreuve, char sexeEpreuve, String categorieEpreuve, String typeEpreuve, Sport sport, double moy, double rec) {
         this.nomEpreuve = nomEpreuve;
         this.sexeEpreuve = sexeEpreuve;
         this.categorieEpreuve = categorieEpreuve;
@@ -56,8 +60,9 @@ public class Epreuve implements Participation<Equipe>{
         this.lesMatchs = new ArrayList<>();
 
     }
+    
 
-    public String getSexeEpreuve() {
+    public char getSexeEpreuve() {
         return sexeEpreuve;
     }
 
@@ -116,17 +121,19 @@ public class Epreuve implements Participation<Equipe>{
     // @param : une équipe
     // fait participer une équipe à l'épreuve
     @Override
-    public void participer(Equipe equipe) {
+    public void participer(Equipe equipe) throws Exception{
         if (equipe.estALaBonneTaille())
+            if (equipe.getSexeEquipe()!=this.sexeEpreuve)
             this.lesEquipes.add(equipe);
-        else{System.out.println("l'équipe n'a pas la bonne taille");}
+            else throw new PasLeBonSexeException("Le sexe des athletes ne correspond pas au type de l'épreuve");
+        else throw new PasALaBonneTailleException("l'équipe n'a pas la bonne taille");
 
     }
 
     // @param : une équipe
     // retire une équipe à l'épreuve
     @Override
-    public void retirer(Equipe equipe) {
+    public void retirer(Equipe equipe) throws NoSuchElementException{
         this.lesEquipes.remove(equipe);
 
     }
@@ -161,7 +168,7 @@ public class Epreuve implements Participation<Equipe>{
             boolean resteDesMatch=true;
             Collections.shuffle(this.lesEquipes);
             HashMap<Integer, List<Equipe>> pallierEquipe = new HashMap<Integer, List<Equipe>>();
-            HashMap<Integer, List<MatchDuel>> pallierMatch = new HashMap<Integer, List<MatchDuel>>();            
+            pallierMatch = new HashMap<Integer, List<MatchDuel>>();            
             pallierEquipe.put(0, this.lesEquipes);
             
             while (resteDesMatch == true){
@@ -321,8 +328,9 @@ public class Epreuve implements Participation<Equipe>{
                     lesMatchs.add(match);
                     scoresEquipes.add(match);
 
+                    if(match.getScore()>this.recordMondial){
                     System.out.println("NOUVEAU RECORD MONDIAL !!!!!!!!!");
-                    this.recordMondial = match.getScore();
+                    this.recordMondial = match.getScore();}
 
                     //System.out.println(scoresEquipes+"\n\n");
                     //System.out.println(lesEquipes.size()+"\n");

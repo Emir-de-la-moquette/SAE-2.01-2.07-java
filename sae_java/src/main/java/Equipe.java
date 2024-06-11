@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.Objects;
 
 public class Equipe implements Participation<Athlete>{
 
@@ -10,6 +11,8 @@ public class Equipe implements Participation<Athlete>{
     private int nbMedailleBronze =0;
 
     private List<Athlete> lesAthletes;
+
+    private char sexeEquipe;
     
 
     public Equipe(int taille, Pays pays) {
@@ -37,15 +40,24 @@ public class Equipe implements Participation<Athlete>{
         return this.lePays;
     }
 
-    public void participer(Athlete athlete) { // sécurité a revoir
+    public void participer(Athlete athlete) {
+        if(this.sexeEquipe.length != 1){
         this.lesAthletes.add(athlete);
+        this.sexeEquipe = athlete.getSexeA();
+        }
+        else {
+        if(athlete.getSexeA()==this.sexeEquipe) this.lesAthletes.add(athlete);
+        else System.err.println("Pas le bon sexe, transitionne stp");
+        }
     }
 
-    public void retirer(Athlete athlete) { // sécurité a revoir
+    public void retirer(Athlete athlete) throws NoSuchElementException{ // pensez à try catch
         this.lesAthletes.remove(athlete);
     }
     
-    
+    public char getSexeEquipe(){
+        return sexeEquipe;
+    }
     public int getNbMedailleOr() {
         return nbMedailleOr;
     }
@@ -73,4 +85,5 @@ public class Equipe implements Participation<Athlete>{
         + " possède medaille d'argent : " + this.getNbMedailleArgent()
         + " possède medaille de bronze : " + this.getNbMedailleBronze();
     }
+    
 }  
