@@ -55,7 +55,9 @@ public class Equipe implements Participation<Athlete>{
         this.lesAthletes.remove(athlete);
     }
     
-    
+    public char getSexeEquipe(){
+        return sexeEquipe;
+    }
     public int getNbMedailleOr() {
         return nbMedailleOr;
     }

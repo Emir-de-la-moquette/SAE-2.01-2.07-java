@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Collections;
 import java.util.Comparator;
 import java.lang.Math;
@@ -10,7 +11,7 @@ import java.util.HashMap;
 public class Epreuve implements Participation<Equipe>{
 
     private String nomEpreuve;
-    private String sexeEpreuve;
+    private char sexeEpreuve;
 
 
     private String categorieEpreuve;
@@ -27,7 +28,7 @@ public class Epreuve implements Participation<Equipe>{
     private double recordMondial = 1.0;
 
 
-    public Epreuve(String nomEpreuve, String sexeEpreuve, String categorieEpreuve, String typeEpreuve, Sport sport) {
+    public Epreuve(String nomEpreuve, char sexeEpreuve, String categorieEpreuve, String typeEpreuve, Sport sport) {
         this.nomEpreuve = nomEpreuve;
         this.sexeEpreuve = sexeEpreuve;
         this.categorieEpreuve = categorieEpreuve;
@@ -41,7 +42,7 @@ public class Epreuve implements Participation<Equipe>{
 
     }
 
-    public Epreuve(String nomEpreuve, String sexeEpreuve, String categorieEpreuve, String typeEpreuve, Sport sport, double moy, double rec) {
+    public Epreuve(String nomEpreuve, char sexeEpreuve, String categorieEpreuve, String typeEpreuve, Sport sport, double moy, double rec) {
         this.nomEpreuve = nomEpreuve;
         this.sexeEpreuve = sexeEpreuve;
         this.categorieEpreuve = categorieEpreuve;
@@ -58,7 +59,7 @@ public class Epreuve implements Participation<Equipe>{
     }
     
 
-    public String getSexeEpreuve() {
+    public char getSexeEpreuve() {
         return sexeEpreuve;
     }
 
@@ -117,17 +118,19 @@ public class Epreuve implements Participation<Equipe>{
     // @param : une équipe
     // fait participer une équipe à l'épreuve
     @Override
-    public void participer(Equipe equipe) {
+    public void participer(Equipe equipe) throws Exception{
         if (equipe.estALaBonneTaille())
+            if (equipe.getSexeEquipe()!=this.sexeEpreuve)
             this.lesEquipes.add(equipe);
-        else{System.out.println("l'équipe n'a pas la bonne taille");}
+            else throw new PasLeBonSexeException("Le sexe des athletes ne correspond pas au type de l'épreuve");
+        else throw new PasALaBonneTailleException("l'équipe n'a pas la bonne taille");
 
     }
 
     // @param : une équipe
     // retire une équipe à l'épreuve
     @Override
-    public void retirer(Equipe equipe) {
+    public void retirer(Equipe equipe) throws NoSuchElementException{
         this.lesEquipes.remove(equipe);
 
     }
