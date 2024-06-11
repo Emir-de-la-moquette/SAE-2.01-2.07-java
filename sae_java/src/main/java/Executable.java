@@ -18,7 +18,7 @@ public class Executable {
         Sport tennis = new Sport("tennis", 2, 0.4, 0.4, 0.2, 6);
 
 
-        Epreuve chifoumimi = new Epreuve("chifoumimi", "Homme" , "junior", "Score", chifoumi);
+        Epreuve chifoumimi = new Epreuve("chifoumimi", "Homme" , "junior", "Duel", chifoumi);
         Epreuve pierrepapierciseaux = new Epreuve("pierrepapierciseaux", "Homme" , "junior", "Duel", ppc);
         Epreuve Tennis = new Epreuve("teniis", "F", "senior", "Score", tennis);
 
@@ -47,7 +47,7 @@ public class Executable {
         Athlete atl2 = new Athlete("Mike", "Johnson", "M", 10, 10, 10);
 
         Athlete atl3 = new Athlete("Luke", "Brown", "M", 10, 10, 10);
-        Athlete atl4 = new Athlete("Chris", "Evans", "M", 10, 10, 10);
+        Athlete atl4 = new Athlete("Chris", "Evans", "M", 0, 0, 0);
 
         Athlete atl5 = new Athlete("David", "Garcia", "M", 9, 7, 8);
         Athlete atl6 = new Athlete("James", "Smith", "M", 17, 15, 13);
@@ -109,6 +109,8 @@ public class Executable {
 
         pierrepapierciseaux.participer(equipeFRchiffoumi);
         pierrepapierciseaux.participer(equipePLchiffoumi);
+        pierrepapierciseaux.participer(equipeCNchiffoumi);
+
 
 
         List<Equipe> resultchifoumi = chifoumimi.lanceEpreuve();
@@ -119,6 +121,10 @@ public class Executable {
         //JO2024.simulJO();
         //System.out.println(chifoumimi.getLesMatchs());
         Comparator compOr = new CompareMedailleOr();
+
+        
+        JO2024.simulJO();
+        CompareMedailleOr compOr = new CompareMedailleOr();
         System.out.print(JO2024.classement(compOr));
         
 
@@ -128,15 +134,6 @@ public class Executable {
 
 
        
-        /*for (int i = 0 ; i < 3 ; i++){
-            Pays a = new Pays("pays: " + i);
-            Athlete atl1 = new Athlete("a", "b", "H", 17, 5, 7);
-            Equipe e1 = new Equipe(1, a);
-            a.participer(e1);
-            e1.ajouteAthletes(atl1);
-            chifoumimi.participer(e1);
-        }*/
-        //
     }
     
 }

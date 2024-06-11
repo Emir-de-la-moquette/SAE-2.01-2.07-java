@@ -5,8 +5,8 @@ public class Match {
 
     private static int numMatch;
 
-    protected double moyenneAthletique;
-    protected double recordMondial;
+    protected double moyenneAthletique = 1;
+    protected double recordMondial = 1;
 
     public Match(Sport sport, double moy, double rec){
         this.sport = sport;
