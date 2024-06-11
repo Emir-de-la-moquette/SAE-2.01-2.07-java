@@ -6,6 +6,7 @@ public class Sport {
     private Double valeurForce;
     private Double moyenneAthletique = 1.0;
     private Double recordMondial = 1.0;
+
     private int nbdePointmax;
 
     // REGLE PERSONALISE
@@ -14,7 +15,18 @@ public class Sport {
     private Integer nbPointMiniPourVictoire;
     private Integer ecartDePointMini;
 
-    public Sport(String nomSport, int nbJoueur, Double valeurAgilite, Double valeurEndurance, Double valeurForce, Double moyenneAthletique, int nbdePointmax){
+
+    //Sport sans points
+    public Sport(String nomSport, int nbJoueur, Double valeurAgilite, Double valeurEndurance, Double valeurForce){
+        this.nomSport = nomSport;
+        this.nbJoueur = nbJoueur;
+        this.valeurAgilite = valeurAgilite;
+        this.valeurEndurance = valeurEndurance;
+        this.valeurForce = valeurForce;
+    }
+
+    //Sport avec points
+    public Sport(String nomSport, int nbJoueur, Double valeurAgilite, Double valeurEndurance, Double valeurForce, int nbdePointmax){
         this.nomSport = nomSport;
         this.nbJoueur = nbJoueur;
         this.valeurAgilite = valeurAgilite;

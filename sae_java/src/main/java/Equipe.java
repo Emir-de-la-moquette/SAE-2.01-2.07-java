@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Equipe implements Participation{
+public class Equipe implements Participation<Athlete>{
 
     private int taille;
     private Pays lePays;
@@ -67,6 +67,10 @@ public class Equipe implements Participation{
 
     @Override
     public String toString() {
-        return "l'équipe de "+ this.lePays;
+        return 
+        "l'équipe de "+ this.lePays
+        + " possède medaille d'or : " + this.getNbMedailleOr()
+        + " possède medaille d'argent : " + this.getNbMedailleArgent()
+        + " possède medaille de bronze : " + this.getNbMedailleBronze();
     }
 }  
