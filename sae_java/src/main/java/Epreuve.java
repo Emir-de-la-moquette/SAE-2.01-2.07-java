@@ -283,12 +283,13 @@ public class Epreuve implements Participation<Equipe>{
                 
 
             }
+            Classement = reverse(Classement);
             if (Classement.size()>1)
-                Classement.get(1).ajouteMedailleOr();
+                Classement.get(0).ajouteMedailleOr();
             if (Classement.size()>2)
-                Classement.get(2).ajouteMedailleArgent();
+                Classement.get(1).ajouteMedailleArgent();
             if (Classement.size()>3)
-                Classement.get(3).ajouteMedailleBronze();
+                Classement.get(2).ajouteMedailleBronze();
             
             return Classement;
         }
@@ -349,13 +350,13 @@ public class Epreuve implements Participation<Equipe>{
                     }
                 }
             }
-            Classement = reverse(Classement);
+            //Classement = reverse(Classement);
             if (Classement.size()>1)
-                Classement.get(1).ajouteMedailleOr();
+                Classement.get(0).ajouteMedailleOr();
             if (Classement.size()>2)
-                Classement.get(2).ajouteMedailleArgent();
+                Classement.get(1).ajouteMedailleArgent();
             if (Classement.size()>3)
-                Classement.get(3).ajouteMedailleBronze();
+                Classement.get(2).ajouteMedailleBronze();
             return Classement;
         }
 
