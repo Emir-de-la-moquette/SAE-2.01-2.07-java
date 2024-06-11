@@ -111,11 +111,11 @@ public class Executable {
         pierrepapierciseaux.participer(equipePLchiffoumi);
 
 
-
-        JO2024.simulJO();
-        System.out.println(chifoumimi.getLesMatchs());
-        Comparator compOr = new CompareMedailleOr();
-        System.out.print(JO2024.classement(compOr));
+        System.out.println(chifoumimi.lanceEpreuve());
+        //JO2024.simulJO();
+        //System.out.println(chifoumimi.getLesMatchs());
+        //Comparator compOr = new CompareMedailleOr();
+        //System.out.print(JO2024.classement(compOr));
         
 
 
