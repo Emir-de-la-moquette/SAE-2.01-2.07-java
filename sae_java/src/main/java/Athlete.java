@@ -1,19 +1,29 @@
 public class Athlete {
 
+    private static int IDath = 0;
+
     private String nomA;
     private String prenomA;
-    private String sexeA;
+    private char sexeA;
     private int agilite;
     private int endurance;
     private int force;
+    private int IDathlete;
 
-    public Athlete( String nomA, String prenomA, String sexeA, int agilite, int endurance, int force){
+    public Athlete( String nomA, String prenomA, char sexeA, int agilite, int endurance, int force){
         this.nomA = nomA;
         this.prenomA = prenomA;
         this.sexeA = sexeA;
         this.agilite = agilite;
         this.endurance = endurance;
         this.force = force;
+
+        IDath++;
+        IDathlete = IDath;
+    }
+
+    public int getID(){
+        return IDathlete;
     }
 
     public String getNomA() {
@@ -32,11 +42,11 @@ public class Athlete {
         this.prenomA = prenomA;
     }
 
-    public String getSexeA() {
+    public char getSexeA() {
         return sexeA;
     }
 
-    public void setSexeA(String sexeA) {
+    public void setSexeA(char sexeA) {
         this.sexeA = sexeA;
     }
 

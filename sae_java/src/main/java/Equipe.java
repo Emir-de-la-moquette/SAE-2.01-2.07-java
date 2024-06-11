@@ -4,7 +4,6 @@ import java.util.Objects;
 public class Equipe implements Participation<Athlete>{
 
     private int taille;
-    private Pays lePays;
 
     private int nbMedailleOr =0;
     private int nbMedailleArgent =0;
@@ -15,9 +14,8 @@ public class Equipe implements Participation<Athlete>{
     private char sexeEquipe;
     
 
-    public Equipe(int taille, Pays pays) {
+    public Equipe(int taille) {
         this.taille = taille;
-        this.lePays = pays;
         this.lesAthletes = new ArrayList<>();
     }
 
