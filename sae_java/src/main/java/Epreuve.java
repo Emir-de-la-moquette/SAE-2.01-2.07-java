@@ -18,14 +18,17 @@ public class Epreuve implements Participation<Equipe>{
     private String typeEpreuve;
 
     private List<Equipe> lesEquipes;
-    private List<Match> lesMatchs;
 
+    // Liste de match/liste d'équipe/
+    private List<Match> lesMatchs;
+    private HashMap<Integer, List<MatchDuel>> pallierMatch;
 
     //private List<Match> scoresEquipes;
     private Sport leSport;
 
     private double moyenneAthletique = 1.0;
     private double recordMondial = 1.0;
+    
 
 
     public Epreuve(String nomEpreuve, char sexeEpreuve, String categorieEpreuve, String typeEpreuve, Sport sport) {
@@ -165,7 +168,7 @@ public class Epreuve implements Participation<Equipe>{
             boolean resteDesMatch=true;
             Collections.shuffle(this.lesEquipes);
             HashMap<Integer, List<Equipe>> pallierEquipe = new HashMap<Integer, List<Equipe>>();
-            HashMap<Integer, List<MatchDuel>> pallierMatch = new HashMap<Integer, List<MatchDuel>>();            
+            pallierMatch = new HashMap<Integer, List<MatchDuel>>();            
             pallierEquipe.put(0, this.lesEquipes);
             
             while (resteDesMatch == true){
