@@ -118,7 +118,13 @@ public class Executable {
         System.out.println(resultchifoumi);
         //JO2024.simulJO();
         //System.out.println(chifoumimi.getLesMatchs());
-        Comparator compOr = new CompareMedailleOr();
+
+        //Comparator compOr = new CompareMedailleOr();
+
+        
+        JO2024.simulJO();
+        CompareMedailleOr compOr = new CompareMedailleOr();
+
         System.out.print(JO2024.classement(compOr));
         
 
