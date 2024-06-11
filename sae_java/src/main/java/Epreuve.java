@@ -56,6 +56,7 @@ public class Epreuve implements Participation<Equipe>{
         this.lesMatchs = new ArrayList<>();
 
     }
+    
 
     public String getSexeEpreuve() {
         return sexeEpreuve;
