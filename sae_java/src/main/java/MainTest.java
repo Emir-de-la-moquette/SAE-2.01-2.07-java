@@ -1,8 +1,6 @@
 
-//import static org.junit.jupiter.api.Assertions.assertEquals;
-//import org.junit.jupiter.api.Test;
-
-
+//import org.junit.*;
+//import static org.junit.Assert.assertEquals;
 
 /**
  * Unit test for simple App.
@@ -17,8 +15,8 @@ class MainTest {
         Sport tennis = new Sport("tennis", 2, 0.4, 0.4, 0.2, 6);
 
 
-        Epreuve chifoumimi = new Epreuve(1,"chifoumimi", 'H' , "junior", "Score", chifoumi);
-        Epreuve pierrepapierciseaux = new Epreuve(2,"pierrepapierciseaux", 'H' , "junior", "Duel", ppc);
+        Epreuve chifoumimi = new Epreuve(1,"chifoumimi", 'M' , "junior", "Score", chifoumi);
+        Epreuve pierrepapierciseaux = new Epreuve(2,"pierrepapierciseaux", 'M' , "junior", "Duel", ppc);
         Epreuve tennnis = new Epreuve(3,"teniis", 'F', "senior", "Score", tennis);
 
 
@@ -50,11 +48,11 @@ class MainTest {
 
 
 
-        Equipe equipeUSchiffoumi = new Equipe(1, 1, 'H');
-        Equipe equipeFRchiffoumi = new Equipe(2, 1, 'H');
-        Equipe equipePLchiffoumi = new Equipe(3, 1, 'H');
-        Equipe equipeCNchiffoumi = new Equipe(4, 1, 'H');
-        Equipe equipeFEMMEchiffoumi = new Equipe(5, 1, 'H');
+        Equipe equipeUSchiffoumi = new Equipe(1, 1, 'M');
+        Equipe equipeFRchiffoumi = new Equipe(2, 1, 'M');
+        Equipe equipePLchiffoumi = new Equipe(3, 1, 'M');
+        Equipe equipeCNchiffoumi = new Equipe(4, 1, 'M');
+        Equipe equipeFEMMEchiffoumi = new Equipe(5, 1, 'M');
 
 
         france.participer(equipeFRchiffoumi);
@@ -62,7 +60,6 @@ class MainTest {
         chine.participer(equipeCNchiffoumi);
         etats_unis.participer(equipeUSchiffoumi);
         allemagne.participer(equipeUSchiffoumi);
-
 
 
         equipeFRchiffoumi.participer(atl1);
@@ -80,10 +77,9 @@ class MainTest {
         pierrepapierciseaux.participer(equipeCNchiffoumi);
         pierrepapierciseaux.participer(equipeUSchiffoumi);
 
-    
+        
         System.out.println("\nGetter\n");
 
-        
         if (atl1.getAgilite() == 1)
             System.out.print("test getAgilite pass\n");
         else System.out.println("test fail\n");
