@@ -6,27 +6,25 @@
  * jusqu'au jour ou on fera de l'IHM
  */
 
-import java.util.Comparator;
+import java.util.*;
 
 public class Executable {
-    public static void main(String [] args) {
+    public static void main(String [] args) throws IDdejaExistantException , Exception{
 
         JeuxOlympique JO2024 = new JeuxOlympique("France", 2024);
 
-        Sport chifoumi = new Sport("chifoumi", 1, 0.7, 0.1, 0.1, 1.0,2);
-        Sport ppc = new Sport("pierrepapierciseaux", 1, 0.7, 0.1, 0.1, 1.0,2);
-        Sport tennis = new Sport("tennis", 2, 0.4, 0.4, 0.2, 6.0,6);
+        Sport chifoumi = new Sport("chifoumi", 1, 0.7, 0.1, 0.1, 2);
+        Sport ppc = new Sport("pierrepapierciseaux", 1, 0.7, 0.1, 0.1, 2);
+        Sport tennis = new Sport("tennis", 2, 0.4, 0.4, 0.2, 6);
 
 
-        Epreuve chifoumimi = new Epreuve("chifoumimi", "Homme" , "junior", "Score", chifoumi);
-        Epreuve pierrepapierciseaux = new Epreuve("pierrepapierciseaux", "Homme" , "junior", "Score", ppc);
-        Epreuve Tennis = new Epreuve("teniis", "F", "senior", "Duel", tennis);
+        Epreuve chifoumimi = new Epreuve(1,"chifoumimi", 'H' , "junior", "Score", chifoumi);
+        Epreuve pierrepapierciseaux = new Epreuve(2,"pierrepapierciseaux", 'H' , "junior", "Duel", ppc);
+        Epreuve tennnis = new Epreuve(3,"teniis", 'H', "senior", "Score", tennis);
 
 
         JO2024.ajouteSport(chifoumi);
         JO2024.ajouteEpreuve(chifoumimi);
-        JO2024.ajouteEpreuve(pierrepapierciseaux);
-        JO2024.ajouteEpreuve(Tennis);
 
         
         Pays france = new Pays("France");
@@ -45,28 +43,28 @@ public class Executable {
 
 
 // Hommes
-        Athlete atl1 = new Athlete("John", "Doe", "M", 20, 20, 20);
-        Athlete atl2 = new Athlete("Mike", "Johnson", "M", 7, 8, 9);
+        Athlete atl1 = new Athlete(1,"John", "Doe", 'H', 20, 20, 20);
+        Athlete atl2 = new Athlete(2,"Mike", "Johnson", 'H', 10, 10, 10);
 
-        Athlete atl3 = new Athlete("Luke", "Brown", "M", 13, 11, 10);
-        Athlete atl4 = new Athlete("Chris", "Evans", "M", 15, 14, 16);
+        Athlete atl3 = new Athlete(3,"Luke", "Brown", 'H', 10, 10, 10);
+        Athlete atl4 = new Athlete(4,"Chris", "Evans", 'H', 0, 0, 0);
 
-        Athlete atl5 = new Athlete("David", "Garcia", "M", 9, 7, 8);
-        Athlete atl6 = new Athlete("James", "Smith", "M", 17, 15, 13);
+        Athlete atl5 = new Athlete(5,"David", "Garcia", 'H', 9, 7, 8);
+        Athlete atl6 = new Athlete(6,"James", "Smith", 'H', 17, 15, 13);
 
-        Athlete atl7 = new Athlete("Robert", "Wilson", "M", 6, 9, 12);
-        Athlete atl8 = new Athlete("Michael", "Martinez", "M", 20, 18, 19);
+        Athlete atl7 = new Athlete(7,"Robert", "Wilson", 'H', 6, 9, 12);
+        Athlete atl8 = new Athlete(8,"Michael", "Martinez", 'H', 20, 18, 19);
 
-        Athlete atl9 = new Athlete("William", "Lopez", "M", 11, 14, 10);
-        Athlete atl10 = new Athlete("Thomas", "Anderson", "M", 12, 13, 15);
+        Athlete atl9 = new Athlete(9,"William", "Lopez", 'H', 11, 14, 10);
+        Athlete atl10 = new Athlete(10,"Thomas", "Anderson", 'H', 12, 13, 15);
 
-        Athlete atl11 = new Athlete("Charles", "Perez", "M", 8, 16, 14);
-        Athlete atl12 = new Athlete("Daniel", "Thompson", "M", 19, 17, 20);
+        Athlete atl11 = new Athlete(11,"Charles", "Perez", 'H', 8, 16, 14);
+        Athlete atl12 = new Athlete(12,"Daniel", "Thompson", 'H', 19, 17, 20);
 
 
 
 // Femmes
-        Athlete atl13 = new Athlete("Jane", "Smith", "F", 18, 16, 17);
+/*         Athlete atl13 = new Athlete("Jane", "Smith", "F", 18, 16, 17);
         Athlete atl14 = new Athlete("Emily", "Davis", "F", 19, 20, 18);
 
         Athlete atl15 = new Athlete("Anna", "Wilson", "F", 12, 14, 13);
@@ -83,39 +81,59 @@ public class Executable {
 
         Athlete atl23 = new Athlete("Madison", "Rodriguez", "F", 15, 14, 13);
         Athlete atl24 = new Athlete("Charlotte", "Lewis", "F", 20, 19, 18);
+*/
+
+
+        Equipe equipeUSchiffoumi = new Equipe(1, 1, 'H');
+        Equipe equipeFRchiffoumi = new Equipe(2, 1, 'H');
+        Equipe equipePLchiffoumi = new Equipe(3,1, 'H');
+        Equipe equipeCNchiffoumi = new Equipe(4, 1, 'H');
+
+
+        france.participer(equipeFRchiffoumi);
+        pologne.participer(equipePLchiffoumi);
+        chine.participer(equipeCNchiffoumi);
+        etats_unis.participer(equipeUSchiffoumi);
 
 
 
-        Equipe equipeUSchiffoumi = new Equipe(1, etats_unis);
-        Equipe equipeFRchiffoumi = new Equipe(1, france);
-        Equipe equipePLchiffoumi = new Equipe(1, pologne);
-        Equipe equipeCNchiffoumi = new Equipe(1, chine);
-
-
-        france.ajouterEquipe(equipeFRchiffoumi);
-        pologne.ajouterEquipe(equipePLchiffoumi);
-        chine.ajouterEquipe(equipeCNchiffoumi);
-        etats_unis.ajouterEquipe(equipeUSchiffoumi);
-
-
-
-        equipeFRchiffoumi.ajouteAthletes(atl1);
-        equipePLchiffoumi.ajouteAthletes(atl2);
-        equipeCNchiffoumi.ajouteAthletes(atl3);
-        equipeUSchiffoumi.ajouteAthletes(atl4);
+        equipeFRchiffoumi.participer(atl1);
+        equipePLchiffoumi.participer(atl2);
+        equipeCNchiffoumi.participer(atl3);
+        equipeUSchiffoumi.participer(atl4);
 
         chifoumimi.participer(equipeFRchiffoumi);
         chifoumimi.participer(equipePLchiffoumi);
         chifoumimi.participer(equipeCNchiffoumi);
         chifoumimi.participer(equipeUSchiffoumi);
 
-        //System.out.println(chifoumimi.lanceEpreuve());
+        pierrepapierciseaux.participer(equipeFRchiffoumi);
+        pierrepapierciseaux.participer(equipePLchiffoumi);
+        pierrepapierciseaux.participer(equipeCNchiffoumi);
+
+
+
+
+        /*List<Equipe> resultchifoumi = chifoumimi.lanceEpreuve();
+        for(Equipe equip : resultchifoumi){
+            System.out.println(equip.toString());
+        }
+        System.out.println(resultchifoumi);*/
+        //JO2024.simulJO();
+        //System.out.println(chifoumimi.getLesMatchs());
+
+
+        //Comparator compOr = new CompareMedailleOr();
+
+
         
+        //JO2024.simulJO();
+        //CompareMedailleOr compOr = new CompareMedailleOr();
 
+        //System.out.print(JO2024.classement(compOr));
+        //System.out.println(chifoumimi.getLesMatchs());
 
-        JO2024.simulJO();
-        Comparator compOr = new CompareMedailleOr();
-        System.out.print(JO2024.classement(compOr));
+        System.out.println(chifoumimi.lanceEpreuve());
 
 
 
@@ -123,15 +141,6 @@ public class Executable {
 
 
        
-        /*for (int i = 0 ; i < 3 ; i++){
-            Pays a = new Pays("pays: " + i);
-            Athlete atl1 = new Athlete("a", "b", "H", 17, 5, 7);
-            Equipe e1 = new Equipe(1, a);
-            a.participer(e1);
-            e1.ajouteAthletes(atl1);
-            chifoumimi.participer(e1);
-        }*/
-        //
     }
     
 }

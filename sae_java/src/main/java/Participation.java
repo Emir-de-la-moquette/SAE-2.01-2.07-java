@@ -1,5 +1,5 @@
-public interface Participation {
-    public void participer(Equipe equip);
-    public void retirer(Equipe equip);
+public interface Participation<T> {
+    public void participer(T x) throws Exception;
+    public void retirer(T x);
 
 }

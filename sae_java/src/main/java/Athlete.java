@@ -1,19 +1,42 @@
+import java.util.List;
+import java.util.ArrayList;
+
 public class Athlete {
+
+    private static List<Integer> lesID = new ArrayList<>();
 
     private String nomA;
     private String prenomA;
-    private String sexeA;
+    private char sexeA;
     private int agilite;
     private int endurance;
     private int force;
+    private int IDathlete;
 
-    public Athlete( String nomA, String prenomA, String sexeA, int agilite, int endurance, int force){
+    public Athlete(int id, String nomA, String prenomA, char sexeA, int agilite, int endurance, int force)
+            throws IDdejaExistantException {
+        if (lesID.contains(id))
+            throw new IDdejaExistantException("cet id est déjà utilisé");
+        lesID.add(id);
         this.nomA = nomA;
         this.prenomA = prenomA;
         this.sexeA = sexeA;
         this.agilite = agilite;
         this.endurance = endurance;
         this.force = force;
+        this.IDathlete = id;
+    }
+
+    public int getID() {
+        return IDathlete;
+    }
+
+    public static int getNewId() {
+        int i = 20000;
+        while (lesID.contains(i))
+            i++;
+        System.out.println("nouvel ID : " + i);
+        return i;
     }
 
     public String getNomA() {
@@ -32,11 +55,11 @@ public class Athlete {
         this.prenomA = prenomA;
     }
 
-    public String getSexeA() {
+    public char getSexeA() {
         return sexeA;
     }
 
-    public void setSexeA(String sexeA) {
+    public void setSexeA(char sexeA) {
         this.sexeA = sexeA;
     }
 
@@ -63,13 +86,16 @@ public class Athlete {
     public void setForce(int force) {
         this.force = force;
     }
+
     @Override
-    public String toString(){
-        if (this.sexeA == "H"){
-            return this.nomA +" "+ this.prenomA + " est un homme avec : " + this.agilite + " d'agilité, " + this.endurance + " d'endurance, et " + this.force + " de force.";
-        }
-        else {
-            return this.nomA +" " + this.prenomA + " est une femme avec : " + this.agilite + " d'agilité, " + this.endurance + " d'endurance, et " + this.force + " de force.";
+
+    public String toString() {
+        if (this.sexeA == 'H') {
+            return this.nomA + " " + this.prenomA + " est un homme avec : " + this.agilite + " d'agilité, "
+                    + this.endurance + " d'endurance, et " + this.force + " de force.";
+        } else {
+            return this.nomA + " " + this.prenomA + " est une femme avec : " + this.agilite + " d'agilité, "
+                    + this.endurance + " d'endurance, et " + this.force + " de force.";
         }
     }
 }

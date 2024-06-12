@@ -9,8 +9,8 @@ public class MatchDuel extends Match{
         super(sport);
         this.equipe1 = equip1;
         this.equipe2 = equip2;
-        this.score1 = 0;    // a enlever, c'est juste pour teste
-        this.score2 = 0;    //
+        this.score1 = 0;    
+        this.score2 = 0;    
     }
 
 
