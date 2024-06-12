@@ -1,8 +1,9 @@
 import java.util.List;
+import java.util.ArrayList;
 
 public class Athlete {
 
-    private static List<Integer> lesID;
+    private static List<Integer> lesID = new ArrayList<>();
 
     private String nomA;
     private String prenomA;

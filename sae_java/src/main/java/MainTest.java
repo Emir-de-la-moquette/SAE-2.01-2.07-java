@@ -1,14 +1,12 @@
 
-//import static org.junit.jupiter.api.Assertions.assertEquals;
-//import org.junit.jupiter.api.Test;
-
-
+//import org.junit.*;
+//import static org.junit.Assert.assertEquals;
 
 /**
  * Unit test for simple App.
  */
 class MainTest {
-    public static void main(String [] args) {
+    public static void main(String [] args) throws Exception, IDdejaExistantException {
 
         JeuxOlympique JO2024 = new JeuxOlympique("France", 2024);
 
@@ -17,9 +15,9 @@ class MainTest {
         Sport tennis = new Sport("tennis", 2, 0.4, 0.4, 0.2, 6);
 
 
-        Epreuve chifoumimi = new Epreuve("chifoumimi", 'H' , "junior", "Score", chifoumi);
-        Epreuve pierrepapierciseaux = new Epreuve("pierrepapierciseaux", 'H' , "junior", "Duel", ppc);
-        Epreuve tennnis = new Epreuve("teniis", 'F', "senior", "Score", tennis);
+        Epreuve chifoumimi = new Epreuve(1,"chifoumimi", 'M' , "junior", "Score", chifoumi);
+        Epreuve pierrepapierciseaux = new Epreuve(2,"pierrepapierciseaux", 'M' , "junior", "Duel", ppc);
+        Epreuve tennnis = new Epreuve(3,"teniis", 'F', "senior", "Score", tennis);
 
 
         JO2024.ajouteSport(chifoumi);
@@ -40,21 +38,21 @@ class MainTest {
         JO2024.ajoutePays(chine);
         JO2024.ajoutePays(allemagne);
 
-        Athlete atl1 = new Athlete("John", "Doe", 'M', 1, 2, 3);
-        Athlete atl2 = new Athlete("Mike", "Johnson", 'M', 10, 10, 10);
+        Athlete atl1 = new Athlete(1,"John", "Doe", 'M', 1, 2, 3);
+        Athlete atl2 = new Athlete(2,"Mike", "Johnson", 'M', 10, 10, 10);
 
-        Athlete atl3 = new Athlete("Luke", "Brown", 'M', 500, 500, 500);
-        Athlete atl4 = new Athlete("Chris", "Evans", 'M', 0, 0, 0);
+        Athlete atl3 = new Athlete(3,"Luke", "Brown", 'M', 500, 500, 500);
+        Athlete atl4 = new Athlete(4,"Chris", "Evans", 'M', 0, 0, 0);
 
-        Athlete atl21 = new Athlete("Chris", "Evans", 'F', 0, 0, 0);
+        Athlete atl21 = new Athlete(5,"Chris", "Evans", 'F', 0, 0, 0);
 
 
 
-        Equipe equipeUSchiffoumi = new Equipe(1, etats_unis, 'M');
-        Equipe equipeFRchiffoumi = new Equipe(1, france, 'M');
-        Equipe equipePLchiffoumi = new Equipe(1, pologne, 'M');
-        Equipe equipeCNchiffoumi = new Equipe(1, chine, 'M');
-        Equipe equipeFEMMEchiffoumi = new Equipe(1, allemagne, 'F');
+        Equipe equipeUSchiffoumi = new Equipe(1, 1, 'M');
+        Equipe equipeFRchiffoumi = new Equipe(2, 1, 'M');
+        Equipe equipePLchiffoumi = new Equipe(3, 1, 'M');
+        Equipe equipeCNchiffoumi = new Equipe(4, 1, 'M');
+        Equipe equipeFEMMEchiffoumi = new Equipe(5, 1, 'M');
 
 
         france.participer(equipeFRchiffoumi);
@@ -62,7 +60,6 @@ class MainTest {
         chine.participer(equipeCNchiffoumi);
         etats_unis.participer(equipeUSchiffoumi);
         allemagne.participer(equipeUSchiffoumi);
-
 
 
         equipeFRchiffoumi.participer(atl1);
@@ -80,10 +77,9 @@ class MainTest {
         pierrepapierciseaux.participer(equipeCNchiffoumi);
         pierrepapierciseaux.participer(equipeUSchiffoumi);
 
-    
+        
         System.out.println("\nGetter\n");
 
-        
         if (atl1.getAgilite() == 1)
             System.out.print("test getAgilite pass\n");
         else System.out.println("test fail\n");

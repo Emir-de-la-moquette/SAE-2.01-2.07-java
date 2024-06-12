@@ -5,7 +5,7 @@ import java.util.Comparator;
 
 public class JeuxOlympique {
 
-    private static List<Integer> lesID;
+    private static List<Integer> lesID = new ArrayList<>();
 
     private String lieu;
     private int annee;

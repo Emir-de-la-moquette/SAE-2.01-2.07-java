@@ -69,9 +69,11 @@ public class Epreuve implements Participation<Equipe> {
 
     }
 
+
     public int getID() {
         return IDepreuve;
     }
+
 
     public static int getNewId() {
         int i = 20000;
@@ -81,58 +83,80 @@ public class Epreuve implements Participation<Equipe> {
         return i;
     }
 
+
+    // @return sexeEpreuve
     public char getSexeEpreuve() {
         return sexeEpreuve;
     }
 
+    // @return nomEpreuve
     public String getNomEpreuve() {
         return this.nomEpreuve;
     }
 
+    //set le nomEpreuve
+    // @param String nomEpreuve
     public void setNomEpreuve(String nomEpreuve) {
         this.nomEpreuve = nomEpreuve;
     }
 
+    // @return moyenneAthletique
     public double getMoyenneAthlet() {
         return this.moyenneAthletique;
     }
 
+    // @return recordMondial
     public double getRecordMondil() {
         return this.recordMondial;
     }
 
+    // @return lesMatchs
     public List<Match> getLesMatchs() {
         return lesMatchs;
     }
 
+    //set la moyenneAthletique
+    // @param double moye
     public void setMoyenneAthlet(double moye) {
         this.moyenneAthletique = moye;
     }
 
+
+    //set le recordMondial
+    // @param double rec
     public void setRecordMondil(double rec) {
         this.recordMondial = rec;
     }
 
+    // @return categorieEpreuve
     public String getCategorieEpreuve() {
         return categorieEpreuve;
     }
 
+    //set le categorieEpreuve
+    // @param String categorieEpreuve
     public void setCategorieEpreuve(String categorieEpreuve) {
         this.categorieEpreuve = categorieEpreuve;
     }
 
+    // @return typeEpreuve
     public String getTypeEpreuve() {
         return typeEpreuve;
     }
 
+    // set le typeEpreuve
+    // @param String typeEpreuve
     public void setTypeEpreuve(String typeEpreuve) {
         this.typeEpreuve = typeEpreuve;
     }
 
+    // @return leSport
     public Sport getLeSports() {
         return this.leSport;
     }
 
+    //set leSport
+    // @param Sport lesSports
     public void setLeSports(Sport lesSports) {
         this.leSport = lesSports;
     }
@@ -143,7 +167,7 @@ public class Epreuve implements Participation<Equipe> {
 
     public void participer(Equipe equipe) throws Exception {
         if (equipe.estALaBonneTaille())
-            if (equipe.getSexeEquipe() != this.sexeEpreuve)
+            if (equipe.getSexeEquipe() == this.sexeEpreuve)
                 this.lesEquipes.add(equipe);
             else
                 throw new PasLeBonSexeException("Le sexe des athletes ne correspond pas au type de l'épreuve");
@@ -161,14 +185,22 @@ public class Epreuve implements Participation<Equipe> {
     }
 
     // affiche les équipes participant à l'épreuve
+    // @return lesEquipes
     public List<Equipe> afficheLesEquipes() {
         return this.lesEquipes;
     }
 
+    // affiche les matchs de l'épreuve
+    // @return lesMatchs
     public List<Match> afficheLesMatchs() {
         return this.lesMatchs;
     }
 
+    /* 
+     * inverse le classement
+     * @param List<Equipe> Classement
+     * @return le List<Equipe> Classement finale
+     */
     public List<Equipe> reverse(List<Equipe> Classement) {
         for (int k = 0, j = Classement.size() - 1; k < j; k++) {
             Classement.add(k, Classement.remove(j));
@@ -229,7 +261,7 @@ public class Epreuve implements Participation<Equipe> {
                     // System.out.println("m0 " +valeurMatchPallier0);
                     // System.out.println("m1 " +valeurMatchPallier1);
 
-                    // debut
+                    // DEBUT
                     if (cleMatch == clePallierMatch.get(0)) {
                         List<Equipe> newPallier1 = new ArrayList<>();
                         for (MatchDuel resMatchPallier0 : valeurMatchPallier0) {
@@ -248,7 +280,7 @@ public class Epreuve implements Participation<Equipe> {
 
                     }
 
-                    // milieu
+                    // MILIEU
                     List<Equipe> newPallier2 = new ArrayList<>();
                     for (MatchDuel resMatchPallier0 : valeurMatchPallier0) {
                         if (resMatchPallier0.getScoreEquipe1() < resMatchPallier0.getScoreEquipe2()) { // on ajoute le
@@ -273,7 +305,7 @@ public class Epreuve implements Participation<Equipe> {
                     }
                     pallierEquipe.put(cleMatch + 1, newPallier2);
 
-                    // fin
+                    // FIN
 
                     List<Equipe> newPallier3 = new ArrayList<>();
                     if (cleMatch + 1 == clePallierMatch.size()) {
@@ -298,9 +330,9 @@ public class Epreuve implements Participation<Equipe> {
                 }
 
                 pallierMatch.clear();
-
+                // VERIFIE SI LA BOUCLE EST FINI ET CREE LE CLASSEMENT
                 resteDesMatch = false;
-                for (Integer cleEquipe : clePallierEquipe) { // VERIFIE SI LA BOUCLE EST FINI ET CREE LE CLASSEMENT
+                for (Integer cleEquipe : clePallierEquipe) { 
                     List<Equipe> listeEquipe2 = pallierEquipe.get(cleEquipe);
                     for (Equipe equipe : listeEquipe2) {
                         if (listeEquipe2.size() == 1) {
@@ -316,6 +348,7 @@ public class Epreuve implements Participation<Equipe> {
                 }
 
             }
+            //* distribue les medailles */
             Classement = reverse(Classement);
             if (Classement.size() > 1)
                 Classement.get(0).ajouteMedailleOr();
@@ -359,6 +392,7 @@ public class Epreuve implements Participation<Equipe> {
                     scoresEquipes.add(match);
 
                     if (match.getScore() > this.recordMondial) {
+                        //* option de record mondial si record mondial battu */
                         System.out.println("NOUVEAU RECORD MONDIAL !!!!!!!!!");
                         this.recordMondial = match.getScore();
                     }
@@ -390,6 +424,7 @@ public class Epreuve implements Participation<Equipe> {
                     }
                 }
             }
+            //* distribue les medailles */
             Classement = reverse(Classement);
             if (Classement.size() > 0)
                 Classement.get(0).ajouteMedailleOr();

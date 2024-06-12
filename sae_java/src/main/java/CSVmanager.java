@@ -22,6 +22,7 @@ public class CSVmanager {
 
                 // tableau de String => String []
                 String[] ligneElems = ligne.split(split);
+              
                 if (ligneElems.length >= 9) {
                     try {
 
@@ -60,6 +61,7 @@ public class CSVmanager {
                                                 "inconnue", sp);
                                         newEP.participer(eqSolo);
                                         lesEpreuves.add(newEP);
+
                                     }
                                 else {
                                     System.err.println("Le sport indiqué n'est pas fait pour les athletes seuls");

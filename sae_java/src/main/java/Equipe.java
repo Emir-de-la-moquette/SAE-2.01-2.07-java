@@ -16,19 +16,21 @@ public class Equipe implements Participation<Athlete> {
     private char sexeEquipe;
 
 
-    public Equipe(int id, int taille) throws IDdejaExistantException {
+    public Equipe(int id, int taille, char sexeEquipe) throws IDdejaExistantException {
         if (lesID.contains(id))
             throw new IDdejaExistantException("cet id est déjà utilisé");
         lesID.add(id);
         this.taille = taille;
         this.IDequipe = id;
         this.lesAthletes = new ArrayList<>();
+        this.sexeEquipe = sexeEquipe;
     }
 
     public int getID() {
-        return IDequipe;
+        return this.IDequipe;
     }
 
+    // @return NewId
     public static int getNewId() {
         int i = 20000;
         while (lesID.contains(i))
@@ -62,10 +64,12 @@ public class Equipe implements Participation<Athlete> {
         this.lesAthletes.remove(athlete);
     }
 
+    // @return sexeEquipe
     public char getSexeEquipe() {
-        return sexeEquipe;
+        return this.sexeEquipe;
     }
 
+    // @return nbMedailleOr
     public int getNbMedailleOr() {
         return nbMedailleOr;
     }
@@ -74,6 +78,7 @@ public class Equipe implements Participation<Athlete> {
         this.nbMedailleOr += 1;
     }
 
+    // @return nbMedailleArgent
     public int getNbMedailleArgent() {
         return nbMedailleArgent;
     }
@@ -82,6 +87,7 @@ public class Equipe implements Participation<Athlete> {
         this.nbMedailleArgent += 1;
     }
 
+    // @return nbMedailleBronze
     public int getNbMedailleBronze() {
         return nbMedailleBronze;
     }

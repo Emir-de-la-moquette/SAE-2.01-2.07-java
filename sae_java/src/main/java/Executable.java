@@ -9,7 +9,7 @@
 import java.util.*;
 
 public class Executable {
-    public static void main(String [] args) {
+    public static void main(String [] args) throws IDdejaExistantException , Exception{
 
         JeuxOlympique JO2024 = new JeuxOlympique("France", 2024);
 
@@ -18,9 +18,9 @@ public class Executable {
         Sport tennis = new Sport("tennis", 2, 0.4, 0.4, 0.2, 6);
 
 
-        Epreuve chifoumimi = new Epreuve("chifoumimi", 'H' , "junior", "Score", chifoumi);
-        Epreuve pierrepapierciseaux = new Epreuve("pierrepapierciseaux", 'H' , "junior", "Duel", ppc);
-        Epreuve tennnis = new Epreuve("teniis", 'F', "senior", "Score", tennis);
+        Epreuve chifoumimi = new Epreuve(1,"chifoumimi", 'H' , "junior", "Score", chifoumi);
+        Epreuve pierrepapierciseaux = new Epreuve(2,"pierrepapierciseaux", 'H' , "junior", "Duel", ppc);
+        Epreuve tennnis = new Epreuve(3,"teniis", 'H', "senior", "Score", tennis);
 
 
         JO2024.ajouteSport(chifoumi);
@@ -43,23 +43,23 @@ public class Executable {
 
 
 // Hommes
-        Athlete atl1 = new Athlete("John", "Doe", 'M', 20, 20, 20);
-        Athlete atl2 = new Athlete("Mike", "Johnson", 'M', 10, 10, 10);
+        Athlete atl1 = new Athlete(1,"John", "Doe", 'H', 20, 20, 20);
+        Athlete atl2 = new Athlete(2,"Mike", "Johnson", 'H', 10, 10, 10);
 
-        Athlete atl3 = new Athlete("Luke", "Brown", 'M', 10, 10, 10);
-        Athlete atl4 = new Athlete("Chris", "Evans", 'M', 0, 0, 0);
+        Athlete atl3 = new Athlete(3,"Luke", "Brown", 'H', 10, 10, 10);
+        Athlete atl4 = new Athlete(4,"Chris", "Evans", 'H', 0, 0, 0);
 
-        Athlete atl5 = new Athlete("David", "Garcia", 'M', 9, 7, 8);
-        Athlete atl6 = new Athlete("James", "Smith", 'M', 17, 15, 13);
+        Athlete atl5 = new Athlete(5,"David", "Garcia", 'H', 9, 7, 8);
+        Athlete atl6 = new Athlete(6,"James", "Smith", 'H', 17, 15, 13);
 
-        Athlete atl7 = new Athlete("Robert", "Wilson", 'M', 6, 9, 12);
-        Athlete atl8 = new Athlete("Michael", "Martinez", 'M', 20, 18, 19);
+        Athlete atl7 = new Athlete(7,"Robert", "Wilson", 'H', 6, 9, 12);
+        Athlete atl8 = new Athlete(8,"Michael", "Martinez", 'H', 20, 18, 19);
 
-        Athlete atl9 = new Athlete("William", "Lopez", 'M', 11, 14, 10);
-        Athlete atl10 = new Athlete("Thomas", "Anderson", 'M', 12, 13, 15);
+        Athlete atl9 = new Athlete(9,"William", "Lopez", 'H', 11, 14, 10);
+        Athlete atl10 = new Athlete(10,"Thomas", "Anderson", 'H', 12, 13, 15);
 
-        Athlete atl11 = new Athlete("Charles", "Perez", 'M', 8, 16, 14);
-        Athlete atl12 = new Athlete("Daniel", "Thompson", 'M', 19, 17, 20);
+        Athlete atl11 = new Athlete(11,"Charles", "Perez", 'H', 8, 16, 14);
+        Athlete atl12 = new Athlete(12,"Daniel", "Thompson", 'H', 19, 17, 20);
 
 
 
@@ -84,10 +84,10 @@ public class Executable {
 */
 
 
-        Equipe equipeUSchiffoumi = new Equipe(1, etats_unis, 'M');
-        Equipe equipeFRchiffoumi = new Equipe(1, france, 'M');
-        Equipe equipePLchiffoumi = new Equipe(1, pologne, 'M');
-        Equipe equipeCNchiffoumi = new Equipe(1, chine, 'M');
+        Equipe equipeUSchiffoumi = new Equipe(1, 1, 'H');
+        Equipe equipeFRchiffoumi = new Equipe(2, 1, 'H');
+        Equipe equipePLchiffoumi = new Equipe(3,1, 'H');
+        Equipe equipeCNchiffoumi = new Equipe(4, 1, 'H');
 
 
         france.participer(equipeFRchiffoumi);
