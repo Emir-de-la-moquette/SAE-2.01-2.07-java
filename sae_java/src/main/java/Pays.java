@@ -74,12 +74,13 @@ public class Pays implements Participation<Equipe> {
         return nbmedaille;
     }
 
+
     public String toString()  {
         return this.Nompays;
-        //+ " possede " 
-        //+ String.valueOf(this.getmedailles_bronze()) +" de medailles bronze , "
-        //+ String.valueOf(this.getmedailles_argent()) + " de medailles argent et " 
-        //+ String.valueOf(this.getmedailles_or()) + " de medailles d'Or" ;
+        // + " possede "
+        // + String.valueOf(this.getmedailles_bronze()) +" de medailles bronze , "
+        // + String.valueOf(this.getmedailles_argent()) + " de medailles argent et "
+        // + String.valueOf(this.getmedailles_or()) + " de medailles d'Or" ;
     }
 
 }
