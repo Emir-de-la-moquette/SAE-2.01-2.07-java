@@ -1,7 +1,5 @@
 public class Athlete {
 
-    private static int IDath = 0;
-
     private String nomA;
     private String prenomA;
     private char sexeA;
@@ -10,19 +8,21 @@ public class Athlete {
     private int force;
     private int IDathlete;
 
-    public Athlete( String nomA, String prenomA, char sexeA, int agilite, int endurance, int force){
+    public Athlete(int id, String nomA, String prenomA, char sexeA, int agilite, int endurance, int force) {
         this.nomA = nomA;
         this.prenomA = prenomA;
         this.sexeA = sexeA;
         this.agilite = agilite;
         this.endurance = endurance;
         this.force = force;
-
-        IDath++;
-        IDathlete = IDath;
+        this.IDathlete = id;
     }
 
-    public int getID(){
+    public void setID(int id) {
+        this.IDathlete = id;
+    }
+
+    public int getID() {
         return IDathlete;
     }
 
@@ -73,13 +73,15 @@ public class Athlete {
     public void setForce(int force) {
         this.force = force;
     }
+
     @Override
-    public String toString(){
-        if (this.sexeA == "H"){
-            return this.nomA +" "+ this.prenomA + " est un homme avec : " + this.agilite + " d'agilité, " + this.endurance + " d'endurance, et " + this.force + " de force.";
-        }
-        else {
-            return this.nomA +" " + this.prenomA + " est une femme avec : " + this.agilite + " d'agilité, " + this.endurance + " d'endurance, et " + this.force + " de force.";
+    public String toString() {
+        if (this.sexeA == "H") {
+            return this.nomA + " " + this.prenomA + " est un homme avec : " + this.agilite + " d'agilité, "
+                    + this.endurance + " d'endurance, et " + this.force + " de force.";
+        } else {
+            return this.nomA + " " + this.prenomA + " est une femme avec : " + this.agilite + " d'agilité, "
+                    + this.endurance + " d'endurance, et " + this.force + " de force.";
         }
     }
 }
