@@ -30,6 +30,7 @@ public class Equipe implements Participation<Athlete> {
         return this.IDequipe;
     }
 
+    // @return NewId
     public static int getNewId() {
         int i = 20000;
         while (lesID.contains(i))
@@ -63,10 +64,12 @@ public class Equipe implements Participation<Athlete> {
         this.lesAthletes.remove(athlete);
     }
 
+    // @return sexeEquipe
     public char getSexeEquipe() {
         return this.sexeEquipe;
     }
 
+    // @return nbMedailleOr
     public int getNbMedailleOr() {
         return nbMedailleOr;
     }
@@ -75,6 +78,7 @@ public class Equipe implements Participation<Athlete> {
         this.nbMedailleOr += 1;
     }
 
+    // @return nbMedailleArgent
     public int getNbMedailleArgent() {
         return nbMedailleArgent;
     }
@@ -83,6 +87,7 @@ public class Equipe implements Participation<Athlete> {
         this.nbMedailleArgent += 1;
     }
 
+    // @return nbMedailleBronze
     public int getNbMedailleBronze() {
         return nbMedailleBronze;
     }
