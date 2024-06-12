@@ -19,7 +19,6 @@ public class Epreuve implements Participation<Equipe> {
 
     private List<Equipe> lesEquipes;
 
-
     // Liste de match/liste d'équipe/
     private List<Match> lesMatchs;
     private HashMap<Integer, List<MatchDuel>> pallierMatch;
@@ -70,13 +69,16 @@ public class Epreuve implements Participation<Equipe> {
 
     }
 
-
-    public void setID(int id) {
-        this.IDepreuve = id;
-    }
-
     public int getID() {
         return IDepreuve;
+    }
+
+    public static int getNewId() {
+        int i = 20000;
+        while (lesID.contains(i))
+            i++;
+        System.out.println("nouvel ID : " + i);
+        return i;
     }
 
     public char getSexeEpreuve() {
@@ -147,7 +149,6 @@ public class Epreuve implements Participation<Equipe> {
                 throw new PasLeBonSexeException("Le sexe des athletes ne correspond pas au type de l'épreuve");
         else
             throw new PasALaBonneTailleException("l'équipe n'a pas la bonne taille");
-
 
     }
 
