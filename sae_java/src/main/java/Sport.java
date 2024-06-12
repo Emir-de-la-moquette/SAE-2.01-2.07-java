@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Sport {
 
-    private static List<String> lesID = new ArrayList<>();
+    protected static List<String> lesID = new ArrayList<>();
 
     private String nomSport;
     private int nbJoueur;
@@ -16,10 +16,10 @@ public class Sport {
     private int nbdePointmax;
 
     // REGLE PERSONALISE
-    private boolean hasregle;
-    private Integer nbPointVictoireTotale;
-    private Integer nbPointMiniPourVictoire;
-    private Integer ecartDePointMini;
+    protected boolean hasregle;
+    protected Integer nbPointVictoireTotale;
+    protected Integer nbPointMiniPourVictoire;
+    protected Integer ecartDePointMini;
 
     // Sport sans points
     public Sport(String nomSport, int nbJoueur, Double valeurAgilite, Double valeurEndurance, Double valeurForce)
