@@ -49,7 +49,7 @@ public class MatchScore extends Match{
     public String toString(){
         String text;
         text = "Le match " + this.nomMatch;
-        text += ", fait participer l'équipe : " + this.equipe.getPays();
+        text += ", fait participer l'équipe numéro : " + this.equipe.getID();
         text += " et cette à réalisé un score de " + String.valueOf(this.score);
         return text;
     }

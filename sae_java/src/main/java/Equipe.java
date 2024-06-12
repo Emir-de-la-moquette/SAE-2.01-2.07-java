@@ -16,17 +16,18 @@ public class Equipe implements Participation<Athlete> {
     private char sexeEquipe;
 
 
-    public Equipe(int id, int taille) throws IDdejaExistantException {
+    public Equipe(int id, int taille, char sexeEquipe) throws IDdejaExistantException {
         if (lesID.contains(id))
             throw new IDdejaExistantException("cet id est déjà utilisé");
         lesID.add(id);
         this.taille = taille;
         this.IDequipe = id;
         this.lesAthletes = new ArrayList<>();
+        this.sexeEquipe = sexeEquipe;
     }
 
     public int getID() {
-        return IDequipe;
+        return this.IDequipe;
     }
 
     public static int getNewId() {
@@ -63,7 +64,7 @@ public class Equipe implements Participation<Athlete> {
     }
 
     public char getSexeEquipe() {
-        return sexeEquipe;
+        return this.sexeEquipe;
     }
 
     public int getNbMedailleOr() {

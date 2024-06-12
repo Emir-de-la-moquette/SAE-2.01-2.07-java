@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Pays implements Participation<Equipe> {
 
-    private static List<String> lesID;
+    private static List<String> lesID = new ArrayList<>();
 
     private String Nompays;
     private List<Equipe> lesEquipes;
@@ -74,8 +74,6 @@ public class Pays implements Participation<Equipe> {
         return nbmedaille;
     }
 
-    return nbmedaille;
-    }
     public String toString()  {
         return this.Nompays;
         //+ " possede " 

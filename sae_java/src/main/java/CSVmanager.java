@@ -224,7 +224,7 @@ public class CSVmanager {
                                                 }
                                             }
                                             if (!existe) {
-                                                Equipe equ = new Equipe(Equipe.getNewId(), 1);
+                                                Equipe equ = new Equipe(Equipe.getNewId(), 1, 'H'); // => becareful, it's male only 
                                                 equ.participer(a);
                                                 lesEquipes.add(equ);
                                                 pa.participer(equ);
@@ -240,8 +240,9 @@ public class CSVmanager {
                                         try {
                                             int id = Integer.parseInt(ligneElems[0]);
                                             int taille = Integer.parseInt(ligneElems[1]);
+                                            char sexeEquipe = ligneElems[2].charAt(0);
                                             try {
-                                                eq = new Equipe(id, taille);
+                                                eq = new Equipe(id, taille, sexeEquipe);
                                             } catch (Exception x) {
                                                 System.err.println(x);
                                             }

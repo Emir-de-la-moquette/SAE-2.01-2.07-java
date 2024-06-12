@@ -141,7 +141,7 @@ public class Epreuve implements Participation<Equipe> {
 
     public void participer(Equipe equipe) throws Exception {
         if (equipe.estALaBonneTaille())
-            if (equipe.getSexeEquipe() != this.sexeEpreuve)
+            if (equipe.getSexeEquipe() == this.sexeEpreuve)
                 this.lesEquipes.add(equipe);
             else
                 throw new PasLeBonSexeException("Le sexe des athletes ne correspond pas au type de l'épreuve");
