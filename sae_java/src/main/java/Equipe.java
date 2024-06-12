@@ -15,6 +15,7 @@ public class Equipe implements Participation<Athlete> {
 
     private char sexeEquipe;
 
+
     public Equipe(int id, int taille) throws IDdejaExistantException {
         if (lesID.contains(id))
             throw new IDdejaExistantException("cet id est déjà utilisé");
@@ -53,10 +54,8 @@ public class Equipe implements Participation<Athlete> {
     }
 
     public void participer(Athlete athlete) {
-        if (athlete.getSexeA() == this.sexeEquipe)
-            this.lesAthletes.add(athlete);
-        else
-            System.err.println("Pas le bon sexe, transitionne stp");
+        if(athlete.getSexeA() == this.sexeEquipe) this.lesAthletes.add(athlete);
+        else System.err.println("Pas le bon sexe, transitionne stp");
     }
 
     public void retirer(Athlete athlete) throws NoSuchElementException { // pensez à try catch
@@ -100,3 +99,4 @@ public class Equipe implements Participation<Athlete> {
     }
 
 }
+

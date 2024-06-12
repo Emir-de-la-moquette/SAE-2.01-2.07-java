@@ -12,6 +12,7 @@ public class Athlete {
     private int force;
     private int IDathlete;
 
+
     public Athlete(int id, String nomA, String prenomA, char sexeA, int agilite, int endurance, int force)
             throws IDdejaExistantException {
         if (lesID.contains(id))
@@ -79,13 +80,13 @@ public class Athlete {
     }
 
     @Override
-    public String toString() {
-        if (this.sexeA == "H") {
-            return this.nomA + " " + this.prenomA + " est un homme avec : " + this.agilite + " d'agilité, "
-                    + this.endurance + " d'endurance, et " + this.force + " de force.";
-        } else {
-            return this.nomA + " " + this.prenomA + " est une femme avec : " + this.agilite + " d'agilité, "
-                    + this.endurance + " d'endurance, et " + this.force + " de force.";
+
+    public String toString(){
+        if (this.sexeA == 'H'){
+            return this.nomA +" "+ this.prenomA + " est un homme avec : " + this.agilite + " d'agilité, " + this.endurance + " d'endurance, et " + this.force + " de force.";
+        }
+        else {
+            return this.nomA +" " + this.prenomA + " est une femme avec : " + this.agilite + " d'agilité, " + this.endurance + " d'endurance, et " + this.force + " de force.";
         }
     }
 }

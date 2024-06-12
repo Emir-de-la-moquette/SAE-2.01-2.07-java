@@ -18,9 +18,9 @@ public class Executable {
         Sport tennis = new Sport("tennis", 2, 0.4, 0.4, 0.2, 6);
 
 
-        Epreuve chifoumimi = new Epreuve("chifoumimi", "Homme" , "junior", "Duel", chifoumi);
-        Epreuve pierrepapierciseaux = new Epreuve("pierrepapierciseaux", "Homme" , "junior", "Duel", ppc);
-        Epreuve Tennis = new Epreuve("teniis", "F", "senior", "Score", tennis);
+        Epreuve chifoumimi = new Epreuve("chifoumimi", 'H' , "junior", "Score", chifoumi);
+        Epreuve pierrepapierciseaux = new Epreuve("pierrepapierciseaux", 'H' , "junior", "Duel", ppc);
+        Epreuve tennnis = new Epreuve("teniis", 'F', "senior", "Score", tennis);
 
 
         JO2024.ajouteSport(chifoumi);
@@ -43,28 +43,28 @@ public class Executable {
 
 
 // Hommes
-        Athlete atl1 = new Athlete("John", "Doe", "M", 20, 20, 20);
-        Athlete atl2 = new Athlete("Mike", "Johnson", "M", 10, 10, 10);
+        Athlete atl1 = new Athlete("John", "Doe", 'M', 20, 20, 20);
+        Athlete atl2 = new Athlete("Mike", "Johnson", 'M', 10, 10, 10);
 
-        Athlete atl3 = new Athlete("Luke", "Brown", "M", 10, 10, 10);
-        Athlete atl4 = new Athlete("Chris", "Evans", "M", 0, 0, 0);
+        Athlete atl3 = new Athlete("Luke", "Brown", 'M', 10, 10, 10);
+        Athlete atl4 = new Athlete("Chris", "Evans", 'M', 0, 0, 0);
 
-        Athlete atl5 = new Athlete("David", "Garcia", "M", 9, 7, 8);
-        Athlete atl6 = new Athlete("James", "Smith", "M", 17, 15, 13);
+        Athlete atl5 = new Athlete("David", "Garcia", 'M', 9, 7, 8);
+        Athlete atl6 = new Athlete("James", "Smith", 'M', 17, 15, 13);
 
-        Athlete atl7 = new Athlete("Robert", "Wilson", "M", 6, 9, 12);
-        Athlete atl8 = new Athlete("Michael", "Martinez", "M", 20, 18, 19);
+        Athlete atl7 = new Athlete("Robert", "Wilson", 'M', 6, 9, 12);
+        Athlete atl8 = new Athlete("Michael", "Martinez", 'M', 20, 18, 19);
 
-        Athlete atl9 = new Athlete("William", "Lopez", "M", 11, 14, 10);
-        Athlete atl10 = new Athlete("Thomas", "Anderson", "M", 12, 13, 15);
+        Athlete atl9 = new Athlete("William", "Lopez", 'M', 11, 14, 10);
+        Athlete atl10 = new Athlete("Thomas", "Anderson", 'M', 12, 13, 15);
 
-        Athlete atl11 = new Athlete("Charles", "Perez", "M", 8, 16, 14);
-        Athlete atl12 = new Athlete("Daniel", "Thompson", "M", 19, 17, 20);
+        Athlete atl11 = new Athlete("Charles", "Perez", 'M', 8, 16, 14);
+        Athlete atl12 = new Athlete("Daniel", "Thompson", 'M', 19, 17, 20);
 
 
 
 // Femmes
-        Athlete atl13 = new Athlete("Jane", "Smith", "F", 18, 16, 17);
+/*         Athlete atl13 = new Athlete("Jane", "Smith", "F", 18, 16, 17);
         Athlete atl14 = new Athlete("Emily", "Davis", "F", 19, 20, 18);
 
         Athlete atl15 = new Athlete("Anna", "Wilson", "F", 12, 14, 13);
@@ -81,13 +81,13 @@ public class Executable {
 
         Athlete atl23 = new Athlete("Madison", "Rodriguez", "F", 15, 14, 13);
         Athlete atl24 = new Athlete("Charlotte", "Lewis", "F", 20, 19, 18);
+*/
 
 
-
-        Equipe equipeUSchiffoumi = new Equipe(1, etats_unis);
-        Equipe equipeFRchiffoumi = new Equipe(1, france);
-        Equipe equipePLchiffoumi = new Equipe(1, pologne);
-        Equipe equipeCNchiffoumi = new Equipe(1, chine);
+        Equipe equipeUSchiffoumi = new Equipe(1, etats_unis, 'M');
+        Equipe equipeFRchiffoumi = new Equipe(1, france, 'M');
+        Equipe equipePLchiffoumi = new Equipe(1, pologne, 'M');
+        Equipe equipeCNchiffoumi = new Equipe(1, chine, 'M');
 
 
         france.participer(equipeFRchiffoumi);
@@ -113,11 +113,12 @@ public class Executable {
 
 
 
-        List<Equipe> resultchifoumi = chifoumimi.lanceEpreuve();
+
+        /*List<Equipe> resultchifoumi = chifoumimi.lanceEpreuve();
         for(Equipe equip : resultchifoumi){
             System.out.println(equip.toString());
         }
-        System.out.println(resultchifoumi);
+        System.out.println(resultchifoumi);*/
         //JO2024.simulJO();
         //System.out.println(chifoumimi.getLesMatchs());
 
@@ -126,11 +127,13 @@ public class Executable {
 
 
         
-        JO2024.simulJO();
-        CompareMedailleOr compOr = new CompareMedailleOr();
+        //JO2024.simulJO();
+        //CompareMedailleOr compOr = new CompareMedailleOr();
 
-        System.out.print(JO2024.classement(compOr));
-        
+        //System.out.print(JO2024.classement(compOr));
+        //System.out.println(chifoumimi.getLesMatchs());
+
+        System.out.println(chifoumimi.lanceEpreuve());
 
 
 
