@@ -19,6 +19,7 @@ public class Epreuve implements Participation<Equipe>{
 
     private List<Equipe> lesEquipes;
 
+
     // Liste de match/liste d'équipe/
     private List<Match> lesMatchs;
     private HashMap<Integer, List<MatchDuel>> pallierMatch;
@@ -60,7 +61,6 @@ public class Epreuve implements Participation<Equipe>{
         this.lesMatchs = new ArrayList<>();
 
     }
-    
 
     public char getSexeEpreuve() {
         return sexeEpreuve;
@@ -121,12 +121,14 @@ public class Epreuve implements Participation<Equipe>{
     // @param : une équipe
     // fait participer une équipe à l'épreuve
     @Override
-    public void participer(Equipe equipe) throws Exception{
-        if (equipe.estALaBonneTaille())
-            if (equipe.getSexeEquipe()!=this.sexeEpreuve)
+    public void participer(Equipe equipe){ //throws Exception{
+    //    if (equipe.estALaBonneTaille()) {
+    //        if (equipe.getSexeEquipe()!=this.sexeEpreuve) {                   // A REVOIR
             this.lesEquipes.add(equipe);
-            else throw new PasLeBonSexeException("Le sexe des athletes ne correspond pas au type de l'épreuve");
-        else throw new PasALaBonneTailleException("l'équipe n'a pas la bonne taille");
+    //        }
+    //        else throw new PasLeBonSexeException("Le sexe des athletes ne correspond pas au type de l'épreuve");
+    //    }
+    //    else throw new PasALaBonneTailleException("l'équipe n'a pas la bonne taille");
 
     }
 

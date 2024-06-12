@@ -2,12 +2,12 @@ public class Athlete {
 
     private String nomA;
     private String prenomA;
-    private String sexeA;
+    private char sexeA;
     private int agilite;
     private int endurance;
     private int force;
 
-    public Athlete( String nomA, String prenomA, String sexeA, int agilite, int endurance, int force){
+    public Athlete( String nomA, String prenomA, char sexeA, int agilite, int endurance, int force){
         this.nomA = nomA;
         this.prenomA = prenomA;
         this.sexeA = sexeA;
@@ -32,11 +32,11 @@ public class Athlete {
         this.prenomA = prenomA;
     }
 
-    public String getSexeA() {
+    public char getSexeA() {
         return sexeA;
     }
 
-    public void setSexeA(String sexeA) {
+    public void setSexeA(char sexeA) {
         this.sexeA = sexeA;
     }
 
@@ -65,7 +65,7 @@ public class Athlete {
     }
     @Override
     public String toString(){
-        if (this.sexeA == "H"){
+        if (this.sexeA == 'H'){
             return this.nomA +" "+ this.prenomA + " est un homme avec : " + this.agilite + " d'agilité, " + this.endurance + " d'endurance, et " + this.force + " de force.";
         }
         else {
