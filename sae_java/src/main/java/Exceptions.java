@@ -9,7 +9,6 @@ class PasALaBonneTailleException extends Exception {
     }
 }
 
-
 class PasLeBonSexeException extends Exception {
     public PasLeBonSexeException() {
         super();
@@ -19,5 +18,17 @@ class PasLeBonSexeException extends Exception {
     public PasLeBonSexeException(String message) {
         super(message);
     }
-    
+
+}
+
+class IDdejaExistantException extends Exception {
+    public IDdejaExistantException() {
+        super();
+    }
+
+    // Constructeur avec un message détaillé
+    public IDdejaExistantException(String message) {
+        super(message);
+    }
+
 }

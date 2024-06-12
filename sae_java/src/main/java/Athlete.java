@@ -1,4 +1,8 @@
+import java.util.List;
+
 public class Athlete {
+
+    private static List<Integer> lesID;
 
     private String nomA;
     private String prenomA;
@@ -6,14 +10,25 @@ public class Athlete {
     private int agilite;
     private int endurance;
     private int force;
+    private int IDathlete;
 
-    public Athlete( String nomA, String prenomA, char sexeA, int agilite, int endurance, int force){
+
+    public Athlete(int id, String nomA, String prenomA, char sexeA, int agilite, int endurance, int force)
+            throws IDdejaExistantException {
+        if (lesID.contains(id))
+            throw new IDdejaExistantException("cet id est déjà utilisé");
+        lesID.add(id);
         this.nomA = nomA;
         this.prenomA = prenomA;
         this.sexeA = sexeA;
         this.agilite = agilite;
         this.endurance = endurance;
         this.force = force;
+        this.IDathlete = id;
+    }
+
+    public int getID() {
+        return IDathlete;
     }
 
     public String getNomA() {
@@ -63,7 +78,9 @@ public class Athlete {
     public void setForce(int force) {
         this.force = force;
     }
+
     @Override
+
     public String toString(){
         if (this.sexeA == 'H'){
             return this.nomA +" "+ this.prenomA + " est un homme avec : " + this.agilite + " d'agilité, " + this.endurance + " d'endurance, et " + this.force + " de force.";

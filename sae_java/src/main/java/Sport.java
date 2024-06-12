@@ -1,4 +1,10 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Sport {
+
+    private static List<String> lesID = new ArrayList<>();
+
     private String nomSport;
     private int nbJoueur;
     private Double valeurAgilite;
@@ -15,9 +21,12 @@ public class Sport {
     private Integer nbPointMiniPourVictoire;
     private Integer ecartDePointMini;
 
-
-    //Sport sans points
-    public Sport(String nomSport, int nbJoueur, Double valeurAgilite, Double valeurEndurance, Double valeurForce){
+    // Sport sans points
+    public Sport(String nomSport, int nbJoueur, Double valeurAgilite, Double valeurEndurance, Double valeurForce)
+            throws IDdejaExistantException {
+        if (lesID.contains(nomSport))
+            throw new IDdejaExistantException("ce nom est déjà utilisé");
+        lesID.add(nomSport);
         this.nomSport = nomSport;
         this.nbJoueur = nbJoueur;
         this.valeurAgilite = valeurAgilite;
@@ -25,8 +34,12 @@ public class Sport {
         this.valeurForce = valeurForce;
     }
 
-    //Sport avec points
-    public Sport(String nomSport, int nbJoueur, Double valeurAgilite, Double valeurEndurance, Double valeurForce, int nbdePointmax){
+    // Sport avec points
+    public Sport(String nomSport, int nbJoueur, Double valeurAgilite, Double valeurEndurance, Double valeurForce,
+            int nbdePointmax) throws IDdejaExistantException {
+        if (lesID.contains(nomSport))
+            throw new IDdejaExistantException("ce nom est déjà utilisé");
+        lesID.add(nomSport);
         this.nomSport = nomSport;
         this.nbJoueur = nbJoueur;
         this.valeurAgilite = valeurAgilite;
@@ -38,7 +51,6 @@ public class Sport {
     public int getpoint() {
         return RandomNumberInRange.getRandomInt(1, this.nbdePointmax);
     }
-    
 
     public String getNomSport() {
         return nomSport;
@@ -80,67 +92,64 @@ public class Sport {
         this.valeurForce = valeurForce;
     }
 
-
-    public boolean hasReglePersonalisee(){
-        return hasregle ; 
+    public boolean hasReglePersonalisee() {
+        return hasregle;
     }
 
-
-    public boolean conditionVictoire(Double a, Double b){
-        if((a>=nbPointVictoireTotale || b>=nbPointVictoireTotale) && nbPointVictoireTotale != null)
+    public boolean conditionVictoire(Double a, Double b) {
+        if ((a >= nbPointVictoireTotale || b >= nbPointVictoireTotale) && nbPointVictoireTotale != null)
             return true;
-        if(ecartDePointMini != null)
-        {
-            if(a>=nbPointMiniPourVictoire && (a-b)>=ecartDePointMini )
+        if (ecartDePointMini != null) {
+            if (a >= nbPointMiniPourVictoire && (a - b) >= ecartDePointMini)
                 return true;
-            if(b>=nbPointMiniPourVictoire && (b-a)>=ecartDePointMini)
+            if (b >= nbPointMiniPourVictoire && (b - a) >= ecartDePointMini)
                 return true;
         }
         return false;
     }
 
-    public void setRegle(int nbPointVictoireTotale, int nbPointMiniPourVictoire, int ecartDePointMini){
+    public void setRegle(int nbPointVictoireTotale, int nbPointMiniPourVictoire, int ecartDePointMini) {
         this.nbPointVictoireTotale = nbPointVictoireTotale;
         this.nbPointMiniPourVictoire = nbPointMiniPourVictoire;
         this.ecartDePointMini = ecartDePointMini;
         this.hasregle = true;
     }
 
-
     @Override
-    public String toString(){
+    public String toString() {
         String textAgilite;
         String textForce;
         String textEndurance;
-        
-            if (valeurAgilite<0.33)
-                textAgilite= " est très demandant en agilite";
-                
-            else if(valeurAgilite<0.66)
-                textAgilite = " est assez demandant en agilite";
-        
-            else textAgilite = " ne demande pas d'agilite";
 
+        if (valeurAgilite < 0.33)
+            textAgilite = " est très demandant en agilite";
 
-            if (valeurForce<0.33)
-                textForce= " est très demandant en force";
-                
-            else if(valeurForce<0.66)
-                textForce = " est assez demandant en force";
-        
-            else textForce = " ne demande pas de force";
+        else if (valeurAgilite < 0.66)
+            textAgilite = " est assez demandant en agilite";
 
+        else
+            textAgilite = " ne demande pas d'agilite";
 
-            if (valeurEndurance<0.33)
-                textEndurance= " est très demandante en endurance";
-                
-            else if(valeurEndurance<0.66)
-                textEndurance = " est assez demandant en endurance";
-        
-            else textEndurance = " ne demande pas d'endurence";
+        if (valeurForce < 0.33)
+            textForce = " est très demandant en force";
 
-            return "la catégorie " + nomSport + textAgilite + " , aussi elle " + textEndurance + " , et enfin elle " + textForce; 
+        else if (valeurForce < 0.66)
+            textForce = " est assez demandant en force";
+
+        else
+            textForce = " ne demande pas de force";
+
+        if (valeurEndurance < 0.33)
+            textEndurance = " est très demandante en endurance";
+
+        else if (valeurEndurance < 0.66)
+            textEndurance = " est assez demandant en endurance";
+
+        else
+            textEndurance = " ne demande pas d'endurence";
+
+        return "la catégorie " + nomSport + textAgilite + " , aussi elle " + textEndurance + " , et enfin elle "
+                + textForce;
 
     }
 }
-
