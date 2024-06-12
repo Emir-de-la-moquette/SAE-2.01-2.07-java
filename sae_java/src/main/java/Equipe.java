@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Equipe implements Participation<Athlete> {
 
-    private static List<Integer> lesID;
+    private static List<Integer> lesID = new ArrayList<>();
 
     private int taille;
 
@@ -15,14 +15,13 @@ public class Equipe implements Participation<Athlete> {
 
     private char sexeEquipe;
 
-    public Equipe(int id, int taille) {
+    public Equipe(int id, int taille) throws IDdejaExistantException {
+        if (lesID.contains(id))
+            throw new IDdejaExistantException("cet id est déjà utilisé");
+        lesID.add(id);
         this.taille = taille;
         this.IDequipe = id;
         this.lesAthletes = new ArrayList<>();
-    }
-
-    public void setID(int id) {
-        this.IDequipe = id;
     }
 
     public int getID() {

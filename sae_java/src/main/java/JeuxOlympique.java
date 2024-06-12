@@ -3,37 +3,39 @@ import java.util.List;
 import java.util.Collections;
 import java.util.Comparator;
 
-
 public class JeuxOlympique {
+
+    private static List<Integer> lesID;
+
     private String lieu;
     private int annee;
 
-    private List<Pays>  lesPays;
+    private List<Pays> lesPays;
     private List<Epreuve> lesEpreuve;
     private List<Sport> lesSports;
-    
-    public JeuxOlympique(String lieu, int annee) {
+
+    public JeuxOlympique(String lieu, int annee) throws IDdejaExistantException {
+        if (lesID.contains(annee))
+            throw new IDdejaExistantException("Des Jeux Olympiques sont déjà organisés cette année");
+        lesID.add(annee);
         this.lieu = lieu;
         this.annee = annee;
         this.lesPays = new ArrayList<>();
         this.lesEpreuve = new ArrayList<>();
         this.lesSports = new ArrayList<>();
     }
-    
+
     public String getLieu() {
         return lieu;
     }
-
 
     public void setLieu(String lieu) {
         this.lieu = lieu;
     }
 
-
     public int getAnnee() {
         return annee;
     }
-
 
     public void setAnnee(int annee) {
         this.annee = annee;
@@ -64,7 +66,6 @@ public class JeuxOlympique {
 
     }
 
-    
     public void retirePays(Pays pays) {
         this.lesPays.add(pays);
 
@@ -76,13 +77,11 @@ public class JeuxOlympique {
         }
     }
 
-
-    /*@return une liste des pays */
+    /* @return une liste des pays */
     public List<Pays> classement(Comparator<Pays> compare) {
         Collections.sort(this.lesPays, compare);
         return this.lesPays;
     }
-
 
     @Override
     public String toString() {

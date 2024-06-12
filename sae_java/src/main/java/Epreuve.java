@@ -9,6 +9,8 @@ import java.util.HashMap;
 
 public class Epreuve implements Participation<Equipe> {
 
+    private static List<Integer> lesID = new ArrayList<>();
+
     private String nomEpreuve;
     private char sexeEpreuve;
 
@@ -30,7 +32,10 @@ public class Epreuve implements Participation<Equipe> {
     private int IDepreuve;
 
     public Epreuve(int id, String nomEpreuve, char sexeEpreuve, String categorieEpreuve, String typeEpreuve,
-            Sport sport) {
+            Sport sport) throws IDdejaExistantException {
+        if (lesID.contains(id))
+            throw new IDdejaExistantException("cet id est déjà utilisé");
+        lesID.add(id);
         this.nomEpreuve = nomEpreuve;
         this.sexeEpreuve = sexeEpreuve;
         this.categorieEpreuve = categorieEpreuve;
@@ -45,7 +50,10 @@ public class Epreuve implements Participation<Equipe> {
     }
 
     public Epreuve(int id, String nomEpreuve, char sexeEpreuve, String categorieEpreuve, String typeEpreuve,
-            Sport sport, double moy, double rec) {
+            Sport sport, double moy, double rec) throws IDdejaExistantException {
+        if (lesID.contains(id))
+            throw new IDdejaExistantException("cet id est déjà utilisé");
+        lesID.add(id);
         this.nomEpreuve = nomEpreuve;
         this.sexeEpreuve = sexeEpreuve;
         this.categorieEpreuve = categorieEpreuve;

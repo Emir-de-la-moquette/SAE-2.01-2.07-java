@@ -1,4 +1,8 @@
+import java.util.List;
+
 public class Athlete {
+
+    private static List<Integer> lesID;
 
     private String nomA;
     private String prenomA;
@@ -8,17 +12,17 @@ public class Athlete {
     private int force;
     private int IDathlete;
 
-    public Athlete(int id, String nomA, String prenomA, char sexeA, int agilite, int endurance, int force) {
+    public Athlete(int id, String nomA, String prenomA, char sexeA, int agilite, int endurance, int force)
+            throws IDdejaExistantException {
+        if (lesID.contains(id))
+            throw new IDdejaExistantException("cet id est déjà utilisé");
+        lesID.add(id);
         this.nomA = nomA;
         this.prenomA = prenomA;
         this.sexeA = sexeA;
         this.agilite = agilite;
         this.endurance = endurance;
         this.force = force;
-        this.IDathlete = id;
-    }
-
-    public void setID(int id) {
         this.IDathlete = id;
     }
 

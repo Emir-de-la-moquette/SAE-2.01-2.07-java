@@ -16,7 +16,7 @@ public class CSVmanager {
     Epreuve ep;
     List<JeuxOlympique> lesJO;
     JeuxOlympique jo;
-    String statusLecture;
+    String statusLecture = "";
 
     /**
      * @param chemin
@@ -26,7 +26,6 @@ public class CSVmanager {
 
         String ligne;
         String split = ",";
-        boolean previousInsert = false;
 
         try (BufferedReader line = new BufferedReader(new FileReader(chemin))) {
             line.readLine();
@@ -40,21 +39,27 @@ public class CSVmanager {
                         break;
 
                     case "<classe> Sports":
+                        majListe(statusLecture);
                         statusLecture = "sport";
                         break;
                     case "<classe> Athletes":
+                        majListe(statusLecture);
                         statusLecture = "athlete";
                         break;
                     case "<classe> Equipes":
+                        majListe(statusLecture);
                         statusLecture = "equip";
                         break;
                     case "<classe> Pays":
+                        majListe(statusLecture);
                         statusLecture = "pays";
                         break;
                     case "<classe> Epreuves":
+                        majListe(statusLecture);
                         statusLecture = "epreuve";
                         break;
                     case "<classe> Jeux Olympique":
+                        majListe(statusLecture);
                         statusLecture = "JO";
                         break;
 
@@ -64,7 +69,17 @@ public class CSVmanager {
                                 if (!(ligneElems[0] == "> insert pays") && !(ligneElems[0] == "> insert epreuve"
                                         && !(ligneElems[0] == "> insert sport")))
                                     if (ligneElems.length == 2) {
-
+                                        try {
+                                            String nom = ligneElems[1];
+                                            int date = Integer.parseInt(ligneElems[0]);
+                                            try {
+                                                jo = new JeuxOlympique(nom, date);
+                                            } catch (Exception x) {
+                                                System.err.println(x);
+                                            }
+                                        } catch (Exception e) {
+                                            System.err.println(e);
+                                        }
                                     } else
                                         System.err.println("Pas le bon insert");
                                 else if (ligneElems[0] == "> insert pays") {
@@ -83,18 +98,18 @@ public class CSVmanager {
                                     for (Epreuve e : lesEpreuves)
                                         if (IdAInsert.contains(e.getID())) {
                                             jo.ajouteEpreuve(e);
-                                            IdAInsert.remove(a.getID());
+                                            IdAInsert.remove(e.getID());
                                         }
                                 }
 
                                 else if (ligneElems[0] == "> insert sport") {
-                                    List<Integer> SportAInsert = new ArrayList<>();
+                                    List<String> SportAInsert = new ArrayList<>();
                                     for (int i = 1; i < ligneElems.length; i++)
-                                        SportAInsert.add(Integer.parseInt(ligneElems[i]));
-                                    for (Sport a : lesSports)
+                                        SportAInsert.add(ligneElems[i]);
+                                    for (Sport s : lesSports)
                                         if (SportAInsert.contains(s.getNomSport())) {
-                                            jo.ajouteSport(a);
-                                            SportAInsert.remove(a.getID());
+                                            jo.ajouteSport(s);
+                                            SportAInsert.remove(s.getNomSport());
                                         }
 
                                 }
@@ -102,9 +117,45 @@ public class CSVmanager {
                             case "epreuve":
                                 if (!(ligneElems[0] == "> insert equipe") && !(ligneElems[0] == "> insert athlete"))
                                     if (ligneElems.length == 6) {
-
+                                        try {
+                                            int id = Integer.parseInt(ligneElems[0]);
+                                            String nom = ligneElems[1];
+                                            char sexe = ligneElems[2].charAt(0);
+                                            String cat = ligneElems[3];
+                                            String type = ligneElems[4];
+                                            Sport sport = null;
+                                            String nomsport = ligneElems[5];
+                                            for (Sport spor : lesSports)
+                                                if (spor.getNomSport().equals(nomsport))
+                                                    sport = spor;
+                                            try {
+                                                if (sport != null)
+                                                    ep = new Epreuve(id, nom, sexe, cat, type, sport);
+                                            } catch (Exception x) {
+                                                System.err.println(x);
+                                            }
+                                        } catch (Exception e) {
+                                            System.err.println(e);
+                                        }
                                     } else if (ligneElems.length == 8) {
-
+                                        int id = Integer.parseInt(ligneElems[0]);
+                                        String nom = ligneElems[1];
+                                        char sexe = ligneElems[2].charAt(0);
+                                        String cat = ligneElems[3];
+                                        String type = ligneElems[4];
+                                        Sport sport = null;
+                                        String nomsport = ligneElems[5];
+                                        Double moy = Double.parseDouble(ligneElems[6]);
+                                        Double rec = Double.parseDouble(ligneElems[7]);
+                                        for (Sport spor : lesSports)
+                                            if (spor.getNomSport().equals(nomsport))
+                                                sport = spor;
+                                        try {
+                                            if (sport != null)
+                                                ep = new Epreuve(id, nom, sexe, cat, type, sport, moy, rec);
+                                        } catch (Exception x) {
+                                            System.err.println(x);
+                                        }
                                     } else
                                         System.err.println("Pas le bon insert");
                                 else if (ligneElems[0] == "> insert equipe") {
@@ -136,7 +187,16 @@ public class CSVmanager {
                             case "pays":
                                 if (!(ligneElems[0] == "> insert equipe") && !(ligneElems[0] == "> insert athlete"))
                                     if (ligneElems.length == 1) {
-
+                                        try {
+                                            String nom = ligneElems[0];
+                                            try {
+                                                pa = new Pays(nom);
+                                            } catch (Exception x) {
+                                                System.err.println(x);
+                                            }
+                                        } catch (Exception e) {
+                                            System.err.println(e);
+                                        }
                                     } else
                                         System.err.println("Pas le bon insert");
                                 else if (ligneElems[0] == "> insert equipe") {
@@ -164,7 +224,8 @@ public class CSVmanager {
                                                 }
                                             }
                                             if (!existe) {
-                                                Equipe equ = new Equipe(Equipe.getNewId(), 1).participer(a);
+                                                Equipe equ = new Equipe(Equipe.getNewId(), 1);
+                                                equ.participer(a);
                                                 lesEquipes.add(equ);
                                                 pa.participer(equ);
                                                 IdAInsert.remove(a.getID());
@@ -180,8 +241,7 @@ public class CSVmanager {
                                             int id = Integer.parseInt(ligneElems[0]);
                                             int taille = Integer.parseInt(ligneElems[1]);
                                             try {
-                                                at = new Equipe(id, taille);
-                                                lesAthletes.add(at);
+                                                eq = new Equipe(id, taille);
                                             } catch (Exception x) {
                                                 System.err.println(x);
                                             }
@@ -213,7 +273,6 @@ public class CSVmanager {
                                         int force = Integer.parseInt(ligneElems[6]);
                                         try {
                                             at = new Athlete(id, nom, prenom, sexe, agili, endur, force);
-                                            lesAthletes.add(at);
                                         } catch (Exception x) {
                                             System.err.println(x);
                                         }
@@ -234,7 +293,6 @@ public class CSVmanager {
                                         Double force = Double.parseDouble(ligneElems[4]);
                                         try {
                                             sp = new Sport(nom, nb, agili, endur, force);
-                                            lesSports.add(sp);
                                         } catch (Exception x) {
                                             System.err.println(x);
                                         }
@@ -252,7 +310,6 @@ public class CSVmanager {
                                         int rec = Integer.parseInt(ligneElems[5]);
                                         try {
                                             sp = new Sport(nom, nb, agili, endur, force, rec);
-                                            lesSports.add(sp);
                                         } catch (Exception x) {
                                             System.err.println(x);
                                         }
@@ -273,4 +330,28 @@ public class CSVmanager {
         }
     }
 
+    public void majListe(String prec) {
+        switch (prec) {
+            case "sport":
+                this.lesSports.add(sp);
+                break;
+            case "athlete":
+                this.lesAthletes.add(at);
+                break;
+            case "equip":
+                this.lesEquipes.add(eq);
+                break;
+            case "pays":
+                this.lesPays.add(pa);
+                break;
+            case "epreuve":
+                this.lesEpreuves.add(ep);
+                break;
+            case "JO":
+                this.lesJO.add(jo);
+                break;
+            default:
+                break;
+        }
+    }
 }
