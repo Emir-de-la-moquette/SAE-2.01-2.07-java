@@ -149,6 +149,8 @@ public class Executable {
 
         System.out.println(Jeu1.getLesMatchs());
         System.out.println(Jeu2.getLesMatchs());
+
+        System.out.println(Jeu1.getClassement());
         //System.out.println(Jeu1.lanceEpreuve());
 
 

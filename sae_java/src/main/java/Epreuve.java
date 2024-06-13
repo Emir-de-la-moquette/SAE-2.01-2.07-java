@@ -31,6 +31,8 @@ public class Epreuve implements Participation<Equipe> {
 
     private int IDepreuve;
 
+    private List<Equipe> classement;
+
     public Epreuve(int id, String nomEpreuve, char sexeEpreuve, String categorieEpreuve, String typeEpreuve,
             Sport sport) throws IDdejaExistantException {
         if (lesID.contains(id))
@@ -40,6 +42,7 @@ public class Epreuve implements Participation<Equipe> {
         this.sexeEpreuve = sexeEpreuve;
         this.categorieEpreuve = categorieEpreuve;
         this.typeEpreuve = typeEpreuve;
+        this.classement = new ArrayList<>();
 
         this.leSport = sport;
 
@@ -83,6 +86,11 @@ public class Epreuve implements Participation<Equipe> {
         return i;
     }
 
+
+    // @return classement
+    public List<Equipe> getClassement() {
+        return classement;
+    }
 
     // @return sexeEpreuve
     public char getSexeEpreuve() {
@@ -357,6 +365,7 @@ public class Epreuve implements Participation<Equipe> {
             if (Classement.size() > 3)
                 Classement.get(2).ajouteMedailleBronze();
 
+            this.classement = Classement;
             return Classement;
         }
 
@@ -432,10 +441,12 @@ public class Epreuve implements Participation<Equipe> {
                 Classement.get(1).ajouteMedailleArgent();
             if (Classement.size() > 2)
                 Classement.get(2).ajouteMedailleBronze();
+            this.classement = Classement;
             return Classement;
         }
 
         else {
+            System.out.println("l'épreuve à rencontrer un problème, et n'a pas pu avoir lieu");
             return Classement;
         }
     }
