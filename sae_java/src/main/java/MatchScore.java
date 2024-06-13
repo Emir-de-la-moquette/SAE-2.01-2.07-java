@@ -1,5 +1,3 @@
-
-
 public class MatchScore extends Match{
     private double score = 0;
     private Equipe equipe;
@@ -47,11 +45,9 @@ public class MatchScore extends Match{
 
     @Override
     public String toString(){
-        String text;
-        text = "Le match " + this.nomMatch;
-        text += ", fait participer l'équipe numéro : " + this.equipe.getID();
-        text += " et cette à réalisé un score de " + String.valueOf(this.score) + "\n";
-        return text;
+        return "Le match " + this.nomMatch
+                + ", fait participer l'équipe numéro : " + this.equipe.getID()
+                + " et cette à réalisé un score de " + String.valueOf(this.score) + "\n";
     }
 }
 

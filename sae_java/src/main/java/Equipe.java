@@ -81,7 +81,7 @@ public class Equipe implements Participation<Athlete> {
     */
     public void participer(Athlete athlete) {
         if(athlete.getSexeA() == this.sexeEquipe) this.lesAthletes.add(athlete);
-        else System.err.println("Pas le bon sexe, transitionne stp");
+        else System.err.println("l'equipe "+ getID() +" ne peut pas être ajouter, le sexe ne correspond pas");
     }
 
     /*

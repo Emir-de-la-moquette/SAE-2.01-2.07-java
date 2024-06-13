@@ -10,8 +10,8 @@ public class Sport {
     private Double valeurAgilite;
     private Double valeurEndurance;
     private Double valeurForce;
-    private Double moyenneAthletique = 1.0;
-    private Double recordMondial = 1.0;
+    // private Double moyenneAthletique = 1.0;
+    // private Double recordMondial = 1.0;
 
     private int nbdePointmax;
 

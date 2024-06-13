@@ -24,7 +24,6 @@ public class Pays implements Participation<Equipe> {
     @Override
     public void participer(Equipe equip) {
         lesEquipes.add(equip);
-
     }
 
     @Override
@@ -74,8 +73,7 @@ public class Pays implements Participation<Equipe> {
         return nbmedaille;
     }
 
-
-    public String toString()  {
+    public String toString() {
         return this.Nompays;
         // + " possede "
         // + String.valueOf(this.getmedailles_bronze()) +" de medailles bronze , "
