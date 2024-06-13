@@ -453,6 +453,6 @@ public class Epreuve implements Participation<Equipe> {
 
     @Override
     public String toString() {
-        return this.categorieEpreuve + " " + this.nomEpreuve + " " + this.sexeEpreuve;
+        return this.categorieEpreuve + " ; " + this.nomEpreuve + " ; " + this.sexeEpreuve;
     }
 }

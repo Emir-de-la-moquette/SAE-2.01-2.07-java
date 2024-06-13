@@ -114,12 +114,18 @@ public class Executable {
          * }
          * System.out.println(resultchifoumi);
          */
+
+        System.out.println(JO2024);
+        
+        System.out.println(Jeu1);
+        
+        //! méthode qui simule les JO
         JO2024.simulJO();
-        // System.out.println(chifoumimi.getLesMatchs());
+
 
         Comparator<Pays> compOr = new CompareMedailleTotal();
         List<Pays> classement = JO2024.classement(compOr);
-        System.out.print(classement);
+        System.out.print("classement final des pays : "+classement);
 
         System.out.println();
 
@@ -149,7 +155,8 @@ public class Executable {
         System.out.println("match de jeu2 : " + Jeu2.getLesMatchs());
         System.out.println("classement de jeu2 : " + Jeu2.getClassement());
 
-        System.out.println(classement.get(0).afficheLesEquipes());
+        System.out.println("toString de première equipe du pays vainqueur : "
+                +classement.get(0).afficheLesEquipes().get(0).getLesAthletes());
         
 
     }

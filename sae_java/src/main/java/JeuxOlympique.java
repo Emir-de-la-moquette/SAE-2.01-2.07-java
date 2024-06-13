@@ -85,6 +85,6 @@ public class JeuxOlympique {
 
     @Override
     public String toString() {
-        return "les JO de" + this.lieu + "de" + this.annee;
+        return "les JO de " + this.lieu + " de " + this.annee;
     }
 }
