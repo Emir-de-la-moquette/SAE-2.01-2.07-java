@@ -3,7 +3,7 @@ import java.util.Comparator;
 public class CompareMedailleArgent implements Comparator<Pays>{
 
     /*
-    *retourne la diffence entre deux pays en terme de medailles dargent 
+    *retourne la difference entre deux pays en terme de medailles dargent 
     *@return int (si positif m1 (pay1) est au dessus de m2 (pays2) en terme de medailles sinon p1 est au dessous de m2 si m1 et m2 sont egale a eux meme representer par 0  on place par ordre d'arriver
     */
     @Override
