@@ -4,7 +4,7 @@ public class CompareMedailleBronze implements Comparator<Pays>{
     
     /*
     *retourne la diffence entre deux pays en terme de medailles de bronze
-    *@return int (si positif m1 (pay1) est au dessus de m2 (pays2) sinon p1 est au dessous de p2 si p1 et p2 sont egale a eux meme representer par 0  on place par ordre d'arriver
+    *@return int (si positif m1 (pay1) est au dessus de m2 (pays2) en terme de medailles sinon p1 est au dessous de p2 si p1 et p2 sont egale a eux meme representer par 0  on place par ordre d'arriver
     */
     
     @Override
