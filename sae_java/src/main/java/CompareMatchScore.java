@@ -1,6 +1,10 @@
 import java.util.Comparator;
 public class CompareMatchScore implements Comparator<MatchScore> {
 
+/*
+*retourne la diffence entre deux matche score via un entier 
+*@return int (si positif m1 est gagnant sinon m1 est perdant si 0 m1 et m2 on le meme scoredonc ce'st par ordre d'arriver
+*/
 @Override
 public int compare(MatchScore m1, MatchScore m2) {
 double malo1 = m1.getScore()*1000;
