@@ -13,18 +13,21 @@ public class Executable {
 
         JeuxOlympique JO2024 = new JeuxOlympique("France", 2024);
 
-        Sport chifoumi = new Sport("chifoumi", 1, 0.7, 0.1, 0.1, 2);
-        Sport ppc = new Sport("pierrepapierciseaux", 1, 0.7, 0.1, 0.1, 2);
-        Sport tennis = new Sport("tennis", 2, 0.4, 0.4, 0.2, 6);
+        Sport sport1 = new Sport("sport1", 1, 0.7, 0.1, 0.1, 2);
+        Sport sport2 = new Sport("sport2", 1, 0.7, 0.1, 0.1, 2);
+        Sport sport3 = new Sport("sport3", 2, 0.4, 0.4, 0.2, 6);
 
 
-        Epreuve chifoumimi = new Epreuve(1,"chifoumimi", 'H' , "junior", "Score", chifoumi);
-        Epreuve pierrepapierciseaux = new Epreuve(2,"pierrepapierciseaux", 'H' , "junior", "Duel", ppc);
-        Epreuve tennnis = new Epreuve(3,"teniis", 'H', "senior", "Score", tennis);
+        Epreuve Jeu1 = new Epreuve(1,"Jeu1", 'H' , "junior", "Score", sport1);
+        Epreuve Jeu2 = new Epreuve(2,"Jeu2", 'H' , "junior", "Duel", sport2);
+        Epreuve Jeu3 = new Epreuve(3,"Jeu3", 'H', "senior", "Score", sport3);
 
 
-        JO2024.ajouteSport(chifoumi);
-        JO2024.ajouteEpreuve(chifoumimi);
+        JO2024.ajouteSport(sport1);
+        JO2024.ajouteSport(sport2);
+
+        JO2024.ajouteEpreuve(Jeu1);
+        JO2024.ajouteEpreuve(Jeu2);
 
         
         Pays france = new Pays("France");
@@ -102,14 +105,15 @@ public class Executable {
         equipeCNchiffoumi.participer(atl3);
         equipeUSchiffoumi.participer(atl4);
 
-        chifoumimi.participer(equipeFRchiffoumi);
-        chifoumimi.participer(equipePLchiffoumi);
-        chifoumimi.participer(equipeCNchiffoumi);
-        chifoumimi.participer(equipeUSchiffoumi);
+        Jeu1.participer(equipeFRchiffoumi);
+        Jeu1.participer(equipePLchiffoumi);
+        Jeu1.participer(equipeCNchiffoumi);
+        Jeu1.participer(equipeUSchiffoumi);
 
-        pierrepapierciseaux.participer(equipeFRchiffoumi);
-        pierrepapierciseaux.participer(equipePLchiffoumi);
-        pierrepapierciseaux.participer(equipeCNchiffoumi);
+        Jeu2.participer(equipeFRchiffoumi);
+        Jeu2.participer(equipePLchiffoumi);
+        Jeu2.participer(equipeCNchiffoumi);
+        Jeu1.participer(equipeUSchiffoumi);
 
 
 
@@ -119,21 +123,33 @@ public class Executable {
             System.out.println(equip.toString());
         }
         System.out.println(resultchifoumi);*/
-        //JO2024.simulJO();
+        JO2024.simulJO();
         //System.out.println(chifoumimi.getLesMatchs());
 
 
-        //Comparator compOr = new CompareMedailleOr();
+        Comparator<Pays> compOr = new CompareMedailleTotal();
+        System.out.print(JO2024.classement(compOr));
 
+        System.out.println();
+
+
+        System.out.println("nb medaille d'or de '"+JO2024.classement(compOr).get(0).getNompays()+"' qui a obtenue : "+JO2024.classement(compOr).get(0).getmedailles_or());
+        System.out.println("nb medaille d'argent de '"+JO2024.classement(compOr).get(0).getNompays()+"' qui a obtenue : "+JO2024.classement(compOr).get(0).getmedailles_argent());
+        System.out.println("nb medaille d'bronze de '"+JO2024.classement(compOr).get(0).getNompays()+"' qui a obtenue : "+JO2024.classement(compOr).get(0).getmedailles_bronze());
 
         
-        //JO2024.simulJO();
-        //CompareMedailleOr compOr = new CompareMedailleOr();
+        System.out.println();
 
-        //System.out.print(JO2024.classement(compOr));
-        //System.out.println(chifoumimi.getLesMatchs());
+        System.out.println("nb medaille d'or de '"+JO2024.classement(compOr).get(1).getNompays()+"' qui a obtenue : "+JO2024.classement(compOr).get(1).getmedailles_or());
+        System.out.println("nb medaille d'argent de '"+JO2024.classement(compOr).get(1).getNompays()+"' qui a obtenue : "+JO2024.classement(compOr).get(1).getmedailles_argent());
+        System.out.println("nb medaille d'bronze de '"+JO2024.classement(compOr).get(1).getNompays()+"' qui a obtenue : "+JO2024.classement(compOr).get(1).getmedailles_bronze());
 
-        System.out.println(chifoumimi.lanceEpreuve());
+
+        System.out.println();
+
+        System.out.println(Jeu1.getLesMatchs());
+        System.out.println(Jeu2.getLesMatchs());
+        //System.out.println(Jeu1.lanceEpreuve());
 
 
 

@@ -98,10 +98,10 @@ public class Equipe implements Participation<Athlete> {
 
     @Override
     public String toString() {
-        return "l'équipe numéro " + this.getID()
-                + " possède medaille d'or : " + this.getNbMedailleOr()
-                + " possède medaille d'argent : " + this.getNbMedailleArgent()
-                + " possède medaille de bronze : " + this.getNbMedailleBronze();
+        return "l'équipe numéro " + this.getID();
+                //+ " possède medaille d'or : " + this.getNbMedailleOr()
+                //+ " possède medaille d'argent : " + this.getNbMedailleArgent()
+                //+ " possède medaille de bronze : " + this.getNbMedailleBronze();
     }
 
 }

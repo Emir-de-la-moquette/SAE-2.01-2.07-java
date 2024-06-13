@@ -1,4 +1,4 @@
-import java.io.BufferedReader;
+/**import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +18,9 @@ public class DATAmanager {
     JeuxOlympique jo;
     String statusLecture = "";
 
-    /**
+    /#/
      * @param chemin
-     */
+     \#\
     public void dataToListe(String chemin) {
         // List<Athlete> listeAthletes = new ArrayList<>();
 
@@ -354,4 +354,4 @@ public class DATAmanager {
                 break;
         }
     }
-}
+}\#\ */

@@ -39,7 +39,7 @@ public class CSVmanager {
 
                         Athlete ath = new Athlete(Athlete.getNewId(), nom, prenom, sexe, force, endurance, agilite);
                         lesAthletes.add(ath);
-                        Equipe eqSolo = new Equipe(Equipe.getNewId(), 1);
+                        Equipe eqSolo = new Equipe(Equipe.getNewId(), 1, sexe); // a voir
                         eqSolo.participer(ath);
                         lesEquipes.add(eqSolo);
 
