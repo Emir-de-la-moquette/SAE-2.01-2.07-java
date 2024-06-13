@@ -32,7 +32,7 @@ public class CSVmanager {
                         String nomPays = ligneElems[3];
                         Pays pays = new Pays(nomPays);
                         String nomSport = ligneElems[4];
-                        String nomEpreuve = ligneElems[5];
+                        int idEpreuve = Integer.parseInt(ligneElems[5]);
                         int force = Integer.parseInt(ligneElems[6]);
                         int endurance = Integer.parseInt(ligneElems[7]);
                         int agilite = Integer.parseInt(ligneElems[8]);
@@ -43,33 +43,47 @@ public class CSVmanager {
                         eqSolo.participer(ath);
                         lesEquipes.add(eqSolo);
 
-                        if (!(lesPays.contains(pays))) {
-                            pays.participer(eqSolo);
-                            lesPays.add(pays);
-                        } else
+                        for(Pays pa : lesPays){
+                            if(pa.getNompays().equals(nomPays)){
+                                pays.participer(eqSolo);
+                                lesPays.add(pays);
+                                break;
+                            }
                             lesPays.get(lesPays.indexOf(pays)).participer(eqSolo);
+                        }
 
-                        for (Sport sp : lesSports) {
-                            if (sp.getNomSport().equals(nomSport)) {
-                                if (sp.getNbJoueur() == 1)
+
+                        if(lesSports.contains(nomSport)){
+                            Sport sp = lesSports.get(lesSports.indexOf(nomSport));
+                                if (les.getNbJoueur() == 1)
                                     for (Epreuve ep : lesEpreuves) {
-                                        if (ep.getNomEpreuve().equals(nomEpreuve)) {
+                                        if (ep.getID()==idEpreuve) {
                                             ep.participer(eqSolo);
                                             break;
                                         }
-                                        Epreuve newEP = new Epreuve(Epreuve.getNewId(), nomEpreuve, sexe, "inconnue",
-                                                "inconnue", sp);
+                                        if(lesEpreuves.indexOf(ep)==lesEpreuves.size()-1){
+                                        Epreuve newEP = new Epreuve(Epreuve.getNewId(), "nom Epreuve", sexe, "inconnue",
+                                                "score", sp);
+                                        System.out.println("Veuillez configurer l'épreuve");
                                         newEP.participer(eqSolo);
-                                        lesEpreuves.add(newEP);
+                                        lesEpreuves.add(newEP);}
 
                                     }
                                 else {
                                     System.err.println("Le sport indiqué n'est pas fait pour les athletes seuls");
                                 }
+                                
                             }
+                        else{
+                            Sport newSport = new Sport(nomSport, 1, 5, 5, 5);
+                            lesSports.add(newSport);
+                            Epreuve newEP = new Epreuve(Epreuve.getNewId(), "nom Epreuve", sexe, "inconnue",
+                                                "score", newSport);
+                            System.out.println("Veuillez configurer l'épreuve");
+                            newEP.participer(eqSolo);
+                            lesEpreuves.add(newEP);}
                         }
-                    }
-
+                       
                     catch (Exception e) {
                         System.out.println("erreur format ligne : " + ligne);
                     }
