@@ -55,7 +55,7 @@ public class CSVmanager {
 
                         if(lesSports.contains(nomSport)){
                             Sport sp = lesSports.get(lesSports.indexOf(nomSport));
-                                if (les.getNbJoueur() == 1)
+                                if (sp.getNbJoueur() == 1)
                                     for (Epreuve ep : lesEpreuves) {
                                         if (ep.getID()==idEpreuve) {
                                             ep.participer(eqSolo);
@@ -75,7 +75,7 @@ public class CSVmanager {
                                 
                             }
                         else{
-                            Sport newSport = new Sport(nomSport, 1, 5, 5, 5);
+                            Sport newSport = new Sport(nomSport, 1, 5.0, 5.0, 5.0, 1);
                             lesSports.add(newSport);
                             Epreuve newEP = new Epreuve(Epreuve.getNewId(), "nom Epreuve", sexe, "inconnue",
                                                 "score", newSport);

@@ -1,7 +1,7 @@
 /* au cas ou :
 
- * compiler : javac -d bin src/main/java/*.java
- * executer : java -cp bin Executable
+ ! compiler : javac -d bin src/main/java/*.java
+ ! executer : java -cp bin Executable
  * 
  * jusqu'au jour ou on fera de l'IHM
  */
