@@ -13,7 +13,7 @@ public class Executable {
 
         JeuxOlympique JO2024 = new JeuxOlympique("France", 2024);
 
-        Sport sport1 = new Sport("sport1", 1, 0.7, 0.1, 0.1, 2);
+        Sport sport1 = new Sport("sport1", 1, 0.7, 0.1, 0.1, 1);
         Sport sport2 = new Sport("sport2", 1, 0.7, 0.1, 0.1, 2);
         Sport sport3 = new Sport("sport3", 2, 0.4, 0.4, 0.2, 6);
 
@@ -23,6 +23,8 @@ public class Executable {
 
         JO2024.ajouteSport(sport1);
         JO2024.ajouteSport(sport2);
+
+        sport2.setRegle(1, 1, 3);
 
         JO2024.ajouteEpreuve(Jeu1);
         JO2024.ajouteEpreuve(Jeu2);

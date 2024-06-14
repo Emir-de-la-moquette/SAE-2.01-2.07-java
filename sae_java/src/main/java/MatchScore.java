@@ -22,17 +22,17 @@ public class MatchScore extends Match{
                     boolean inv  = this.recordMondial<this.moyenneAthletique;
                     double scoretp = 0.0;
                     if(!inv){
-                    scoretp = (this.moyenneAthletique 
+                    scoretp = ((this.moyenneAthletique 
                                         + (this.sport.getValeurAgilite()*athlete.getAgilite())/(50/this.moyenneAthletique) 
                                         + (this.sport.getValeurEndurance()*athlete.getEndurance()/(50/this.moyenneAthletique)) 
                                         + (this.sport.getValeurForce()*athlete.getForce()/(50/this.moyenneAthletique)))
-                                        * RandomNumberInRange.getRandom(0.6, 1.2);
+                                        * RandomNumberInRange.getRandom(0.8, 1.1))*100000000%sport.getNbdePointmax();
                     } else {
-                    scoretp = (this.moyenneAthletique 
+                    scoretp = ((this.moyenneAthletique 
                                         - (this.sport.getValeurAgilite()*athlete.getAgilite())/(50/this.moyenneAthletique) 
                                         - (this.sport.getValeurEndurance()*athlete.getEndurance()/(50/this.moyenneAthletique)) 
                                         - (this.sport.getValeurForce()*athlete.getForce()/(50/this.moyenneAthletique)))
-                                        * RandomNumberInRange.getRandom(0.6, 1.2);
+                                        * RandomNumberInRange.getRandom(0.8, 1.1))*100000000%sport.getNbdePointmax();
                     }
                     
                     if (score < scoretp){score = scoretp;}

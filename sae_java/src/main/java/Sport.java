@@ -15,6 +15,7 @@ public class Sport {
 
     private int nbdePointmax;
 
+
     // REGLE PERSONALISE
     protected boolean hasregle;
     protected Integer nbPointVictoireTotale;
@@ -56,6 +57,15 @@ public class Sport {
         return RandomNumberInRange.getRandomInt(1, this.nbdePointmax);
     }
 
+
+    /*
+    *retourne le nombre de point max d'un sport
+    *@return int nbdePointmax
+    */
+    public int getNbdePointmax() {
+        return nbdePointmax;
+    }
+    
     /*
     *retourne le nom du sport
     *@return String nomSport
@@ -163,7 +173,9 @@ public class Sport {
 
     /*
     *modifie les regle pour un sport
-    *@param int nbPointVictoireTotale int nbPointMiniPourVictoire int ecartDePointMini
+    *@param int nbPointVictoireTotale : le nombre de points nécessaire pour gagner sans condition
+    *@param int nbPointMiniPourVictoire :  le nombre de points mini avant que la condition d'écart de points soit remplie
+    *@param int ecartDePointMini : ecrat minimum de point entre joueur 1 et joueur 2
     */
     public void setRegle(int nbPointVictoireTotale, int nbPointMiniPourVictoire, int ecartDePointMini) {
         this.nbPointVictoireTotale = nbPointVictoireTotale;
