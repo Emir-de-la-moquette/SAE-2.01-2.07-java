@@ -31,6 +31,8 @@ public class Epreuve implements Participation<Equipe> {
 
     private int IDepreuve;
 
+    private List<Equipe> classement;
+
     public Epreuve(int id, String nomEpreuve, char sexeEpreuve, String categorieEpreuve, String typeEpreuve,
             Sport sport) throws IDdejaExistantException {
         if (lesID.contains(id))
@@ -40,6 +42,7 @@ public class Epreuve implements Participation<Equipe> {
         this.sexeEpreuve = sexeEpreuve;
         this.categorieEpreuve = categorieEpreuve;
         this.typeEpreuve = typeEpreuve;
+        this.classement = new ArrayList<>();
 
         this.leSport = sport;
 
@@ -69,12 +72,19 @@ public class Epreuve implements Participation<Equipe> {
 
     }
 
-
+    /*
+    *retourne l'identifiant de l'epreuve
+    *@return int IDepreuve
+    */
     public int getID() {
         return IDepreuve;
     }
 
 
+    /*
+    *retourne le nouveau identifiant de l'epreuve
+    *@return int 
+    */
     public static int getNewId() {
         int i = 20000;
         while (lesID.contains(i))
@@ -83,91 +93,141 @@ public class Epreuve implements Participation<Equipe> {
         return i;
     }
 
+    /*
+    *retourne la liste des classement de l'epreuve
+    *@return List<Equipe> classement
+    */
+    
+    public List<Equipe> getClassement() {
+        return classement;
+    }
 
-    // @return sexeEpreuve
+    /*
+    *retourne le sexe prevue pour l'epreuve
+    *@@return char sexeEpreuve
+    */
+    
     public char getSexeEpreuve() {
         return sexeEpreuve;
     }
 
-    // @return nomEpreuve
+
+    /*
+    *retourne le sexe prevue pour l'epreuve
+    *@return String nomEpreuve
+    */
     public String getNomEpreuve() {
         return this.nomEpreuve;
     }
 
-    //set le nomEpreuve
-    // @param String nomEpreuve
+    /*
+    *modifie le nom de l'epreuve
+    *@param String nomEpreuve
+    */
     public void setNomEpreuve(String nomEpreuve) {
         this.nomEpreuve = nomEpreuve;
     }
 
-    // @return moyenneAthletique
+    /*
+    *retourne la moyenne Athletique attribuer pour l'epreuve
+    *@return double moyenneAthletique
+    */
     public double getMoyenneAthlet() {
         return this.moyenneAthletique;
     }
 
-    // @return recordMondial
+    /*
+    *retourne le record Mondial attribuer a l'epreuve
+    *@return double recordMondial
+    */
     public double getRecordMondil() {
         return this.recordMondial;
     }
 
-    // @return lesMatchs
+    /*
+    *retourne la liste des matchs attribuer a l'epreuve
+    *@return  List<Match>  lesMatchs
+    */
     public List<Match> getLesMatchs() {
         return lesMatchs;
     }
 
-    //set la moyenneAthletique
-    // @param double moye
+    /*
+    *modifie la moyenne Athletique attribuer a l'epreuve
+    *@param double moye
+    */    
     public void setMoyenneAthlet(double moye) {
         this.moyenneAthletique = moye;
     }
 
 
-    //set le recordMondial
-    // @param double rec
+    /*
+    *modifie le record Mondial de l'epreuve
+    * @param double rec
+    */    
     public void setRecordMondil(double rec) {
         this.recordMondial = rec;
     }
 
-    // @return categorieEpreuve
+    
+    /*
+    *retourne la Categorie de Epreuve (les indications de la pécificité de l'epreuve sur 100m , a l'epee)
+    * @return String categorieEpreuve
+    */  
     public String getCategorieEpreuve() {
         return categorieEpreuve;
     }
 
-    //set le categorieEpreuve
-    // @param String categorieEpreuve
+    /*
+    *modifie la Categorie de Epreuve (les indications de la pécificité de l'epreuve sur 100m , a l'epee)
+    * @param String categorieEpreuve
+    */  
     public void setCategorieEpreuve(String categorieEpreuve) {
         this.categorieEpreuve = categorieEpreuve;
     }
 
-    // @return typeEpreuve
+    /*
+    *retourne le type de l'Epreuve
+    *@return String typeEpreuve
+    */  
     public String getTypeEpreuve() {
         return typeEpreuve;
     }
 
-    // set le typeEpreuve
-    // @param String typeEpreuve
+
+    /*
+    *modifie le type de l'Epreuve 
+    * @param  String typeEpreuve
+    */  
     public void setTypeEpreuve(String typeEpreuve) {
         this.typeEpreuve = typeEpreuve;
     }
 
-    // @return leSport
+    /*
+    *retourne le Sport de l'Epreuve 
+    *  @return Sport leSport
+    */  
+
     public Sport getLeSports() {
         return this.leSport;
     }
-
-    //set leSport
-    // @param Sport lesSports
+    
+    /*
+    *modifie le Sport de l'Epreuve 
+    *  @param Sport leSport
+    */  
     public void setLeSports(Sport lesSports) {
         this.leSport = lesSports;
     }
 
-    // @param : une équipe
-    // fait participer une équipe à l'épreuve
+    /*
+    * fait participer une équipe à l'épreuve avec des conditions
+    * @param  Equipe equipe soit une équipe
+    */  
     @Override
-
     public void participer(Equipe equipe) throws Exception {
-        if (equipe.estALaBonneTaille())
-            if (equipe.getSexeEquipe() == this.sexeEpreuve)
+        if (equipe.estALaBonneTaille())                        // si l'epreuve est de la bonne taille
+            if (equipe.getSexeEquipe() == this.sexeEpreuve)    // si l'epreuve et l'equipe est du bon sexe
                 this.lesEquipes.add(equipe);
             else
                 throw new PasLeBonSexeException("Le sexe des athletes ne correspond pas au type de l'épreuve");
@@ -176,22 +236,30 @@ public class Epreuve implements Participation<Equipe> {
 
     }
 
-    // @param : une équipe
-    // retire une équipe à l'épreuve
+
+    /*
+    * fait retirer une équipe de l'épreuve 
+    * @param  Equipe equipe soit une équipe
+    */  
     @Override
     public void retirer(Equipe equipe) throws NoSuchElementException {
         this.lesEquipes.remove(equipe);
 
     }
 
-    // affiche les équipes participant à l'épreuve
-    // @return lesEquipes
+
+    /*
+    * affiche les équipes participant à l'épreuve
+    * @return List<Equipe> lesEquipes (une liste des equipe qui participe a l'epreuve)
+    */  
     public List<Equipe> afficheLesEquipes() {
         return this.lesEquipes;
     }
 
-    // affiche les matchs de l'épreuve
-    // @return lesMatchs
+    /*
+    * affiche les matchs de l'épreuve
+    * @return List<Match> lesMatchs
+    */  
     public List<Match> afficheLesMatchs() {
         return this.lesMatchs;
     }
@@ -357,6 +425,7 @@ public class Epreuve implements Participation<Equipe> {
             if (Classement.size() > 3)
                 Classement.get(2).ajouteMedailleBronze();
 
+            this.classement = Classement;
             return Classement;
         }
 
@@ -432,16 +501,18 @@ public class Epreuve implements Participation<Equipe> {
                 Classement.get(1).ajouteMedailleArgent();
             if (Classement.size() > 2)
                 Classement.get(2).ajouteMedailleBronze();
+            this.classement = Classement;
             return Classement;
         }
 
         else {
+            System.out.println("l'épreuve à rencontrer un problème, et n'a pas pu avoir lieu");
             return Classement;
         }
     }
 
     @Override
     public String toString() {
-        return this.categorieEpreuve + " " + this.nomEpreuve + " " + this.sexeEpreuve;
+        return this.categorieEpreuve + " ; " + this.nomEpreuve + " ; " + this.sexeEpreuve;
     }
 }

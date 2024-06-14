@@ -93,7 +93,7 @@ public class MatchDuel extends Match{
     @Override
     public String toString(){
         String text;
-        text = "Le match " + this.nomMatch + ": " + this.equipe1 + " / " + this.equipe2 + " ; " + this.score1 + " / " + this.score2;
+        text = "Le match " + this.nomMatch + ": " + this.equipe1 + " / " + this.equipe2 + " ; " + this.score1 + " / " + this.score2 + "\n";
         /*text += ", fait participer l'équipe : " + this.equipe;
         text += " et cette à réalisé un score de " + this.score;*/
         return text;

@@ -8,6 +8,7 @@ public class Match {
     protected double moyenneAthletique = 1;
     protected double recordMondial = 1;
 
+
     public Match(Sport sport, double moy, double rec){
         this.sport = sport;
         this.moyenneAthletique = moy;
@@ -26,7 +27,13 @@ public class Match {
         this.nomMatch = this.sport.getNomSport() + " Match n°" + numMatch;
     }
 
+    public double getRecordMondial() {
+        return this.recordMondial;   
+    }
+
     public static void clearNum(){ Match.numMatch=0;};
 
     public void deroulerMatch(){}
+
+
 }

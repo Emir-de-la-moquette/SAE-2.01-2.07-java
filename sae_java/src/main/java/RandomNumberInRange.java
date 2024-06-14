@@ -1,13 +1,20 @@
+/** public class RandomNumberInRange */
 public class RandomNumberInRange {
+	/** public static double getRandom(double min, double max)
+	 * @param min double
+	 * @param max double
+	 * @return double double
+	 */
 	public static double getRandom(double min, double max) {
-
-		double range = (max - min);
-     		double random = ((range * Math.random()) + min);
-		return random;
+     		return (((max - min) * Math.random()) + min);
 	}
 
+	/** public static int getRandomInt(int min, int max) 
+	 * @param min int
+	 * @param max int
+	 * @return int int
+	*/
 	public static int getRandomInt(int min, int max) {
-		int randomInt = (int)Math.round(getRandom(min, max)+0.01);
-		return randomInt;
+		return (int)getRandom(min, max);
 	}
 }

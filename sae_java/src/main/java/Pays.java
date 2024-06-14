@@ -17,29 +17,52 @@ public class Pays implements Participation<Equipe> {
         this.lesEquipes = new ArrayList<>();
     }
 
+    /*
+    *affiche Les Equipes d'un pays
+    *@return List<Equipe> lesEquipes
+    */
     public List<Equipe> afficheLesEquipes() {
         return this.lesEquipes;
     }
 
+    /*
+    *ajoute une Equipes dans les Equipes d'un pays
+    *@param Equipe equip 
+    */
     @Override
     public void participer(Equipe equip) {
         lesEquipes.add(equip);
-
     }
 
+    /*
+    *retire une Equipes dans les Equipes d'un pays
+    *@param Equipe equip 
+    */
     @Override
     public void retirer(Equipe equip) {
         lesEquipes.remove(equip);
     }
 
+    /*
+    *retourne le nom d'un pays
+    *@return String Nompays
+    */
     public String getNompays() {
         return Nompays;
     }
 
+    /*
+    *modifie le nom d'un pays
+    *@param String Nompays
+    */
     public void setNompays(String nompays) {
         Nompays = nompays;
     }
 
+    /*
+    *retourne les medailles d'or d'un pays
+    *@return int nbmedaille_or
+    */
     public int getmedailles_or() {
         int nbmedaille_or = 0;
         for (Equipe groupes : this.lesEquipes) {
@@ -48,6 +71,11 @@ public class Pays implements Participation<Equipe> {
         return nbmedaille_or;
     }
 
+    
+    /*
+    *retourne les medailles d'argent d'un pays
+    *@return int nbmedaille_argent
+    */
     public int getmedailles_argent() {
         int nbmedaille_Argent = 0;
         for (Equipe groupes : this.lesEquipes) {
@@ -56,6 +84,10 @@ public class Pays implements Participation<Equipe> {
         return nbmedaille_Argent;
     }
 
+    /*
+    *retourne les medailles de bronze d'un pays
+    *@return int nbmedaille_bronze
+    */
     public int getmedailles_bronze() {
         int nbmedaille_bronze = 0;
         for (Equipe groupes : this.lesEquipes) {
@@ -64,6 +96,11 @@ public class Pays implements Participation<Equipe> {
         return nbmedaille_bronze;
     }
 
+    
+    /*
+    *retourne la totaliter medailles d'un pays
+    *@return int nbmedaille
+    */
     public int getmedailles_total() {
         int nbmedaille = 0;
         for (Equipe groupes : this.lesEquipes) {
@@ -74,8 +111,7 @@ public class Pays implements Participation<Equipe> {
         return nbmedaille;
     }
 
-
-    public String toString()  {
+    public String toString() {
         return this.Nompays;
         // + " possede "
         // + String.valueOf(this.getmedailles_bronze()) +" de medailles bronze , "
