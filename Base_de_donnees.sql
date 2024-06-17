@@ -1,4 +1,5 @@
---create database JO;
+import MySQL
+create database JO;
 
 
 
@@ -94,4 +95,30 @@ insert INTo Pays values ();
 insert INTo Athlete values ();
 insert INTo equipe values ();
 
+*/
+
+/*
+create role administrateur;
+create role organisateur;
+create role journaliste;
+
+create user toto IDENTIFIED BY motPasse1;
+create user heinz IDENTIFIED BY motPasse2;
+create user ben IDENTIFIED BY motPasse3;
+
+grant all on JO to administrateur;
+
+grant insert,update,delete on JO.Epreuve to organisateur;
+
+
+
+
+grant administrateur to toto;
+grant organisateur to heinz;
+grant journaliste to ben;
+
+
+show grants for toto;
+show grants for heinz;
+show grants for ben;
 */
