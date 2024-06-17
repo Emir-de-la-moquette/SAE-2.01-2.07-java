@@ -1,38 +1,88 @@
 --create database JO;
 
-drop table Sport;
-drop table JeuxOlympique;
+
 drop table Epreuve;
 drop table Matchs;
 drop table Pays;
 drop table Athlete;
 drop table Equipe;
+drop table JeuxOlympique;
+drop table Sport;
 
 
-create table Sport(id_sport varchar(70),valeurForce int(100),valeurEndurance int(100),valeurAgilite int(100),nbjoueur INT);
 
-create table JeuxOlympique(id_JeuxOlympique INT,nomJeuxOlympique varchar(40),lieu varchar(100),annee DATE);
+create table Sport(
+    id_sport varchar(70),
+    valeurForce INT(100),
+    valeurEndurance INT(100),
+    valeurAgilite INT(100),
+    nbjoueur INT,
+     PRIMARY KEY (id_sport));
 
-create table Epreuve(id_Epreuve INT,nomEpreuve varchar(100),categorieEpreuve varchar(100),typeEpreuve varchar(100),sexEpreuve varchar(1));
+create table JeuxOlympique(
+    id_JeuxOlympique INT,
+    nomJeuxOlympique varchar(40),
+    lieu varchar(100),
+    annee DATE,
+    id_sport varchar(70),
+    PRIMARY KEY (id_JeuxOlympique));
 
-create table Matchs(id_Match INT,Matchtypes varchar(10),score INT);
+create table Epreuve(
+    id_Epreuve INT,
+    id_sport varchar(70),
+    nomEpreuve varchar(100),
+    categorieEpreuve varchar(100),
+    typeEpreuve varchar(100),
+    sexEpreuve varchar(1),
+    PRIMARY KEY (id_Epreuve));
 
-create table Pays(id_pays varchar(100),medpays_or INT,medpays_argent INT,medpay_bronze INT);
+create table Matchs(
+    id_Match INT,
+    Matchtypes varchar(10),
+    score INT,
+    PRIMARY KEY (id_Match,Matchtypes));
 
-create table Athlete(id_Athlete INT,NomAt varchar(50),PrenomAT varchar(50),SexeAT varchar(1),stats_Force int(100),stats_Endurance int(100),stats_agilite int(100));
+create table Pays(
+    id_pays varchar(100),
+    medpays_or INT,
+    medpays_argent INT,
+    medpay_bronze INT,
+    id_JeuxOlympique INT,
+    PRIMARY KEY (id_pays));
 
-create table Equipe(id_Equipe INT,medEquipe_or INT,medEquipe_argent INT,medEquipe_bronze INT,sexeEquipe varchar(1));
+create table Athlete(
+    id_Athlete INT,
+    NomAt varchar(50),
+    PrenomAT varchar(50),
+    SexeAT varchar(1),
+    stats_Force INT(100),
+    stats_Endurance INT(100),
+    stats_agilite INT(100),
+    id_Equipe INT,
+    PRIMARY KEY (id_Athlete));
 
+create table Equipe(
+    id_Equipe INT,
+    medEquipe_or INT,
+    medEquipe_argent INT,
+    medEquipe_bronze INT,
+    sexeEquipe varchar(1),
+    PRIMARY KEY (id_Equipe));
+
+ALTER TABLE JeuxOlympique ADD FOREIGN KEY (id_sport) REFERENCES Sport(id_sport);
+ALTER TABLE Athlete ADD FOREIGN KEY (id_Equipe) REFERENCES Equipe(id_Equipe);
+ALTER TABLE Pays ADD FOREIGN KEY (id_JeuxOlympique) REFERENCES JeuxOlympique(id_JeuxOlympique);
+ALTER TABLE Epreuve ADD FOREIGN KEY (id_sport) REFERENCES Sport(id_sport);
 
 
 /*
 
-insert into Sport values ();
-insert into JeuxOlympique values ();
-insert into Epreuve values ();
-insert into Matchs values ();
-insert into Pays values ();
-insert into Athlete values ();
-insert into equipe values ();
+insert INTo Sport values ();
+insert INTo JeuxOlympique values ();
+insert INTo Epreuve values ();
+insert INTo Matchs values ();
+insert INTo Pays values ();
+insert INTo Athlete values ();
+insert INTo equipe values ();
 
 */
