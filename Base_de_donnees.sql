@@ -1,8 +1,9 @@
 --create database JO;
 
 
-drop table Epreuve;
+
 drop table Matchs;
+drop table Epreuve;
 drop table Pays;
 drop table Athlete;
 drop table Equipe;
@@ -38,8 +39,13 @@ create table Epreuve(
 
 create table Matchs(
     id_Match INT,
+    id_Epreuve INT,
     Matchtypes varchar(10),
-    score INT,
+    scoreE1 INT,
+    scoreE2 INT,
+    equipe1 INT,
+    equipe2 INT,
+
     PRIMARY KEY (id_Match,Matchtypes));
 
 create table Pays(
@@ -73,7 +79,10 @@ ALTER TABLE JeuxOlympique ADD FOREIGN KEY (id_sport) REFERENCES Sport(id_sport);
 ALTER TABLE Athlete ADD FOREIGN KEY (id_Equipe) REFERENCES Equipe(id_Equipe);
 ALTER TABLE Pays ADD FOREIGN KEY (id_JeuxOlympique) REFERENCES JeuxOlympique(id_JeuxOlympique);
 ALTER TABLE Epreuve ADD FOREIGN KEY (id_sport) REFERENCES Sport(id_sport);
+ALTER TABLE Matchs ADD FOREIGN KEY (id_Epreuve) REFERENCES Epreuve(id_Epreuve);
 
+
+--revoir pour match
 
 /*
 
