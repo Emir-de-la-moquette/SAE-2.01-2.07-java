@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -17,6 +18,7 @@ public class Epreuve implements Participation<Equipe> {
     private String categorieEpreuve;
     private String typeEpreuve;
 
+    private List<Equipe> SavelesEquipes;
     private List<Equipe> lesEquipes;
 
     // Liste de match/liste d'équipe/
@@ -33,8 +35,20 @@ public class Epreuve implements Participation<Equipe> {
 
     private List<Equipe> classement;
 
+    
+    private Double valeurAgilite;
+    private Double valeurEndurance;
+    private Double valeurForce;
+
+    
+    // REGLE PERSONALISE
+    protected boolean hasregle;
+    protected Integer nbPointVictoireTotale;
+    protected Integer nbPointMiniPourVictoire;
+    protected Integer ecartDePointMini;
+
     public Epreuve(int id, String nomEpreuve, char sexeEpreuve, String categorieEpreuve, String typeEpreuve,
-            Sport sport) throws IDdejaExistantException {
+            Sport sport, Double valeurAgilite, Double valeurEndurance, Double valeurForce) throws IDdejaExistantException {
         if (lesID.contains(id))
             throw new IDdejaExistantException("cet id est déjà utilisé");
         lesID.add(id);
@@ -45,6 +59,9 @@ public class Epreuve implements Participation<Equipe> {
         this.classement = new ArrayList<>();
 
         this.leSport = sport;
+        this.valeurAgilite = valeurAgilite;
+        this.valeurEndurance = valeurEndurance;
+        this.valeurForce = valeurForce;
 
         // this.scoresEquipes = new ArrayList<>();
         this.lesEquipes = new ArrayList<>();
@@ -53,7 +70,7 @@ public class Epreuve implements Participation<Equipe> {
     }
 
     public Epreuve(int id, String nomEpreuve, char sexeEpreuve, String categorieEpreuve, String typeEpreuve,
-            Sport sport, double moy, double rec) throws IDdejaExistantException {
+            Sport sport, double moy, double rec, Double valeurAgilite, Double valeurEndurance, Double valeurForce) throws IDdejaExistantException {
         if (lesID.contains(id))
             throw new IDdejaExistantException("cet id est déjà utilisé");
         lesID.add(id);
@@ -65,12 +82,18 @@ public class Epreuve implements Participation<Equipe> {
         this.recordMondial = rec;
         this.IDepreuve = id;
         this.leSport = sport;
+        this.valeurAgilite = valeurAgilite;
+        this.valeurEndurance = valeurEndurance;
+        this.valeurForce = valeurForce;
 
         // this.scoresEquipes = new ArrayList<>();
         this.lesEquipes = new ArrayList<>();
         this.lesMatchs = new ArrayList<>();
 
     }
+
+
+    
 
     /*
     *retourne l'identifiant de l'epreuve
@@ -220,6 +243,94 @@ public class Epreuve implements Participation<Equipe> {
         this.leSport = lesSports;
     }
 
+
+    
+    /*
+    *retourne la valeur Agilite pour un sport
+    *@return Double valeurAgilite
+    */
+    public Double getValeurAgilite() {
+        return valeurAgilite;
+    }
+
+     /*
+    *modifie la valeur Agilite pour un sport
+    *@param Double valeurAgilite
+    */
+    public void setValeurAgilite(Double valeurAgilite) {
+        this.valeurAgilite = valeurAgilite;
+    }
+
+    /*
+    *retourne la valeur Endurance pour un sport
+    *@return Double valeurEndurance
+    */
+    public Double getValeurEndurance() {
+        return valeurEndurance;
+    }
+
+    /*
+    *modifie la valeur Endurance pour un sport
+    *@param Double valeurEndurance
+    */
+    public void setValeurEndurance(Double valeurEndurance) {
+        this.valeurEndurance = valeurEndurance;
+    }
+
+    /*
+    *retourne la valeur Force pour un sport
+    *@return Double valeurForce
+    */
+    public Double getValeurForce() {
+        return valeurForce;
+    }
+
+    /*
+    *modifie la valeur Force pour un sport
+    *@param Double valeurForce
+    */
+    public void setValeurForce(Double valeurForce) {
+        this.valeurForce = valeurForce;
+    }
+
+    /*
+    *retourne vrai ou faux si lees regles special son respecter pour un sport
+    *@return boolean hasregle
+    */
+    public boolean hasReglePersonalisee() {
+        return hasregle;
+    }
+
+        /*
+    *retourne vrai ou faux pour la conditionVictoire si elle est respecter pour un sport
+    *@param Double a, Double b
+    *@return boolean si la condition de victoire est valider
+    */
+    public boolean conditionVictoire(Double a, Double b) {
+        if ((a >= nbPointVictoireTotale || b >= nbPointVictoireTotale) && nbPointVictoireTotale != null)
+            return true;
+        if (ecartDePointMini != null) {
+            if (a >= nbPointMiniPourVictoire && (a - b) >= ecartDePointMini)
+                return true;
+            if (b >= nbPointMiniPourVictoire && (b - a) >= ecartDePointMini)
+                return true;
+        }
+        return false;
+    }
+
+    /*
+    *modifie les regle pour un sport
+    *@param int nbPointVictoireTotale : le nombre de points nécessaire pour gagner sans condition
+    *@param int nbPointMiniPourVictoire :  le nombre de points mini avant que la condition d'écart de points soit remplie
+    *@param int ecartDePointMini : ecrat minimum de point entre joueur 1 et joueur 2
+    */
+    public void setRegle(int nbPointVictoireTotale, int nbPointMiniPourVictoire, int ecartDePointMini) {
+        this.nbPointVictoireTotale = nbPointVictoireTotale;
+        this.nbPointMiniPourVictoire = nbPointMiniPourVictoire;
+        this.ecartDePointMini = ecartDePointMini;
+        this.hasregle = true;
+    }
+
     /*
     * fait participer une équipe à l'épreuve avec des conditions
     * @param  Equipe equipe soit une équipe
@@ -277,6 +388,89 @@ public class Epreuve implements Participation<Equipe> {
 
     }
 
+
+    // 
+    //          REFONTE DE LANCEEPREUVE
+    //
+
+    public List<Equipe> lanceEpreuve2(){
+        HashMap<Integer, List<Equipe>> classementReel = new HashMap<>();
+        classementReel.put(1, (List)lesEquipes);
+        pallierMatch = new HashMap<>();
+        
+        if(typeEpreuve == "Score"){
+            List<MatchScore> listScores = new ArrayList<>();
+            for(Equipe equip : lesEquipes){
+                
+                MatchScore match = new MatchScore(this, equip, moyenneAthletique, recordMondial);
+                match.deroulerMatch();
+                listScores.add(match);
+
+                if (match.getScore() > this.recordMondial) {
+                    //* option de record mondial si record mondial battu */
+                    System.out.println("NOUVEAU RECORD MONDIAL !!!!!!!!!");
+                    this.recordMondial = match.getScore();
+                }   
+            }
+            Comparator<MatchScore> compare = new CompareMatchScore();
+            Collections.sort(listScores, compare);
+            List<Equipe> res = new ArrayList<>();
+            for(int z=0 ; z<listScores.size(); z++)  // A changer si le classement est inversé
+            res.add(listScores.get(z).getEquipe());
+            return res;
+        }
+        
+        else if(typeEpreuve == "Duel"){
+        
+        while(classementReel.size()<lesEquipes.size()){
+        for(int x = classementReel.size(); x>0; x--){
+            List<Equipe[]> matchsAfaire = new ArrayList<>();
+        for(int i = 0; i<classementReel.get(x).size(); i+=2){
+            try {
+                matchsAfaire.add(new Equipe[]{classementReel.get(x).get(i), classementReel.get(x).get(i+1)});
+            } catch (Exception e) {break;} 
+        }        
+        for(Equipe[] lesEquips : matchsAfaire){
+            List<MatchDuel> matchsEff = pallierMatch.get(1);
+            matchsEff.add(new MatchDuel(this, lesEquips[0], lesEquips[1])); 
+            matchsEff.get(matchsEff.size()-1).deroulerMatch(); 
+            Equipe leGagnant = matchsEff.get(matchsEff.size()-1).getGagnant();
+            classementReel.get(x).remove(leGagnant);
+            if(classementReel.size()-1 == x)
+            classementReel.put(x+1, Arrays.asList(leGagnant));
+            else{classementReel.get(x+1).add(leGagnant);}
+                    }       
+                }
+            }
+            List<Equipe> res = new ArrayList<>();
+            for(int z=classementReel.size()-1; z>0; z--)
+            res.add(classementReel.get(z).get(0));
+            return res;
+        }
+        else{
+            System.err.println("Ce type de match n'est pas pris en charge");
+            return new ArrayList<Equipe>();
+        }
+    }
+
+
+
+
+
+    //
+    //
+
+
+
+
+
+
+
+
+
+
+
+
     public List<Equipe> lanceEpreuve() {
         List<Equipe> Classement = new ArrayList<>();
 
@@ -303,7 +497,7 @@ public class Epreuve implements Participation<Equipe> {
                                 pallierEquipeSansMatch.put(cleEqip, valeursEqip.get(i));
                                 break;
                             }
-                            MatchDuel match = new MatchDuel(this.leSport, valeursEqip.get(i), valeursEqip.get(i + 1));
+                            MatchDuel match = new MatchDuel(this, valeursEqip.get(i), valeursEqip.get(i + 1));
                             match.deroulerMatch();
                             lesMatchs.add(match);
                             listematchs.add(match);
@@ -454,7 +648,7 @@ public class Epreuve implements Participation<Equipe> {
                  */
                 scoresEquipes.clear();
                 for (int j = 0; j < this.lesEquipes.size(); j++) {
-                    MatchScore match = new MatchScore(this.leSport, this.lesEquipes.get(j), this.moyenneAthletique,
+                    MatchScore match = new MatchScore(this, this.lesEquipes.get(j), this.moyenneAthletique,
                             this.recordMondial);
                     match.deroulerMatch();
                     lesMatchs.add(match);
@@ -513,6 +707,39 @@ public class Epreuve implements Participation<Equipe> {
 
     @Override
     public String toString() {
-        return this.categorieEpreuve + " ; " + this.nomEpreuve + " ; " + this.sexeEpreuve;
+        String textAgilite;
+        String textForce;
+        String textEndurance;
+
+        if (valeurAgilite < 0.33)
+            textAgilite = " est très demandant en agilite";
+
+        else if (valeurAgilite < 0.66)
+            textAgilite = " est assez demandant en agilite";
+
+        else
+            textAgilite = " ne demande pas d'agilite";
+
+        if (valeurForce < 0.33)
+            textForce = " est très demandant en force";
+
+        else if (valeurForce < 0.66)
+            textForce = " est assez demandant en force";
+
+        else
+            textForce = " ne demande pas de force";
+
+        if (valeurEndurance < 0.33)
+            textEndurance = " est très demandante en endurance";
+
+        else if (valeurEndurance < 0.66)
+            textEndurance = " est assez demandant en endurance";
+
+        else
+            textEndurance = " ne demande pas d'endurence";
+
+
+        return "l'épreuve " + this.nomEpreuve + " pour les " + this.sexeEpreuve + "nécéssite" + textAgilite + " d'agilité, aussi elle " + textEndurance + " d'endurence, et enfin elle "
+        + textForce + " de force" ;
     }
 }

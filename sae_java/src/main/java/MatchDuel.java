@@ -5,8 +5,8 @@ public class MatchDuel extends Match{
     private Equipe equipe2;
 
 
-    public MatchDuel(Sport sport, Equipe equip1, Equipe equip2){
-        super(sport);
+    public MatchDuel(Epreuve epreuve, Equipe equip1, Equipe equip2){
+        super(epreuve);
         this.equipe1 = equip1;
         this.equipe2 = equip2;
         this.score1 = 0;    
@@ -28,8 +28,8 @@ public class MatchDuel extends Match{
     @Override
     public void deroulerMatch(/*Integer tentatives*/){
         if (this.equipe1.getLesAthletes().size() >= 1 && this.equipe2.getLesAthletes().size() >= 1){
-            if (this.sport.hasReglePersonalisee()){
-                while (!this.sport.conditionVictoire(score1, score2)){      // AJOUTER LES 2 METHODES UTILISEE A SPORT 
+            if (this.epreuve.hasReglePersonalisee()){
+                while (!this.epreuve.conditionVictoire(score1, score2)){      // AJOUTER LES 2 METHODES UTILISEE A SPORT 
                     scoreBase();
                 }
             }
@@ -50,10 +50,10 @@ public class MatchDuel extends Match{
             double actionFinaleEquipe1 = 0;
             double actionFinaleEquipe2 = 0;
             for (Athlete athlete : this.equipe1.getLesAthletes()){
-                actionFinaleEquipe1 += (this.sport.getValeurAgilite()*athlete.getAgilite() + this.sport.getValeurEndurance()*athlete.getEndurance() + this.sport.getValeurForce()*athlete.getForce())*RandomNumberInRange.getRandom(0.6, 1.2);
+                actionFinaleEquipe1 += (this.epreuve.getValeurAgilite()*athlete.getAgilite() + this.epreuve.getValeurEndurance()*athlete.getEndurance() + this.epreuve.getValeurForce()*athlete.getForce())*RandomNumberInRange.getRandom(0.6, 1.2);
             }
             for (Athlete athlete : this.equipe2.getLesAthletes()){
-                actionFinaleEquipe2 += (this.sport.getValeurAgilite()*athlete.getAgilite() + this.sport.getValeurEndurance()*athlete.getEndurance() + this.sport.getValeurForce()*athlete.getForce())*RandomNumberInRange.getRandom(0.6, 1.2);
+                actionFinaleEquipe2 += (this.epreuve.getValeurAgilite()*athlete.getAgilite() + this.epreuve.getValeurEndurance()*athlete.getEndurance() + this.epreuve.getValeurForce()*athlete.getForce())*RandomNumberInRange.getRandom(0.6, 1.2);
             }
             double res = actionFinaleEquipe1-actionFinaleEquipe2;
             if (res < 0)
@@ -69,10 +69,10 @@ public class MatchDuel extends Match{
         double actionEquipe1 = 0;
         double actionEquipe2 = 0;
         for (Athlete athlete : this.equipe1.getLesAthletes()){
-            actionEquipe1 += (this.sport.getValeurAgilite()*athlete.getAgilite() + this.sport.getValeurEndurance()*athlete.getEndurance() + this.sport.getValeurForce()*athlete.getForce())*RandomNumberInRange.getRandom(0.6, 1.2);
+            actionEquipe1 += (this.epreuve.getValeurAgilite()*athlete.getAgilite() + this.epreuve.getValeurEndurance()*athlete.getEndurance() + this.epreuve.getValeurForce()*athlete.getForce())*RandomNumberInRange.getRandom(0.6, 1.2);
         }
         for (Athlete athlete : this.equipe2.getLesAthletes()){
-            actionEquipe2 += (this.sport.getValeurAgilite()*athlete.getAgilite() + this.sport.getValeurEndurance()*athlete.getEndurance() + this.sport.getValeurForce()*athlete.getForce())*RandomNumberInRange.getRandom(0.6, 1.2);
+            actionEquipe2 += (this.epreuve.getValeurAgilite()*athlete.getAgilite() + this.epreuve.getValeurEndurance()*athlete.getEndurance() + this.epreuve.getValeurForce()*athlete.getForce())*RandomNumberInRange.getRandom(0.6, 1.2);
         }
         double res = actionEquipe1-actionEquipe2;
                     // Afin de laisser une chance de défense, il y a un pallier de 10% afin de marquer le point, l'obtention du nombre de point est définie dans sport
@@ -87,7 +87,10 @@ public class MatchDuel extends Match{
 
     }
 
-        
+    public Equipe getGagnant(){
+        if(score1>score2) return equipe1;
+        else return equipe2;
+    }    
     
 
     @Override

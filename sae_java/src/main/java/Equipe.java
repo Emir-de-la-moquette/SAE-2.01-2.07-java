@@ -15,6 +15,8 @@ public class Equipe implements Participation<Athlete> {
 
     private char sexeEquipe;
 
+    
+
 
     public Equipe(int id, int taille, char sexeEquipe) throws IDdejaExistantException {
         if (lesID.contains(id))
@@ -33,17 +35,22 @@ public class Equipe implements Participation<Athlete> {
         return this.IDequipe;
     }
 
-         /*
+    /*
     *RETOURNE le nouveaux dentifiant
-    @return   NewId
+    *@return   NewId
     */
-    // @return NewId
     public static int getNewId() {
         int i = 20000;
         while (lesID.contains(i))
             i++;
         System.out.println("nouvel ID : " + i);
         return i;
+    }
+
+    public void clear(){
+        this.nbMedailleArgent = 0;
+        this.nbMedailleBronze = 0;
+        this.nbMedailleOr = 0;
     }
 
 

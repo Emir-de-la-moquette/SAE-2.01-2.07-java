@@ -1,7 +1,10 @@
 public class Match {
+    protected Epreuve epreuve;
     protected Sport sport;
 
     protected String nomMatch;
+
+
 
     private static int numMatch;
 
@@ -9,22 +12,23 @@ public class Match {
     protected double recordMondial = 1;
 
 
-    public Match(Sport sport, double moy, double rec){
-        this.sport = sport;
+    public Match(Epreuve epreuve, double moy, double rec){
+        this.epreuve = epreuve;
         this.moyenneAthletique = moy;
         this.recordMondial = rec;
+        this.sport = epreuve.getLeSports();
 
         Match.numMatch+=1;
 
-        this.nomMatch = this.sport.getNomSport() + " Match n°" + numMatch;
+        this.nomMatch = this.epreuve.getNomEpreuve() + " Match n°" + numMatch;
     }
 
-    public Match(Sport sport){
-        this.sport = sport;
+    public Match(Epreuve epreuve){
+        this.epreuve = epreuve;
 
         Match.numMatch+=1;
 
-        this.nomMatch = this.sport.getNomSport() + " Match n°" + numMatch;
+        this.nomMatch = this.epreuve.getNomEpreuve() + " Match n°" + numMatch;
     }
 
     public double getRecordMondial() {

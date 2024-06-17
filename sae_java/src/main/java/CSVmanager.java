@@ -63,7 +63,7 @@ public class CSVmanager {
                                         }
                                         if(lesEpreuves.indexOf(ep)==lesEpreuves.size()-1){
                                         Epreuve newEP = new Epreuve(Epreuve.getNewId(), "nom Epreuve", sexe, "inconnue",
-                                                "score", sp);
+                                                "score", sp, 5.0, 5.0, 5.0);
                                         System.out.println("Veuillez configurer l'épreuve");
                                         newEP.participer(eqSolo);
                                         lesEpreuves.add(newEP);}
@@ -75,10 +75,10 @@ public class CSVmanager {
                                 
                             }
                         else{
-                            Sport newSport = new Sport(nomSport, 1, 5.0, 5.0, 5.0, 1);
+                            Sport newSport = new Sport(nomSport, 1, 1);
                             lesSports.add(newSport);
                             Epreuve newEP = new Epreuve(Epreuve.getNewId(), "nom Epreuve", sexe, "inconnue",
-                                                "score", newSport);
+                                                "score", newSport, 5.0, 5.0, 5.0);
                             System.out.println("Veuillez configurer l'épreuve");
                             newEP.participer(eqSolo);
                             lesEpreuves.add(newEP);}
