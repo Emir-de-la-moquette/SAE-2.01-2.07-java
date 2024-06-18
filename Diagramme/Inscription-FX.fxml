@@ -5,13 +5,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <VBox prefHeight="63.0" prefWidth="600.0" style="-fx-background-color: eeeeee;" BorderPane.alignment="CENTER">
          <children>
@@ -38,12 +39,12 @@
          <children>
             <VBox prefHeight="295.0" prefWidth="369.0" style="-fx-background-color: e6e6fa;">
                <children>
-                  <Label text="Email">
+                  <Label text="e-mail">
                      <padding>
                         <Insets left="50.0" top="20.0" />
                      </padding>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="creeremail">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" />
                      </VBox.margin>
@@ -53,7 +54,7 @@
                         <Insets left="50.0" />
                      </padding>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="creermdp">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -66,38 +67,26 @@
                         <Insets left="50.0" top="20.0" />
                      </padding>
                   </Label>
-                  <RadioButton mnemonicParsing="false" text="Visiteur">
+                  <RadioButton fx:id="selectvisit" mnemonicParsing="false" text="Visiteur">
                      <padding>
                         <Insets left="50.0" top="20.0" />
                      </padding>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" text="Organisateur">
+                  <RadioButton fx:id="selectorg" mnemonicParsing="false" text="Organisateur">
                      <padding>
                         <Insets left="50.0" top="10.0" />
                      </padding>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" text="Administrateur">
+                  <RadioButton fx:id="selectadm" mnemonicParsing="false" text="Administrateur">
                      <padding>
                         <Insets left="50.0" top="10.0" />
                      </padding>
                   </RadioButton>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Button mnemonicParsing="false" text="Créer un nouveau compte">
-                           <HBox.margin>
-                              <Insets left="50.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" text="Retour">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                     <padding>
-                        <Insets top="20.0" />
-                     </padding>
-                  </HBox>
+                  <Button fx:id="nouveau_compte" mnemonicParsing="false" text="Créer un nouveau compte">
+                     <VBox.margin>
+                        <Insets left="50.0" top="20.0" />
+                     </VBox.margin>
+                  </Button>
                </children>
             </VBox>
             <VBox alignment="CENTER_LEFT" minHeight="186.0" minWidth="221.0" prefHeight="295.0" prefWidth="233.0" style="-fx-background-color: e6e6fa;">
@@ -105,10 +94,19 @@
                   <Insets />
                </opaqueInsets>
                <children>
-                  <ImageView fitHeight="200.0" fitWidth="225.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="108.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Bureau/sae/SAE-2.01-2.07-java/Diagramme/img/Logo-anneax-olympiques-1024x473.png" />
+                     </image></ImageView>
                </children>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
             </VBox>
          </children>
       </HBox>
    </right>
+   <padding>
+      <Insets right="10.0" />
+   </padding>
 </BorderPane>
