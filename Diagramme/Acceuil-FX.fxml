@@ -54,25 +54,14 @@
          </children>
       </HBox>
    </bottom>
-   <right>
+   <center>
       <HBox BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>
          <children>
-            <VBox prefHeight="295.0" prefWidth="369.0" style="-fx-background-color: e6e6fa;">
+            <VBox alignment="CENTER_LEFT" prefHeight="295.0" prefWidth="471.0" style="-fx-background-color: e6e6fa;">
                <children>
-                  <Label text="Se connecter">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <VBox.margin>
-                        <Insets left="250.0" />
-                     </VBox.margin>
-                  </Label>
                   <Label text="Connexion">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="30.0" />
@@ -104,51 +93,31 @@
                         <Insets left="50.0" right="50.0" />
                      </VBox.margin>
                   </TextField>
-                  <Button mnemonicParsing="false" text="Créer un nouveau compte">
-                     <VBox.margin>
-                        <Insets left="50.0" top="20.0" />
-                     </VBox.margin>
-                  </Button>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button mnemonicParsing="false" text="Se connecter">
+                           <HBox.margin>
+                              <Insets left="50.0" top="20.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" text="Pas de compte?">
+                           <HBox.margin>
+                              <Insets left="30.0" top="20.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
-            <VBox alignment="CENTER_LEFT" minHeight="186.0" minWidth="221.0" prefHeight="295.0" prefWidth="233.0" style="-fx-background-color: e6e6fa;">
+            <VBox alignment="CENTER_LEFT" minHeight="186.0" minWidth="221.0" prefHeight="295.0" prefWidth="395.0" style="-fx-background-color: e6e6fa;">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
                <children>
-                  <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="172.0" text="Visiteur">
-                     <graphic>
-                        <ImageView fitHeight="41.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                     <VBox.margin>
-                        <Insets bottom="10.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="Eras Demi ITC" size="12.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="172.0" text="Organisateur">
-                     <graphic>
-                        <ImageView fitHeight="41.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                     <font>
-                        <Font name="Eras Demi ITC" size="12.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="173.0" text="Administrateur">
-                     <graphic>
-                        <ImageView fitHeight="41.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Button>
+                  <ImageView fitHeight="199.0" fitWidth="226.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </VBox>
          </children>
       </HBox>
-   </right>
+   </center>
 </BorderPane>
