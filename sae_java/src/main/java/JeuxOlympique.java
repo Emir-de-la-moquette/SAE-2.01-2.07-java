@@ -48,8 +48,8 @@ public class JeuxOlympique {
     *@param String nom
     */
     public void setNom(String nom) {
-        this.lesID.remove(this.nomJO);
-        this.lesID.add(nom);
+        lesID.remove(this.nomJO);
+        lesID.add(nom);
         this.nomJO = nom;
     }
 
@@ -58,7 +58,7 @@ public class JeuxOlympique {
     *@return String nom
     */
     public String getNom() {
-        return nom;
+        return nomJO;
     }
 
     
