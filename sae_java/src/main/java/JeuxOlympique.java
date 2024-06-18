@@ -7,6 +7,7 @@ public class JeuxOlympique {
 
     private static List<Integer> lesID = new ArrayList<>();
 
+    private String nomJO;
     private String lieu;
     private int annee;
 
@@ -14,10 +15,11 @@ public class JeuxOlympique {
     private List<Epreuve> lesEpreuve;
     private List<Sport> lesSports;
 
-    public JeuxOlympique(String lieu, int annee) throws IDdejaExistantException {
+    public JeuxOlympique(String nom, String lieu, int annee) throws IDdejaExistantException {
         if (lesID.contains(annee))
             throw new IDdejaExistantException("Des Jeux Olympiques sont déjà organisés cette année");
         lesID.add(annee);
+        this.nomJO = nom;
         this.lieu = lieu;
         this.annee = annee;
         this.lesPays = new ArrayList<>();
@@ -32,7 +34,7 @@ public class JeuxOlympique {
     public String getLieu() {
         return lieu;
     }
-
+    
     /*
     *modifie le Lieu des jo
     *@param String lieu
@@ -40,6 +42,24 @@ public class JeuxOlympique {
     public void setLieu(String lieu) {
         this.lieu = lieu;
     }
+    
+    /*
+    *modifie le nom des jo
+    *@param String nom
+    */
+    public void setNom(String nom) {
+        this.nomJO = nom;
+    }
+
+    /*
+    *retourne le nom des jo
+    *@return String nom
+    */
+    public String getNom() {
+        return nom;
+    }
+
+    
 
     /*
     *retourne l'annee des jo
