@@ -37,7 +37,7 @@ for _ in range(666):
     pays_choice = random.choice(pays)
     epreuve = random.choice(epreuves)
     NomEpreuve = epreuve[0]
-    IDepreuve = random.randint(1,3)
+    IDepreuve = random.randint(1*(epreuves.index(epreuve)*3+1),3*(epreuves.index(epreuve)+1))
     Sport = epreuve[1]
     TypeEpreuve = epreuve[2]
     NbParticipant = epreuve[3]

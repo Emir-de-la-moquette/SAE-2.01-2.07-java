@@ -40,6 +40,8 @@ public class Epreuve implements Participation<Equipe> {
     private Double valeurEndurance;
     private Double valeurForce;
 
+    private int nbJoueur = 1;
+
     
     // REGLE PERSONALISE
     protected boolean hasregle;
@@ -149,6 +151,23 @@ public class Epreuve implements Participation<Equipe> {
     */
     public void setNomEpreuve(String nomEpreuve) {
         this.nomEpreuve = nomEpreuve;
+    }
+
+    
+    /*
+    *retourne le nombre de joueur pour un sport
+    *@return int nbJoueur
+    */
+    public int getNbJoueur() {
+        return nbJoueur;
+    }
+
+    /*
+    *modifie le nombre de joueur pour un sport
+    *@param int nbJoueur
+    */
+    public void setNbJoueur(int nbJoueur) {
+        this.nbJoueur = nbJoueur;
     }
 
     /*
@@ -419,7 +438,7 @@ public class Epreuve implements Participation<Equipe> {
             res.add(listScores.get(z).getEquipe());
             return res;
         }
-        
+
         else if(typeEpreuve == "Duel"){
         
         while(classementReel.size()<lesEquipes.size()){

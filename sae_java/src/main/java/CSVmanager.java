@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class CSVmanager {
@@ -14,33 +15,86 @@ public class CSVmanager {
 
         String ligne;
         String split = ",";
+        boolean firsttime = true;
         // Epreuve<Athlete> vraiEpreuve;
 
         try (BufferedReader line = new BufferedReader(new FileReader(chemin))) {
+            HashMap<Integer, HashMap<Pays,Equipe>> inscriptionsEnAttente = new HashMap<>();
+            
             line.readLine();
             while ((ligne = line.readLine()) != null) {
 
                 // tableau de String => String []
                 String[] ligneElems = ligne.split(split);
               
-                if (ligneElems.length >= 9) {
+                if (ligneElems.length != 14) {
+                    if(!firsttime)
                     try {
-
+                        firsttime = false;
                         String nom = ligneElems[0];
                         String prenom = ligneElems[1];
                         char sexe = ligneElems[2].charAt(0);
                         String nomPays = ligneElems[3];
                         Pays pays = new Pays(nomPays);
-                        String nomSport = ligneElems[4];
+                        String nomEpreuve = ligneElems[4];
                         int idEpreuve = Integer.parseInt(ligneElems[5]);
-                        int force = Integer.parseInt(ligneElems[6]);
-                        int endurance = Integer.parseInt(ligneElems[7]);
-                        int agilite = Integer.parseInt(ligneElems[8]);
+                        String nomSport = ligneElems[6];
+                        String typeEpreuve = ligneElems[7];
+                        int nbParticip = Integer.parseInt(ligneElems[8]);
+                        double record = Double.parseDouble(ligneElems[9]);
+                        double moyenne = Double.parseDouble(ligneElems[10]);
+                        int force = Integer.parseInt(ligneElems[11]);
+                        int endurance = Integer.parseInt(ligneElems[12]);
+                        int agilite = Integer.parseInt(ligneElems[13]);
 
                         Athlete ath = new Athlete(Athlete.getNewId(), nom, prenom, sexe, force, endurance, agilite);
                         lesAthletes.add(ath);
-                        Equipe eqSolo = new Equipe(Equipe.getNewId(), 1, sexe); // a voir
-                        eqSolo.participer(ath);
+
+                        Pays lePaysPossess;
+                        Sport leSportActuel;
+
+                        for(Pays pay : lesPays){
+                            if(pay.getNompays().equals(nomPays))
+                            lePaysPossess = pay;
+                            break;
+                            Pays newPays = new Pays(nomPays);
+                            lesPays.add(newPays);
+                        }
+
+                        for(Sport sp : lesSports){
+                            if(sp.getNomSport().equals(nomSport))
+                            leSportActuel = sp;
+                            break;
+                            Sport newSport = new Sport(nomSport);
+                            lesSports.add(newSport);
+                        }
+
+                        if(nbParticip > 1){
+                            try {
+                                HashMap<Pays, Equipe> epre = inscriptionsEnAttente.get(idEpreuve);
+                                if(epre==null) {
+                                    Epreuve epx;
+                                    if(typeEpreuve.equals("Duel")){
+                                    epx = new Epreuve(idEpreuve, nomEpreuve, sexe, "A renseigner", typeEpreuve, leSportActuel, Math.random(), Math.random(), Math.random());}
+                                    else{
+                                    epx = new Epreuve(idEpreuve, nomEpreuve, sexe, "A renseigner", typeEpreuve, leSportActuel, moyenne, record, Math.random(), Math.random(), Math.random());}
+                                    lesEpreuves.add(epx);
+                                    HashMap<Pays, Equipe> participants = new HashMap<>();
+                                    inscriptionsEnAttente.put(idEpreuve, participants);
+                                }
+                                if(epre.get(lePaysPossess)!=null){
+                                    epre.get(lePaysPossess).participer(ath);
+                                }
+                                else {
+                                    inscriptionsEnAttente.get(idEpreuve).put(lePaysPossess, new Equipe(Equipe.getNewId(), nbParticip, sexe));
+                                }
+
+                            } catch (Exception e) {
+                                // TODO: handle exception
+                            }
+                        }
+                        //Equipe eqSolo = new Equipe(Equipe.getNewId(), 1, sexe); // a voir
+                        //eqSolo.participer(ath);
                         lesEquipes.add(eqSolo);
 
                         for(Pays pa : lesPays){

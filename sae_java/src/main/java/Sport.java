@@ -6,28 +6,25 @@ public class Sport {
     protected static List<String> lesID = new ArrayList<>();
 
     private String nomSport;
-    private int nbJoueur;
     private int nbdePointmax;
 
 
 
     // Sport sans points
-    public Sport(String nomSport, int nbJoueur)
+    public Sport(String nomSport)
             throws IDdejaExistantException {
         if (lesID.contains(nomSport))
             throw new IDdejaExistantException("ce nom est déjà utilisé");
         lesID.add(nomSport);
         this.nomSport = nomSport;
-        this.nbJoueur = nbJoueur;
     }
 
     // Sport avec points
-    public Sport(String nomSport, int nbJoueur, int nbdePointmax) throws IDdejaExistantException {
+    public Sport(String nomSport, int nbdePointmax) throws IDdejaExistantException {
         if (lesID.contains(nomSport))
             throw new IDdejaExistantException("ce nom est déjà utilisé");
         lesID.add(nomSport);
         this.nomSport = nomSport;
-        this.nbJoueur = nbJoueur;
         this.nbdePointmax = nbdePointmax;
     }
 
@@ -64,21 +61,6 @@ public class Sport {
         this.nomSport = nomSport;
     }
 
-    /*
-    *retourne le nombre de joueur pour un sport
-    *@return int nbJoueur
-    */
-    public int getNbJoueur() {
-        return nbJoueur;
-    }
-
-    /*
-    *modifie le nombre de joueur pour un sport
-    *@param int nbJoueur
-    */
-    public void setNbJoueur(int nbJoueur) {
-        this.nbJoueur = nbJoueur;
-    }
 
 
 
