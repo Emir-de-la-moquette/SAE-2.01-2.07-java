@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -8,35 +9,38 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="913.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="34.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" text="Fichier" />
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Aide" />
+                  <Button fx:id="fichier" mnemonicParsing="false" prefHeight="24.0" prefWidth="91.0" text="Fichier" />
+                  <Button fx:id="aide" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Aide" />
                </children>
             </HBox>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="185.0" style="-fx-background-color: linear-gradient(#ff5400,#beld00); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white; -fx-background-color: red;" text="Jouer les Jeux Olympique">
+            <Button fx:id="lancerJO" mnemonicParsing="false" prefHeight="25.0" prefWidth="185.0" style="-fx-background-color: linear-gradient(#ff5400,#beld00); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white; -fx-background-color: red;" text="Jouer les Jeux Olympique">
                <HBox.margin>
                   <Insets left="60.0" right="20.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" style="-fx-background-color: linear-gradient(#ff5400,#beld00); -fx-background-radius: 0; -fx-background-insets: 0; -fx-text-fill: white; -fx-background-color: blue;" text="Télécharger les données">
+            <Button fx:id="telecharger" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" style="-fx-background-color: linear-gradient(#ff5400,#beld00); -fx-background-radius: 0; -fx-background-insets: 0; -fx-text-fill: white; -fx-background-color: blue;" text="Télécharger les données">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
             </Button>
          </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
       </HBox>
    </top>
    <left>
-      <VBox prefHeight="446.0" prefWidth="301.0" BorderPane.alignment="CENTER">
+      <VBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="426.0" prefWidth="380.0">
          <children>
             <VBox prefHeight="154.0" prefWidth="301.0" style="-fx-background-color: eeeee;">
                <children>
-                  <TitledPane animated="false" collapsible="false" text="Les Athlètes">
+                  <TitledPane animated="false" collapsible="false" prefHeight="100.0" prefWidth="326.0" text="Les Athlètes" VBox.vgrow="ALWAYS">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="120.0" prefWidth="299.0">
                            <children>
@@ -44,20 +48,23 @@
                            </children></AnchorPane>
                     </content>
                   </TitledPane>
-                  <Button mnemonicParsing="false" text="Ajouter un athlète +" />
+                  <Button fx:id="ajAthletes" mnemonicParsing="false" text="Ajouter un athlète +" />
                </children>
                <padding>
                   <Insets bottom="20.0" />
                </padding>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </VBox>
             <VBox prefHeight="151.0" prefWidth="301.0">
                <children>
-                  <TitledPane animated="false" collapsible="false" text="Les Sports">
+                  <TitledPane animated="false" collapsible="false" text="Les Sports" VBox.vgrow="ALWAYS">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="89.0" prefWidth="299.0" />
                     </content>
                   </TitledPane>
-                  <Button mnemonicParsing="false" text="Ajouter un sport +" />
+                  <Button fx:id="ajSport" mnemonicParsing="false" text="Ajouter un sport +" />
                </children>
                <padding>
                   <Insets bottom="20.0" />
@@ -65,21 +72,33 @@
             </VBox>
             <VBox prefHeight="149.0" prefWidth="301.0">
                <children>
-                  <TitledPane animated="false" collapsible="false" prefHeight="111.0" prefWidth="185.0" text="Les Epreuves">
+                  <TitledPane animated="false" collapsible="false" prefHeight="111.0" prefWidth="185.0" text="Les Epreuves" VBox.vgrow="ALWAYS">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="97.0" prefWidth="299.0" />
                     </content>
                   </TitledPane>
-                  <Button mnemonicParsing="false" text="Ajouter un epreuve +" />
+                  <Button fx:id="ajEpreue" mnemonicParsing="false" text="Ajouter un epreuve +" />
                </children>
             </VBox>
          </children>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+         <BorderPane.margin>
+            <Insets right="10.0" />
+         </BorderPane.margin>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
       </VBox>
    </left>
-   <center>
-      <VBox prefHeight="446.0" prefWidth="505.0" BorderPane.alignment="CENTER">
+   <padding>
+      <Insets bottom="10.0" />
+   </padding>
+   <right>
+      <VBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="446.0" prefWidth="505.0">
          <children>
-            <TitledPane animated="false" collapsible="false" prefHeight="205.0" prefWidth="523.0" text="Classement Final">
+            <TitledPane animated="false" collapsible="false" prefHeight="205.0" prefWidth="523.0" text="Classement Final" VBox.vgrow="ALWAYS">
                <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="176.0" prefWidth="521.0" />
                </content>
@@ -89,12 +108,12 @@
             </TitledPane>
             <VBox prefHeight="100.0" prefWidth="523.0">
                <children>
-                  <TitledPane animated="false" collapsible="false" prefHeight="108.0" prefWidth="523.0" text="Les Equipes">
+                  <TitledPane animated="false" collapsible="false" prefHeight="108.0" prefWidth="523.0" text="Les Equipes" VBox.vgrow="ALWAYS">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="57.0" prefWidth="521.0" />
                     </content>
                   </TitledPane>
-                  <Button mnemonicParsing="false" text="Ajouter une équipe +" />
+                  <Button fx:id="ajEquipe" mnemonicParsing="false" text="Ajouter une équipe +" />
                </children>
                <padding>
                   <Insets top="10.0" />
@@ -108,12 +127,12 @@
             </VBox>
             <VBox prefHeight="110.0" prefWidth="543.0">
                <children>
-                  <TitledPane animated="false" collapsible="false" text="les Pays">
+                  <TitledPane animated="false" collapsible="false" text="les Pays" VBox.vgrow="ALWAYS">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="58.0" prefWidth="299.0" />
                     </content>
                   </TitledPane>
-                  <Button mnemonicParsing="false" text="Ajouter un Pays" />
+                  <Button fx:id="ajPays" mnemonicParsing="false" text="Ajouter un Pays" />
                </children>
                <padding>
                   <Insets left="20.0" top="20.0" />
@@ -127,5 +146,8 @@
             <Insets right="10.0" />
          </BorderPane.margin>
       </VBox>
-   </center>
+   </right>
+   <cursor>
+      <Cursor fx:constant="DEFAULT" />
+   </cursor>
 </BorderPane>

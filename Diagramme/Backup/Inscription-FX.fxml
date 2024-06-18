@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -14,13 +15,10 @@
    <top>
       <VBox prefHeight="63.0" prefWidth="600.0" style="-fx-background-color: eeeeee;" BorderPane.alignment="CENTER">
          <children>
-            <Label prefHeight="63.0" prefWidth="539.0" text="Bienvenue sur Appli Gestion JO">
+            <Label alignment="CENTER" prefHeight="63.0" prefWidth="601.0" text="Créer un compte">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
-               <padding>
-                  <Insets left="80.0" />
-               </padding>
             </Label>
          </children>
       </VBox>
@@ -30,47 +28,17 @@
          <opaqueInsets>
             <Insets top="40.0" />
          </opaqueInsets>
-         <children>
-            <Label text="Clement Renaudin">
-               <HBox.margin>
-                  <Insets left="30.0" right="20.0" />
-               </HBox.margin>
-            </Label>
-            <Label text="Bastien Monet">
-               <HBox.margin>
-                  <Insets right="20.0" />
-               </HBox.margin>
-            </Label>
-            <Label text="Shanka Clermont">
-               <HBox.margin>
-                  <Insets right="20.0" />
-               </HBox.margin>
-            </Label>
-            <Label text="Imad Assou">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </Label>
-         </children>
       </HBox>
    </bottom>
-   <center>
+   <right>
       <HBox BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>
          <children>
-            <VBox alignment="CENTER_LEFT" prefHeight="295.0" prefWidth="471.0" style="-fx-background-color: e6e6fa;">
+            <VBox prefHeight="295.0" prefWidth="369.0" style="-fx-background-color: e6e6fa;">
                <children>
-                  <Label text="Connexion">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="30.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="100.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label text="Identifiant">
+                  <Label text="Email">
                      <padding>
                         <Insets left="50.0" top="20.0" />
                      </padding>
@@ -93,31 +61,54 @@
                         <Insets left="50.0" right="50.0" />
                      </VBox.margin>
                   </TextField>
+                  <Label text="Statut">
+                     <padding>
+                        <Insets left="50.0" top="20.0" />
+                     </padding>
+                  </Label>
+                  <RadioButton mnemonicParsing="false" text="Visiteur">
+                     <padding>
+                        <Insets left="50.0" top="20.0" />
+                     </padding>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" text="Organisateur">
+                     <padding>
+                        <Insets left="50.0" top="10.0" />
+                     </padding>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" text="Administrateur">
+                     <padding>
+                        <Insets left="50.0" top="10.0" />
+                     </padding>
+                  </RadioButton>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Se connecter">
+                        <Button mnemonicParsing="false" text="Créer un nouveau compte">
                            <HBox.margin>
-                              <Insets left="50.0" top="20.0" />
+                              <Insets left="50.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="Pas de compte?">
+                        <Button mnemonicParsing="false" text="Retour">
                            <HBox.margin>
-                              <Insets left="30.0" top="20.0" />
+                              <Insets left="20.0" />
                            </HBox.margin>
                         </Button>
                      </children>
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
                   </HBox>
                </children>
             </VBox>
-            <VBox alignment="CENTER_LEFT" minHeight="186.0" minWidth="221.0" prefHeight="295.0" prefWidth="395.0" style="-fx-background-color: e6e6fa;">
+            <VBox alignment="CENTER_LEFT" minHeight="186.0" minWidth="221.0" prefHeight="295.0" prefWidth="233.0" style="-fx-background-color: e6e6fa;">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
                <children>
-                  <ImageView fitHeight="199.0" fitWidth="226.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="200.0" fitWidth="225.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </VBox>
          </children>
       </HBox>
-   </center>
+   </right>
 </BorderPane>
