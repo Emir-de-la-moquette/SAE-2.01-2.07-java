@@ -1,4 +1,4 @@
-import MySQL
+
 create database JO;
 
 
@@ -85,7 +85,12 @@ ALTER TABLE Matchs ADD FOREIGN KEY (id_Epreuve) REFERENCES Epreuve(id_Epreuve);
 
 --revoir pour match
 
-/*
+
+
+
+
+
+/*  
 
 insert INTo Sport values ();
 insert INTo JeuxOlympique values ();
@@ -97,7 +102,8 @@ insert INTo equipe values ();
 
 */
 
-/*
+/*  partie administration a 50%
+
 create role administrateur;
 create role organisateur;
 create role journaliste;
@@ -106,10 +112,36 @@ create user toto IDENTIFIED BY motPasse1;
 create user heinz IDENTIFIED BY motPasse2;
 create user ben IDENTIFIED BY motPasse3;
 
-grant all on JO to administrateur;
+
+REVOKE ALL PRIVILEGES, GRANT OPTION FROM administrateur;
+FLUSH PRIVILEGES;
+
+REVOKE ALL PRIVILEGES, GRANT OPTION FROM organisateur;
+FLUSH PRIVILEGES;
+
+REVOKE ALL PRIVILEGES, GRANT OPTION FROM journaliste;
+FLUSH PRIVILEGES;
+
+
+grant all on JO.* to administrateur;
+FLUSH PRIVILEGES;
+
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON JO.Sport TO organisateur';
+FLUSH PRIVILEGES;
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON JO.Athlete TO organisateur';
+FLUSH PRIVILEGES;
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON JO.Equipe TO organisateur';
+FLUSH PRIVILEGES;
 
 grant insert,update,delete on JO.Epreuve to organisateur;
+FLUSH PRIVILEGES;
 
+
+GRANT SELECT ON `JO`.* TO journaliste';
+FLUSH PRIVILEGES;
 
 
 
@@ -121,4 +153,5 @@ grant journaliste to ben;
 show grants for toto;
 show grants for heinz;
 show grants for ben;
+
 */
