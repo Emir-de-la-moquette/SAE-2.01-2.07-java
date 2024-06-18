@@ -35,6 +35,11 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Button>
+                  <Button mnemonicParsing="false" text="Se déconnecter">
+                     <HBox.margin>
+                        <Insets left="90.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -46,11 +51,60 @@
                <children>
                   <VBox prefHeight="208.0" prefWidth="370.0" style="-fx-background-color: eeeee;">
                      <children>
-                        <TitledPane animated="false" collapsible="false" prefHeight="156.0" prefWidth="370.0" text="Les Athlètes" VBox.vgrow="ALWAYS">
+                        <TitledPane animated="false" collapsible="false" prefHeight="171.0" prefWidth="370.0" text="Les Sports" VBox.vgrow="ALWAYS">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="136.0" prefWidth="368.0">
+                                 <children>
+                                    <TableView layoutX="1.0" prefHeight="137.0" prefWidth="365.0">
+                                      <columns>
+                                        <TableColumn prefWidth="363.9999897480011" text="Nom" />
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </TitledPane>
+                        <Button fx:id="ajSport" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Ajouter un sport +" />
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox prefHeight="194.0" prefWidth="370.0">
+                     <children>
+                        <TitledPane animated="false" collapsible="false" prefHeight="156.0" prefWidth="370.0" text="Les Epreuves" VBox.vgrow="ALWAYS">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="118.0" prefWidth="368.0">
+                                 <children>
+                                    <TableView prefHeight="121.0" prefWidth="367.0">
+                                       <columns>
+                                          <TableColumn prefWidth="75.0" text="Nom" />
+                                          <TableColumn prefWidth="75.0" text="Reservé au" />
+                                          <TableColumn prefWidth="93.99996948242188" text="type Epreuve" />
+                                          <TableColumn prefWidth="57.33329772949219" text="Statut" />
+                                          <TableColumn prefWidth="63.99998982747394" text="+" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <Button fx:id="ajEpreue" mnemonicParsing="false" text="Ajouter un epreuve +" />
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" />
+                     </padding>
+                  </VBox>
+                  <VBox prefHeight="219.0" prefWidth="370.0">
+                     <children>
+                        <TitledPane animated="false" collapsible="false" prefHeight="171.0" prefWidth="370.0" text="Les Athlètes" VBox.vgrow="ALWAYS">
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="120.0" prefWidth="299.0">
                                  <children>
-                                    <TableView prefHeight="127.0" prefWidth="368.0">
+                                    <TableView prefHeight="145.0" prefWidth="368.0">
                                       <columns>
                                         <TableColumn prefWidth="60.000001311302185" text="Nom" />
                                         <TableColumn prefWidth="88.00000381469727" text="Prenom" />
@@ -65,54 +119,6 @@
                           </content>
                         </TitledPane>
                         <Button fx:id="ajAthletes" mnemonicParsing="false" text="Ajouter un athlète +" />
-                     </children>
-                     <padding>
-                        <Insets bottom="20.0" />
-                     </padding>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </VBox>
-                  <VBox prefHeight="194.0" prefWidth="370.0">
-                     <children>
-                        <TitledPane animated="false" collapsible="false" prefHeight="185.0" prefWidth="370.0" text="Les Sports" VBox.vgrow="ALWAYS">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="109.0" prefWidth="368.0">
-                                 <children>
-                                    <TableView layoutX="1.0" prefHeight="121.0" prefWidth="365.0">
-                                      <columns>
-                                        <TableColumn prefWidth="364.00001009305316" text="Nom" />
-                                      </columns>
-                                    </TableView>
-                                 </children>
-                              </AnchorPane>
-                          </content>
-                        </TitledPane>
-                        <Button fx:id="ajSport" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Ajouter un sport +" />
-                     </children>
-                     <padding>
-                        <Insets bottom="20.0" />
-                     </padding>
-                  </VBox>
-                  <VBox prefHeight="215.0" prefWidth="370.0">
-                     <children>
-                        <TitledPane animated="false" collapsible="false" prefHeight="178.0" prefWidth="370.0" text="Les Epreuves" VBox.vgrow="ALWAYS">
-                           <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="118.0" prefWidth="368.0">
-                                 <children>
-                                    <TableView prefHeight="143.0" prefWidth="367.0">
-                                       <columns>
-                                          <TableColumn prefWidth="75.0" text="Nom" />
-                                          <TableColumn prefWidth="75.0" text="Reserve au" />
-                                          <TableColumn prefWidth="112.66664123535156" text="type Epreuve" />
-                                          <TableColumn prefWidth="102.66667683919269" text="Statut" />
-                                       </columns>
-                                    </TableView>
-                                 </children>
-                              </AnchorPane>
-                           </content>
-                        </TitledPane>
-                        <Button fx:id="ajEpreue" mnemonicParsing="false" text="Ajouter un epreuve +" />
                      </children>
                      <padding>
                         <Insets top="20.0" />
@@ -140,13 +146,13 @@
                      <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="339.0" prefWidth="501.0">
                            <children>
-                              <TableView layoutX="1.0" layoutY="-2.0" prefHeight="352.0" prefWidth="499.0">
+                              <TableView layoutX="1.0" layoutY="-2.0" prefHeight="355.0" prefWidth="499.0">
                                 <columns>
-                                  <TableColumn prefWidth="46.66665768623352" text="Pays" />
-                                  <TableColumn prefWidth="109.99997329711914" text="nb médaille total" />
-                                    <TableColumn prefWidth="101.99998474121094" text="nb médaille or" />
-                                    <TableColumn prefWidth="93.3333740234375" text="nb médaille ar" />
-                                    <TableColumn prefWidth="98.66668701171875" text="nb médaille br" />
+                                  <TableColumn prefWidth="94.00002789497375" text="Pays" />
+                                  <TableColumn prefWidth="98.00000762939453" text="médaille total" />
+                                    <TableColumn prefWidth="83.99998474121094" text="médaille or" />
+                                    <TableColumn prefWidth="83.99993896484375" text="médaille ar" />
+                                    <TableColumn prefWidth="94.6666259765625" text="nb médaille br" />
                                     <TableColumn prefWidth="48.0" text="+" />
                                 </columns>
                               </TableView>
