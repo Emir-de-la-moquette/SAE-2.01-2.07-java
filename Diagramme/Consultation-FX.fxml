@@ -42,7 +42,7 @@
             </HBox>
          </top>
          <left>
-            <VBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="426.0" prefWidth="380.0">
+            <VBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="615.0" prefWidth="380.0">
                <children>
                   <VBox prefHeight="208.0" prefWidth="370.0" style="-fx-background-color: eeeee;">
                      <children>
@@ -73,51 +73,50 @@
                         <Insets />
                      </VBox.margin>
                   </VBox>
-                  <VBox prefHeight="209.0" prefWidth="370.0">
+                  <VBox prefHeight="194.0" prefWidth="370.0">
                      <children>
-                        <TitledPane animated="false" collapsible="false" prefHeight="181.0" prefWidth="370.0" text="Les Sports" VBox.vgrow="ALWAYS">
+                        <TitledPane animated="false" collapsible="false" prefHeight="185.0" prefWidth="370.0" text="Les Sports" VBox.vgrow="ALWAYS">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="89.0" prefWidth="299.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="109.0" prefWidth="368.0">
                                  <children>
-                                    <TableView layoutX="1.0" prefHeight="139.0" prefWidth="367.0">
+                                    <TableView layoutX="1.0" prefHeight="121.0" prefWidth="365.0">
                                       <columns>
-                                        <TableColumn prefWidth="75.0" text="Nom" />
-                                        <TableColumn prefWidth="80.66669464111328" text="nb Joueur" />
-                                          <TableColumn prefWidth="68.0" text="Agili" />
-                                          <TableColumn prefWidth="77.99992370605469" text="Endur" />
-                                          <TableColumn prefWidth="63.99993896484375" text="Force" />
+                                        <TableColumn prefWidth="364.00001009305316" text="Nom" />
                                       </columns>
                                     </TableView>
                                  </children>
                               </AnchorPane>
                           </content>
                         </TitledPane>
-                        <Button fx:id="ajSport" mnemonicParsing="false" text="Ajouter un sport +" />
+                        <Button fx:id="ajSport" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Ajouter un sport +" />
                      </children>
                      <padding>
                         <Insets bottom="20.0" />
                      </padding>
                   </VBox>
-                  <VBox prefHeight="196.0" prefWidth="370.0">
+                  <VBox prefHeight="215.0" prefWidth="370.0">
                      <children>
-                        <TitledPane animated="false" collapsible="false" prefHeight="182.0" prefWidth="370.0" text="Les Epreuves" VBox.vgrow="ALWAYS">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="118.0" prefWidth="368.0">
+                        <TitledPane animated="false" collapsible="false" prefHeight="178.0" prefWidth="370.0" text="Les Epreuves" VBox.vgrow="ALWAYS">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="118.0" prefWidth="368.0">
                                  <children>
-                                    <TableView layoutX="1.0" prefHeight="143.0" prefWidth="367.0">
-                                      <columns>
-                                        <TableColumn prefWidth="75.0" text="Nom" />
-                                        <TableColumn prefWidth="75.0" text="Reserve au" />
+                                    <TableView prefHeight="143.0" prefWidth="367.0">
+                                       <columns>
+                                          <TableColumn prefWidth="75.0" text="Nom" />
+                                          <TableColumn prefWidth="75.0" text="Reserve au" />
                                           <TableColumn prefWidth="112.66664123535156" text="type Epreuve" />
                                           <TableColumn prefWidth="102.66667683919269" text="Statut" />
-                                      </columns>
+                                       </columns>
                                     </TableView>
                                  </children>
                               </AnchorPane>
-                          </content>
+                           </content>
                         </TitledPane>
                         <Button fx:id="ajEpreue" mnemonicParsing="false" text="Ajouter un epreuve +" />
                      </children>
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
                   </VBox>
                </children>
                <padding>
@@ -137,11 +136,11 @@
          <right>
             <VBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="625.0" prefWidth="503.0">
                <children>
-                  <TitledPane animated="false" collapsible="false" prefHeight="436.0" prefWidth="503.0" text="Classement Final" VBox.vgrow="ALWAYS">
+                  <TitledPane animated="false" collapsible="false" prefHeight="448.0" prefWidth="503.0" text="Classement Final" VBox.vgrow="ALWAYS">
                      <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="339.0" prefWidth="501.0">
                            <children>
-                              <TableView layoutX="1.0" layoutY="-2.0" prefHeight="351.0" prefWidth="499.0">
+                              <TableView layoutX="1.0" layoutY="-2.0" prefHeight="352.0" prefWidth="499.0">
                                 <columns>
                                   <TableColumn prefWidth="46.66665768623352" text="Pays" />
                                   <TableColumn prefWidth="109.99997329711914" text="nb médaille total" />
