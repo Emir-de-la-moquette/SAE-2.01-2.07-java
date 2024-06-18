@@ -1,7 +1,7 @@
 import java.util.List;
 import java.util.ArrayList;
 
-public class Athlete {
+public class Athlete implements Data {
 
     private static List<Integer> lesID = new ArrayList<>();
 

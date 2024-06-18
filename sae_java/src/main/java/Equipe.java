@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Equipe implements Participation<Athlete> {
+public class Equipe implements Participation<Athlete>, Data {
 
     private static List<Integer> lesID = new ArrayList<>();
 
@@ -163,6 +163,10 @@ public class Equipe implements Participation<Athlete> {
                 //+ " possède medaille d'or : " + this.getNbMedailleOr()
                 //+ " possède medaille d'argent : " + this.getNbMedailleArgent()
                 //+ " possède medaille de bronze : " + this.getNbMedailleBronze();
+    }
+
+    public String toString2() {
+        return lesAthletes.toString();
     }
 
 }

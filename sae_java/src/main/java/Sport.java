@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sport {
+public class Sport implements Data{
 
     protected static List<String> lesID = new ArrayList<>();
 

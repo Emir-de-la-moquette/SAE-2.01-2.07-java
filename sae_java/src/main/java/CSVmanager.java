@@ -3,15 +3,24 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class CSVmanager {
-    List<Athlete> lesAthletes;
-    List<Equipe> lesEquipes;
-    List<Pays> lesPays;
-    List<Sport> lesSports;
-    List<Epreuve> lesEpreuves;
+public class CSVmanager<T> {
+    static List<Athlete> lesAthletes;
+    static List<Equipe> lesEquipes;
+    static List<Pays> lesPays;
+    static List<Sport> lesSports;
+    static List<Epreuve> lesEpreuves;
 
-    public void csvToListe(String chemin) {
+    public static void csvToListe(String chemin) {
+
+        lesAthletes = new ArrayList<>();
+        lesEpreuves = new ArrayList<>();
+        lesEquipes = new ArrayList<>();
+        lesSports = new ArrayList<>();
+        lesEpreuves = new ArrayList<>();
+
+        HashMap<Integer, HashMap<Pays,Equipe>> inscriptionsEnAttente = new HashMap<>();
 
         String ligne;
         String split = ",";
@@ -19,7 +28,6 @@ public class CSVmanager {
         // Epreuve<Athlete> vraiEpreuve;
 
         try (BufferedReader line = new BufferedReader(new FileReader(chemin))) {
-            HashMap<Integer, HashMap<Pays,Equipe>> inscriptionsEnAttente = new HashMap<>();
             
             line.readLine();
             while ((ligne = line.readLine()) != null) {
@@ -35,7 +43,6 @@ public class CSVmanager {
                         String prenom = ligneElems[1];
                         char sexe = ligneElems[2].charAt(0);
                         String nomPays = ligneElems[3];
-                        Pays pays = new Pays(nomPays);
                         String nomEpreuve = ligneElems[4];
                         int idEpreuve = Integer.parseInt(ligneElems[5]);
                         String nomSport = ligneElems[6];
@@ -50,22 +57,27 @@ public class CSVmanager {
                         Athlete ath = new Athlete(Athlete.getNewId(), nom, prenom, sexe, force, endurance, agilite);
                         lesAthletes.add(ath);
 
-                        Pays lePaysPossess;
-                        Sport leSportActuel;
+                        Pays lePaysPossess = null;
+                        Sport leSportActuel = null;
 
                         for(Pays pay : lesPays){
-                            if(pay.getNompays().equals(nomPays))
+                            if(pay.getNompays().equals(nomPays)){
                             lePaysPossess = pay;
-                            break;
-                            Pays newPays = new Pays(nomPays);
-                            lesPays.add(newPays);
+                            break;}
                         }
+                        if(lePaysPossess == null){
+                            Pays newPays = new Pays(nomPays);
+                            lePaysPossess = newPays;
+                            lesPays.add(newPays);}
 
                         for(Sport sp : lesSports){
-                            if(sp.getNomSport().equals(nomSport))
+                            if(sp.getNomSport().equals(nomSport)){
                             leSportActuel = sp;
-                            break;
+                            break;}
+                        }
+                        if(leSportActuel == null){
                             Sport newSport = new Sport(nomSport);
+                            leSportActuel = newSport;
                             lesSports.add(newSport);
                         }
 
@@ -78,64 +90,60 @@ public class CSVmanager {
                                     epx = new Epreuve(idEpreuve, nomEpreuve, sexe, "A renseigner", typeEpreuve, leSportActuel, Math.random(), Math.random(), Math.random());}
                                     else{
                                     epx = new Epreuve(idEpreuve, nomEpreuve, sexe, "A renseigner", typeEpreuve, leSportActuel, moyenne, record, Math.random(), Math.random(), Math.random());}
+                                    
                                     lesEpreuves.add(epx);
                                     HashMap<Pays, Equipe> participants = new HashMap<>();
                                     inscriptionsEnAttente.put(idEpreuve, participants);
                                 }
-                                if(epre.get(lePaysPossess)!=null){
+                                Equipe equipPays = epre.get(lePaysPossess);
+                                if(equipPays!=null){
+                                    if(equipPays.getTaille() > equipPays.getLesAthletes().size())
                                     epre.get(lePaysPossess).participer(ath);
+                                    if(equipPays.estALaBonneTaille())
+                                        for(Epreuve eprevuID : lesEpreuves)
+                                            if(eprevuID.getID()==idEpreuve){
+                                                eprevuID.participer(equipPays);
+                                                equipPays=null;
+                                                break;
+                                            }
+                                                                                
                                 }
                                 else {
-                                    inscriptionsEnAttente.get(idEpreuve).put(lePaysPossess, new Equipe(Equipe.getNewId(), nbParticip, sexe));
+                                    Equipe eqpx = new Equipe(Equipe.getNewId(), nbParticip, sexe);
+                                    inscriptionsEnAttente.get(idEpreuve).put(lePaysPossess, eqpx);
+                                    lesEquipes.add(eqpx);
                                 }
 
                             } catch (Exception e) {
-                                // TODO: handle exception
+                                    System.err.println(e);
                             }
                         }
-                        //Equipe eqSolo = new Equipe(Equipe.getNewId(), 1, sexe); // a voir
-                        //eqSolo.participer(ath);
-                        lesEquipes.add(eqSolo);
-
-                        for(Pays pa : lesPays){
-                            if(pa.getNompays().equals(nomPays)){
-                                pays.participer(eqSolo);
-                                lesPays.add(pays);
-                                break;
-                            }
-                            lesPays.get(lesPays.indexOf(pays)).participer(eqSolo);
-                        }
-
-
-                        if(lesSports.contains(nomSport)){
-                            Sport sp = lesSports.get(lesSports.indexOf(nomSport));
-                                if (sp.getNbJoueur() == 1)
-                                    for (Epreuve ep : lesEpreuves) {
-                                        if (ep.getID()==idEpreuve) {
-                                            ep.participer(eqSolo);
-                                            break;
-                                        }
-                                        if(lesEpreuves.indexOf(ep)==lesEpreuves.size()-1){
-                                        Epreuve newEP = new Epreuve(Epreuve.getNewId(), "nom Epreuve", sexe, "inconnue",
-                                                "score", sp, 5.0, 5.0, 5.0);
-                                        System.out.println("Veuillez configurer l'épreuve");
-                                        newEP.participer(eqSolo);
-                                        lesEpreuves.add(newEP);}
-
-                                    }
-                                else {
-                                    System.err.println("Le sport indiqué n'est pas fait pour les athletes seuls");
-                                }
-                                
-                            }
                         else{
-                            Sport newSport = new Sport(nomSport, 1, 1);
-                            lesSports.add(newSport);
-                            Epreuve newEP = new Epreuve(Epreuve.getNewId(), "nom Epreuve", sexe, "inconnue",
-                                                "score", newSport, 5.0, 5.0, 5.0);
-                            System.out.println("Veuillez configurer l'épreuve");
-                            newEP.participer(eqSolo);
-                            lesEpreuves.add(newEP);}
+                            try {
+                                Equipe eqpx = new Equipe(Equipe.getNewId(), 1, sexe);
+                                eqpx.participer(ath);
+                                lesEquipes.add(eqpx);
+                                for(Epreuve epreuvu : lesEpreuves){
+                                    if(epreuvu.getID()==idEpreuve){
+                                        epreuvu.participer(eqpx);
+                                        break;
+                                    }
+                                    if(lesEpreuves.indexOf(epreuvu)==lesEpreuves.size()-1){
+                                            Epreuve epx;
+                                            if(typeEpreuve.equals("Duel")){
+                                                epx = new Epreuve(idEpreuve, nomEpreuve, sexe, "A renseigner", typeEpreuve, leSportActuel, Math.random(), Math.random(), Math.random());}
+                                                else{
+                                                epx = new Epreuve(idEpreuve, nomEpreuve, sexe, "A renseigner", typeEpreuve, leSportActuel, moyenne, record, Math.random(), Math.random(), Math.random());}
+                                            epx.participer(eqpx);
+                                            lesEpreuves.add(epx);       
+                                        }
+                                }
+
+                                
+                            } catch (Exception e) {
+                                System.err.println(e);
+                            }
+                        }
                         }
                        
                     catch (Exception e) {
@@ -148,6 +156,30 @@ public class CSVmanager {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        Map<Integer, HashMap<Pays,Equipe>> lesRestants = inscriptionsEnAttente;
+        for(Map.Entry<Integer, HashMap<Pays,Equipe>> entry : lesRestants.entrySet()){
+            for(Epreuve epr : lesEpreuves){
+                if(epr.getID()==entry.getKey()){
+                    Map<Pays,Equipe> lesEquipussy = entry.getValue();
+                    for(Map.Entry<Pays, Equipe> equipussyPayussy : lesEquipussy.entrySet()){
+                        System.out.println("Pour l'épreuve d'ID "+ epr.getID() + " pour le " + epr.getNomEpreuve() +" ,le Pays " + equipussyPayussy.getKey().getNompays() 
+                        +" a ses athlètes suivants ne pas être inscrits par défaut du nombre de joueurs dans leur équipe \n" +equipussyPayussy.getValue().toString2());
+                    }
+                }
+            }
+        }
 
+    }
+
+    public static HashMap<String, List<? extends Data>> getData(){
+        HashMap<String, List<? extends Data>> res = new HashMap<>();
+
+        res.put("Sports", lesSports);
+        res.put("Pays", lesPays);
+        res.put("Athlete", lesAthletes);
+        res.put("Equipe", lesEquipes);
+        res.put("Epreuve", lesEpreuves);
+
+        return res;
     }
 }

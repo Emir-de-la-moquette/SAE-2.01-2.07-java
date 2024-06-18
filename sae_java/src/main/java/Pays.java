@@ -2,7 +2,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pays implements Participation<Equipe> {
+public class Pays implements Participation<Equipe>, Data {
 
     private static List<String> lesID = new ArrayList<>();
 

@@ -8,7 +8,7 @@ import java.util.Comparator;
 import java.lang.Math;
 import java.util.HashMap;
 
-public class Epreuve implements Participation<Equipe> {
+public class Epreuve implements Participation<Equipe>, Data {
 
     private static List<Integer> lesID = new ArrayList<>();
 
