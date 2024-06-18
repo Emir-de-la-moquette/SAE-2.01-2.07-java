@@ -5,7 +5,7 @@ import java.util.Comparator;
 
 public class JeuxOlympique {
 
-    private static List<Integer> lesID = new ArrayList<>();
+    private static List<String> lesID = new ArrayList<>();
 
     private String nomJO;
     private String lieu;
@@ -16,9 +16,9 @@ public class JeuxOlympique {
     private List<Sport> lesSports;
 
     public JeuxOlympique(String nom, String lieu, int annee) throws IDdejaExistantException {
-        if (lesID.contains(annee))
-            throw new IDdejaExistantException("Des Jeux Olympiques sont déjà organisés cette année");
-        lesID.add(annee);
+        if (lesID.contains(nom))
+            throw new IDdejaExistantException("Ces Jeux Olympiques Existent déjà");
+        lesID.add(nom);
         this.nomJO = nom;
         this.lieu = lieu;
         this.annee = annee;
@@ -48,6 +48,8 @@ public class JeuxOlympique {
     *@param String nom
     */
     public void setNom(String nom) {
+        this.lesID.remove(this.nomJO);
+        this.lesID.add(nom);
         this.nomJO = nom;
     }
 
