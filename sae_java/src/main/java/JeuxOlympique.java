@@ -135,11 +135,20 @@ public class JeuxOlympique {
 
     
     /*
-    *fonction executer toute les épreuve placée dans un jeuxOlympique
+    *fonction simuler toute les épreuve placée dans un jeuxOlympique
     */
     public void simulJO() {
         for (Epreuve epreuve : this.lesEpreuve) {
-            epreuve.lanceEpreuve();
+            epreuve.lanceEpreuve2(false);
+        }
+    }
+
+        /*
+    *fonction executer toute les épreuve placée dans un jeuxOlympique
+    */
+    public void execJO() {
+        for (Epreuve epreuve : this.lesEpreuve) {
+            epreuve.lanceEpreuve2(true);
         }
     }
 

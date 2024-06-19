@@ -1,4 +1,6 @@
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class User {
     private String mail;
@@ -31,9 +33,25 @@ public class User {
         }
         return res;
     }
+    private static final String EMAIL_MODELTYPE =
+    "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+    private static final Pattern pattern = Pattern.compile(EMAIL_MODELTYPE);
+    public static boolean mailConforme(String mail){
+        if (mail == null) {
+        return false;
+        }
+        Matcher matcher = pattern.matcher(mail);
+        return matcher.matches();
+    }
 
 
     public char getRole(){
         return role;
+    }
+
+    public boolean estAutorise(char droit){
+        if(this.role == droit)
+        return true;
+        return false;
     }
 }
