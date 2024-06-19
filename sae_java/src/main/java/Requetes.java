@@ -12,75 +12,90 @@ public class Requetes {
     public void ajouterAthlete(Athlete athlete) throws SQLException {
         supprimerAthlete(athlete.getID());
         
-        PreparedStatement ps2 = this.connexion.prepareStatement("insert into Athlete(id_Athlete, NomAt, PrenomAT, SexeAT, stats_Force, stats_Endurance, stats_agilite) values (?, ?, ?, ?, ?, ?, ?)");
-        ps2.setInt(1, athlete.getID());
-        ps2.setString(2, athlete.getNomA());
-        ps2.setString(3, athlete.getPrenomA());
-        ps2.setString(4, String.valueOf(athlete.getSexeA()));
-        ps2.setInt(5, athlete.getForce());
-        ps2.setInt(6, athlete.getEndurance());
-        ps2.setInt(7, athlete.getAgilite());
+        PreparedStatement ps = this.connexion.prepareStatement("insert into Athlete(id_Athlete, NomAt, PrenomAT, SexeAT, stats_Force, stats_Endurance, stats_agilite) values (?, ?, ?, ?, ?, ?, ?)");
+        ps.setInt(1, athlete.getID());
+        ps.setString(2, athlete.getNomA());
+        ps.setString(3, athlete.getPrenomA());
+        ps.setString(4, String.valueOf(athlete.getSexeA()));
+        ps.setInt(5, athlete.getForce());
+        ps.setInt(6, athlete.getEndurance());
+        ps.setInt(7, athlete.getAgilite());
 
-        ps2.executeUpdate();
+        ps.executeUpdate();
     }
 
-    public void ajouteEquipe(Equipe equipe) throws SQLException {
+    public void ajouterEquipe(Equipe equipe) throws SQLException {
         supprimerEquipe(equipe.getID());
 
-        PreparedStatement ps2 = this.connexion.prepareStatement("insert into Equipe(id_Equipe, taille_equipe, medEquipe_or, medEquipe_arent, medEquipe_bronze, sexe_equipe) values (?, ?, ?, ?, ?, ?)");
-        ps2.setInt(1, equipe.getID());
-        ps2.setInt(2, equipe.getTaille());
-        ps2.setInt(3, equipe.getNbMedailleOr());
-        ps2.setInt(4, equipe.getNbMedailleArgent());
-        ps2.setInt(5, equipe.getNbMedailleBronze());
-        ps2.setString(6, String.valueOf(equipe.getSexeEquipe()));
+        PreparedStatement ps = this.connexion.prepareStatement("insert into Equipe(id_Equipe, taille_equipe, medEquipe_or, medEquipe_arent, medEquipe_bronze, sexe_equipe) values (?, ?, ?, ?, ?, ?)");
+        ps.setInt(1, equipe.getID());
+        ps.setInt(2, equipe.getTaille());
+        ps.setInt(3, equipe.getNbMedailleOr());
+        ps.setInt(4, equipe.getNbMedailleArgent());
+        ps.setInt(5, equipe.getNbMedailleBronze());
+        ps.setString(6, String.valueOf(equipe.getSexeEquipe()));
 
-        ps2.executeUpdate();
+        ps.executeUpdate();
     }
 
-    public void ajouteEpreuve(Epreuve epreuve) throws SQLException {
+    public void ajouterEpreuve(Epreuve epreuve) throws SQLException {
         supprimerEpreuve(epreuve.getID());
 
-        PreparedStatement ps2 = this.connexion.prepareStatement("insert into Epreuve(id_Epreuve, nom_sport, nomEpreuve, categorieEpreuve, typeEpreuve, sexEpreuve, coefForce, coefEndurance, coefAgilite) values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        ps2.setInt(1, epreuve.getID());
-        ps2.setString(2, epreuve.getLeSports().getNomSport());
-        ps2.setString(3, epreuve.getNomEpreuve());
-        ps2.setString(4, epreuve.getCategorieEpreuve());
-        ps2.setString(5, epreuve.getTypeEpreuve());
-        ps2.setString(6, String.valueOf(epreuve.getSexeEpreuve()));
-        ps2.setFloat(7, epreuve.getValeurForce().floatValue());
-        ps2.setFloat(8, epreuve.getValeurEndurance().floatValue());
-        ps2.setFloat(9, epreuve.getValeurAgilite().floatValue());
+        PreparedStatement ps = this.connexion.prepareStatement("insert into Epreuve(id_Epreuve, nom_sport, nomEpreuve, categorieEpreuve, typeEpreuve, sexEpreuve, coefForce, coefEndurance, coefAgilite) values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        ps.setInt(1, epreuve.getID());
+        ps.setString(2, epreuve.getLeSports().getNomSport());
+        ps.setString(3, epreuve.getNomEpreuve());
+        ps.setString(4, epreuve.getCategorieEpreuve());
+        ps.setString(5, epreuve.getTypeEpreuve());
+        ps.setString(6, String.valueOf(epreuve.getSexeEpreuve()));
+        ps.setFloat(7, epreuve.getValeurForce().floatValue());
+        ps.setFloat(8, epreuve.getValeurEndurance().floatValue());
+        ps.setFloat(9, epreuve.getValeurAgilite().floatValue());
         
-        ps2.executeUpdate();
+        ps.executeUpdate();
     }
 
-    public void ajoutePays(Pays pays) throws SQLException {
+    public void ajouterPays(Pays pays) throws SQLException {
         supprimerPays(pays.getNompays());
 
-        PreparedStatement ps2 = this.connexion.prepareStatement("insert into Pays(nom_pays, medpays_or, medapays_argent, medpays_bronze) values (?, ?, ?, ?)");
+        PreparedStatement ps = this.connexion.prepareStatement("insert into Pays(nom_pays, medpays_or, medapays_argent, medpays_bronze) values (?, ?, ?, ?)");
 
-        ps2.setString(1, pays.getNompays());
-        ps2.setInt(2, pays.getmedailles_or());
-        ps2.setInt(3, pays.getmedailles_argent());
-        ps2.setInt(4, pays.getmedailles_bronze());
+        ps.setString(1, pays.getNompays());
+        ps.setInt(2, pays.getmedailles_or());
+        ps.setInt(3, pays.getmedailles_argent());
+        ps.setInt(4, pays.getmedailles_bronze());
 
-        ps2.executeUpdate();
+        ps.executeUpdate();
     }
 
-    public void ajouteSport(Sport sport) throws SQLException {
+    public void ajouterSport(Sport sport) throws SQLException {
         supprimerSport(sport.getNomSport());
 
-        PreparedStatement ps2 = this.connexion.prepareStatement("insert into Sport(nom_sport, nb_joueur) values (?, ?)");
+        PreparedStatement ps = this.connexion.prepareStatement("insert into Sport(nom_sport, nb_joueur) values (?, ?)");
 
-        ps2.setString(1, sport.getNomSport());
-        // ps2.setInt(2, sport.get);
-        ps2.executeUpdate();
+        ps.setString(1, sport.getNomSport());
+        // ps.setInt(2, sport.get);
+        ps.executeUpdate();
     }
 
+    public void ajouterJO(JeuxOlympique jo) throws SQLException {
+        supprimerJO(jo.getNom());
+
+        PreparedStatement ps = this.connexion.prepareStatement("insert into JeuxOlympique(nomJO, lieu, annee) values (?, ?, ?)");
+
+        ps.setString(1, jo.getNom());
+        ps.setString(2, jo.getLieu());
+        ps.setInt(3, jo.getAnnee());
+        ps.executeUpdate();
+    }
+
+    // public void ajouterMatch(Match match) throws SQLException {
+    //     supprimerMatch(match.getID());
+    // }
 
 
-    
+
+
     public void supprimerAthlete(int idAthlete) throws SQLException {
         this.st = this.connexion.createStatement();
         ResultSet rs = this.st.executeQuery("select * from Athlete where id_Athlete = " + idAthlete);
@@ -129,4 +144,24 @@ public class Requetes {
             ps.executeUpdate();
         }
     }
+
+    public void supprimerJO(String nomJO) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from JeuxOlympique where nomJO = " + nomJO);
+
+        if (rs.next()) {
+            PreparedStatement ps = this.connexion.prepareStatement("delete from JeuxOlympique = " + nomJO);
+            ps.executeUpdate();
+        }
+    }
+
+    // public void supprimerMatch(String nomMatch) throws SQLException {
+    //     this.st = this.connexion.createStatement();
+    //     ResultSet rs = this.st.executeQuery("select * from Matchs where nom_Match = " + nomMatch);
+
+    //     if (rs.next()) {
+    //         PreparedStatement ps = this.connexion.prepareStatement("delete from Matchs where nom_Match = " + nomMatch);
+    //         ps.executeUpdate();
+    //     }
+    // }
 }
