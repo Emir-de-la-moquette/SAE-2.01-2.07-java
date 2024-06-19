@@ -46,6 +46,23 @@ public class Controleurincrp implements EventHandler<ActionEvent>{
             this.vue.majAffichage(stage);
         }
 
+        if (Textboutton.equals("Ajouter un sport +")) {
+        }
+        if (Textboutton.equals("Ajouter un epreuve +")) {
+        }
+        if (Textboutton.equals("Ajouter un athlète +")) {
+        }
+        if (Textboutton.equals("Ajouter une équipe +")) {
+        }
+        if (Textboutton.equals("Ajouter un pays +")) {
+        }
+        if (Textboutton.equals("Fichier")) {
+        }
+        if (Textboutton.equals("Aide")) {
+        }
+
+        
+
     }
 }
 

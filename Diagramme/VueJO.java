@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 
 public class VueJO extends Application {
     Scene mainScene;
+    Scene tabscene;
     BorderPane root;
     BorderPane fenetreAccueil;
     BorderPane fenetreinscription;
@@ -110,6 +111,31 @@ public class VueJO extends Application {
         fenetre_ajoute = loader.load();
         this.mainScene = new Scene(fenetre_ajoute);
 
+        ControleurAj ctraj = new ControleurAj(this);
+
+        try{
+           
+            Button bouttonretour1 = (Button) this.mainScene.lookup("#retour");
+            Button bouttonretour2 = (Button) this.mainScene.lookup("#retour1");
+            Button bouttonretour3 = (Button) this.mainScene.lookup("#retour2");
+            Button bouttonretour4 = (Button) this.mainScene.lookup("#retour3");
+            Button bouttonretour5 = (Button) this.mainScene.lookup("#retour4");
+
+            bouttonretour1.setOnAction(ctraj);
+            bouttonretour2.setOnAction(ctraj);
+            bouttonretour3.setOnAction(ctraj);
+            bouttonretour4.setOnAction(ctraj);
+            bouttonretour5.setOnAction(ctraj);
+            
+            }
+            catch (NullPointerException e) {
+                // TODO: handle exception
+                System.out.println("problem");
+            }
+
+
+        //.getSelectionModel().select(myTab);
+
         return this.mainScene;
      }
 
@@ -134,10 +160,22 @@ public class VueJO extends Application {
 
         try{
             Button bouttondeco = (Button) this.mainScene.lookup("#SEDECO");
-
+            Button ajoutersport = (Button) this.mainScene.lookup("#ajSport");
+            Button ajouterepreuve = (Button) this.mainScene.lookup("#ajEpreue");
+            Button ajouterATHE = (Button) this.mainScene.lookup("#ajAthletes");
+            Button ajouterEquipe = (Button) this.mainScene.lookup("#ajEpreue");
+            Button ajouterpays = (Button) this.mainScene.lookup("#ajPays");
     
             bouttondeco.setOnAction(ctrinc);
-    
+            ajoutersport.setOnAction(ctrinc);
+            ajouterepreuve.setOnAction(ctrinc);
+            ajouterATHE.setOnAction(ctrinc);
+            ajouterEquipe.setOnAction(ctrinc);
+            ajouterpays.setOnAction(ctrinc);
+
+
+
+            
             }
             catch (NullPointerException e) {
                 // TODO: handle exception
@@ -160,6 +198,15 @@ public class VueJO extends Application {
         }
     }
 
+    public void modeajouter()  {
+        try{
+            this.fenetre_ajoute();
+        }
+        
+        catch(IOException e){
+            System.out.println("error");
+        }
+    }
 
     public void modeconsultation()  {
         try{

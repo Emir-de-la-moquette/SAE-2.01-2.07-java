@@ -20,9 +20,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<TabPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<TabPane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <tabs>
-      <Tab text="Ajoute Athlèthe">
+      <Tab fx:id="tab1" text="Ajoute Athlèthe">
          <content>
             <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
                <top>
@@ -172,14 +172,15 @@
                <bottom>
                   <HBox prefHeight="57.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" text="Créer l'Athlète" />
+                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="139.0" text="Créer l'Athlète" />
+                        <Button fx:id="retour4" mnemonicParsing="false" text="retour" />
                      </children>
                   </HBox>
                </bottom>
             </BorderPane>
          </content>
       </Tab>
-      <Tab text="Ajoute Sport">
+      <Tab fx:id="tab2" text="Ajoute Sport">
          <content>
             <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
                <top>
@@ -240,13 +241,14 @@
                   <HBox prefHeight="57.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                      <children>
                         <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" text="Créer le Sport" />
+                        <Button fx:id="retour3" mnemonicParsing="false" text="retour" />
                      </children>
                   </HBox>
                </bottom>
             </BorderPane>
          </content>
       </Tab>
-      <Tab text="Ajoute Equipe">
+      <Tab fx:id="ab3" text="Ajoute Equipe">
          <content>
             <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
                <top>
@@ -348,13 +350,14 @@
                   <HBox prefHeight="57.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                      <children>
                         <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" text="Créer l'Equipe" />
+                        <Button fx:id="retour2" mnemonicParsing="false" text="retour" />
                      </children>
                   </HBox>
                </bottom>
             </BorderPane>
          </content>
       </Tab>
-      <Tab text="Ajoute Epreuve">
+      <Tab fx:id="tab4" text="Ajoute Epreuve">
          <content>
             <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
                <top>
@@ -610,13 +613,14 @@
                   <HBox prefHeight="57.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                      <children>
                         <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" text="Créer l'Epreuve" />
+                        <Button fx:id="retour1" mnemonicParsing="false" text="retour" />
                      </children>
                   </HBox>
                </bottom>
             </BorderPane>
          </content>
       </Tab>
-      <Tab text="Ajoute Pays">
+      <Tab fx:id="tab5" text="Ajoute Pays">
          <content>
             <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
                <top>
@@ -697,6 +701,7 @@
                   <HBox prefHeight="57.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                      <children>
                         <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" text="Créer le Pays" />
+                        <Button fx:id="retour" mnemonicParsing="false" text="retour" />
                      </children>
                   </HBox>
                </bottom>

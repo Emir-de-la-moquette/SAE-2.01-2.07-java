@@ -60,7 +60,7 @@
                         </AnchorPane>
                      </content>
                   </TitledPane>
-                  <Button fx:id="ajSport" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Ajouter un sport +" />
+                  <Button fx:id="ajSport" mnemonicParsing="false" prefHeight="24.0" prefWidth="165.0" text="Ajouter un sport +" />
                </children>
                <padding>
                   <Insets bottom="20.0" />

@@ -35,10 +35,42 @@ public class ControleurConsultation implements EventHandler<ActionEvent>{
            
         }
 
-        if (Textboutton.equals("Se connecter")) {
-            this.vue.modeconsultation();
-            this.vue.majAffichage(stage);
+        if (Textboutton.equals("Ajouter un sport +")) {
+            this.vue.modeajouter();
             
+            this.vue.majAffichage(stage);
+
+        }
+
+        if (Textboutton.equals("Ajouter un epreuve +")) {
+            this.vue.modeajouter();
+            this.vue.majAffichage(stage);
+        }
+
+        if (Textboutton.equals("Ajouter un athlète +")) {
+            this.vue.modeajouter();
+            this.vue.majAffichage(stage);
+        }
+
+        if (Textboutton.equals("Ajouter une équipe +")) {
+            this.vue.modeajouter();
+            this.vue.majAffichage(stage);
+        }
+
+        if (Textboutton.equals("Ajouter un pays +")) {
+            this.vue.modeajouter();
+            this.vue.majAffichage(stage);
+        }
+
+        if (Textboutton.equals("Fichier")) {
+            this.vue.modeajouter();
+            this.vue.majAffichage(stage);
+        }
+
+        if (Textboutton.equals("Aide")) {
+            this.vue.modeajouter();
+            this.vue.majAffichage(stage);
+
         }
         
         System.out.println("joji");
