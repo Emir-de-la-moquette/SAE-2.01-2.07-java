@@ -71,6 +71,10 @@ public class VueJO extends Application {
         ControleurAcc ctrac = new ControleurAcc(this);
 
         try{
+
+        TextField identifiant = (TextField) this.mainScene.lookup("#identconnexe");
+        TextField mot_de_passe = (TextField) this.mainScene.lookup("#motconnexe");
+
         Button identconnexe = (Button) this.mainScene.lookup("#connecter");
         Button motconnexe = (Button) this.mainScene.lookup("#pascompte");
 
@@ -93,11 +97,26 @@ public class VueJO extends Application {
         Controleurincrp ctrinc = new Controleurincrp(this);
 
         try{
+
+        TextField creer_mail = (TextField) this.mainScene.lookup("#creeremail");
+        TextField creer_motdpass = (TextField) this.mainScene.lookup("#creermdp");
+
+
+
+
         Button bouttonretour = (Button) this.mainScene.lookup("#Bretour");
         Button boutton_nouveau_compte = (Button) this.mainScene.lookup("#nouveau_compte");
 
         bouttonretour.setOnAction(ctrinc);
         boutton_nouveau_compte.setOnAction(ctrinc);
+
+        //creer les toggle boutton et relier les radio boutton
+        RadioButton radioboutton_visit = (RadioButton) this.mainScene.lookup("#selectvisit");
+        RadioButton radioboutton_organisateur = (RadioButton) this.mainScene.lookup("#selectorg");
+        RadioButton radioboutton_admin = (RadioButton) this.mainScene.lookup("#selectadm");
+
+
+        
         }
         catch (NullPointerException e) {
             // TODO: handle exception

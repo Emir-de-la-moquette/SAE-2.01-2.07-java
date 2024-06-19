@@ -47,7 +47,7 @@
                         <Insets left="50.0" top="20.0" />
                      </padding>
                   </Label>
-                  <TextField fx:id="creeremail">
+                  <TextField fx:id="creeremail" promptText="identifiant">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" />
                      </VBox.margin>
@@ -57,7 +57,7 @@
                         <Insets left="50.0" top="20.0" />
                      </padding>
                   </Label>
-                  <TextField fx:id="creermdp">
+                  <TextField fx:id="creermdp" promptText="mot de passe">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
