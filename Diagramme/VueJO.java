@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -114,9 +115,11 @@ public class VueJO extends Application {
         this.mainScene = new Scene(fenetre_ajoute);
         
 
-        ControleurAj ctraj = new ControleurAj(this);
+        ControleurAjretour ctraj = new ControleurAjretour(this);
 
         try{
+
+            // bouton retour
             Button bouttonretour1 = (Button) this.mainScene.lookup("#retour");
             Button bouttonretour2 = (Button) this.mainScene.lookup("#retour1");
             Button bouttonretour3 = (Button) this.mainScene.lookup("#retour2");
@@ -128,7 +131,87 @@ public class VueJO extends Application {
             bouttonretour3.setOnAction(ctraj);
             bouttonretour4.setOnAction(ctraj);
             bouttonretour5.setOnAction(ctraj);
+            //______________________________________________________
+            // partie ajouter athlete
+            TextField textFieldNomA = (TextField) this.mainScene.lookup("#textFieldNomA");
+            TextField textFieldprenomA = (TextField) this.mainScene.lookup("#textFieldprenomA");
+
+            TextField textFieldAGilA = (TextField) this.mainScene.lookup("#textFieldAGilA");
+            TextField textFieldEndA = (TextField) this.mainScene.lookup("#textFieldEndA"); //textfield
+            TextField textFieldforcA = (TextField) this.mainScene.lookup("#textFieldforcA");
+
+            Slider slideragA = (Slider) this.mainScene.lookup("#slideragA");
+            Slider sliderendA = (Slider) this.mainScene.lookup("#sliderendA"); //slider
+            Slider sliderForA = (Slider) this.mainScene.lookup("#sliderForA");
+
+            Button bCreerA = (Button) this.mainScene.lookup("#bCreerA");
+
+            //creer les toggle boutton et relier les radio boutton
+            RadioButton radiobouttonHA = (RadioButton) this.mainScene.lookup("#radiobouttonHA");
+            RadioButton radiobouttonFA = (RadioButton) this.mainScene.lookup("#radiobouttonFA");
             
+            //______________________________________________________
+            // partie ajouter sport
+            TextField textfieldSport = (TextField) this.mainScene.lookup("#textfieldSport");
+            Button BCreerSP = (Button) this.mainScene.lookup("#BCreerSP");
+
+            //______________________________________________________
+            // partie ajouter equipe
+
+            TextField textFieldnbjoueurmax = (TextField) this.mainScene.lookup("#textFieldnbjoueurmax");
+            Button BcreerEQ = (Button) this.mainScene.lookup("#BcreerEQ");
+            Button BajouAdansEQ = (Button) this.mainScene.lookup("#BajouAdansEQ");
+            
+
+            //creer les toggle boutton et relier les radio boutton
+            RadioButton radiobouttonHE = (RadioButton) this.mainScene.lookup("#radiobouttonHE");
+            RadioButton radiobouttonFE = (RadioButton) this.mainScene.lookup("#radiobouttonFE");
+            //______________________________________________________
+            // partie ajouter Epreuve 
+            TextField textFieldNomEP = (TextField) this.mainScene.lookup("#textFieldNomEP");
+
+            ChoiceBox choix_Sport_Ass = (ChoiceBox) this.mainScene.lookup("#choix_Sport_Ass");
+
+            //creer les toggle boutton et relier les radio boutton p1
+            Button radiobouttonHEP = (Button) this.mainScene.lookup("#radiobouttonHEP");
+            Button radiobouttonFEP = (Button) this.mainScene.lookup("#radiobouttonFEP");
+
+
+            TextField textFieldCaractEP = (TextField) this.mainScene.lookup("#textFieldCaractEP");
+
+             //creer les toggle boutton et relier les radio boutton p2
+             RadioButton radiobouttonFPaff = (RadioButton) this.mainScene.lookup("#radiobouttonFPaff");
+             RadioButton radiobouttonFPMscore = (RadioButton) this.mainScene.lookup("#radiobouttonFPMscore");
+
+
+             //demande agil endu force textfield
+             TextField textFieldDemandeAGIL = (TextField) this.mainScene.lookup("#textFieldDemandeAGIL");
+             TextField textFieldDemandeEND = (TextField) this.mainScene.lookup("#textFieldDemandeEND");
+             TextField textFieldDemandeFORC = (TextField) this.mainScene.lookup("#textFieldDemandeFORC");
+
+
+            //creer les toggle boutton et relier les radio boutton p3
+            RadioButton radiobouttonRPnon = (RadioButton) this.mainScene.lookup("#radiobouttonRPnon");
+            RadioButton radiobouttonRPVscoreatt = (RadioButton) this.mainScene.lookup("#radiobouttonRPVscoreatt");
+            RadioButton radiobouttonRPVecartscore = (RadioButton) this.mainScene.lookup("#radiobouttonRPVecartscore");
+
+
+             Button BcreerEP = (Button) this.mainScene.lookup("#BcreerEP");
+
+             //______________________________________________________
+            // partie ajouter Pays
+            TextField textFieldNomP = (TextField) this.mainScene.lookup("#textFieldNomP");
+
+
+            Button BchoisirHymne = (Button) this.mainScene.lookup("#BchoisirHymne");
+            Button Bplay = (Button) this.mainScene.lookup("#Bplay");
+            Button Bchoisirdrap = (Button) this.mainScene.lookup("#Bchoisirdrap");
+
+            ImageView imageDrapeauP = (ImageView) this.mainScene.lookup("#imageDrapeauP");
+
+            Button BCreerP = (Button) this.mainScene.lookup("#BCreerP");
+
+
             }
             catch (NullPointerException e) {
                 // TODO: handle exception

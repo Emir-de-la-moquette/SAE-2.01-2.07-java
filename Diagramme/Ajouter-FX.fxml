@@ -13,6 +13,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -20,7 +21,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<TabPane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<TabPane prefHeight="431.0" prefWidth="732.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <tabs>
       <Tab fx:id="tab1" text="Ajoute Athlèthe">
          <content>
@@ -74,7 +75,7 @@
                               </Label>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <RadioButton mnemonicParsing="false" text="Homme">
+                                    <RadioButton fx:id="radiobouttonHA" mnemonicParsing="false" text="Homme">
                                        <padding>
                                           <Insets right="15.0" />
                                        </padding>
@@ -82,7 +83,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </RadioButton>
-                                    <RadioButton mnemonicParsing="false" text="Femme">
+                                    <RadioButton fx:id="radiobouttonFA" mnemonicParsing="false" text="Femme">
                                        <padding>
                                           <Insets right="15.0" />
                                        </padding>
@@ -290,7 +291,7 @@
                               </Label>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <RadioButton mnemonicParsing="false" text="Homme">
+                                    <RadioButton fx:id="radiobouttonHE" mnemonicParsing="false" text="Homme">
                                        <padding>
                                           <Insets right="15.0" />
                                        </padding>
@@ -298,7 +299,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </RadioButton>
-                                    <RadioButton mnemonicParsing="false" text="Femme">
+                                    <RadioButton fx:id="radiobouttonFE" mnemonicParsing="false" text="Femme">
                                        <padding>
                                           <Insets right="15.0" />
                                        </padding>
@@ -399,7 +400,7 @@
                                           <Insets left="20.0" top="5.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <ChoiceBox prefWidth="150.0">
+                                    <ChoiceBox fx:id="choix_Sport_Ass" prefWidth="150.0">
                                        <VBox.margin>
                                           <Insets left="20.0" />
                                        </VBox.margin>
@@ -411,7 +412,7 @@
                                     </Label>
                                     <HBox prefHeight="21.0" prefWidth="295.0">
                                        <children>
-                                          <RadioButton mnemonicParsing="false" text="Homme">
+                                          <RadioButton fx:id="radiobouttonHEP" mnemonicParsing="false" text="Homme">
                                              <padding>
                                                 <Insets right="15.0" />
                                              </padding>
@@ -419,7 +420,7 @@
                                                 <Insets left="10.0" />
                                              </HBox.margin>
                                           </RadioButton>
-                                          <RadioButton mnemonicParsing="false" text="Femme">
+                                          <RadioButton fx:id="radiobouttonFEP" mnemonicParsing="false" text="Femme">
                                              <padding>
                                                 <Insets right="15.0" />
                                              </padding>
@@ -443,7 +444,7 @@
                                     </Label>
                                     <HBox prefHeight="27.0" prefWidth="295.0">
                                        <children>
-                                          <RadioButton mnemonicParsing="false" text="Par affrontement">
+                                          <RadioButton fx:id="radiobouttonFPaff" mnemonicParsing="false" text="Par affrontement">
                                              <padding>
                                                 <Insets right="15.0" />
                                              </padding>
@@ -451,7 +452,7 @@
                                                 <Insets left="10.0" />
                                              </HBox.margin>
                                           </RadioButton>
-                                          <RadioButton mnemonicParsing="false" text="Par meilleur score">
+                                          <RadioButton fx:id="radiobouttonFPMscore" mnemonicParsing="false" text="Par meilleur score">
                                              <padding>
                                                 <Insets right="15.0" />
                                              </padding>
@@ -529,7 +530,7 @@
                                     </Label>
                                     <VBox prefHeight="48.0" prefWidth="305.0">
                                        <children>
-                                          <RadioButton mnemonicParsing="false" text="Non">
+                                          <RadioButton fx:id="radiobouttonRPnon" mnemonicParsing="false" text="Non">
                                              <padding>
                                                 <Insets right="15.0" />
                                              </padding>
@@ -537,7 +538,7 @@
                                                 <Insets />
                                              </VBox.margin>
                                           </RadioButton>
-                                          <RadioButton mnemonicParsing="false" text="Victoire par score atteint">
+                                          <RadioButton fx:id="radiobouttonRPVscoreatt" mnemonicParsing="false" text="Victoire par score atteint">
                                              <padding>
                                                 <Insets right="15.0" />
                                              </padding>
@@ -545,7 +546,7 @@
                                                 <Insets top="5.0" />
                                              </VBox.margin>
                                           </RadioButton>
-                                          <RadioButton mnemonicParsing="false" text="Victoire par écart du score entre 2 équipes">
+                                          <RadioButton fx:id="radiobouttonRPVecartscore" mnemonicParsing="false" text="Victoire par écart du score">
                                              <VBox.margin>
                                                 <Insets bottom="20.0" top="5.0" />
                                              </VBox.margin>
@@ -660,7 +661,7 @@
                                     <Insets left="20.0" />
                                  </padding>
                               </Label>
-                              <Button mnemonicParsing="false" text="choisir une hymne...">
+                              <Button fx:id="BchoisirHymne" mnemonicParsing="false" text="choisir une hymne...">
                                  <VBox.margin>
                                     <Insets left="20.0" top="20.0" />
                                  </VBox.margin>
@@ -672,9 +673,12 @@
                                           <Insets left="20.0" top="30.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="32.0">
+                                    <Button fx:id="Bplay" mnemonicParsing="false" prefHeight="41.0" prefWidth="32.0">
                                        <graphic>
-                                          <ImageView fitHeight="33.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" />
+                                          <ImageView fitHeight="33.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@img/play.png" />
+                                             </image></ImageView>
                                        </graphic>
                                        <HBox.margin>
                                           <Insets left="20.0" top="20.0" />
@@ -686,8 +690,8 @@
                         <VBox alignment="CENTER_LEFT" prefHeight="255.0" prefWidth="309.0" style="-fx-background-color: e6e6fa;">
                            <children>
                               <HBox alignment="CENTER" prefHeight="40.0" prefWidth="291.0" />
-                              <ImageView fitHeight="128.0" fitWidth="228.0" pickOnBounds="true" preserveRatio="true" />
-                              <Button mnemonicParsing="false" prefHeight="24.0" prefWidth="172.0" text="Choisir le drapeau...">
+                              <ImageView fx:id="imageDrapeauP" fitHeight="128.0" fitWidth="228.0" pickOnBounds="true" preserveRatio="true" />
+                              <Button fx:id="Bchoisirdrap" mnemonicParsing="false" prefHeight="24.0" prefWidth="172.0" text="Choisir le drapeau...">
                                  <VBox.margin>
                                     <Insets bottom="60.0" />
                                  </VBox.margin>

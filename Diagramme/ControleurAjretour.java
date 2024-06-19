@@ -1,24 +1,20 @@
 
-import java.io.IOException;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 
 
-public class ControleurAj implements EventHandler<ActionEvent>{
+public class ControleurAjretour implements EventHandler<ActionEvent>{
 
     private VueJO vue;
     
     private Stage stage;
 
 
-    public ControleurAj( VueJO vue){
+    public ControleurAjretour( VueJO vue){
         this.vue = vue;
        
     }
