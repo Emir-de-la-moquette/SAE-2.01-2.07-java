@@ -1,28 +1,55 @@
+import java.io.File;
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+
 
 public class VueJO extends Application {
     Scene mainScene;
     BorderPane root;
+    BorderPane fenetreAccueil;
+    BorderPane fenetreinscription;
+    TabPane fenetre_ajoute;
+    BorderPane fenetre_creer_Pays;
     FXMLLoader loader;
+    //private ModelJO jo;
   
     @Override
     public void init(){    
     }
     
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) throws IOException {
+
         loader = new FXMLLoader(this.getClass().getResource("Acceuil-FX.fxml"));
-        root = loader.load();
-        mainScene = new Scene(root);
+        fenetreAccueil = loader.load();
+        this.mainScene = new Scene(fenetreAccueil);
         
-        stage.setScene(mainScene);
-        stage.setTitle("acceuil");
-        stage.setResizable(false);
+        ControleurAcc ctrac = new ControleurAcc(this);
+
+        try{
+        Button identconnexe = (Button) this.mainScene.lookup("#connecter");
+        Button motconnexe = (Button) this.mainScene.lookup("#pascompte");
+
+        identconnexe.setOnAction(ctrac);
+        motconnexe.setOnAction(ctrac);
+        }
+        catch (NullPointerException e) {
+            // TODO: handle exception
+            System.out.println("problem");
+        }
+
+
+
+        stage.setScene(this.mainScene);
+        stage.setTitle("Consultation");
+        stage.setResizable(true);
         stage.show();
 
         //Button btest = (Button) mainScene.lookup("#monBouton");
@@ -31,6 +58,131 @@ public class VueJO extends Application {
         //btest.setOnAction(Event -> {btest.setText("Coucou, ça marche !");});}
     }
 
+
+    private Scene fenetreAccueil() throws IOException{
+
+        loader = new FXMLLoader(this.getClass().getResource("Acceuil-FX.fxml"));
+        fenetreAccueil = loader.load();
+        this.mainScene = new Scene(fenetreAccueil);
+        
+        ControleurAcc ctrac = new ControleurAcc(this);
+
+        try{
+        Button identconnexe = (Button) this.mainScene.lookup("#connecter");
+        Button motconnexe = (Button) this.mainScene.lookup("#pascompte");
+
+        identconnexe.setOnAction(ctrac);
+        motconnexe.setOnAction(ctrac);
+        }
+        catch (NullPointerException e) {
+            // TODO: handle exception
+            System.out.println("problem");
+        }
+
+        return this.mainScene;
+    }
+
+     private Scene fenetreinscription() throws IOException {
+        loader = new FXMLLoader(this.getClass().getResource("Inscription-FX.fxml"));
+        fenetreinscription = loader.load();
+        this.mainScene = new Scene(fenetreinscription);
+
+        Controleurincrp ctrinc = new Controleurincrp(this);
+
+        try{
+        Button bouttonretour = (Button) this.mainScene.lookup("#bouton_retour");
+        Button boutton_nouveau_compte = (Button) this.mainScene.lookup("#nouveau_compte");
+
+        bouttonretour.setOnAction(ctrinc);
+        boutton_nouveau_compte.setOnAction(ctrinc);
+        }
+        catch (NullPointerException e) {
+            // TODO: handle exception
+            System.out.println("problem");
+        }
+
+        return this.mainScene;
+     }
+
+
+    private void fenetre_ajoute()  throws IOException {
+        loader = new FXMLLoader(this.getClass().getResource("Ajouter-FX.fxml"));
+        fenetre_ajoute = loader.load();
+        this.mainScene = new Scene(fenetre_ajoute);
+
+        
+     }
+
+    private void fenetre_idk() throws IOException {
+        loader = new FXMLLoader(this.getClass().getResource("idk.fxml"));
+        fenetre_creer_Pays = loader.load();
+        this.mainScene = new Scene(fenetre_creer_Pays);
+
+        
+     }
+
+
+    private void fenetre_consultation() throws IOException {
+        loader = new FXMLLoader(this.getClass().getResource("Consultation-FX.fxml"));
+        fenetre_creer_Pays = loader.load();
+        this.mainScene = new Scene(fenetre_creer_Pays);
+
+        
+     }
+
+
+    public void modeAccueil()  {
+        try{
+            this.fenetreAccueil();
+        }
+        
+        catch(IOException e){
+            System.out.println("error");
+        }
+    }
+
+
+    
+    
+    public void modeinscription() throws IOException {
+
+        // A implementer
+        try{
+        this.fenetreinscription();
+        }
+            
+        catch(IOException e){
+            System.out.println("error");
+        }
+    }
+    
+
+
+
+    public void majAffichage(Stage stage){
+        // A implementer
+               System.out.println("MARCG");
+               stage.setScene(this.mainScene);
+               stage.setTitle("Consultation");
+               stage.show();
+
+    }
+
+
+    public Alert popUpPartieEnCours(){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"La partie est en cours!\n Etes-vous sûr de l'interrompre ?", ButtonType.YES, ButtonType.NO);
+        alert.setTitle("Attention");
+        return alert;
+    }
+       
+    public Alert popperdu(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION,"vous avez perdu");
+        alert.setTitle("c'est perdu");
+        return alert;
+    }
+
+
+ 
 
     public static void main(String[] args) {
         launch(args);
