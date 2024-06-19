@@ -21,6 +21,9 @@
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
             </Label>
             <Label text="Label">
                <HBox.margin>
