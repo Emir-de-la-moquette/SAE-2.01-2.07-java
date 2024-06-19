@@ -71,7 +71,6 @@ create table Pays(
 
 create table Athlete(
     id_Athlete INT,
-    id_Equipe INT,
     NomAt varchar(50),
     PrenomAT varchar(50),
     SexeAT char(1),
