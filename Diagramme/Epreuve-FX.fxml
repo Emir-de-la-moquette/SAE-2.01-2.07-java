@@ -2,8 +2,10 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -16,208 +18,278 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<TabPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <tabs>
-      <Tab text="Caractéristique de l'épreuve">
-         <content>
-            <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
-               <top>
-                  <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="600.0" style="-fx-background-color: ddddd;" BorderPane.alignment="CENTER">
-                     <children>
-                        <Label text="Consultation de l'épreuve">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </Label>
-                        <Label text="Label">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-               </top>
-               <center>
-                  <HBox prefHeight="312.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <VBox alignment="CENTER_LEFT" prefHeight="300.0" prefWidth="300.0" style="-fx-background-color: e6e6fa;">
+      <Tab text="Carateristique de l'épreuve">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+                     <top>
+                        <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="600.0" style="-fx-background-color: ddddd;" BorderPane.alignment="CENTER">
                            <children>
-                              <Label text="Nom de l'épreuve">
-                                 <padding>
+                              <Label text="Créer une Epreuve">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                                 <HBox.margin>
                                     <Insets left="20.0" />
-                                 </padding>
-                                 <VBox.margin>
-                                    <Insets bottom="10.0" />
-                                 </VBox.margin>
+                                 </HBox.margin>
                               </Label>
-                              <TextField>
-                                 <VBox.margin>
-                                    <Insets left="20.0" right="40.0" />
-                                 </VBox.margin>
-                              </TextField>
-                              <Label text="Réservé aux :">
-                                 <VBox.margin>
-                                    <Insets bottom="10.0" left="20.0" top="10.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <HBox prefHeight="21.0" prefWidth="295.0">
-                                 <children>
-                                    <RadioButton mnemonicParsing="false" text="Homme">
-                                       <padding>
-                                          <Insets right="15.0" />
-                                       </padding>
-                                       <HBox.margin>
-                                          <Insets left="10.0" />
-                                       </HBox.margin>
-                                    </RadioButton>
-                                    <RadioButton mnemonicParsing="false" text="Femme">
-                                       <padding>
-                                          <Insets right="15.0" />
-                                       </padding>
-                                    </RadioButton>
-                                 </children>
-                              </HBox>
-                              <Label text="Type de l'épreuve">
-                                 <VBox.margin>
-                                    <Insets bottom="10.0" left="20.0" top="15.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <HBox prefHeight="27.0" prefWidth="295.0">
-                                 <children>
-                                    <RadioButton mnemonicParsing="false" text="Par affrontement">
-                                       <padding>
-                                          <Insets right="15.0" />
-                                       </padding>
-                                       <HBox.margin>
-                                          <Insets left="10.0" />
-                                       </HBox.margin>
-                                    </RadioButton>
-                                    <RadioButton mnemonicParsing="false" text="Par meilleur score">
-                                       <padding>
-                                          <Insets right="15.0" />
-                                       </padding>
-                                    </RadioButton>
-                                 </children>
-                              </HBox>
-                              <Label text="caractéristique supplémentataire de l'épreuve">
-                                 <VBox.margin>
-                                    <Insets left="20.0" top="20.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <TextField>
-                                 <VBox.margin>
-                                    <Insets left="20.0" right="40.0" top="10.0" />
-                                 </VBox.margin>
-                              </TextField>
                            </children>
-                        </VBox>
-                        <VBox alignment="CENTER_LEFT" prefHeight="255.0" prefWidth="309.0" style="-fx-background-color: e6e6fa;">
-                           <children>
-                              <Label text="Règle personalisé?">
-                                 <VBox.margin>
-                                    <Insets bottom="10.0" left="20.0" top="15.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <VBox prefHeight="48.0" prefWidth="305.0">
+                        </HBox>
+                     </top>
+                     <center>
+                        <ScrollPane hbarPolicy="NEVER" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+                           <content>
+                              <HBox prefHeight="400.0" prefWidth="600.0">
                                  <children>
-                                    <RadioButton mnemonicParsing="false" text="Non">
-                                       <padding>
-                                          <Insets right="15.0" />
-                                       </padding>
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </RadioButton>
-                                    <RadioButton mnemonicParsing="false" text="Victoire par score atteint">
-                                       <padding>
-                                          <Insets right="15.0" />
-                                       </padding>
-                                       <VBox.margin>
-                                          <Insets top="5.0" />
-                                       </VBox.margin>
-                                    </RadioButton>
-                                    <RadioButton mnemonicParsing="false" text="Victoire par écart du score entre 2 équipes">
-                                       <VBox.margin>
-                                          <Insets bottom="20.0" top="5.0" />
-                                       </VBox.margin>
-                                    </RadioButton>
-                                 </children>
-                              </VBox>
-                              <HBox prefHeight="29.0" prefWidth="305.0">
-                                 <children>
-                                    <Label text="Score à atteindre : ">
-                                       <HBox.margin>
-                                          <Insets bottom="10.0" top="10.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <TextField prefWidth="45.0">
-                                       <HBox.margin>
-                                          <Insets left="50.0" right="10.0" />
-                                       </HBox.margin>
-                                    </TextField>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets top="10.0" />
-                                 </VBox.margin>
-                              </HBox>
-                              <HBox prefHeight="30.0" prefWidth="201.0">
-                                 <children>
-                                    <VBox prefHeight="35.0" prefWidth="149.0">
+                                    <VBox prefHeight="497.0" prefWidth="343.0" style="-fx-background-color: e6e6fa;">
                                        <children>
-                                          <Label text="Score à atteindre avant la :" />
-                                          <Label text="prise en compte de l'écart" />
+                                          <Label text="Nom de l'épreuve">
+                                             <padding>
+                                                <Insets left="20.0" />
+                                             </padding>
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TextField>
+                                             <VBox.margin>
+                                                <Insets left="20.0" right="40.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                          <Label text="Sport associé">
+                                             <VBox.margin>
+                                                <Insets left="20.0" top="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <ChoiceBox prefWidth="150.0">
+                                             <VBox.margin>
+                                                <Insets left="20.0" />
+                                             </VBox.margin>
+                                          </ChoiceBox>
+                                          <Label text="Réservé aux :">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" left="20.0" top="10.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <HBox prefHeight="21.0" prefWidth="295.0">
+                                             <children>
+                                                <RadioButton mnemonicParsing="false" text="Homme">
+                                                   <padding>
+                                                      <Insets right="15.0" />
+                                                   </padding>
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" />
+                                                   </HBox.margin>
+                                                </RadioButton>
+                                                <RadioButton mnemonicParsing="false" text="Femme">
+                                                   <padding>
+                                                      <Insets right="15.0" />
+                                                   </padding>
+                                                </RadioButton>
+                                             </children>
+                                          </HBox>
+                                          <Label text="Caractéristique supplémentataire de l'épreuve">
+                                             <VBox.margin>
+                                                <Insets left="20.0" top="20.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TextField>
+                                             <VBox.margin>
+                                                <Insets left="20.0" right="20.0" top="5.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                          <Label text="Type de l'épreuve">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" left="20.0" top="15.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <HBox prefHeight="27.0" prefWidth="295.0">
+                                             <children>
+                                                <RadioButton mnemonicParsing="false" text="Par affrontement">
+                                                   <padding>
+                                                      <Insets right="15.0" />
+                                                   </padding>
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" />
+                                                   </HBox.margin>
+                                                </RadioButton>
+                                                <RadioButton mnemonicParsing="false" text="Par meilleur score">
+                                                   <padding>
+                                                      <Insets right="15.0" />
+                                                   </padding>
+                                                </RadioButton>
+                                             </children>
+                                          </HBox>
+                                          <Label text="Ces statistiques permetrons un résultat plus réaliste">
+                                             <VBox.margin>
+                                                <Insets left="20.0" top="20.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label text="moyenne athlétique">
+                                             <VBox.margin>
+                                                <Insets left="20.0" top="10.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TextField>
+                                             <VBox.margin>
+                                                <Insets left="20.0" right="240.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                          <Label text="record modial">
+                                             <VBox.margin>
+                                                <Insets left="20.0" top="10.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TextField>
+                                             <VBox.margin>
+                                                <Insets left="20.0" right="240.0" />
+                                             </VBox.margin>
+                                          </TextField>
                                        </children>
                                     </VBox>
-                                    <TextField prefHeight="25.0" prefWidth="45.0">
-                                       <HBox.margin>
-                                          <Insets top="5.0" />
-                                       </HBox.margin>
-                                    </TextField>
+                                    <VBox prefHeight="497.0" prefWidth="285.0" style="-fx-background-color: e6e6fa;">
+                                       <children>
+                                          <Label text="est Demandant en :">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="20.0" top="20.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label text="Agilite">
+                                             <VBox.margin>
+                                                <Insets left="20.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TextField prefWidth="40.0">
+                                             <VBox.margin>
+                                                <Insets left="20.0" right="220.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                          <Label text="Endurance">
+                                             <VBox.margin>
+                                                <Insets left="20.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TextField prefWidth="40.0">
+                                             <VBox.margin>
+                                                <Insets left="20.0" right="220.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                          <Label text="Force">
+                                             <VBox.margin>
+                                                <Insets left="20.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TextField prefWidth="40.0">
+                                             <VBox.margin>
+                                                <Insets left="20.0" right="220.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                          <Label text="Règle personalisé?">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" left="20.0" top="30.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <VBox prefHeight="48.0" prefWidth="305.0">
+                                             <children>
+                                                <RadioButton mnemonicParsing="false" text="Non">
+                                                   <padding>
+                                                      <Insets right="15.0" />
+                                                   </padding>
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                </RadioButton>
+                                                <RadioButton mnemonicParsing="false" text="Victoire par score atteint">
+                                                   <padding>
+                                                      <Insets right="15.0" />
+                                                   </padding>
+                                                   <VBox.margin>
+                                                      <Insets top="5.0" />
+                                                   </VBox.margin>
+                                                </RadioButton>
+                                                <RadioButton mnemonicParsing="false" text="Victoire par écart du score entre 2 équipes">
+                                                   <VBox.margin>
+                                                      <Insets bottom="20.0" top="5.0" />
+                                                   </VBox.margin>
+                                                </RadioButton>
+                                             </children>
+                                          </VBox>
+                                          <HBox prefHeight="29.0" prefWidth="305.0">
+                                             <children>
+                                                <Label text="Score à atteindre : ">
+                                                   <HBox.margin>
+                                                      <Insets bottom="10.0" top="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <TextField prefWidth="45.0">
+                                                   <HBox.margin>
+                                                      <Insets left="50.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </TextField>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox prefHeight="30.0" prefWidth="201.0">
+                                             <children>
+                                                <VBox prefHeight="35.0" prefWidth="149.0">
+                                                   <children>
+                                                      <Label text="Score à atteindre avant la :" />
+                                                      <Label text="prise en compte de l'écart" />
+                                                   </children>
+                                                </VBox>
+                                                <TextField prefHeight="25.0" prefWidth="45.0">
+                                                   <HBox.margin>
+                                                      <Insets top="5.0" />
+                                                   </HBox.margin>
+                                                </TextField>
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="29.0" prefWidth="305.0">
+                                             <children>
+                                                <Label prefHeight="17.0" prefWidth="110.0" text="Ecart de point :">
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <TextField prefHeight="25.0" prefWidth="45.0">
+                                                   <HBox.margin>
+                                                      <Insets left="40.0" right="10.0" />
+                                                   </HBox.margin>
+                                                </TextField>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <Label />
+                                       </children>
+                                    </VBox>
                                  </children>
                               </HBox>
-                              <HBox prefHeight="29.0" prefWidth="305.0">
-                                 <children>
-                                    <Label prefHeight="17.0" prefWidth="110.0" text="Ecart de point :">
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-                                    </Label>
-                                    <TextField prefHeight="25.0" prefWidth="45.0">
-                                       <HBox.margin>
-                                          <Insets left="40.0" right="10.0" />
-                                       </HBox.margin>
-                                    </TextField>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets top="10.0" />
-                                 </VBox.margin>
-                              </HBox>
+                           </content>
+                        </ScrollPane>
+                     </center>
+                     <bottom>
+                        <HBox prefHeight="57.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" text="Modifié l'épreuve" />
+                              <Button mnemonicParsing="false" text="retour">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </Button>
                            </children>
-                        </VBox>
-                     </children>
-                  </HBox>
-               </center>
-               <bottom>
-                  <HBox prefHeight="57.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" text="modifié l'épreuve" />
-                        <Button mnemonicParsing="false" text="retour">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                  </HBox>
-               </bottom>
-            </BorderPane>
-         </content>
+                        </HBox>
+                     </bottom>
+                  </BorderPane>
+               </children>
+            </AnchorPane>
+        </content>
       </Tab>
       <Tab text="Contenu de l'épreuve">
         <content>

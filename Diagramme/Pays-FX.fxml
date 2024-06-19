@@ -41,8 +41,7 @@
                   <Label />
                   <VBox alignment="CENTER_LEFT" prefHeight="182.0" prefWidth="299.0" style="-fx-background-color: e6e6fa;">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="291.0" />
-                        <HBox prefHeight="25.0" prefWidth="299.0">
+                        <HBox prefHeight="27.0" prefWidth="299.0">
                            <children>
                               <Label text="écouter l'hymne">
                                  <HBox.margin>
@@ -59,6 +58,7 @@
                               </Button>
                            </children>
                         </HBox>
+                        <Button mnemonicParsing="false" text="choisir l'hymne" />
                         <ImageView fitHeight="128.0" fitWidth="228.0" pickOnBounds="true" preserveRatio="true" />
                         <Button mnemonicParsing="false" text="Choisir le drapeau...">
                            <VBox.margin>
