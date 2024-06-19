@@ -17,6 +17,7 @@ public class VueJO extends Application {
     BorderPane fenetreAccueil;
     BorderPane fenetreinscription;
     TabPane fenetre_ajoute;
+    //TabPane fenetre_ajoutev2;
     BorderPane Consultation;
     FXMLLoader loader;
     //private ModelJO jo;
@@ -108,13 +109,14 @@ public class VueJO extends Application {
 
     private Scene fenetre_ajoute()  throws IOException {
         loader = new FXMLLoader(this.getClass().getResource("Ajouter-FX.fxml"));
-        fenetre_ajoute = loader.load();
+        this.fenetre_ajoute = loader.load();
+        //this.fenetre_ajoutev2 =loader.load();
         this.mainScene = new Scene(fenetre_ajoute);
+        
 
         ControleurAj ctraj = new ControleurAj(this);
 
         try{
-           
             Button bouttonretour1 = (Button) this.mainScene.lookup("#retour");
             Button bouttonretour2 = (Button) this.mainScene.lookup("#retour1");
             Button bouttonretour3 = (Button) this.mainScene.lookup("#retour2");
@@ -134,13 +136,19 @@ public class VueJO extends Application {
             }
 
 
-        //.getSelectionModel().select(myTab);
+        
 
         return this.mainScene;
      }
 
+     /* 
+     public Scene choisir_le_bon_tab_dans_ajoute(int number){
 
-
+        this.fenetre_ajoutev2.getSelectionModel().select(number);
+        this.mainScene = new Scene(fenetre_ajoutev2);
+        return this.mainScene;
+     }
+*/
 /* 
     private Scene fenetre_idk() throws IOException {
         loader = new FXMLLoader(this.getClass().getResource("idk.fxml"));
@@ -155,7 +163,7 @@ public class VueJO extends Application {
         loader = new FXMLLoader(this.getClass().getResource("Consultation-FX.fxml"));
         Consultation = loader.load();
         this.mainScene = new Scene(Consultation);
-
+        
         ControleurConsultation ctrinc = new ControleurConsultation(this);
 
         try{
@@ -163,7 +171,7 @@ public class VueJO extends Application {
             Button ajoutersport = (Button) this.mainScene.lookup("#ajSport");
             Button ajouterepreuve = (Button) this.mainScene.lookup("#ajEpreue");
             Button ajouterATHE = (Button) this.mainScene.lookup("#ajAthletes");
-            Button ajouterEquipe = (Button) this.mainScene.lookup("#ajEpreue");
+            Button ajouterEquipe = (Button) this.mainScene.lookup("#ajEquipe");
             Button ajouterpays = (Button) this.mainScene.lookup("#ajPays");
     
             bouttondeco.setOnAction(ctrinc);

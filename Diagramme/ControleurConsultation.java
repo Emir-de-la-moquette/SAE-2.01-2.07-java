@@ -37,38 +37,44 @@ public class ControleurConsultation implements EventHandler<ActionEvent>{
 
         if (Textboutton.equals("Ajouter un sport +")) {
             this.vue.modeajouter();
-            
+            //this.vue.choisir_le_bon_tab_dans_ajoute(1);
             this.vue.majAffichage(stage);
 
         }
 
         if (Textboutton.equals("Ajouter un epreuve +")) {
             this.vue.modeajouter();
+            //this.vue.choisir_le_bon_tab_dans_ajoute(0);
             this.vue.majAffichage(stage);
         }
 
         if (Textboutton.equals("Ajouter un athlète +")) {
             this.vue.modeajouter();
+            //this.vue.choisir_le_bon_tab_dans_ajoute(0);
             this.vue.majAffichage(stage);
         }
 
         if (Textboutton.equals("Ajouter une équipe +")) {
             this.vue.modeajouter();
+            //this.vue.choisir_le_bon_tab_dans_ajoute(0);
             this.vue.majAffichage(stage);
         }
 
         if (Textboutton.equals("Ajouter un pays +")) {
             this.vue.modeajouter();
+            //this.vue.choisir_le_bon_tab_dans_ajoute(0);
             this.vue.majAffichage(stage);
         }
 
         if (Textboutton.equals("Fichier")) {
             this.vue.modeajouter();
+            //this.vue.choisir_le_bon_tab_dans_ajoute(0);
             this.vue.majAffichage(stage);
         }
 
         if (Textboutton.equals("Aide")) {
             this.vue.modeajouter();
+            //this.vue.choisir_le_bon_tab_dans_ajoute(0);
             this.vue.majAffichage(stage);
 
         }
