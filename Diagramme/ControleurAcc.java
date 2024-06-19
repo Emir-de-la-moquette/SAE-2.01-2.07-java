@@ -42,10 +42,12 @@ public class ControleurAcc implements EventHandler<ActionEvent>{
            
         }
 
-        if (Textboutton.equals("")) {
-            System.out.println("jojo");
+        if (Textboutton.equals("Se connecter")) {
+            this.vue.modeconsultation();
+            this.vue.majAffichage(stage);
             
         }
+        
         System.out.println("joji");
     
 

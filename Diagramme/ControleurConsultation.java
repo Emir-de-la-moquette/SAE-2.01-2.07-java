@@ -1,24 +1,18 @@
-
-    import java.io.IOException;
+import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-
-
-public class Controleurincrp implements EventHandler<ActionEvent>{
-
-    private VueJO vue;
+public class ControleurConsultation implements EventHandler<ActionEvent>{
+        private VueJO vue;
     
-    private Stage stage;
+        private Stage stage;
 
 
-    public Controleurincrp( VueJO vue){
+    public ControleurConsultation( VueJO vue){
         this.vue = vue;
        
     }
@@ -32,21 +26,23 @@ public class Controleurincrp implements EventHandler<ActionEvent>{
 
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
 
-        if (Textboutton.equals("retour")) {
+        if (Textboutton.equals("Se déconnecter")) {
 
+            this.vue.popUpvous_deco().showAndWait();
             this.vue.modeAccueil();
             this.vue.majAffichage(stage);
-        }
+            
            
-        
-
-        if (Textboutton.equals("Créer un nouveau compte")) {
-            this.vue.poppcompte_enregistrer().showAndWait();
-            this.vue.modeAccueil();
-            this.vue.majAffichage(stage);
         }
 
-    }
+        if (Textboutton.equals("Se connecter")) {
+            this.vue.modeconsultation();
+            this.vue.majAffichage(stage);
+            
+        }
+        
+        System.out.println("joji");
+    
+
 }
-
-
+}
