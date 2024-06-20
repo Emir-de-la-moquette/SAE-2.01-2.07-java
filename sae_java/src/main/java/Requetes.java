@@ -33,7 +33,8 @@ public class Requetes {
 
     public void ajouterEquipe(Equipe equipe) throws SQLException {
 
-        PreparedStatement ps = this.connexion.prepareStatement("insert into Equipe(id_Equipe, taille_equipe, medEquipe_or, medEquipe_arent, medEquipe_bronze, sexe_equipe) values (?, ?, ?, ?, ?, ?)");
+
+        PreparedStatement ps = this.connexion.prepareStatement("insert into Equipe(id_Equipe, taille_equipe, medEquipe_or, medEquipe_argent, medEquipe_bronze,  sexeEquipe) values (?, ?, ?, ?, ?, ?)");
         ps.setInt(1, equipe.getID());
         ps.setInt(2, equipe.getTaille());
         ps.setInt(3, equipe.getNbMedailleOr());
@@ -43,5 +44,51 @@ public class Requetes {
 
         ps.executeUpdate();
     }
+
+    
+    public void ajouterUser(User user) throws SQLException {
+
+
+        PreparedStatement ps = this.connexion.prepareStatement("insert into UTILISATEUR(identifiantu, motdepasse , role_utilidsa) values (?, ?, ?)");
+        ps.setString(1, user.getMail());
+        ps.setString(2, user.getMdp());
+        ps.setString(3, String.valueOf(user.getRole()));
+
+        ps.executeUpdate();
+    }
+
+        
+    public void ajouteAdmin() throws SQLException {
+
+
+        PreparedStatement ps = this.connexion.prepareStatement("insert into UTILISATEUR(identifiantu, motdepasse , role_utilidsa) values (?, ?, ?)");
+        ps.setString(1, "a");
+        ps.setString(2, "1234");
+        ps.setString(3, "A");
+
+        ps.executeUpdate();
+    }
+
+    public boolean UtilisateurExist(User user) throws SQLException {
+        try {
+        String requete = "select * from UTILISATEUR where identifiantu =" + user.getMail();
+        ResultSet rs=st.executeQuery(requete);
+        return false;
+        } catch (SQLException e) { 
+            return true;
+        }
+    }
+
+    
+    public boolean LoginCorrect(User user) throws SQLException {
+        try {
+        String requete = "select * from UTILISATEUR where identifiantu =" + user.getMail() + "and motdepasse" + user.getMdp();
+        ResultSet rs=st.executeQuery(requete);
+        return true;
+        } catch (SQLException e) { 
+            return false;
+        }
+    }
+    
 
 }

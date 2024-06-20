@@ -70,17 +70,24 @@ public class CControleurAjretour implements EventHandler<ActionEvent>{
             System.out.println("aoui");
 
             try {
-            int id = 10;
             int max = this.vue.gettextFieldnbjoueurmax();
             char sexe = this.vue.getradiobouttonHE();
-            Equipe equipe = new Equipe(id, max, sexe);
+            Equipe equipe = new Equipe(max, sexe);
 
             System.out.println(equipe);
 
-            } catch (Exception e) {
-                System.err.println("nop");
-                this.vue.popUpAlert().showAndWait();
+            try {
+                this.req.ajouterEquipe(equipe);
+                System.out.println("Equipe ajouter avec succes");
+                
+            } catch (SQLException e) {
+                System.err.println("erreur :" + e);
             }
+
+        } catch (Exception e) { 
+            System.err.println("echec de l'ajout"+ e);
+            this.vue.popUpAlert().showAndWait();
+        }
         }
 
         else if (Textboutton.equals("Créer l'Epreuve")){

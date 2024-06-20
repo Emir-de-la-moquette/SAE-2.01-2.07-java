@@ -1,5 +1,6 @@
 
-    import java.io.IOException;
+import java.io.IOException;
+import java.sql.SQLException;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -17,9 +18,12 @@ public class CControleurincrp implements EventHandler<ActionEvent>{
     
     private Stage stage;
 
+    private Requetes req;
 
-    public CControleurincrp( VueJO vue){
+
+    public CControleurincrp( VueJO vue, Requetes req){
         this.vue = vue;
+        this.req = req;
        
     }
 
@@ -29,6 +33,7 @@ public class CControleurincrp implements EventHandler<ActionEvent>{
 
         Button o =(Button) actionEvent.getSource();
         String Textboutton = o.getText();
+        User user;
 
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
 
@@ -37,10 +42,38 @@ public class CControleurincrp implements EventHandler<ActionEvent>{
             this.vue.modeAccueil();
             this.vue.majAffichage(stage);
         }
-           
-        
-
+             
         if (Textboutton.equals("Créer un nouveau compte")) {
+            try {
+                String ident = this.vue.getcreer_mail();
+                String mdp = this.vue.getcreer_motdpass();
+                char role;
+                if (this.vue.getradioboutton_visit())
+                    role = 'V';
+                else if (this.vue.radioboutton_organisateur())
+                    role = 'O';
+                else
+                    role = 'A';
+
+                user = new User(ident, mdp, role);
+                if (!(this.req.UtilisateurExist(user))){
+                    try {
+                        this.req.ajouterUser(user);
+                        System.err.println("le User a bien été ajouter");
+
+                    }catch (SQLException e) {
+                        System.err.println("erreur ici:" + e);
+                    }
+                } else {System.out.println("utilisateur déjà existant");}
+                
+            } catch (Exception e) {
+                System.err.println("echec de l'ajout"+ e);
+                this.vue.popUpAlert().showAndWait();
+
+            }
+           
+
+
             this.vue.poppcompte_enregistrer().showAndWait();
             this.vue.modeAccueil();
             this.vue.majAffichage(stage);

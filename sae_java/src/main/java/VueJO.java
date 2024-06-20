@@ -25,6 +25,15 @@ public class VueJO extends Application {
     BorderPane Consultation;
     FXMLLoader loader;
 
+    //*connexion */
+    TextField creer_mail = new TextField();
+    TextField creer_motdpass = new TextField();
+    RadioButton radioboutton_visit = new RadioButton();
+    RadioButton radioboutton_organisateur = new RadioButton();
+    RadioButton radioboutton_admin = new RadioButton();
+
+
+
     //*athlète */
     TextField textFieldNomA = new TextField();
     TextField textFieldprenomA = new TextField();
@@ -66,6 +75,7 @@ public class VueJO extends Application {
     public void start(Stage stage) throws IOException {
         try {
             this.req = new Requetes( new ConnexionMySql());
+            req.ajouteAdmin();
             
         } catch (Exception e) {
             System.err.println("probleme chef=");
@@ -134,12 +144,12 @@ public class VueJO extends Application {
         fenetreinscription = loader.load();
         this.mainScene = new Scene(fenetreinscription);
 
-        CControleurincrp ctrinc = new CControleurincrp(this);
+        CControleurincrp ctrinc = new CControleurincrp(this, this. req);
 
         try{
 
-        TextField creer_mail = (TextField) this.mainScene.lookup("#creeremail");
-        TextField creer_motdpass = (TextField) this.mainScene.lookup("#creermdp");
+        this.creer_mail = (TextField) this.mainScene.lookup("#creeremail");
+        this.creer_motdpass = (TextField) this.mainScene.lookup("#creermdp");
 
 
 
@@ -151,9 +161,9 @@ public class VueJO extends Application {
         boutton_nouveau_compte.setOnAction(ctrinc);
 
         //creer les toggle boutton et relier les radio boutton
-        RadioButton radioboutton_visit = (RadioButton) this.mainScene.lookup("#selectvisit");
-        RadioButton radioboutton_organisateur = (RadioButton) this.mainScene.lookup("#selectorg");
-        RadioButton radioboutton_admin = (RadioButton) this.mainScene.lookup("#selectadm");
+        this.radioboutton_visit = (RadioButton) this.mainScene.lookup("#selectvisit");
+        this.radioboutton_organisateur = (RadioButton) this.mainScene.lookup("#selectorg");
+        this.radioboutton_admin = (RadioButton) this.mainScene.lookup("#selectadm");
 
 
         
@@ -310,6 +320,14 @@ public class VueJO extends Application {
         return this.mainScene;
 
     }
+    //*__________________________________________________________
+    //*Connexion */
+    public String getcreer_mail(){return this.creer_mail.getText();}
+    public String getcreer_motdpass(){return this.creer_motdpass.getText();}
+
+    public boolean getradioboutton_visit() {return radioboutton_visit.isSelected();}
+    public boolean radioboutton_organisateur() {return radioboutton_organisateur.isSelected();}
+    public boolean radioboutton_admin() {return radioboutton_admin.isSelected();}
 
     //*__________________________________________________________
     //*Athlete */
