@@ -5,7 +5,7 @@ public class jdbc {
         ConnexionMySql truc = new ConnexionMySql();
         System.out.println("conn");
       } catch (Exception e) {
-        // TODO: handle exception
+        System.out.println("marche pas");
       }  
 
     }
