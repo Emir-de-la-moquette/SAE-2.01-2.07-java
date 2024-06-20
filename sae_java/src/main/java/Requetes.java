@@ -1,4 +1,7 @@
+
 import java.sql.*;
+
+import data.ConnexionMySql;
 
 public class Requetes {
     private ConnexionMySql connexion;

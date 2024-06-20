@@ -1,3 +1,4 @@
+package data;
 
 import java.sql.*;
 
@@ -6,7 +7,9 @@ public class ConnexionMySql {
 	public ConnexionMySql() throws SQLException{
 		this.mysql = DriverManager.getConnection(
 					"jdbc:mysql://localhost:3307/saef","root","4dameorc");
-	}
+                }
+
+                
 	/*public ConnexionMySql(String leGens) throws SQLException{
         this.mysql = DriverManager.getConnection(
                      "jdbc:mysql://servinfo-maria:3306/DB"+leGens,leGens,leGens);

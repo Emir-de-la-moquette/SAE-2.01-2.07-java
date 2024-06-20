@@ -6,6 +6,4 @@ public class Exec {
         Application.launch(VueJO.class,args);
 
 }
-
-    
 }
