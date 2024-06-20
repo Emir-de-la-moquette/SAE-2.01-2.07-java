@@ -1,4 +1,8 @@
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Requetes {
     private ConnexionMySQL connexion;
@@ -9,7 +13,9 @@ public class Requetes {
         this.connexion.connecter();
     }
 
+    // à faire : supprimer athlete d'une équipe puis supprimer athlete
     public void ajouterAthlete(Athlete athlete) throws SQLException {
+
         supprimerAthlete(athlete.getID());
         
         PreparedStatement ps = this.connexion.prepareStatement("insert into Athlete(id_Athlete, NomAt, PrenomAT, SexeAT, stats_Force, stats_Endurance, stats_agilite) values (?, ?, ?, ?, ?, ?, ?)");
@@ -89,10 +95,6 @@ public class Requetes {
         ps.executeUpdate();
     }
 
-    // public void ajouterMatch(Match match) throws SQLException {
-    //     supprimerMatch(match.getID());
-    // }
-
 
 
 
@@ -150,18 +152,133 @@ public class Requetes {
         ResultSet rs = this.st.executeQuery("select * from JeuxOlympique where nomJO = " + nomJO);
 
         if (rs.next()) {
-            PreparedStatement ps = this.connexion.prepareStatement("delete from JeuxOlympique = " + nomJO);
+            PreparedStatement ps = this.connexion.prepareStatement("delete from JeuxOlympique where nomJO = " + nomJO);
             ps.executeUpdate();
         }
     }
 
-    // public void supprimerMatch(String nomMatch) throws SQLException {
-    //     this.st = this.connexion.createStatement();
-    //     ResultSet rs = this.st.executeQuery("select * from Matchs where nom_Match = " + nomMatch);
 
-    //     if (rs.next()) {
-    //         PreparedStatement ps = this.connexion.prepareStatement("delete from Matchs where nom_Match = " + nomMatch);
-    //         ps.executeUpdate();
+
+    // public Map<String, Integer> triPaysParOr() throws SQLException {
+    //     Map<String, Integer> mapPays = new HashMap<>();
+    //     this.st = this.connexion.createStatement();
+    //     ResultSet rs = this.st.executeQuery("select nom_pays, medpays_or from Pays order by medpays_or");
+
+    //     while (rs.next()) {
+    //         String nomPays = rs.getString(1);
+    //         Integer nbOr = rs.getInt(2);
+    //         mapPays.put(nomPays, nbOr);
     //     }
+
+    //     return mapPays;
     // }
+
+
+
+
+
+
+    public void equipeAjouteAthlete(int idEquipe, int idAthlete) throws SQLException {
+        PreparedStatement ps = this.connexion.prepareStatement("insert into ContenirEQ_ATH(id_Athlete, id_Equipe) values (?, ?)");
+        ps.setInt(1, idAthlete);
+        ps.setInt(2, idEquipe);
+        ps.executeUpdate();
+    }
+
+    public void joAjouteSport(String nomJO, String nomSport) throws SQLException {
+        PreparedStatement ps = this.connexion.prepareStatement("insert into ContenirJO_SP(nomJO, nom_sport) values (?, ?)");
+        ps.setString(1, nomJO);
+        ps.setString(2, nomSport);
+        ps.executeUpdate();
+    }
+
+    public void joAjouteEpreuve(String nomJO, int idEpreuve) throws SQLException {
+        PreparedStatement ps = this.connexion.prepareStatement("insert into ContenirJO_EP(nomJO, id_Epreuve) values (?, ?)");
+        ps.setString(1, nomJO);
+        ps.setInt(2, idEpreuve);
+        ps.executeUpdate();
+    }
+
+    public void joAjoutePays(String nomJO, String nomPays) throws SQLException {
+        PreparedStatement ps = this.connexion.prepareStatement("insert into ContenirJO_PAYS(nomJO, nom_pays) values (?, ?)");
+        ps.setString(1, nomJO);
+        ps.setString(2, nomPays);
+        ps.executeUpdate();
+    }
+
+    public void paysAjouteEquipe(String nomPays, int idEquipe) throws SQLException {
+        PreparedStatement ps = this.connexion.prepareStatement("insert into ContenirPAYS_EQ(id_Equipe, nom_pays) values (?, ?)");
+        ps.setInt(1, idEquipe);
+        ps.setString(2, nomPays);
+        ps.executeUpdate();
+    }
+
+    public void epreuveAjouteSport(int idEpreuve, String nomSport) throws SQLException {
+        PreparedStatement ps = this.connexion.prepareStatement("insert into ContenirEP_SP(id_Epreuve, nom_sport) values (?, ?)");
+        ps.setInt(1, idEpreuve);
+        ps.setString(2, nomSport);
+        ps.executeUpdate();
+    }
+
+
+
+    public void equipeSupprimeAthlete(int idEquipe, int idAthlete) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from ContenirEQ_ATH where id_Athlete = " + idAthlete + " and id_Equipe = " + idEquipe);
+
+        if (rs.next()) {
+            PreparedStatement ps = this.connexion.prepareStatement("delete from ContenirEQ_ATH where id_Athlete = " + idAthlete + " and id_Equipe = " + idEquipe);
+            ps.executeUpdate();
+        }
+    }
+
+    public void joSupprimeSport(String nomJO, String nomSport) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from ContenirJO_SP where nom_sport = " + nomSport + " and nomJO = " + nomJO);
+
+        if (rs.next()) {
+            PreparedStatement ps = this.connexion.prepareStatement("delete from ContenirJO_SP where nomJO = " + nomJO + " and nom_sport = " + nomSport);
+            ps.executeUpdate();
+        }
+    }
+
+    public void joSupprimeEpreuve(String nomJO, int idEpreuve) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from ContenirJO_EP where nomJO = " + nomJO + " and id_Epreuve = " + idEpreuve);
+
+        if (rs.next()) {
+            PreparedStatement ps = this.connexion.prepareStatement("delete from ContenirJO_EP where nomJO = " + nomJO + " and id_Epreuve = " + idEpreuve);
+            ps.executeUpdate();
+        }
+    }
+
+    public void joSupprimePays(String nomJO, String nomPays) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from ContenirJO_PAYS where nomJO = " + nomJO + " and nom_pays = " + nomPays);
+
+        if (rs.next()) {
+            PreparedStatement ps = this.connexion.prepareStatement("delete from ContenirJO_PAYS where nomJO = " + nomJO + " and nom_pays = " + nomPays);
+            ps.executeUpdate();
+        }
+    }
+
+    public void paysSupprimeEquipe(String nomPays, int idEquipe) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from ContenirPAYS_EQ where nom_pays = " + nomPays + " and id_Equipe = " + idEquipe);
+
+        if (rs.next()) {
+            PreparedStatement ps = this.connexion.prepareStatement("delete from ContenirPAYS_EQ where nom_pays = " + nomPays + " and id_Equipe = " + idEquipe);
+            ps.executeUpdate();
+        }
+    }
+
+    public void epreuveSupprimeSport(int idEpreuve, String nomSport) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from ContenirEP_SP where id_Epreuve = " + idEpreuve + " and nom_sport = " + nomSport);
+
+        if (rs.next()) {
+            PreparedStatement ps = this.connexion.prepareStatement("delete from ContenirEP_SP where id_Epreuve = " + idEpreuve + " and nom_sport = " + nomSport);
+            ps.executeUpdate();
+        }
+    }
 }
