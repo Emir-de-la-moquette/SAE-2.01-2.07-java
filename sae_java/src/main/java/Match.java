@@ -25,6 +25,7 @@ public class Match {
 
     public Match(Epreuve epreuve){
         this.epreuve = epreuve;
+        this.sport = epreuve.getLeSports();
 
         Match.numMatch+=1;
 

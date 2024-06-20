@@ -18,16 +18,25 @@ public class CSVmanager<T> {
         lesEpreuves = new ArrayList<>();
         lesEquipes = new ArrayList<>();
         lesSports = new ArrayList<>();
-        lesEpreuves = new ArrayList<>();
+        lesPays = new ArrayList<>();
+
+        // Récupérer les éléments en les regroupant
 
         HashMap<Integer, HashMap<Pays,Equipe>> inscriptionsEnAttente = new HashMap<>();
 
         String ligne;
         String split = ",";
-        boolean firsttime = true;
         // Epreuve<Athlete> vraiEpreuve;
 
         try (BufferedReader line = new BufferedReader(new FileReader(chemin))) {
+
+            if(Cache.getDATA("Athlete")!=null && Cache.getDATA("Athlete").size() != 0) lesAthletes = (List<Athlete>)Cache.getDATAAs("Athlete", Athlete.class);
+            if(Cache.getDATA("Epreuve")!=null &&Cache.getDATA("Epreuve").size() != 0) lesEpreuves = (List<Epreuve>)Cache.getDATAAs("Epreuve", Epreuve.class);
+            if(Cache.getDATA("Equipe")!=null &&Cache.getDATA("Equipe").size() != 0) lesEquipes = (List<Equipe>)Cache.getDATAAs("Equipe", Equipe.class);
+            if(Cache.getDATA("Sport")!=null &&Cache.getDATA("Sport").size() != 0) lesSports = (List<Sport>)Cache.getDATAAs("Sport",Sport.class);
+            if(Cache.getDATA("Pays")!=null &&Cache.getDATA("Pays").size() != 0) lesPays = (List<Pays>)Cache.getDATAAs("Pays", Pays.class);
+        
+            // List<Athlete> feur = Cache.getDATAAs("Athlete", Athlete.class);
             
             line.readLine();
             while ((ligne = line.readLine()) != null) {
@@ -35,10 +44,8 @@ public class CSVmanager<T> {
                 // tableau de String => String []
                 String[] ligneElems = ligne.split(split);
               
-                if (ligneElems.length != 14) {
-                    if(!firsttime)
+                if (ligneElems.length == 14) {
                     try {
-                        firsttime = false;
                         String nom = ligneElems[0];
                         String prenom = ligneElems[1];
                         char sexe = ligneElems[2].charAt(0);
@@ -60,16 +67,19 @@ public class CSVmanager<T> {
                         Pays lePaysPossess = null;
                         Sport leSportActuel = null;
 
+                        if(lesPays!=null)
                         for(Pays pay : lesPays){
                             if(pay.getNompays().equals(nomPays)){
                             lePaysPossess = pay;
                             break;}
                         }
                         if(lePaysPossess == null){
+                            System.out.println(lesPays);
                             Pays newPays = new Pays(nomPays);
                             lePaysPossess = newPays;
                             lesPays.add(newPays);}
-
+                        
+                        if(lesSports!=null )
                         for(Sport sp : lesSports){
                             if(sp.getNomSport().equals(nomSport)){
                             leSportActuel = sp;
@@ -100,6 +110,7 @@ public class CSVmanager<T> {
                                     if(equipPays.getTaille() > equipPays.getLesAthletes().size())
                                     epre.get(lePaysPossess).participer(ath);
                                     if(equipPays.estALaBonneTaille())
+                                        if(lesEpreuves.size()!=0)
                                         for(Epreuve eprevuID : lesEpreuves)
                                             if(eprevuID.getID()==idEpreuve){
                                                 eprevuID.participer(equipPays);
@@ -123,6 +134,7 @@ public class CSVmanager<T> {
                                 Equipe eqpx = new Equipe(Equipe.getNewId(), 1, sexe);
                                 eqpx.participer(ath);
                                 lesEquipes.add(eqpx);
+                                if(lesEpreuves.size()!=0)
                                 for(Epreuve epreuvu : lesEpreuves){
                                     if(epreuvu.getID()==idEpreuve){
                                         epreuvu.participer(eqpx);

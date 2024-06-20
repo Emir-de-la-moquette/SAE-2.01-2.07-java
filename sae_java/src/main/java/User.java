@@ -54,4 +54,25 @@ public class User {
         return true;
         return false;
     }
+
+
+    public String getMail() {
+        return this.mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getMdp() {
+        return this.mdp;
+    }
+
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
+    }
+    public void setRole(char role) {
+        this.role = role;
+    }
+
 }

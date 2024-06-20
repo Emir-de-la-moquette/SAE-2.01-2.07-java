@@ -71,6 +71,7 @@ public class Epreuve implements Participation<Equipe>, Data {
         this.lesEquipes = new ArrayList<>();
         this.lesMatchs = new ArrayList<>();
 
+        Cache.setDATA("Epreuve", this);
     }
 
     public Epreuve(int id, String nomEpreuve, char sexeEpreuve, String categorieEpreuve, String typeEpreuve,
@@ -94,6 +95,7 @@ public class Epreuve implements Participation<Equipe>, Data {
         this.lesEquipes = new ArrayList<>();
         this.lesMatchs = new ArrayList<>();
 
+        Cache.setDATA("Epreuve", this);
     }
 
 
@@ -428,7 +430,8 @@ public class Epreuve implements Participation<Equipe>, Data {
         if(reel) this.estRealise = true;
 
         HashMap<Integer, List<Equipe>> classementReel = new HashMap<>();
-        classementReel.put(1, (List)lesEquipes);
+        classementReel.put(1, new ArrayList<>());
+        classementReel.get(1).addAll(lesEquipes);
         pallierMatch = new HashMap<>();
         
         if(typeEpreuve == "Score"){
@@ -437,6 +440,7 @@ public class Epreuve implements Participation<Equipe>, Data {
                 
                 MatchScore match = new MatchScore(this, equip, moyenneAthletique, recordMondial);
                 match.deroulerMatch();
+                lesMatchs.add(match);
                 listScores.add(match);
 
                 if (match.getScore() > this.recordMondial) {
@@ -451,11 +455,23 @@ public class Epreuve implements Participation<Equipe>, Data {
             for(int z=0 ; z<listScores.size(); z++)  // A changer si le classement est inversé
             res.add(listScores.get(z).getEquipe());
             this.classement = res;
+            /** distribue les medailles */
+            if(this.recordMondial > this.moyenneAthletique)
+            res = reverse(res);
+             if (res.size() > 0)
+                 res.get(0).ajouteMedailleOr();
+             if (res.size() > 1)
+                 res.get(1).ajouteMedailleArgent();
+             if (res.size() > 2)
+                 res.get(2).ajouteMedailleBronze();
         }
 
         else if(typeEpreuve == "Duel"){
         
-        while(classementReel.size()<lesEquipes.size()){
+        //while(classementReel.size()<lesEquipes.size()){
+        int XXXXX = 1;
+        while(XXXXX == 1){
+            if(classementReel.size()>=lesEquipes.size()) XXXXX = 0;
         for(int x = classementReel.size(); x>0; x--){
             List<Equipe[]> matchsAfaire = new ArrayList<>();
         for(int i = 0; i<classementReel.get(x).size(); i+=2){
@@ -464,21 +480,40 @@ public class Epreuve implements Participation<Equipe>, Data {
             } catch (Exception e) {break;} 
         }        
         for(Equipe[] lesEquips : matchsAfaire){
-            List<MatchDuel> matchsEff = pallierMatch.get(1);
-            matchsEff.add(new MatchDuel(this, lesEquips[0], lesEquips[1])); 
+            List<MatchDuel> matchsEff = pallierMatch.get(x);
+            if(matchsEff == null) matchsEff = new ArrayList<MatchDuel>();
+            MatchDuel match = new MatchDuel(this, lesEquips[0], lesEquips[1]);
+            matchsEff.add(match); 
+            pallierMatch.put(x, matchsEff);
+            lesMatchs.add(match);
             matchsEff.get(matchsEff.size()-1).deroulerMatch(); 
             Equipe leGagnant = matchsEff.get(matchsEff.size()-1).getGagnant();
-            classementReel.get(x).remove(leGagnant);
-            if(classementReel.size()-1 == x)
-            classementReel.put(x+1, Arrays.asList(leGagnant));
-            else{classementReel.get(x+1).add(leGagnant);}
+            List<Equipe> feur = classementReel.get(x);
+            feur.remove(leGagnant);
+            classementReel.put(x, feur);
+            if(classementReel.size() == x){
+                List<Equipe> dessus = new ArrayList<>();
+                dessus.add(leGagnant);
+                classementReel.put(x+1, dessus);}
+            else{
+                List<Equipe> quoi = classementReel.get(x+1);
+                quoi.add(leGagnant);
+                classementReel.put(x+1,quoi);}
                     }       
                 }
+                System.out.println("AAAAAAH");
             }
             List<Equipe> res = new ArrayList<>();
-            for(int z=classementReel.size()-1; z>0; z--)
+            for(int z=classementReel.size(); z>0; z--)
             res.add(classementReel.get(z).get(0));
+            if (res.size() > 0)
+                 res.get(0).ajouteMedailleOr();
+            if (res.size() > 1)
+                 res.get(1).ajouteMedailleArgent();
+            if (res.size() > 2)
+                 res.get(2).ajouteMedailleBronze();
             this.classement = res;
+            
         }
         else{
             System.err.println("Ce type de match n'est pas pris en charge");

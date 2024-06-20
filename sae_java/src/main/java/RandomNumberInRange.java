@@ -15,6 +15,7 @@ public class RandomNumberInRange {
 	 * @return int int
 	*/
 	public static int getRandomInt(int min, int max) {
-		return (int)getRandom(min, max);
+		double val = getRandom(min, max);
+		return (int)Math.round(val);
 	}
 }

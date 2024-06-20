@@ -4,7 +4,8 @@ public class ModeleJO {
 
 
 
-
+    ////////////////////////////////////////
+    // GESTION DE L'UTILISATEUR
 
     public void createUser() throws IdentifiantNonValideException, MDPNonValideException, CLENonValideException{
         String resTxtFieldID;
@@ -28,5 +29,36 @@ public class ModeleJO {
         }
         String mdp = User.crypteMDP(resTxtFieldMDP);
         utilisateur = new User(resTxtFieldID, mdp, roleChoisit);
+        jdbc.newUser(utilisateur);
     }
+
+    public void connexionUser() throws IdentifiantNonValideException, MDPNonValideException{
+        String resTxtFieldID;
+        String resTxtFieldMDP;
+
+        resTxtFieldID = "nig@gmail.com";
+        resTxtFieldMDP = "QuoicouFeur69";
+
+        if(!jdbc.mailExiste()) throw new IdentifiantNonValideException("Cette adresses mail n'existe pas !");
+        if(!jdbc.getMDP(resTxtFieldID).equals(resTxtFieldMDP)) throw new MDPNonValideException("Votre mot de passe est incorrect !");
+
+        utilisateur = new User(resTxtFieldID, resTxtFieldMDP, jdbc.getRole(resTxtFieldID));
+    }
+
+    public void deconnecter(){
+        utilisateur = null;
+    }
+
+    public void modifierMDP(String newMDP) throws MDPNonValideException{
+        if(newMDP.length()<6) throw new MDPNonValideException("Le mot de passe doit faire au minimum 6 caractères");
+        User editedUser = utilisateur;
+        editedUser.setMdp(newMDP);
+        jdbc.editUser(utilisateur, editedUser);
+        utilisateur = editedUser;
+    }
+
+    /////////////////
+
+
+
 }

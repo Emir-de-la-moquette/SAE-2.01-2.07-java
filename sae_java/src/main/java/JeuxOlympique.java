@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class JeuxOlympique {
+public class JeuxOlympique implements Data {
 
     private static List<String> lesID = new ArrayList<>();
 
@@ -25,6 +25,8 @@ public class JeuxOlympique {
         this.lesPays = new ArrayList<>();
         this.lesEpreuve = new ArrayList<>();
         this.lesSports = new ArrayList<>();
+        
+        Cache.setDATA("JO", this);
     }
 
     /*

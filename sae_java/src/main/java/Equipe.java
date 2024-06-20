@@ -26,6 +26,9 @@ public class Equipe implements Participation<Athlete>, Data {
         this.IDequipe = id;
         this.lesAthletes = new ArrayList<>();
         this.sexeEquipe = sexeEquipe;
+
+        
+        Cache.setDATA("Equipe", this);
     }
 
     /*
@@ -159,10 +162,10 @@ public class Equipe implements Participation<Athlete>, Data {
 
     @Override
     public String toString() {
-        return "l'équipe numéro " + this.getID();
-                //+ " possède medaille d'or : " + this.getNbMedailleOr()
-                //+ " possède medaille d'argent : " + this.getNbMedailleArgent()
-                //+ " possède medaille de bronze : " + this.getNbMedailleBronze();
+        return "l'équipe numéro " + this.getID()
+                + " possède medaille d'or : " + this.getNbMedailleOr()
+                + " possède medaille d'argent : " + this.getNbMedailleArgent()
+                + " possède medaille de bronze : " + this.getNbMedailleBronze();
     }
 
     public String toString2() {

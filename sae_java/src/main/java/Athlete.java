@@ -25,6 +25,8 @@ public class Athlete implements Data {
         this.endurance = endurance;
         this.force = force;
         this.IDathlete = id;
+
+        Cache.setDATA("Athlete", this);
     }
 
 
@@ -150,7 +152,7 @@ public class Athlete implements Data {
     @Override
 
     public String toString() {
-        return this.nomA + " " + this.prenomA + " est un "+((this.sexeA == 'H')? "Homme" : "Femme")+" avec : " + this.agilite + " d'agilité, "
-                    + this.endurance + " d'endurance, et " + this.force + " de force.";
+        return this.nomA + " " + this.prenomA; /**  + " est un "+((this.sexeA == 'H')? "Homme" : "Femme")+" avec : " + this.agilite + " d'agilité, "
+                    + this.endurance + " d'endurance, et " + this.force + " de force.";*/
     }
 }
