@@ -1,9 +1,11 @@
 import java.io.IOException;
 
+import java.util.Optional;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 public class ControleurConsultation implements EventHandler<ActionEvent>{
@@ -27,10 +29,13 @@ public class ControleurConsultation implements EventHandler<ActionEvent>{
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
 
         if (Textboutton.equals("Se déconnecter")) {
-
-            this.vue.popUpvous_deco().showAndWait();
-            this.vue.modeAccueil();
-            this.vue.majAffichage(stage);
+            Optional<ButtonType> rerponse = this.vue.popUpvous_deco().showAndWait();
+            if (rerponse.isPresent() && rerponse.get().equals(ButtonType.YES)) {
+                this.vue.modeAccueil();
+                this.vue.majAffichage(stage);
+            }
+            else{System.out.println("OK");}
+            
             
            
         }

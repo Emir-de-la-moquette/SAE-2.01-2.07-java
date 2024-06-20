@@ -27,6 +27,7 @@ public class VueJO extends Application {
     TextField textFieldAGilA = new TextField();
     TextField textFieldEndA  = new TextField();
     TextField textFieldforcA = new TextField();
+    RadioButton radiobouttonHA = new RadioButton();
     RadioButton radiobouttonFA = new RadioButton();
     //Requetes req = new Requetes();
     //private ModelJO jo;
@@ -177,25 +178,36 @@ public class VueJO extends Application {
             bCreerA.setOnAction(ctraj);
 
             //creer les toggle boutton et relier les radio boutton
-            //*this.radiobouttonHA = (RadioButton) this.mainScene.lookup("#radiobouttonHA");
+            ToggleGroup f = new ToggleGroup();
+            this.radiobouttonHA = (RadioButton) this.mainScene.lookup("#radiobouttonHA");
             this.radiobouttonFA = (RadioButton) this.mainScene.lookup("#radiobouttonFA");
-            
+            radiobouttonHA.setToggleGroup(f);
+            radiobouttonFA.setToggleGroup(f);
             //______________________________________________________
             // partie ajouter sport
             TextField textfieldSport = (TextField) this.mainScene.lookup("#textfieldSport");
             Button BCreerSP = (Button) this.mainScene.lookup("#BCreerSP");
+
+            BCreerSP.setOnAction(ctraj);
+
 
             //______________________________________________________
             // partie ajouter equipe
 
             TextField textFieldnbjoueurmax = (TextField) this.mainScene.lookup("#textFieldnbjoueurmax");
             Button BcreerEQ = (Button) this.mainScene.lookup("#BcreerEQ");
+
+            BcreerEQ.setOnAction(ctraj);
+            
             Button BajouAdansEQ = (Button) this.mainScene.lookup("#BajouAdansEQ");
             
 
             //creer les toggle boutton et relier les radio boutton
+            ToggleGroup e = new ToggleGroup();
             RadioButton radiobouttonHE = (RadioButton) this.mainScene.lookup("#radiobouttonHE");
             RadioButton radiobouttonFE = (RadioButton) this.mainScene.lookup("#radiobouttonFE");
+            radiobouttonHE.setToggleGroup(e);
+            radiobouttonFE.setToggleGroup(e);
             //______________________________________________________
             // partie ajouter Epreuve 
             TextField textFieldNomEP = (TextField) this.mainScene.lookup("#textFieldNomEP");
@@ -203,15 +215,20 @@ public class VueJO extends Application {
             ChoiceBox choix_Sport_Ass = (ChoiceBox) this.mainScene.lookup("#choix_Sport_Ass");
 
             //creer les toggle boutton et relier les radio boutton p1
-            Button radiobouttonHEP = (Button) this.mainScene.lookup("#radiobouttonHEP");
-            Button radiobouttonFEP = (Button) this.mainScene.lookup("#radiobouttonFEP");
-
+            ToggleGroup d = new ToggleGroup();
+            RadioButton radiobouttonHEP = (RadioButton) this.mainScene.lookup("#radiobouttonHEP");
+            RadioButton radiobouttonFEP = (RadioButton) this.mainScene.lookup("#radiobouttonFEP");
+            radiobouttonHEP.setToggleGroup(d);
+            radiobouttonFEP.setToggleGroup(d);
 
             TextField textFieldCaractEP = (TextField) this.mainScene.lookup("#textFieldCaractEP");
 
              //creer les toggle boutton et relier les radio boutton p2
+             ToggleGroup c = new ToggleGroup();
              RadioButton radiobouttonFPaff = (RadioButton) this.mainScene.lookup("#radiobouttonFPaff");
              RadioButton radiobouttonFPMscore = (RadioButton) this.mainScene.lookup("#radiobouttonFPMscore");
+             radiobouttonFPaff.setToggleGroup(c);
+             radiobouttonFPMscore.setToggleGroup(c);
 
 
              //demande agil endu force textfield
@@ -221,12 +238,16 @@ public class VueJO extends Application {
 
 
             //creer les toggle boutton et relier les radio boutton p3
+            ToggleGroup g = new ToggleGroup();
             RadioButton radiobouttonRPnon = (RadioButton) this.mainScene.lookup("#radiobouttonRPnon");
             RadioButton radiobouttonRPVscoreatt = (RadioButton) this.mainScene.lookup("#radiobouttonRPVscoreatt");
             RadioButton radiobouttonRPVecartscore = (RadioButton) this.mainScene.lookup("#radiobouttonRPVecartscore");
+            radiobouttonRPnon.setToggleGroup(g);
+            radiobouttonRPVscoreatt.setToggleGroup(g);
+            radiobouttonRPVecartscore.setToggleGroup(g);
 
-
-             Button BcreerEP = (Button) this.mainScene.lookup("#BcreerEP");
+            Button BcreerEP = (Button) this.mainScene.lookup("#BcreerEP");
+            BcreerEP.setOnAction(ctraj);
 
              //______________________________________________________
             // partie ajouter Pays
@@ -240,6 +261,7 @@ public class VueJO extends Application {
             ImageView imageDrapeauP = (ImageView) this.mainScene.lookup("#imageDrapeauP");
 
             Button BCreerP = (Button) this.mainScene.lookup("#BCreerP");
+            BCreerP.setOnAction(ctraj);
 
 
             }

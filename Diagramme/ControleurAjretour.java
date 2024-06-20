@@ -51,6 +51,10 @@ public class ControleurAjretour implements EventHandler<ActionEvent>{
                 this.vue.popUpAthleteAlert().showAndWait();
             }
         }
+
+        else if (Textboutton.equals("Créer le Sport")){
+            System.out.println("aoui");
+        }
      
         else if (Textboutton.equals("retour")) {
             this.vue.modeconsultation();
