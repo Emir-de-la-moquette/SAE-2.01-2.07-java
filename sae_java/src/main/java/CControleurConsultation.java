@@ -35,6 +35,20 @@ public class CControleurConsultation implements EventHandler<ActionEvent>{
                 this.vue.majAffichage(stage);
             }
             else{System.out.println("OK");}
+
+        if (Textboutton.equals("Jouer les Jeux Olympique")) {
+            Optional<ButtonType> reponse = this.vue.popUpvous_lancer().showAndWait();
+            if (reponse.isPresent() && reponse.get().equals(ButtonType.CANCEL)){
+                System.out.println("ok");
+                }
+            if (reponse.isPresent() && reponse.get().getText().equals("Lancer une nouvelle partie")){
+                this.vue.modeconsultation();
+                this.vue.majAffichage(stage);
+                }
+            if (reponse.isPresent() && reponse.get().getText().equals("Simuler_les_Epreuves")){
+                this.vue.modeconsultation();
+                this.vue.majAffichage(stage);
+                }
             
             
            
@@ -87,5 +101,6 @@ public class CControleurConsultation implements EventHandler<ActionEvent>{
         System.out.println("joji");
     
 
+}
 }
 }

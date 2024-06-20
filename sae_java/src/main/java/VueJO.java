@@ -401,7 +401,11 @@ public class VueJO extends Application {
             Button ajouterATHE = (Button) this.mainScene.lookup("#ajAthletes");
             Button ajouterEquipe = (Button) this.mainScene.lookup("#ajEquipe");
             Button ajouterpays = (Button) this.mainScene.lookup("#ajPays");
+
+            Button blancerpartie = (Button) this.mainScene.lookup("#lancerJO");
     
+
+            blancerpartie.setOnAction(ctrinc);
             bouttondeco.setOnAction(ctrinc);
             ajoutersport.setOnAction(ctrinc);
             ajouterepreuve.setOnAction(ctrinc);
@@ -493,6 +497,16 @@ public class VueJO extends Application {
         alert.setContentText("votre compte est bien enregistrer");
         return alert;
     }
+
+    public Alert popUpvous_lancer(){
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"vous aller vous deconecter\n Etes-vous sûr vous deconecter ?",ButtonType.CANCEL,SIM,LANC);
+        alert.setTitle("Attention");
+        return alert;
+    }
+
+    private ButtonType SIM = new ButtonType("Simuler_les_Epreuves");
+    private ButtonType LANC = new ButtonType("Lancer_les_Epreuves");
 
     public Alert popUpAlert(){
         Alert alert = new Alert(Alert.AlertType.ERROR,"Vous ne pouvez pas crée ceci\n assurer vous bien de remplir tout les champs", ButtonType.OK);
