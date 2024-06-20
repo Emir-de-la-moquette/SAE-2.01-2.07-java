@@ -46,13 +46,48 @@ public class CControleurAjretour implements EventHandler<ActionEvent>{
             //this.req.ajouterAthlete(athlete);
 
             System.out.println(athlete);
+            
             } catch (Exception e) { 
                 System.err.println("nop");
-                this.vue.popUpAthleteAlert().showAndWait();
+                this.vue.popUpAlert().showAndWait();
             }
         }
 
         else if (Textboutton.equals("Créer le Sport")){
+
+            try {
+            String nom = this.vue.gettextfieldSport();
+            Sport sport = new Sport(nom);
+            System.out.println(sport);
+
+            } catch (Exception e) {
+                System.err.println("nop");
+                this.vue.popUpAlert().showAndWait();
+            }
+        }
+
+        else if (Textboutton.equals("Créer l'Equipe")){
+            System.out.println("aoui");
+
+            try {
+            int id = 10;
+            int max = this.vue.gettextFieldnbjoueurmax();
+            char sexe = this.vue.getradiobouttonHE();
+            Equipe equipe = new Equipe(id, max, sexe);
+
+            System.out.println(equipe);
+
+            } catch (Exception e) {
+                System.err.println("nop");
+                this.vue.popUpAlert().showAndWait();
+            }
+        }
+
+        else if (Textboutton.equals("Créer l'Epreuve")){
+            System.out.println("aoui");
+        }
+
+        else if (Textboutton.equals("Créer le Pays")){
             System.out.println("aoui");
         }
      

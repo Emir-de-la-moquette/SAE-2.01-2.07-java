@@ -10,16 +10,15 @@ public class Sport {
     private int nbdePointmax;
 
 
-
     // Sport sans points
-    public Sport(String nomSport, int nbJoueur)
-            throws IDdejaExistantException {
-        if (lesID.contains(nomSport))
-            throw new IDdejaExistantException("ce nom est déjà utilisé");
-        lesID.add(nomSport);
+    public Sport(String nomSport){
+            //throws IDdejaExistantException {
+        //if (lesID.contains(nomSport))
+            //throw new IDdejaExistantException("ce nom est déjà utilisé");
+        //lesID.add(nomSport);
         this.nomSport = nomSport;
-        this.nbJoueur = nbJoueur;
-    }
+        }
+
 
     // Sport avec points
     public Sport(String nomSport, int nbJoueur, int nbdePointmax) throws IDdejaExistantException {

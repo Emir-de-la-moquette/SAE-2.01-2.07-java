@@ -309,9 +309,6 @@ public class VueJO extends Application {
 
     //*__________________________________________________________
     //*Athlete */
-
-
-
     public String getTextFieldNomA(){return this.textFieldNomA.getText();}
     public String getTextFieldPrenomA(){return textFieldprenomA.getText();}
     public int getTextFieldAGilA() {return Integer.parseInt(textFieldAGilA.getText());}
@@ -494,8 +491,8 @@ public class VueJO extends Application {
         return alert;
     }
 
-    public Alert popUpAthleteAlert(){
-        Alert alert = new Alert(Alert.AlertType.ERROR,"Vous ne pouvez pas crée cette athlète\n assurer vous bien de remplir tout les champs", ButtonType.OK);
+    public Alert popUpAlert(){
+        Alert alert = new Alert(Alert.AlertType.ERROR,"Vous ne pouvez pas crée ceci\n assurer vous bien de remplir tout les champs", ButtonType.OK);
         alert.setTitle("Attention");
         return alert;
     }
