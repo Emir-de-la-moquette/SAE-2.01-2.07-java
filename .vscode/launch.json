@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Exec",
+            "request": "launch",
+            "mainClass": "Exec",
+            "projectName": "AppJo"
+        },
+        {
+            "type": "java",
             "name": "VueJO",
             "request": "launch",
             "mainClass": "VueJO",
