@@ -16,7 +16,7 @@ drop table if exists ContenirPAYS_EQ;
 drop table if exists ContenirJO_PAYS;
 drop table if exists ContenirEP_SP;
 
-drop tables if exists UTILISATEUR;
+drop table if exists UTILISATEUR;
 
 
 create table Sport(
