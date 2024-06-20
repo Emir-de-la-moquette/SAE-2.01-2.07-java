@@ -32,3 +32,39 @@ class IDdejaExistantException extends Exception {
     }
 
 }
+
+class IdentifiantNonValideException extends Exception {
+    public IdentifiantNonValideException() {
+        super();
+    }
+
+    // Constructeur avec un message détaillé
+    public IdentifiantNonValideException(String message) {
+        super(message);
+    }
+
+}
+
+class MDPNonValideException extends Exception {
+    public MDPNonValideException() {
+        super();
+    }
+
+    // Constructeur avec un message détaillé
+    public MDPNonValideException(String message) {
+        super(message);
+    }
+
+}
+
+class CLENonValideException extends Exception {
+    public CLENonValideException() {
+        super();
+    }
+
+    // Constructeur avec un message détaillé
+    public CLENonValideException(String message) {
+        super(message);
+    }
+
+}

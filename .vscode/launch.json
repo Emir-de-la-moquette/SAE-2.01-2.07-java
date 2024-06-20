@@ -9,6 +9,13 @@
             "name": "Exec",
             "request": "launch",
             "mainClass": "Exec",
+            "projectName": "sae_java"
+        },
+        {
+            "type": "java",
+            "name": "Exec",
+            "request": "launch",
+            "mainClass": "Exec",
             "projectName": "AppJo"
         },
         {

@@ -677,7 +677,7 @@
                                        <graphic>
                                           <ImageView fitHeight="33.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@img/play.png" />
+                                                <Image url="@../../../img/play.png" />
                                              </image></ImageView>
                                        </graphic>
                                        <HBox.margin>
