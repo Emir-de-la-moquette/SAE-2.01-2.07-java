@@ -22,6 +22,8 @@ public class VueJO extends Application {
     //TabPane fenetre_ajoutev2;
     BorderPane Consultation;
     FXMLLoader loader;
+
+    //*athlète */
     TextField textFieldNomA = new TextField();
     TextField textFieldprenomA = new TextField();
     TextField textFieldAGilA = new TextField();
@@ -29,6 +31,31 @@ public class VueJO extends Application {
     TextField textFieldforcA = new TextField();
     RadioButton radiobouttonHA = new RadioButton();
     RadioButton radiobouttonFA = new RadioButton();
+
+    //*sport */
+    TextField textfieldSport = new TextField();
+
+    //*equipe */
+    RadioButton radiobouttonHE = new RadioButton();
+    TextField textFieldnbjoueurmax = new TextField();
+
+    //*epreuve */
+    TextField textFieldNomEP = new TextField();
+    RadioButton radiobouttonHEP = new RadioButton();
+    TextField textFieldCaractEP = new TextField();
+    RadioButton radiobouttonFPaff = new RadioButton();
+    TextField textFieldDemandeAGIL = new TextField();
+    TextField textFieldDemandeEND = new TextField();
+    TextField textFieldDemandeFORC = new TextField();
+
+    //*pays */
+    TextField textFieldNomP = new TextField();
+
+
+
+
+
+
     //Requetes req = new Requetes();
     //private ModelJO jo;
   
@@ -43,7 +70,7 @@ public class VueJO extends Application {
         fenetreAccueil = loader.load();
         this.mainScene = new Scene(fenetreAccueil);
         
-        ControleurAcc ctrac = new ControleurAcc(this);
+        CControleurAcc ctrac = new CControleurAcc(this);
 
         try{
         Button identconnexe = (Button) this.mainScene.lookup("#connecter");
@@ -77,7 +104,7 @@ public class VueJO extends Application {
         fenetreAccueil = loader.load();
         this.mainScene = new Scene(fenetreAccueil);
         
-        ControleurAcc ctrac = new ControleurAcc(this);
+        CControleurAcc ctrac = new CControleurAcc(this);
 
         try{
 
@@ -103,7 +130,7 @@ public class VueJO extends Application {
         fenetreinscription = loader.load();
         this.mainScene = new Scene(fenetreinscription);
 
-        Controleurincrp ctrinc = new Controleurincrp(this);
+        CControleurincrp ctrinc = new CControleurincrp(this);
 
         try{
 
@@ -143,7 +170,7 @@ public class VueJO extends Application {
         this.mainScene = new Scene(fenetre_ajoute);
         
 
-        ControleurAjretour ctraj = new ControleurAjretour(this);
+        CControleurAjretour ctraj = new CControleurAjretour(this);
 
         try{
 
@@ -160,7 +187,7 @@ public class VueJO extends Application {
             bouttonretour4.setOnAction(ctraj);
             bouttonretour5.setOnAction(ctraj);
             //______________________________________________________
-            // partie ajouter athlete
+            //! partie ajouter athlete
             this.textFieldNomA = (TextField) this.mainScene.lookup("#textFieldNomA");
 
             this.textFieldprenomA = (TextField) this.mainScene.lookup("#textFieldprenomA");
@@ -183,60 +210,63 @@ public class VueJO extends Application {
             this.radiobouttonFA = (RadioButton) this.mainScene.lookup("#radiobouttonFA");
             radiobouttonHA.setToggleGroup(f);
             radiobouttonFA.setToggleGroup(f);
-            //______________________________________________________
-            // partie ajouter sport
-            TextField textfieldSport = (TextField) this.mainScene.lookup("#textfieldSport");
+
+            //__________________________________________________________________________________
+            //! partie ajouter sport
+            this.textfieldSport = (TextField) this.mainScene.lookup("#textfieldSport");
             Button BCreerSP = (Button) this.mainScene.lookup("#BCreerSP");
 
             BCreerSP.setOnAction(ctraj);
 
 
             //______________________________________________________
-            // partie ajouter equipe
+            //! partie ajouter equipe
 
-            TextField textFieldnbjoueurmax = (TextField) this.mainScene.lookup("#textFieldnbjoueurmax");
+            this.textFieldnbjoueurmax = (TextField) this.mainScene.lookup("#textFieldnbjoueurmax");
             Button BcreerEQ = (Button) this.mainScene.lookup("#BcreerEQ");
 
             BcreerEQ.setOnAction(ctraj);
             
             Button BajouAdansEQ = (Button) this.mainScene.lookup("#BajouAdansEQ");
             
+        
 
             //creer les toggle boutton et relier les radio boutton
             ToggleGroup e = new ToggleGroup();
-            RadioButton radiobouttonHE = (RadioButton) this.mainScene.lookup("#radiobouttonHE");
+            this.radiobouttonHE = (RadioButton) this.mainScene.lookup("#radiobouttonHE");
             RadioButton radiobouttonFE = (RadioButton) this.mainScene.lookup("#radiobouttonFE");
             radiobouttonHE.setToggleGroup(e);
             radiobouttonFE.setToggleGroup(e);
+
             //______________________________________________________
-            // partie ajouter Epreuve 
-            TextField textFieldNomEP = (TextField) this.mainScene.lookup("#textFieldNomEP");
+            //! partie ajouter Epreuve 
+            this.textFieldNomEP = (TextField) this.mainScene.lookup("#textFieldNomEP");
 
             ChoiceBox choix_Sport_Ass = (ChoiceBox) this.mainScene.lookup("#choix_Sport_Ass");
 
             //creer les toggle boutton et relier les radio boutton p1
             ToggleGroup d = new ToggleGroup();
-            RadioButton radiobouttonHEP = (RadioButton) this.mainScene.lookup("#radiobouttonHEP");
+            this.radiobouttonHEP = (RadioButton) this.mainScene.lookup("#radiobouttonHEP");
             RadioButton radiobouttonFEP = (RadioButton) this.mainScene.lookup("#radiobouttonFEP");
             radiobouttonHEP.setToggleGroup(d);
             radiobouttonFEP.setToggleGroup(d);
 
-            TextField textFieldCaractEP = (TextField) this.mainScene.lookup("#textFieldCaractEP");
+            this.textFieldCaractEP = (TextField) this.mainScene.lookup("#textFieldCaractEP");
 
              //creer les toggle boutton et relier les radio boutton p2
              ToggleGroup c = new ToggleGroup();
-             RadioButton radiobouttonFPaff = (RadioButton) this.mainScene.lookup("#radiobouttonFPaff");
+             this.radiobouttonFPaff = (RadioButton) this.mainScene.lookup("#radiobouttonFPaff");
              RadioButton radiobouttonFPMscore = (RadioButton) this.mainScene.lookup("#radiobouttonFPMscore");
              radiobouttonFPaff.setToggleGroup(c);
              radiobouttonFPMscore.setToggleGroup(c);
 
 
              //demande agil endu force textfield
-             TextField textFieldDemandeAGIL = (TextField) this.mainScene.lookup("#textFieldDemandeAGIL");
-             TextField textFieldDemandeEND = (TextField) this.mainScene.lookup("#textFieldDemandeEND");
-             TextField textFieldDemandeFORC = (TextField) this.mainScene.lookup("#textFieldDemandeFORC");
+             this.textFieldDemandeAGIL = (TextField) this.mainScene.lookup("#textFieldDemandeAGIL");
+             this.textFieldDemandeEND = (TextField) this.mainScene.lookup("#textFieldDemandeEND");
+             this.textFieldDemandeFORC = (TextField) this.mainScene.lookup("#textFieldDemandeFORC");
 
-
+            // ! à faire
             //creer les toggle boutton et relier les radio boutton p3
             ToggleGroup g = new ToggleGroup();
             RadioButton radiobouttonRPnon = (RadioButton) this.mainScene.lookup("#radiobouttonRPnon");
@@ -250,8 +280,8 @@ public class VueJO extends Application {
             BcreerEP.setOnAction(ctraj);
 
              //______________________________________________________
-            // partie ajouter Pays
-            TextField textFieldNomP = (TextField) this.mainScene.lookup("#textFieldNomP");
+            //! partie ajouter Pays
+            this.textFieldNomP = (TextField) this.mainScene.lookup("#textFieldNomP");
 
 
             Button BchoisirHymne = (Button) this.mainScene.lookup("#BchoisirHymne");
@@ -274,33 +304,70 @@ public class VueJO extends Application {
         
 
         return this.mainScene;
-     }
 
-     public String getTextFieldNomA(){
-        return this.textFieldNomA.getText();
-     }
-
-     public String getTextFieldPrenomA(){
-        return textFieldprenomA.getText();
-     }
-
-     public int getTextFieldAGilA() {
-        return Integer.parseInt(textFieldAGilA.getText());
     }
 
-    public int getTextFieldEndA() {
-        return Integer.parseInt(textFieldEndA.getText());
-    }
+    //*__________________________________________________________
+    //*Athlete */
 
-    public int getTextFieldforcA() {
-        return Integer.parseInt(textFieldforcA.getText());
-    }
+
+
+    public String getTextFieldNomA(){return this.textFieldNomA.getText();}
+    public String getTextFieldPrenomA(){return textFieldprenomA.getText();}
+    public int getTextFieldAGilA() {return Integer.parseInt(textFieldAGilA.getText());}
+    public int getTextFieldEndA() {return Integer.parseInt(textFieldEndA.getText());}
+    public int getTextFieldforcA() {return Integer.parseInt(textFieldforcA.getText());}
 
     public char getradiobouttonFA() {
         if (radiobouttonFA.isSelected())
             return 'F';
         return 'H';
     }
+
+    public String gettextFieldSport() {
+        return textfieldSport.getText();
+    }
+
+    //*__________________________________________________________
+    //*sport */
+    public String gettextfieldSport() {
+        return textfieldSport.getText();
+    }
+
+    //*__________________________________________________________
+    //*equipe */
+    public int gettextFieldnbjoueurmax() {return Integer.parseInt(textFieldnbjoueurmax.getText());}
+
+    public char getradiobouttonHE() {
+        if (radiobouttonHE.isSelected())
+            return 'H';
+        return 'F';
+    }
+
+
+    //*__________________________________________________________
+    //*epreuve */
+    public String gettextFieldNomEP() {return textFieldNomEP.getText();}
+    public String gettextFieldCaractEP() {return textFieldCaractEP.getText();}
+    public int gettextFieldDemandeAGIL() {return Integer.parseInt(textFieldDemandeAGIL.getText());}
+    public int gettextFieldDemandeEND() {return Integer.parseInt(textFieldDemandeEND.getText());}
+    public int gettextFieldDemandeFORC() {return Integer.parseInt(textFieldDemandeFORC.getText());}
+
+    public char getradiobouttonHEP() {
+        if (radiobouttonHEP.isSelected())
+            return 'H';
+        return 'F';
+    }
+
+    public String getradiobouttonFPaff() {
+        if (radiobouttonFPaff.isSelected())
+            return "Duel";
+        return "Score";
+    }
+
+    //*__________________________________________________________
+    //*pays */
+    public String gettextFieldNomP() {return textFieldNomP.getText();}
 
      /* 
      public Scene choisir_le_bon_tab_dans_ajoute(int number){
@@ -325,7 +392,7 @@ public class VueJO extends Application {
         Consultation = loader.load();
         this.mainScene = new Scene(Consultation);
         
-        ControleurConsultation ctrinc = new ControleurConsultation(this);
+        CControleurConsultation ctrinc = new CControleurConsultation(this);
 
         try{
             Button bouttondeco = (Button) this.mainScene.lookup("#SEDECO");
@@ -428,7 +495,7 @@ public class VueJO extends Application {
     }
 
     public Alert popUpAthleteAlert(){
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Vous ne pouvez pas crée cette athlète\n assurer vous bien de remplir tout les champs", ButtonType.OK);
+        Alert alert = new Alert(Alert.AlertType.ERROR,"Vous ne pouvez pas crée cette athlète\n assurer vous bien de remplir tout les champs", ButtonType.OK);
         alert.setTitle("Attention");
         return alert;
     }

@@ -8,13 +8,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
-public class ControleurConsultation implements EventHandler<ActionEvent>{
+public class CControleurConsultation implements EventHandler<ActionEvent>{
         private VueJO vue;
     
         private Stage stage;
 
 
-    public ControleurConsultation( VueJO vue){
+    public CControleurConsultation( VueJO vue){
         this.vue = vue;
        
     }

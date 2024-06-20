@@ -10,14 +10,14 @@ import javafx.stage.Stage;
 
 
 
-public class ControleurAcc implements EventHandler<ActionEvent>{
+public class CControleurAcc implements EventHandler<ActionEvent>{
 
     private VueJO vue;
     
     private Stage stage;
 
 
-    public ControleurAcc( VueJO vue){
+    public CControleurAcc( VueJO vue){
         this.vue = vue;
        
     }

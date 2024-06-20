@@ -11,14 +11,14 @@ import javafx.stage.Stage;
 
 
 
-public class Controleurincrp implements EventHandler<ActionEvent>{
+public class CControleurincrp implements EventHandler<ActionEvent>{
 
     private VueJO vue;
     
     private Stage stage;
 
 
-    public Controleurincrp( VueJO vue){
+    public CControleurincrp( VueJO vue){
         this.vue = vue;
        
     }

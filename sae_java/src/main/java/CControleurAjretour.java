@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 
 
 
-public class ControleurAjretour implements EventHandler<ActionEvent>{
+public class CControleurAjretour implements EventHandler<ActionEvent>{
 
     private VueJO vue;
     
@@ -16,7 +16,7 @@ public class ControleurAjretour implements EventHandler<ActionEvent>{
     //private Requetes req;
 
 
-    public ControleurAjretour( VueJO vue){ //Requetes req){
+    public CControleurAjretour( VueJO vue){ //Requetes req){
         this.vue = vue;
         //this.req = req;
        
