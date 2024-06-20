@@ -1,0 +1,52 @@
+{
+    // Utilisez IntelliSense pour en savoir plus sur les attributs possibles.
+    // Pointez pour afficher la description des attributs existants.
+    // Pour plus d'informations, visitez : https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "jdbc",
+            "request": "launch",
+            "mainClass": "jdbc",
+            "projectName": "Diagramme_73c5dd33"
+        },
+        {
+            "type": "java",
+            "name": "Exec",
+            "request": "launch",
+            "mainClass": "Exec",
+            "projectName": "Diagramme_73c5dd33"
+        },
+        {
+            "type": "java",
+            "name": "VueJO",
+            "request": "launch",
+            "mainClass": "VueJO",
+            "projectName": "Diagramme_73c5dd33"
+        },
+        {
+            "type": "java",
+            "name": "VueJO",
+            "request": "launch",
+            "vmArgs": "--module-path C:\\openfx\\javafx-sdk-22.0.1\\lib --add-modules javafx.controls,javafx.fxml",
+            "mainClass": "VueJO",
+            "projectName": "Diagramme_87fb888c"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "vmArgs": "--module-path C:\\openfx\\javafx-sdk-22.0.1\\lib --add-modules javafx.controls,javafx.fxml",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "importBouton",
+            "request": "launch",
+            "vmArgs": "--module-path C:\\openfx\\javafx-sdk-22.0.1\\lib --add-modules javafx.controls,javafx.fxml",
+            "mainClass": "importBouton",
+            "projectName": "Diagramme_87fb888c"
+        }
+    ]
+}

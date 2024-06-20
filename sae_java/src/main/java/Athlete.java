@@ -13,11 +13,11 @@ public class Athlete implements Data {
     private int force;
     private int IDathlete;
 
-    public Athlete(int id, String nomA, String prenomA, char sexeA, int agilite, int endurance, int force)
-            throws IDdejaExistantException {
-        if (lesID.contains(id))
-            throw new IDdejaExistantException("cet id est déjà utilisé");
-        lesID.add(id);
+    public Athlete(int id, String nomA, String prenomA, char sexeA, int agilite, int endurance, int force){
+            //throws IDdejaExistantException {
+        //if (lesID.contains(id))
+        //    throw new IDdejaExistantException("cet id est déjà utilisé");
+        //lesID.add(id);
         this.nomA = nomA;
         this.prenomA = prenomA;
         this.sexeA = sexeA;

@@ -11,23 +11,23 @@ import java.util.*;
 public class Executable {
     public static void main(String[] args) throws IDdejaExistantException, Exception {
 
-        JeuxOlympique JO2024 = new JeuxOlympique("France", 2024);
+        //JeuxOlympique JO2024 = new JeuxOlympique("France", 2024);
 
-        Sport sport1 = new Sport("sport1", 1, 0.7, 0.1, 0.1, 1);
-        Sport sport2 = new Sport("sport2", 1, 0.7, 0.1, 0.1, 2);
-        Sport sport3 = new Sport("sport3", 2, 0.4, 0.4, 0.2, 6);
+        //Sport sport1 = new Sport("sport1", 1, 0.7, 0.1, 0.1, 1);
+        //Sport sport2 = new Sport("sport2", 1, 0.7, 0.1, 0.1, 2);
+        //Sport sport3 = new Sport("sport3", 2, 0.4, 0.4, 0.2, 6);
 
-        Epreuve Jeu1 = new Epreuve(1, "Jeu1", 'H', "junior", "Score", sport1);
-        Epreuve Jeu2 = new Epreuve(2, "Jeu2", 'H', "junior", "Duel", sport2);
-        Epreuve Jeu3 = new Epreuve(3, "Jeu3", 'H', "senior", "Score", sport3);
+        //Epreuve Jeu1 = new Epreuve(1, "Jeu1", 'H', "junior", "Score", sport1);
+        //Epreuve Jeu2 = new Epreuve(2, "Jeu2", 'H', "junior", "Duel", sport2);
+        //Epreuve Jeu3 = new Epreuve(3, "Jeu3", 'H', "senior", "Score", sport3);
 
-        JO2024.ajouteSport(sport1);
-        JO2024.ajouteSport(sport2);
+        //JO2024.ajouteSport(sport1);
+        //JO2024.ajouteSport(sport2);
 
-        sport2.setRegle(1, 1, 3);
+        //sport2.setRegle(1, 1, 3);
 
-        JO2024.ajouteEpreuve(Jeu1);
-        JO2024.ajouteEpreuve(Jeu2);
+        //JO2024.ajouteEpreuve(Jeu1);
+        //JO2024.ajouteEpreuve(Jeu2);
 
         Pays france = new Pays("France");
         Pays allemagne = new Pays("Allemagne");
@@ -36,12 +36,12 @@ public class Executable {
         Pays chine = new Pays("Chine");
         Pays etats_unis = new Pays("Etats-Unis");
 
-        JO2024.ajoutePays(etats_unis);
-        JO2024.ajoutePays(france);
-        JO2024.ajoutePays(pologne);
-        JO2024.ajoutePays(italie);
-        JO2024.ajoutePays(chine);
-        JO2024.ajoutePays(allemagne);
+        //JO2024.ajoutePays(etats_unis);
+        //JO2024.ajoutePays(france);
+        //JO2024.ajoutePays(pologne);
+        //JO2024.ajoutePays(italie);
+        //JO2024.ajoutePays(chine);
+        //JO2024.ajoutePays(allemagne);
 
         // Hommes
         Athlete atl1 = new Athlete(1, "John", "Doe", 'H', 20, 20, 20);
@@ -99,15 +99,14 @@ public class Executable {
         equipeUSchiffoumi.participer(atl4);
         //equipeUSchiffoumi.participer(atl5); // doit afficher une erreur
 
-        Jeu1.participer(equipeFRchiffoumi);
-        Jeu1.participer(equipePLchiffoumi);
-        Jeu1.participer(equipeCNchiffoumi);
-        Jeu1.participer(equipeUSchiffoumi);
+        //Jeu1.participer(equipeFRchiffoumi);
+        //Jeu1.participer(equipePLchiffoumi);
+        //Jeu1.participer(equipeCNchiffoumi);
+        //Jeu1.participer(equipeUSchiffoumi);
 
-        Jeu2.participer(equipeFRchiffoumi);
-        Jeu2.participer(equipePLchiffoumi);
-        Jeu2.participer(equipeCNchiffoumi);
-        Jeu2.participer(equipeUSchiffoumi);
+        //Jeu2.participer(equipePLchiffoumi);
+        //Jeu2.participer(equipeCNchiffoumi);
+        //Jeu2.participer(equipeUSchiffoumi);
 
         /*
          * List<Equipe> resultchifoumi = chifoumimi.lanceEpreuve();
@@ -117,48 +116,48 @@ public class Executable {
          * System.out.println(resultchifoumi);
          */
 
-        System.out.println(JO2024);
+        //System.out.println(JO2024);
         
-        System.out.println(Jeu1);
+        //System.out.println(Jeu1);
         
         //! méthode qui simule les JO
-        JO2024.simulJO();
+        //JO2024.simulJO();
 
 
         Comparator<Pays> compOr = new CompareMedailleTotal();
-        List<Pays> classement = JO2024.classement(compOr);
-        System.out.print("classement final des pays : "+classement);
+        //List<Pays> classement = JO2024.classement(compOr);
+        //System.out.print("classement final des pays : "+classement);
 
         System.out.println();
 
-        System.out.println("nb medaille d'or de '" + classement.get(0).getNompays() + "' qui a obtenue : "
-                + classement.get(0).getmedailles_or());
-        System.out.println("nb medaille d'argent de '" + classement.get(0).getNompays() + "' qui a obtenue : "
-                + classement.get(0).getmedailles_argent());
-        System.out.println("nb medaille d'bronze de '" + classement.get(0).getNompays() + "' qui a obtenue : "
-                + classement.get(0).getmedailles_bronze());
+       // System.out.println("nb medaille d'or de '" + classement.get(0).getNompays() + "' qui a obtenue : "
+         //       + classement.get(0).getmedailles_or());
+        //System.out.println("nb medaille d'argent de '" + classement.get(0).getNompays() + "' qui a obtenue : "
+         //       + classement.get(0).getmedailles_argent());
+        //System.out.println("nb medaille d'bronze de '" + classement.get(0).getNompays() + "' qui a obtenue : "
+          //      + classement.get(0).getmedailles_bronze());
+
+        //System.out.println();
+
+        //System.out.println("nb medaille d'or de '" + classement.get(1).getNompays() + "' qui a obtenue : "
+         //       + classement.get(1).getmedailles_or());
+        //System.out.println("nb medaille d'argent de '" + classement.get(1).getNompays() + "' qui a obtenue : "
+         //       + classement.get(1).getmedailles_argent());
+        //System.out.println("nb medaille d'bronze de '" + classement.get(1).getNompays() + "' qui a obtenue : "
+       //         + classement.get(1).getmedailles_bronze());
 
         System.out.println();
 
-        System.out.println("nb medaille d'or de '" + classement.get(1).getNompays() + "' qui a obtenue : "
-                + classement.get(1).getmedailles_or());
-        System.out.println("nb medaille d'argent de '" + classement.get(1).getNompays() + "' qui a obtenue : "
-                + classement.get(1).getmedailles_argent());
-        System.out.println("nb medaille d'bronze de '" + classement.get(1).getNompays() + "' qui a obtenue : "
-                + classement.get(1).getmedailles_bronze());
+        //System.out.println("match de jeu1 : " + Jeu1.getLesMatchs());
+        //System.out.println("classement de jeu1 : " + Jeu1.getClassement());
 
         System.out.println();
 
-        System.out.println("match de jeu1 : " + Jeu1.getLesMatchs());
-        System.out.println("classement de jeu1 : " + Jeu1.getClassement());
+       // System.out.println("match de jeu2 : " + Jeu2.getLesMatchs());
+        //System.out.println("classement de jeu2 : " + Jeu2.getClassement());
 
-        System.out.println();
-
-        System.out.println("match de jeu2 : " + Jeu2.getLesMatchs());
-        System.out.println("classement de jeu2 : " + Jeu2.getClassement());
-
-        System.out.println("toString de première equipe du pays vainqueur : "
-                +classement.get(0).afficheLesEquipes().get(0).getLesAthletes());
+       // System.out.println("toString de première equipe du pays vainqueur : "
+               // +classement.get(0).afficheLesEquipes().get(0).getLesAthletes());
         
 
     }
