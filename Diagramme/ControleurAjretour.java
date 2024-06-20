@@ -13,9 +13,12 @@ public class ControleurAjretour implements EventHandler<ActionEvent>{
     
     private Stage stage;
 
+    //private Requetes req;
 
-    public ControleurAjretour( VueJO vue){
+
+    public ControleurAjretour( VueJO vue){ //Requetes req){
         this.vue = vue;
+        //this.req = req;
        
     }
 
@@ -28,11 +31,29 @@ public class ControleurAjretour implements EventHandler<ActionEvent>{
 
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
 
+        if (Textboutton.equals("Créer l'athlète")) {
+            try {
+            int id = 10;
+            String nom = this.vue.getTextFieldNomA();
+            String prenom = this.vue.getTextFieldPrenomA();
+            char sexe = this.vue.getradiobouttonFA();
+            int agilite = this.vue.getTextFieldAGilA();
+            int endurance = this.vue.getTextFieldEndA();
+            int force = this.vue.getTextFieldforcA();
 
+            Athlete athlete = new Athlete(id, nom, prenom, sexe, agilite, endurance, force);//
+
+            //this.req.ajouterAthlete(athlete);
+
+            System.out.println(athlete);
+            } catch (Exception e) { 
+                System.err.println("nop");
+                this.vue.popUpAthleteAlert().showAndWait();
+            }
+        }
      
-        if (Textboutton.equals("retour")) {
+        else if (Textboutton.equals("retour")) {
             this.vue.modeconsultation();
-            
             this.vue.majAffichage(stage);
 
         }

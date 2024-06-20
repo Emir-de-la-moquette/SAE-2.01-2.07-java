@@ -6,9 +6,30 @@
     "configurations": [
         {
             "type": "java",
+            "name": "jdbc",
+            "request": "launch",
+            "mainClass": "jdbc",
+            "projectName": "Diagramme_73c5dd33"
+        },
+        {
+            "type": "java",
+            "name": "Exec",
+            "request": "launch",
+            "mainClass": "Exec",
+            "projectName": "Diagramme_73c5dd33"
+        },
+        {
+            "type": "java",
             "name": "VueJO",
             "request": "launch",
-            "vmArgs": "--module-path /home/colomonos/Bureau/javafx-sdk-17.0.11/lib/ --add-modules javafx.controls,javafx.fxml",
+            "mainClass": "VueJO",
+            "projectName": "Diagramme_73c5dd33"
+        },
+        {
+            "type": "java",
+            "name": "VueJO",
+            "request": "launch",
+            "vmArgs": "--module-path C:\\openfx\\javafx-sdk-22.0.1\\lib --add-modules javafx.controls,javafx.fxml",
             "mainClass": "VueJO",
             "projectName": "Diagramme_87fb888c"
         },
@@ -16,14 +37,14 @@
             "type": "java",
             "name": "Current File",
             "request": "launch",
-            "vmArgs": "--module-path /home/colomonos/Bureau/javafx-sdk-17.0.11/lib/ --add-modules javafx.controls,javafx.fxml",
+            "vmArgs": "--module-path C:\\openfx\\javafx-sdk-22.0.1\\lib --add-modules javafx.controls,javafx.fxml",
             "mainClass": "${file}"
         },
         {
             "type": "java",
             "name": "importBouton",
             "request": "launch",
-            "vmArgs": "--module-path /home/colomonos/Bureau/javafx-sdk-17.0.11/lib/ --add-modules javafx.controls,javafx.fxml",
+            "vmArgs": "--module-path C:\\openfx\\javafx-sdk-22.0.1\\lib --add-modules javafx.controls,javafx.fxml",
             "mainClass": "importBouton",
             "projectName": "Diagramme_87fb888c"
         }

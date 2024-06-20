@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.IOException;
+//import Requetes;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -21,10 +22,17 @@ public class VueJO extends Application {
     //TabPane fenetre_ajoutev2;
     BorderPane Consultation;
     FXMLLoader loader;
+    TextField textFieldNomA = new TextField();
+    TextField textFieldprenomA = new TextField();
+    TextField textFieldAGilA = new TextField();
+    TextField textFieldEndA  = new TextField();
+    TextField textFieldforcA = new TextField();
+    RadioButton radiobouttonFA = new RadioButton();
+    //Requetes req = new Requetes();
     //private ModelJO jo;
   
     @Override
-    public void init(){    
+    public void init(){ 
     }
     
     @Override
@@ -152,12 +160,13 @@ public class VueJO extends Application {
             bouttonretour5.setOnAction(ctraj);
             //______________________________________________________
             // partie ajouter athlete
-            TextField textFieldNomA = (TextField) this.mainScene.lookup("#textFieldNomA");
-            TextField textFieldprenomA = (TextField) this.mainScene.lookup("#textFieldprenomA");
+            this.textFieldNomA = (TextField) this.mainScene.lookup("#textFieldNomA");
 
-            TextField textFieldAGilA = (TextField) this.mainScene.lookup("#textFieldAGilA");
-            TextField textFieldEndA = (TextField) this.mainScene.lookup("#textFieldEndA"); //textfield
-            TextField textFieldforcA = (TextField) this.mainScene.lookup("#textFieldforcA");
+            this.textFieldprenomA = (TextField) this.mainScene.lookup("#textFieldprenomA");
+
+            this.textFieldAGilA = (TextField) this.mainScene.lookup("#textFieldAGilA");
+            this.textFieldEndA = (TextField) this.mainScene.lookup("#textFieldEndA"); //textfield
+            this.textFieldforcA = (TextField) this.mainScene.lookup("#textFieldforcA");
 
             Slider slideragA = (Slider) this.mainScene.lookup("#slideragA");
             Slider sliderendA = (Slider) this.mainScene.lookup("#sliderendA"); //slider
@@ -165,9 +174,11 @@ public class VueJO extends Application {
 
             Button bCreerA = (Button) this.mainScene.lookup("#bCreerA");
 
+            bCreerA.setOnAction(ctraj);
+
             //creer les toggle boutton et relier les radio boutton
-            RadioButton radiobouttonHA = (RadioButton) this.mainScene.lookup("#radiobouttonHA");
-            RadioButton radiobouttonFA = (RadioButton) this.mainScene.lookup("#radiobouttonFA");
+            //*this.radiobouttonHA = (RadioButton) this.mainScene.lookup("#radiobouttonHA");
+            this.radiobouttonFA = (RadioButton) this.mainScene.lookup("#radiobouttonFA");
             
             //______________________________________________________
             // partie ajouter sport
@@ -242,6 +253,32 @@ public class VueJO extends Application {
 
         return this.mainScene;
      }
+
+     public String getTextFieldNomA(){
+        return this.textFieldNomA.getText();
+     }
+
+     public String getTextFieldPrenomA(){
+        return textFieldprenomA.getText();
+     }
+
+     public int getTextFieldAGilA() {
+        return Integer.parseInt(textFieldAGilA.getText());
+    }
+
+    public int getTextFieldEndA() {
+        return Integer.parseInt(textFieldEndA.getText());
+    }
+
+    public int getTextFieldforcA() {
+        return Integer.parseInt(textFieldforcA.getText());
+    }
+
+    public char getradiobouttonFA() {
+        if (radiobouttonFA.isSelected())
+            return 'F';
+        return 'H';
+    }
 
      /* 
      public Scene choisir_le_bon_tab_dans_ajoute(int number){
@@ -368,14 +405,10 @@ public class VueJO extends Application {
         return alert;
     }
 
-
- 
-
-    public static void main(String[] args) {
-        launch(args);
-
-    
-
-}
+    public Alert popUpAthleteAlert(){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Vous ne pouvez pas crée cette athlète\n assurer vous bien de remplir tout les champs", ButtonType.OK);
+        alert.setTitle("Attention");
+        return alert;
+    }
 
 }
