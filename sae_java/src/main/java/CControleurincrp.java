@@ -56,21 +56,22 @@ public class CControleurincrp implements EventHandler<ActionEvent>{
                     role = 'A';
 
                 user = new User(ident, mdp, role);
-                if (!(this.req.UtilisateurExist(user))){
+               // if (!(this.req.UtilisateurExist(user))){
                     try {
                         this.req.ajouterUser(user);
-                        System.err.println("le User a bien été ajouter");
+                        
+                        System.out.println("le User a bien été ajouter");
 
                     }catch (SQLException e) {
                         System.err.println("erreur ici:" + e);
                     }
-                } else {System.out.println("utilisateur déjà existant");}
+              //  } else {System.out.println("utilisateur déjà existant");}
                 
             } catch (Exception e) {
                 System.err.println("echec de l'ajout"+ e);
                 this.vue.popUpAlert().showAndWait();
-
             }
+
            
 
 

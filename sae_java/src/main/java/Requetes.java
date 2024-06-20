@@ -71,7 +71,7 @@ public class Requetes {
 
     public boolean UtilisateurExist(User user) throws SQLException {
         try {
-        String requete = "select * from UTILISATEUR where identifiantu =" + user.getMail();
+        String requete = "select * from UTILISATEUR where identifiantu = \"" + user.getMail();
         ResultSet rs=st.executeQuery(requete);
         return false;
         } catch (SQLException e) { 
@@ -82,7 +82,7 @@ public class Requetes {
     
     public boolean LoginCorrect(User user) throws SQLException {
         try {
-        String requete = "select * from UTILISATEUR where identifiantu =" + user.getMail() + "and motdepasse" + user.getMdp();
+        String requete = "select * from UTILISATEUR where identifiantu =\"" + user.getMail() + "\"and motdepasse\"" + user.getMdp();
         ResultSet rs=st.executeQuery(requete);
         return true;
         } catch (SQLException e) { 
