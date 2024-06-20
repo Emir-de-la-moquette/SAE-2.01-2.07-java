@@ -50,7 +50,7 @@ public class Executable {
         Athlete atl3 = new Athlete(3, "Luke", "Brown", 'H', 10, 10, 10);
         Athlete atl4 = new Athlete(4, "Chris", "Evans", 'H', 0, 0, 0);
 
-        Athlete atl5 = new Athlete(5, "David", "Garcia", 'F', 9, 7, 8);
+        Athlete atl5 = new Athlete(5, "David", "Garcia", 'H', 9, 7, 8);
         Athlete atl6 = new Athlete(6, "James", "Smith", 'H', 17, 15, 13);
 
         Athlete atl7 = new Athlete(7, "Robert", "Wilson", 'H', 6, 9, 12);

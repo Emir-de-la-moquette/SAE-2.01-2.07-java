@@ -3,10 +3,10 @@ import java.util.List;
 
 public class Sport implements Data{
 
-    protected static List<String> lesID = new ArrayList<>();
+    public static List<String> lesID = new ArrayList<>();
 
     private String nomSport;
-    private int nbdePointmax;
+    private int nbdePointmax = 1;
 
 
 
@@ -17,6 +17,9 @@ public class Sport implements Data{
             throw new IDdejaExistantException("ce nom est déjà utilisé");
         lesID.add(nomSport);
         this.nomSport = nomSport;
+
+        
+        Cache.setDATA("Sport", this);
     }
 
     // Sport avec points
@@ -26,6 +29,9 @@ public class Sport implements Data{
         lesID.add(nomSport);
         this.nomSport = nomSport;
         this.nbdePointmax = nbdePointmax;
+
+        
+        Cache.setDATA("Sport", this);
     }
 
     /*
@@ -33,7 +39,8 @@ public class Sport implements Data{
     *@return int nbdePointmax
     */
     public int getpoint() {
-        return RandomNumberInRange.getRandomInt(1, this.nbdePointmax);
+        int val = RandomNumberInRange.getRandomInt(1, this.nbdePointmax);
+        return val;
     }
 
 

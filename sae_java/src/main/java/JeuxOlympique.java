@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class JeuxOlympique {
+public class JeuxOlympique implements Data {
 
     private static List<String> lesID = new ArrayList<>();
 
@@ -25,6 +25,8 @@ public class JeuxOlympique {
         this.lesPays = new ArrayList<>();
         this.lesEpreuve = new ArrayList<>();
         this.lesSports = new ArrayList<>();
+        
+        Cache.setDATA("JO", this);
     }
 
     /*
@@ -48,8 +50,8 @@ public class JeuxOlympique {
     *@param String nom
     */
     public void setNom(String nom) {
-        this.lesID.remove(this.nomJO);
-        this.lesID.add(nom);
+        lesID.remove(this.nomJO);
+        lesID.add(nom);
         this.nomJO = nom;
     }
 
@@ -58,7 +60,7 @@ public class JeuxOlympique {
     *@return String nom
     */
     public String getNom() {
-        return nom;
+        return nomJO;
     }
 
     
@@ -135,11 +137,20 @@ public class JeuxOlympique {
 
     
     /*
-    *fonction executer toute les épreuve placée dans un jeuxOlympique
+    *fonction simuler toute les épreuve placée dans un jeuxOlympique
     */
     public void simulJO() {
         for (Epreuve epreuve : this.lesEpreuve) {
-            epreuve.lanceEpreuve();
+            epreuve.lanceEpreuve2(false);
+        }
+    }
+
+        /*
+    *fonction executer toute les épreuve placée dans un jeuxOlympique
+    */
+    public void execJO() {
+        for (Epreuve epreuve : this.lesEpreuve) {
+            epreuve.lanceEpreuve2(true);
         }
     }
 

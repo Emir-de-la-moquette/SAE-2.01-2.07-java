@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Pays implements Participation<Equipe>, Data {
 
-    private static List<String> lesID = new ArrayList<>();
+    public static List<String> lesID = new ArrayList<>();
 
     private String Nompays;
     private List<Equipe> lesEquipes;
@@ -15,6 +15,8 @@ public class Pays implements Participation<Equipe>, Data {
         lesID.add(nomPays);
         this.Nompays = nomPays;
         this.lesEquipes = new ArrayList<>();
+
+        Cache.setDATA("Pays", this);
     }
 
     /*
