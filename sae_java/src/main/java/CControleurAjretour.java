@@ -1,4 +1,6 @@
 
+import java.sql.SQLException;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
@@ -12,43 +14,41 @@ public class CControleurAjretour implements EventHandler<ActionEvent>{
     private VueJO vue;
     
     private Stage stage;
+    private Requetes req;
 
-    //private Requetes req;
-
-
-    public CControleurAjretour( VueJO vue){ //Requetes req){
+    public CControleurAjretour( VueJO vue, Requetes req){ //Requetes req){
         this.vue = vue;
-        //this.req = req;
-       
+        this.req = req;
     }
-
 
     @Override
     public void handle(ActionEvent actionEvent) {
 
         Button o =(Button) actionEvent.getSource();
         String Textboutton = o.getText();
-
+        Athlete athlete;
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
 
         if (Textboutton.equals("Créer l'athlète")) {
             try {
-            int id = 10;
-            String nom = this.vue.getTextFieldNomA();
-            String prenom = this.vue.getTextFieldPrenomA();
-            char sexe = this.vue.getradiobouttonFA();
-            int agilite = this.vue.getTextFieldAGilA();
-            int endurance = this.vue.getTextFieldEndA();
-            int force = this.vue.getTextFieldforcA();
+                String nom = this.vue.getTextFieldNomA();
+                String prenom = this.vue.getTextFieldPrenomA();
+                char sexe = this.vue.getradiobouttonFA();
+                int agilite = this.vue.getTextFieldAGilA();
+                int endurance = this.vue.getTextFieldEndA();
+                int force = this.vue.getTextFieldforcA();
 
-            Athlete athlete = new Athlete(id, nom, prenom, sexe, agilite, endurance, force);//
-
-            //this.req.ajouterAthlete(athlete);
-
-            System.out.println(athlete);
-            
+                athlete = new Athlete(nom, prenom, sexe, agilite, endurance, force);
+                try {
+                    this.req.ajouterAthlete(athlete);
+                    System.out.println("Athlete ajouter avec succes");
+                    
+                } catch (SQLException e) {
+                    System.err.println("erreur :" + e);
+                }
+    
             } catch (Exception e) { 
-                System.err.println("nop");
+                System.err.println("echec de l'ajout"+ e);
                 this.vue.popUpAlert().showAndWait();
             }
         }

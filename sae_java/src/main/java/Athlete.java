@@ -1,3 +1,4 @@
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -11,9 +12,11 @@ public class Athlete implements Data {
     private int agilite;
     private int endurance;
     private int force;
-    private int IDathlete;
+    private static int IDnext = 1;
+    private int ID;
 
-    public Athlete(int id, String nomA, String prenomA, char sexeA, int agilite, int endurance, int force){
+
+    public Athlete(String nomA, String prenomA, char sexeA, int agilite, int endurance, int force){
             //throws IDdejaExistantException {
         //if (lesID.contains(id))
         //    throw new IDdejaExistantException("cet id est déjà utilisé");
@@ -24,7 +27,8 @@ public class Athlete implements Data {
         this.agilite = agilite;
         this.endurance = endurance;
         this.force = force;
-        this.IDathlete = id;
+        this.ID = this.IDnext;
+        this.IDnext++;
 
         Cache.setDATA("Athlete", this);
     }
@@ -35,7 +39,7 @@ public class Athlete implements Data {
     *@return int IDathlete
     */
     public int getID() {
-        return IDathlete;
+        return this.ID;
     }
 
     /*
@@ -152,7 +156,9 @@ public class Athlete implements Data {
     @Override
 
     public String toString() {
-        return this.nomA + " " + this.prenomA; /**  + " est un "+((this.sexeA == 'H')? "Homme" : "Femme")+" avec : " + this.agilite + " d'agilité, "
+        return this.nomA + " " + this.prenomA+  " avec : " + this.agilite + " d'agilité, " + this.endurance + " d'endurance, et " + this.force + " de force.";
+
+        /**  + " est un "+((this.sexeA == 'H')? "Homme" : "Femme")+" avec : " + this.agilite + " d'agilité, "
                     + this.endurance + " d'endurance, et " + this.force + " de force.";*/
     }
 }

@@ -1,9 +1,11 @@
-package data;
+
 
 import java.sql.*;
 
 public class ConnexionMySql {
+    
 	private Connection mysql;
+
 	public ConnexionMySql() throws SQLException{
 		this.mysql = DriverManager.getConnection(
 					"jdbc:mysql://localhost:3307/saef","root","4dameorc");

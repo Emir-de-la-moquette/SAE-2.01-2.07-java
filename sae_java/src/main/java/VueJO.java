@@ -1,6 +1,5 @@
 import java.io.File;
 import java.io.IOException;
-//import Requetes;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -13,6 +12,9 @@ import javafx.fxml.FXMLLoader;
 
 
 public class VueJO extends Application {
+
+    Requetes req ;
+
     Scene mainScene;
     Scene tabscene;
     BorderPane root;
@@ -52,20 +54,22 @@ public class VueJO extends Application {
     TextField textFieldNomP = new TextField();
 
 
-
-
-
-
     //Requetes req = new Requetes();
     //private ModelJO jo;
   
     @Override
     public void init(){ 
+        
     }
     
     @Override
     public void start(Stage stage) throws IOException {
-
+        try {
+            this.req = new Requetes( new ConnexionMySql());
+            
+        } catch (Exception e) {
+            System.err.println("probleme chef=");
+        }
         loader = new FXMLLoader(this.getClass().getResource("Acceuil-FX.fxml"));
         fenetreAccueil = loader.load();
         this.mainScene = new Scene(fenetreAccueil);
@@ -170,7 +174,7 @@ public class VueJO extends Application {
         this.mainScene = new Scene(fenetre_ajoute);
         
 
-        CControleurAjretour ctraj = new CControleurAjretour(this);
+        CControleurAjretour ctraj = new CControleurAjretour(this,this.req);
 
         try{
 
@@ -424,6 +428,14 @@ public class VueJO extends Application {
 
         return this.mainScene;
      }
+
+     public Requetes getReq() {
+        return req;
+    }
+
+
+
+
 
 
 
