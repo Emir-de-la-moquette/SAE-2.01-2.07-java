@@ -36,6 +36,9 @@ public class CControleurConsultation implements EventHandler<ActionEvent>{
             }
             else{System.out.println("OK");}
 
+        }
+
+
         if (Textboutton.equals("Jouer les Jeux Olympique")) {
             Optional<ButtonType> reponse = this.vue.popUpvous_lancer().showAndWait();
             if (reponse.isPresent() && reponse.get().equals(ButtonType.CANCEL)){
@@ -49,11 +52,8 @@ public class CControleurConsultation implements EventHandler<ActionEvent>{
                 this.vue.modeconsultation();
                 this.vue.majAffichage(stage);
                 }
-            
-            
-           
-        }
 
+        
         if (Textboutton.equals("Ajouter un sport +")) {
             this.vue.modeajouter();
             //this.vue.choisir_le_bon_tab_dans_ajoute(1);
