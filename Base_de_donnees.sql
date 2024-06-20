@@ -1,25 +1,22 @@
 
 create database JO;
 
-drop table Matchs;
-drop table Athlete;
-drop table Pays;
-drop table Equipe;
-drop table Epreuve;
-drop table JeuxOlympique;
-drop table Sport;
+drop table if exists Matchs;
+drop table if exists Athlete;
+drop table if exists Pays;
+drop table if exists Equipe;
+drop table if exists Epreuve;
+drop table if exists JeuxOlympique;
+drop table if exists Sport;
 
-drop table ContenirEQ_ATH;
-drop table ContenirJO_SP;
-drop table ContenirJO_EP;
-drop table ContenirPAYS_EQ;
-drop table ContenirJO_PAYS;
-drop table ContenirEP_SP;
+drop table if exists ContenirEQ_ATH;
+drop table if exists ContenirJO_SP;
+drop table if exists ContenirJO_EP;
+drop table if exists ContenirPAYS_EQ;
+drop table if exists ContenirJO_PAYS;
+drop table if exists ContenirEP_SP;
 
-
-
-DROP TABLE UTILISATEUR;
-
+drop tables if exists UTILISATEUR;
 
 
 create table Sport(
@@ -32,14 +29,11 @@ create table JeuxOlympique(
     nomJO varchar(100),
     lieu varchar(64),
     annee INT,
-    nom_sport varchar(32),
     PRIMARY KEY (nomJO)
 );
 
-
 create table Epreuve(
     id_Epreuve INT,
-    nom_sport varchar(32),
     nomEpreuve varchar(64),
     categorieEpreuve varchar(100),
     typeEpreuve varchar(10),
@@ -62,7 +56,6 @@ create table Matchs(
 
 create table Pays(
     nom_pays varchar(100),
-    nomJO varchar(100),
     medpays_or INT,
     medpays_argent INT,
     medpay_bronze INT,
@@ -82,7 +75,6 @@ create table Athlete(
 
 create table Equipe(
     id_Equipe INT,
-    nom_sport varchar(32),
     taille_Equipe INT,
     medEquipe_or INT,
     medEquipe_argent INT,
@@ -116,7 +108,6 @@ create table ContenirJO_PAYS(
 );
 
 
-
 create table ContenirPAYS_EQ(
     id_Equipe varchar(100),
     nom_pays varchar(100),
@@ -137,6 +128,19 @@ ALTER TABLE Epreuve ADD FOREIGN KEY (nom_sport) REFERENCES Sport(nom_sport);
 ALTER TABLE Matchs ADD FOREIGN KEY (id_Epreuve) REFERENCES Epreuve(id_Epreuve);
 ALTER TABLE Matchs ADD FOREIGN KEY (equipe1) REFERENCES Equipe(id_Equipe);
 ALTER TABLE Matchs ADD FOREIGN KEY (equipe2) REFERENCES Equipe(id_Equipe);
+
+alter table ContenirEQ_ATH add foreign key (id_Athlete) references Athlete (id_Athlete);
+alter table ContenirEQ_ATH add foreign key (id_Equipe) references Equipe (id_Equipe);
+alter table ContenirJO_SP add foreign key (nomJO) references JeuxOlympique (nomJO);
+alter table ContenirJO_SP add foreign key (nom_sport) references Sport (nom_sport);
+alter table ContenirJO_EP add foreign key (nomJO) references JeuxOlympique (nomJO);
+alter table ContenirJO_EP add foreign key (id_Epreuve) references Epreuve (id_Epreuve);
+alter table ContenirJO_PAYS add foreign key (nomJO) references JeuxOlympique (nomJO);
+alter table ContenirJO_PAYS add foreign key (nom_pays) references Pays (nom_pays);
+alter table ContenirPAYS_EQ add foreign key (nom_pays) references Pays (nom_pays);
+alter table ContenirPAYS_EQ add foreign key (id_Equipe) references Equipe (id_Equipe);
+alter table ContenirEP_SP add foreign key (id_Epreuve) references Epreuve (id_Epreuve);
+alter table ContenirEP_SP add foreign key (nom_sport) references Sport (nom_sport);
 
 
 create TABLE UTILISATEUR(
