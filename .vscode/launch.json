@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "jdbc",
+            "request": "launch",
+            "mainClass": "jdbc",
+            "projectName": "sae_java"
+        },
+        {
+            "type": "java",
             "name": "Exec",
             "request": "launch",
             "mainClass": "Exec",
