@@ -46,7 +46,7 @@ public class CControleurAjretour implements EventHandler<ActionEvent>{
             //this.req.ajouterAthlete(athlete);
 
             System.out.println(athlete);
-            
+
             } catch (Exception e) { 
                 System.err.println("nop");
                 this.vue.popUpAlert().showAndWait();
@@ -89,7 +89,20 @@ public class CControleurAjretour implements EventHandler<ActionEvent>{
 
         else if (Textboutton.equals("Créer le Pays")){
             System.out.println("aoui");
+
+            try {
+                String nom = this.vue.gettextFieldNomP();
+
+                Pays pays = new Pays(nom);
+
+                System.err.println(pays);
+            } catch (Exception e ) {
+                System.err.println("nop");
+                this.vue.popUpAlert().showAndWait();
+            }
         }
+
+
      
         else if (Textboutton.equals("retour")) {
             this.vue.modeconsultation();

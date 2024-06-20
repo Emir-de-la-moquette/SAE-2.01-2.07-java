@@ -148,6 +148,7 @@ public class VueJO extends Application {
 
         //creer les toggle boutton et relier les radio boutton
         RadioButton radioboutton_visit = (RadioButton) this.mainScene.lookup("#selectvisit");
+        radioboutton_visit.setSelected(true);
         RadioButton radioboutton_organisateur = (RadioButton) this.mainScene.lookup("#selectorg");
         RadioButton radioboutton_admin = (RadioButton) this.mainScene.lookup("#selectadm");
 
@@ -207,6 +208,7 @@ public class VueJO extends Application {
             //creer les toggle boutton et relier les radio boutton
             ToggleGroup f = new ToggleGroup();
             this.radiobouttonHA = (RadioButton) this.mainScene.lookup("#radiobouttonHA");
+            radiobouttonHA.setSelected(true);
             this.radiobouttonFA = (RadioButton) this.mainScene.lookup("#radiobouttonFA");
             radiobouttonHA.setToggleGroup(f);
             radiobouttonFA.setToggleGroup(f);
@@ -234,6 +236,7 @@ public class VueJO extends Application {
             //creer les toggle boutton et relier les radio boutton
             ToggleGroup e = new ToggleGroup();
             this.radiobouttonHE = (RadioButton) this.mainScene.lookup("#radiobouttonHE");
+            radiobouttonHE.setSelected(true);
             RadioButton radiobouttonFE = (RadioButton) this.mainScene.lookup("#radiobouttonFE");
             radiobouttonHE.setToggleGroup(e);
             radiobouttonFE.setToggleGroup(e);
@@ -247,6 +250,7 @@ public class VueJO extends Application {
             //creer les toggle boutton et relier les radio boutton p1
             ToggleGroup d = new ToggleGroup();
             this.radiobouttonHEP = (RadioButton) this.mainScene.lookup("#radiobouttonHEP");
+            radiobouttonHEP.setSelected(true);
             RadioButton radiobouttonFEP = (RadioButton) this.mainScene.lookup("#radiobouttonFEP");
             radiobouttonHEP.setToggleGroup(d);
             radiobouttonFEP.setToggleGroup(d);
@@ -256,6 +260,7 @@ public class VueJO extends Application {
              //creer les toggle boutton et relier les radio boutton p2
              ToggleGroup c = new ToggleGroup();
              this.radiobouttonFPaff = (RadioButton) this.mainScene.lookup("#radiobouttonFPaff");
+             radiobouttonFPaff.setSelected(true);
              RadioButton radiobouttonFPMscore = (RadioButton) this.mainScene.lookup("#radiobouttonFPMscore");
              radiobouttonFPaff.setToggleGroup(c);
              radiobouttonFPMscore.setToggleGroup(c);
@@ -270,6 +275,7 @@ public class VueJO extends Application {
             //creer les toggle boutton et relier les radio boutton p3
             ToggleGroup g = new ToggleGroup();
             RadioButton radiobouttonRPnon = (RadioButton) this.mainScene.lookup("#radiobouttonRPnon");
+            radiobouttonRPnon.setSelected(true);
             RadioButton radiobouttonRPVscoreatt = (RadioButton) this.mainScene.lookup("#radiobouttonRPVscoreatt");
             RadioButton radiobouttonRPVecartscore = (RadioButton) this.mainScene.lookup("#radiobouttonRPVecartscore");
             radiobouttonRPnon.setToggleGroup(g);
