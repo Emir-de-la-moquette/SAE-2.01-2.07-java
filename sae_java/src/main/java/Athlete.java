@@ -42,7 +42,7 @@ public class Athlete implements Data<Integer> {
     */
 
     @Override
-    public int getID() {
+    public Integer getID() {
         return this.ID;
     }
     @Override
