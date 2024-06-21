@@ -10,7 +10,6 @@ public class Requetes {
     }
 
     public void ajouterAthlete(Athlete athlete) throws SQLException {
-
         supprimerAthlete(athlete.getID());
         
         PreparedStatement ps = this.connexion.prepareStatement("insert into Athlete(id_Athlete, NomAt, PrenomAT, SexeAT, stats_Force, stats_Endurance, stats_agilite) values (?, ?, ?, ?, ?, ?, ?)");
@@ -72,10 +71,9 @@ public class Requetes {
     public void ajouterSport(Sport sport) throws SQLException {
         supprimerSport(sport.getNomSport());
 
-        PreparedStatement ps = this.connexion.prepareStatement("insert into Sport(nom_sport, nb_joueur) values (?, ?)");
+        PreparedStatement ps = this.connexion.prepareStatement("insert into Sport(nom_sport) values (?)");
 
         ps.setString(1, sport.getNomSport());
-        // ps.setInt(2, sport.get);
         ps.executeUpdate();
     }
 
@@ -143,7 +141,7 @@ public class Requetes {
     public void supprimerSport(String nomSport) throws SQLException {
         epreuveSupprimeSport(nomSport);
         joSupprimeSport(nomSport);
-        
+
         this.st = this.connexion.createStatement();
         ResultSet rs = this.st.executeQuery("select * from Sport where nom_sport = " + nomSport);
 
