@@ -61,7 +61,7 @@ public class CSVmanager<T> {
                         int endurance = Integer.parseInt(ligneElems[12]);
                         int agilite = Integer.parseInt(ligneElems[13]);
 
-                        Athlete ath = new Athlete(Athlete.getNewId(), nom, prenom, sexe, force, endurance, agilite);
+                        Athlete ath = new Athlete(nom, prenom, sexe, force, endurance, agilite);
                         lesAthletes.add(ath);
 
                         Pays lePaysPossess = null;
