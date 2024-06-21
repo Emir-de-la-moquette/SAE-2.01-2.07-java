@@ -78,7 +78,7 @@ public class VueJO extends Application {
             req.ajouteAdmin();
             
         } catch (Exception e) {
-            System.err.println("probleme chef=");
+            System.err.println("echec connexion");
         }
         loader = new FXMLLoader(this.getClass().getResource("Acceuil-FX.fxml"));
         fenetreAccueil = loader.load();
