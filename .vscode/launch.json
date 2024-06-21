@@ -1,0 +1,66 @@
+{
+    // Utilisez IntelliSense pour en savoir plus sur les attributs possibles.
+    // Pointez pour afficher la description des attributs existants.
+    // Pour plus d'informations, visitez : https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "jdbc",
+            "request": "launch",
+            "mainClass": "data.jdbc",
+            "projectName": "sae_java"
+        },
+        {
+            "type": "java",
+            "name": "jdbc",
+            "request": "launch",
+            "mainClass": "jdbc",
+            "projectName": "sae_java"
+        },
+        {
+            "type": "java",
+            "name": "Exec",
+            "request": "launch",
+            "mainClass": "Exec",
+            "projectName": "sae_java"
+        },
+        {
+            "type": "java",
+            "name": "Exec",
+            "request": "launch",
+            "mainClass": "Exec",
+            "projectName": "AppJo"
+        },
+        {
+            "type": "java",
+            "name": "VueJO",
+            "request": "launch",
+            "mainClass": "VueJO",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "vmArgs": "--module-path C:\\Users\\Bastien Monet\\OneDrive\\Documents\\Dossier BUT info\\SAE\\SAE JO\\SAE-2.01-2.07-java-6\\sae_java\\lib --add-modules javafx.controls,javafx.fxml",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Executable",
+            "request": "launch",
+            "vmArgs": "--module-path C:\\Users\\Bastien Monet\\OneDrive\\Documents\\Dossier BUT info\\SAE\\SAE JO\\SAE-2.01-2.07-java-6\\sae_java\\lib --add-modules javafx.controls,javafx.fxml",
+            "mainClass": "Executable",
+            "projectName": "sae_java"
+        },
+        {
+            "type": "java",
+            "name": "MainTest",
+            "request": "launch",
+            "vmArgs": "--module-path C:\\Users\\Bastien Monet\\OneDrive\\Documents\\Dossier BUT info\\SAE\\SAE JO\\SAE-2.01-2.07-java-6\\sae_java\\lib --add-modules javafx.controls,javafx.fxml",
+            "mainClass": "MainTest",
+            "projectName": "sae_java"
+        }
+    ]
+}

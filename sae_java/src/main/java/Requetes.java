@@ -1,3 +1,4 @@
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,6 +20,7 @@ public class Requetes {
         supprimerAthlete(athlete.getID());
         
         PreparedStatement ps = this.connexion.prepareStatement("insert into Athlete(id_Athlete, NomAt, PrenomAT, SexeAT, stats_Force, stats_Endurance, stats_agilite) values (?, ?, ?, ?, ?, ?, ?)");
+
         ps.setInt(1, athlete.getID());
         ps.setString(2, athlete.getNomA());
         ps.setString(3, athlete.getPrenomA());
@@ -31,9 +33,11 @@ public class Requetes {
     }
 
     public void ajouterEquipe(Equipe equipe) throws SQLException {
+
         supprimerEquipe(equipe.getID());
 
         PreparedStatement ps = this.connexion.prepareStatement("insert into Equipe(id_Equipe, taille_equipe, medEquipe_or, medEquipe_arent, medEquipe_bronze, sexe_equipe) values (?, ?, ?, ?, ?, ?)");
+
         ps.setInt(1, equipe.getID());
         ps.setInt(2, equipe.getTaille());
         ps.setInt(3, equipe.getNbMedailleOr());
@@ -43,6 +47,7 @@ public class Requetes {
 
         ps.executeUpdate();
     }
+
 
     public void ajouterEpreuve(Epreuve epreuve) throws SQLException {
         supprimerEpreuve(epreuve.getID());
@@ -71,8 +76,10 @@ public class Requetes {
         ps.setInt(3, pays.getmedailles_argent());
         ps.setInt(4, pays.getmedailles_bronze());
 
+
         ps.executeUpdate();
     }
+
 
     public void ajouterSport(Sport sport) throws SQLException {
         supprimerSport(sport.getNomSport());
@@ -356,4 +363,28 @@ public class Requetes {
         ResultSet rs = this.st.executeQuery("select * from JeuxOlympique where nomJO = " + nomJO);
 
     }
+
+    public boolean UtilisateurExist(User user) throws SQLException {
+        try {
+        String requete = "select * from UTILISATEUR where identifiantu = \"" + user.getMail();
+        ResultSet rs=st.executeQuery(requete);
+        return false;
+        } catch (SQLException e) { 
+            return true;
+        }
+    }
+
+    
+    public boolean LoginCorrect(User user) throws SQLException {
+        try {
+        String requete = "select * from UTILISATEUR where identifiantu =\"" + user.getMail() + "\"and motdepasse\"" + user.getMdp();
+        ResultSet rs=st.executeQuery(requete);
+        return true;
+        } catch (SQLException e) { 
+            return false;
+        }
+    }
+    
+
+
 }

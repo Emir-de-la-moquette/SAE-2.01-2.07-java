@@ -10,6 +10,7 @@ public class Equipe implements Participation<Athlete>, Data<Integer> {
     private int nbMedailleArgent = 0;
     private int nbMedailleBronze = 0;
     private int IDequipe;
+    private static int IDnext = 1;
 
     private List<Athlete> lesAthletes;
 
@@ -18,12 +19,13 @@ public class Equipe implements Participation<Athlete>, Data<Integer> {
     
 
 
-    public Equipe(int id, int taille, char sexeEquipe) throws IDdejaExistantException {
-        if (lesID.contains(id))
-            throw new IDdejaExistantException("cet id est déjà utilisé");
-        lesID.add(id);
+    public Equipe(int taille, char sexeEquipe) throws IDdejaExistantException {
+        //if (lesID.contains(id))
+        //   throw new IDdejaExistantException("cet id est déjà utilisé");
+        //lesID.add(id);
         this.taille = taille;
-        this.IDequipe = id;
+        this.IDequipe = this.IDnext;
+        this.IDnext++;
         this.lesAthletes = new ArrayList<>();
         this.sexeEquipe = sexeEquipe;
 
