@@ -1,12 +1,13 @@
 import java.sql.*;
 
+import org.xml.sax.SAXException;
+
 public class Requetes {
-    private ConnexionMySQL connexion;
+    private ConnexionMySql connexion;
     private Statement st;
 
-    public Requetes() throws ClassNotFoundException, SQLException {
-        this.connexion = new ConnexionMySQL();
-        this.connexion.connecter();
+    public Requetes(ConnexionMySql connexion) throws ClassNotFoundException, SQLException {
+        this.connexion = new ConnexionMySql();
     }
 
     public void ajouterAthlete(Athlete athlete) throws SQLException {
@@ -95,9 +96,9 @@ public class Requetes {
         equipeSupprimeAthlete(idAthlete);
 
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from Athlete where id_Athlete = " + idAthlete);
+        ResultSet rs = this.st.executeQuery("select * from Athlete where id_Athlete = '" + idAthlete + "'");
         if (rs.next()) {
-            PreparedStatement ps = this.connexion.prepareStatement("delete from Athlete where id_Athlete = " + idAthlete);
+            PreparedStatement ps = this.connexion.prepareStatement("delete from Athlete where id_Athlete = '" + idAthlete + "'");
             ps.executeUpdate();
         }
     }
@@ -106,10 +107,10 @@ public class Requetes {
         paysSupprimeEquipe(idEquipe);
 
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from Equipe where id_Equipe = " + idEquipe);
+        ResultSet rs = this.st.executeQuery("select * from Equipe where id_Equipe = '" + idEquipe + "'");
 
         if (rs.next()) {
-            PreparedStatement ps = this.connexion.prepareStatement("delete from Equipe where id_Equipe = " + idEquipe);
+            PreparedStatement ps = this.connexion.prepareStatement("delete from Equipe where id_Equipe = '" + idEquipe + "'");
             ps.executeUpdate();
         }
     }
@@ -118,10 +119,10 @@ public class Requetes {
         joSupprimeEpreuve(idEpreuve);
 
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from Epreuve where id_Epreuve = " + idEpreuve);
+        ResultSet rs = this.st.executeQuery("select * from Epreuve where id_Epreuve = " + idEpreuve + "'");
 
         if (rs.next()) {
-            PreparedStatement ps = this.connexion.prepareStatement("delete from Epreuve where id_Epreuve = " + idEpreuve);
+            PreparedStatement ps = this.connexion.prepareStatement("delete from Epreuve where id_Epreuve = '" + idEpreuve + "'");
             ps.executeUpdate();
         }
     }
@@ -130,10 +131,10 @@ public class Requetes {
         joSupprimePays(nomPays);
 
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from Pays where nom_pays = " + nomPays);
+        ResultSet rs = this.st.executeQuery("select * from Pays where nom_pays = '" + nomPays + "'");
 
         if (rs.next()) {
-            PreparedStatement ps = this.connexion.prepareStatement("delete from Pays where nom_pays = " + nomPays);
+            PreparedStatement ps = this.connexion.prepareStatement("delete from Pays where nom_pays = '" + nomPays + "'");
             ps.executeUpdate();
         }
     }
@@ -143,24 +144,33 @@ public class Requetes {
         joSupprimeSport(nomSport);
 
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from Sport where nom_sport = " + nomSport);
+        ResultSet rs = this.st.executeQuery("select * from Sport where nom_sport = '" + nomSport + "'");
 
         if (rs.next()) {
-            PreparedStatement ps = this.connexion.prepareStatement("delete from Sport where nom_sport = " + nomSport);
+            PreparedStatement ps = this.connexion.prepareStatement("delete from Sport where nom_sport = '" + nomSport + "'");
             ps.executeUpdate();
         }
     }
 
     public void supprimerJO(String nomJO) throws SQLException {
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from JeuxOlympique where nomJO = " + nomJO);
+        ResultSet rs = this.st.executeQuery("select * from JeuxOlympique where nomJO = '" + nomJO + "'");
 
         if (rs.next()) {
-            PreparedStatement ps = this.connexion.prepareStatement("delete from JeuxOlympique where nomJO = " + nomJO);
+            PreparedStatement ps = this.connexion.prepareStatement("delete from JeuxOlympique where nomJO = '" + nomJO + "'");
             ps.executeUpdate();
         }
     }
 
+    public void supprimerUser(String mail) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from Utilisateur where idantifiantu = '" + mail+"'");
+
+        if (rs.next()) {
+            PreparedStatement ps = this.connexion.prepareStatement("delete from utilisateur where idantifiantu = '" + mail+"'");
+            ps.executeUpdate();
+        }
+    }
 
 
     // public Map<String, Integer> triPaysParOr() throws SQLException {
@@ -225,6 +235,9 @@ public class Requetes {
     }
 
 
+
+
+
     public void equipeSupprimeAthlete(int idAthlete) throws SQLException {
         this.st = this.connexion.createStatement();
         ResultSet rs = this.st.executeQuery("select * from ContenirEQ_ATH where id_Athlete = " + idAthlete);
@@ -237,10 +250,10 @@ public class Requetes {
 
     public void joSupprimeSport(String nomSport) throws SQLException {
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from ContenirJO_SP where nom_sport = " + nomSport);
+        ResultSet rs = this.st.executeQuery("select * from ContenirJO_SP where nom_sport = '" + nomSport + "'");
 
         if (rs.next()) {
-            PreparedStatement ps = this.connexion.prepareStatement("delete from ContenirJO_SP where nom_sport = " + nomSport);
+            PreparedStatement ps = this.connexion.prepareStatement("delete from ContenirJO_SP where nom_sport = '" + nomSport + "'");
             ps.executeUpdate();
         }
     }
@@ -257,10 +270,10 @@ public class Requetes {
 
     public void joSupprimePays(String nomPays) throws SQLException {
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from ContenirJO_PAYS where nom_pays = " + nomPays);
+        ResultSet rs = this.st.executeQuery("select * from ContenirJO_PAYS where nom_pays = '" + nomPays + "'");
 
         if (rs.next()) {
-            PreparedStatement ps = this.connexion.prepareStatement("delete from ContenirJO_PAYS where nom_pays = " + nomPays);
+            PreparedStatement ps = this.connexion.prepareStatement("delete from ContenirJO_PAYS where nom_pays = '" + nomPays + "'");
             ps.executeUpdate();
         }
     }
@@ -277,11 +290,183 @@ public class Requetes {
 
     public void epreuveSupprimeSport(String nomSport) throws SQLException {
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from ContenirEP_SP where nom_sport = " + nomSport);
+        ResultSet rs = this.st.executeQuery("select * from ContenirEP_SP where nom_sport = '" + nomSport + "'");
 
         if (rs.next()) {
-            PreparedStatement ps = this.connexion.prepareStatement("delete from ContenirEP_SP where nom_sport = " + nomSport);
+            PreparedStatement ps = this.connexion.prepareStatement("delete from ContenirEP_SP where nom_sport = '" + nomSport + "'");
             ps.executeUpdate();
         }
     }
+    // select
+
+    public void EquipeGetAthlete(int idEquipe, int idAthlete) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from ContenirEQ_ATH where id_Athlete = " + idAthlete + " and id_Equipe = " + idEquipe);
+        // Getter pas fini
+
+    }
+
+    public void joGetSport(String nomJO, String nomSport) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from ContenirJO_SP where nom_sport = '" + nomSport + "' and nomJO = '" + nomJO+"'");
+        // Getter pas fini
+
+    }
+
+    public void joGetEpreuve(String nomJO, int idEpreuve) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from ContenirJO_EP where nomJO = '" + nomJO + "' and id_Epreuve = " + idEpreuve);
+        // Getter pas fini
+
+    }
+
+    public void joGetPays(String nomJO, String nomPays) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from ContenirJO_PAYS where nomJO = '" + nomJO + "' and nom_pays = '" + nomPays+"'");
+        // Getter pas fini
+
+    }
+
+    public void paysGetEquipe(String nomPays, int idEquipe) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from ContenirPAYS_EQ where nom_pays = '" + nomPays + "' and id_Equipe = " + idEquipe);
+        // Getter pas fini
+
+    }
+
+    public void epreuveGetSport(int idEpreuve, String nomSport) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from ContenirEP_SP where id_Epreuve = " + idEpreuve + " and nom_sport = '" + nomSport+"'");
+        // Getter pas fini
+
+    }
+
+    
+    public Athlete getAthlete(int idAthlete) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from Athlete where id_Athlete = " + idAthlete);
+        Athlete feur = new Athlete(rs.getString("NomAT"), rs.getString("PrenomAT"), rs.getString("SexeAT").toCharArray()[0], rs.getInt("stats_Force"), rs.getInt("stats_Endurance"), rs.getInt("stats_Agilite"));
+        return feur;
+        
+    }
+
+    public void getEquipe(int idEquipe) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from Equipe where id_Equipe = " + idEquipe);
+        // Getter pas fini
+
+    }
+
+    public void getEpreuve(int idEpreuve) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from Epreuve where id_Epreuve = " + idEpreuve);
+        // Getter pas fini
+
+    }
+
+    public void getPays(String nomPays) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from Pays where nom_pays = '" + nomPays+"'");
+        // Getter pas fini
+
+    }
+
+    public void getSport(String nomSport) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from Sport where nom_sport = '" + nomSport+"'");
+        // Getter pas fini
+
+    }
+
+    public void getJO(String nomJO) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from JeuxOlympique where nomJO = '" + nomJO+"'");
+        // Getter pas fini
+
+    }
+
+    public boolean UtilisateurExist(User user) throws SQLException {
+        try {
+        String requete = "select * from UTILISATEUR where identifiantu = '" + user.getMail()+"'";
+        ResultSet rs=st.executeQuery(requete);
+        return false;
+        } catch (SQLException e) { 
+            return true;
+        }
+    }
+
+    
+    public boolean LoginCorrect(User user) throws SQLException {
+        try {
+        String requete = "select * from UTILISATEUR where identifiantu = '" + user.getMail()+"'" + "\"and motdepasse = '" + User.decrypteMDP(user.getMdp())+"'";
+        ResultSet rs=st.executeQuery(requete);
+        return true;
+        } catch (SQLException e) { 
+            return false;
+        }
+    }
+
+
+    public boolean cleExiste(char role, String cleActivation) {
+        try {
+            String requete = "select * from ACTIVATION where roleuse = '" + role+"'";
+            ResultSet rs=st.executeQuery(requete);
+            while(rs.next()){
+                if(rs.getString("cleact").equals(cleActivation)) return true;
+            }
+            return false;
+        }catch (SQLException e) { 
+            return false;
+        }
+    }
+
+    public void ajouterUser(User user) throws SQLException {
+
+
+        PreparedStatement ps = this.connexion.prepareStatement("insert into UTILISATEUR(identifiantu, motdepasse , role_utilidsa) values (?, ?, ?)");
+        ps.setString(1, user.getMail());
+        ps.setString(2, user.getMdp());
+        ps.setString(3, String.valueOf(user.getRole()));
+
+        ps.executeUpdate();
+    }
+
+
+    
+        
+    public void ajouteAdmin() throws SQLException {
+
+
+        PreparedStatement ps = this.connexion.prepareStatement("insert into UTILISATEUR(identifiantu, motdepasse , role_utilidsa) values (?, ?, ?)");
+        ps.setString(1, "a");
+        ps.setString(2, "1234");
+        ps.setString(3, "A");
+
+        ps.executeUpdate();
+    }
+
+
+     public boolean mailExiste(User user) {
+         try {
+             String requete = "select * from UTILISATEUR where identifiantu = '" + user.getMail()+"'";
+             ResultSet rs=st.executeQuery(requete);
+             return true;
+             } catch (SQLException e) { 
+                 return false;
+             }
+     }
+
+     public char getRole(String mail) throws SQLException {
+         
+             String requete = "select * from UTILISATEUR where identifiantu = '" + mail+"'";
+             ResultSet rs=st.executeQuery(requete);
+             return rs.getString("role_utilidsa").toCharArray()[0];
+     }
+
+     public void editUser(User utilisateur, User editedUser) throws SQLException{
+         supprimerUser(editedUser.getMail());
+         ajouterUser(utilisateur);
+     } 
 }
+
+
