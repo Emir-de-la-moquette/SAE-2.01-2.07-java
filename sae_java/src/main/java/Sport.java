@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sport implements Data{
+public class Sport implements Data<String>{
 
     public static List<String> lesID = new ArrayList<>();
 
@@ -19,7 +19,7 @@ public class Sport implements Data{
         this.nomSport = nomSport;
 
         
-        Cache.setDATA("Sport", this);
+        Cache.setDATA(Sport.class, this);
     }
 
     // Sport avec points
@@ -31,7 +31,21 @@ public class Sport implements Data{
         this.nbdePointmax = nbdePointmax;
 
         
-        Cache.setDATA("Sport", this);
+        Cache.setDATA(Sport.class, this);
+    }
+
+
+    
+    @Override
+    public String getID() {
+        return nomSport;
+    }
+    @Override
+    public void supprID(){
+        lesID.remove(nomSport);
+    }
+    public void clearID(){
+        lesID = new ArrayList<>();
     }
 
     /*

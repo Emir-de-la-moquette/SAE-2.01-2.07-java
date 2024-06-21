@@ -26,7 +26,19 @@ public class JeuxOlympique implements Data {
         this.lesEpreuve = new ArrayList<>();
         this.lesSports = new ArrayList<>();
         
-        Cache.setDATA("JO", this);
+        Cache.setDATA(JeuxOlympique.class, this);
+    }
+
+
+    
+    @Override
+    public String getID() {
+        return nomJO;
+    }
+
+    @Override
+    public void supprID() {
+        lesID.remove(nomJO);
     }
 
     /*
@@ -167,4 +179,5 @@ public class JeuxOlympique implements Data {
     public String toString() {
         return "les JO de " + this.lieu + " de " + this.annee;
     }
+
 }

@@ -1,7 +1,7 @@
 import java.util.List;
 import java.util.ArrayList;
 
-public class Athlete implements Data {
+public class Athlete implements Data<Integer> {
 
     private static List<Integer> lesID = new ArrayList<>();
 
@@ -26,16 +26,26 @@ public class Athlete implements Data {
         this.force = force;
         this.IDathlete = id;
 
-        Cache.setDATA("Athlete", this);
+        Cache.setDATA(Athlete.class, this);
     }
+
+    
 
 
     /*
     *retourne l'identifiant 
     *@return int IDathlete
     */
-    public int getID() {
+    @Override
+    public Integer getID() {
         return IDathlete;
+    }
+    @Override
+    public void supprID(){
+        lesID.remove(IDathlete);
+    }
+    public void clearID(){
+        lesID = new ArrayList<>();
     }
 
     /*

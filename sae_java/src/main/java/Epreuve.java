@@ -8,7 +8,7 @@ import java.util.Comparator;
 import java.lang.Math;
 import java.util.HashMap;
 
-public class Epreuve implements Participation<Equipe>, Data {
+public class Epreuve implements Participation<Equipe>, Data<Integer> {
 
     private static List<Integer> lesID = new ArrayList<>();
 
@@ -71,7 +71,7 @@ public class Epreuve implements Participation<Equipe>, Data {
         this.lesEquipes = new ArrayList<>();
         this.lesMatchs = new ArrayList<>();
 
-        Cache.setDATA("Epreuve", this);
+        Cache.setDATA(Epreuve.class, this);
     }
 
     public Epreuve(int id, String nomEpreuve, char sexeEpreuve, String categorieEpreuve, String typeEpreuve,
@@ -95,18 +95,27 @@ public class Epreuve implements Participation<Equipe>, Data {
         this.lesEquipes = new ArrayList<>();
         this.lesMatchs = new ArrayList<>();
 
-        Cache.setDATA("Epreuve", this);
+        Cache.setDATA(Epreuve.class, this);
     }
 
 
+    
     
 
     /*
     *retourne l'identifiant de l'epreuve
     *@return int IDepreuve
     */
-    public int getID() {
+    @Override
+    public Integer getID() {
         return IDepreuve;
+    }
+    @Override
+    public void supprID(){
+        lesID.remove(IDepreuve);
+    }
+    public void clearID(){
+        lesID = new ArrayList<>();
     }
 
 
