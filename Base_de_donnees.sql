@@ -21,7 +21,6 @@ drop table if exists UTILISATEUR;
 
 create table Sport(
     nom_sport varchar(32),
-    nbjoueur INT,
      PRIMARY KEY (nom_sport)
 );
 
