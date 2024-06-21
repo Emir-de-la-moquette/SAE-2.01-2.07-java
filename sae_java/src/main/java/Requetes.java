@@ -1,5 +1,7 @@
 import java.sql.*;
 
+import org.xml.sax.SAXException;
+
 public class Requetes {
     private ConnexionMySql connexion;
     private Statement st;
@@ -299,80 +301,93 @@ public class Requetes {
 
     public void EquipeGetAthlete(int idEquipe, int idAthlete) throws SQLException {
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from ContenirEQ_ATH where id_Athlete = " + idAthlete + " and id_Equipe = " + idEquipe);
+        ResultSet rs = this.st.executeQuery("select * from ContenirEQ_ATH where id_Athlete = " + idAthlete + " and id_Equipe = '" + idEquipe +"'");
+        // Getter pas fini
 
     }
 
     public void joGetSport(String nomJO, String nomSport) throws SQLException {
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from ContenirJO_SP where nom_sport = " + nomSport + " and nomJO = " + nomJO);
+        ResultSet rs = this.st.executeQuery("select * from ContenirJO_SP where nom_sport = " + nomSport + " and nomJO = '" + nomJO+"'");
+        // Getter pas fini
 
     }
 
     public void joGetEpreuve(String nomJO, int idEpreuve) throws SQLException {
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from ContenirJO_EP where nomJO = " + nomJO + " and id_Epreuve = " + idEpreuve);
+        ResultSet rs = this.st.executeQuery("select * from ContenirJO_EP where nomJO = " + nomJO + " and id_Epreuve = '" + idEpreuve+"'");
+        // Getter pas fini
 
     }
 
     public void joGetPays(String nomJO, String nomPays) throws SQLException {
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from ContenirJO_PAYS where nomJO = " + nomJO + " and nom_pays = " + nomPays);
+        ResultSet rs = this.st.executeQuery("select * from ContenirJO_PAYS where nomJO = " + nomJO + " and nom_pays = '" + nomPays+"'");
+        // Getter pas fini
 
     }
 
     public void paysGetEquipe(String nomPays, int idEquipe) throws SQLException {
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from ContenirPAYS_EQ where nom_pays = " + nomPays + " and id_Equipe = " + idEquipe);
+        ResultSet rs = this.st.executeQuery("select * from ContenirPAYS_EQ where nom_pays = " + nomPays + " and id_Equipe = '" + idEquipe+"'");
+        // Getter pas fini
 
     }
 
     public void epreuveGetSport(int idEpreuve, String nomSport) throws SQLException {
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from ContenirEP_SP where id_Epreuve = " + idEpreuve + " and nom_sport = " + nomSport);
+        ResultSet rs = this.st.executeQuery("select * from ContenirEP_SP where id_Epreuve = " + idEpreuve + " and nom_sport = '" + nomSport+"'");
+        // Getter pas fini
 
     }
 
     
-    public void getAthlete(int idAthlete) throws SQLException {
+    public Athlete getAthlete(int idAthlete) throws SQLException {
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from Athlete where id_Athlete = " + idAthlete);
+        ResultSet rs = this.st.executeQuery("select * from Athlete where id_Athlete = '" + idAthlete+"'");
+        Athlete feur = new Athlete(rs.getString("NomAT"), rs.getString("PrenomAT"), rs.getString("SexeAT").toCharArray()[0], rs.getInt("stats_Force"), rs.getInt("stats_Endurance"), rs.getInt("stats_Agilite"));
+        return feur;
         
     }
 
     public void getEquipe(int idEquipe) throws SQLException {
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from Equipe where id_Equipe = " + idEquipe);
+        ResultSet rs = this.st.executeQuery("select * from Equipe where id_Equipe = '" + idEquipe+"'");
+        // Getter pas fini
 
     }
 
     public void getEpreuve(int idEpreuve) throws SQLException {
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from Epreuve where id_Epreuve = " + idEpreuve);
+        ResultSet rs = this.st.executeQuery("select * from Epreuve where id_Epreuve = '" + idEpreuve+"'");
+        // Getter pas fini
 
     }
 
     public void getPays(String nomPays) throws SQLException {
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from Pays where nom_pays = " + nomPays);
+        ResultSet rs = this.st.executeQuery("select * from Pays where nom_pays = '" + nomPays+"'");
+        // Getter pas fini
 
     }
 
     public void getSport(String nomSport) throws SQLException {
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from Sport where nom_sport = " + nomSport);
+        ResultSet rs = this.st.executeQuery("select * from Sport where nom_sport = '" + nomSport+"'");
+        // Getter pas fini
 
     }
 
     public void getJO(String nomJO) throws SQLException {
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from JeuxOlympique where nomJO = " + nomJO);
+        ResultSet rs = this.st.executeQuery("select * from JeuxOlympique where nomJO = '" + nomJO+"'");
+        // Getter pas fini
 
     }
 
     public boolean UtilisateurExist(User user) throws SQLException {
         try {
-        String requete = "select * from UTILISATEUR where identifiantu = \"" + user.getMail();
+        String requete = "select * from UTILISATEUR where identifiantu = '" + user.getMail()+"'";
         ResultSet rs=st.executeQuery(requete);
         return false;
         } catch (SQLException e) { 
@@ -383,7 +398,7 @@ public class Requetes {
     
     public boolean LoginCorrect(User user) throws SQLException {
         try {
-        String requete = "select * from UTILISATEUR where identifiantu =\"" + user.getMail() + "\"and motdepasse\"" + User.decrypteMDP(user.getMdp());
+        String requete = "select * from UTILISATEUR where identifiantu = '" + user.getMail()+"'" + "\"and motdepasse = '" + User.decrypteMDP(user.getMdp())+"'";
         ResultSet rs=st.executeQuery(requete);
         return true;
         } catch (SQLException e) { 
@@ -394,7 +409,7 @@ public class Requetes {
 
     public boolean cleExiste(char role, String cleActivation) {
         try {
-            String requete = "select * from ACTIVATION where roleuse =\"" + role;
+            String requete = "select * from ACTIVATION where roleuse = '" + role+"'";
             ResultSet rs=st.executeQuery(requete);
             while(rs.next()){
                 if(rs.getString("cleact").equals(cleActivation)) return true;
@@ -430,43 +445,10 @@ public class Requetes {
         ps.executeUpdate();
     }
 
-    public boolean UtilisateurExist(User user) throws SQLException {
-         try {
-         String requete = "select * from UTILISATEUR where identifiantu = \"" + user.getMail();
-         ResultSet rs=st.executeQuery(requete);
-         return false;
-         } catch (SQLException e) { 
-             return true;
-         }
-     }
-
-    
-     public boolean LoginCorrect(User user) throws SQLException {
-         try {
-           String requete = "select * from UTILISATEUR where identifiantu =\"" + user.getMail() + "\"and motdepasse\"" + user.getMdp();
-         ResultSet rs=st.executeQuery(requete);
-         return true;
-         } catch (SQLException e) { 
-             return false;
-         }
-     }
-    
-
-     public void ajouterUser(User utilisateur) {
-        
-         supprimerUser(utilisateur.getMail());
-        
-         PreparedStatement ps = this.connexion.prepareStatement("insert into utilisateur(identifiantu, motdepasse, role_utilidsa) values (?, ?, ?)");
-         ps.setString(1, utilisateur.getMail());
-         ps.setString(2, utilisateur.getMdp());
-         ps.setString(3, ""+utilisateur.getRole());
-
-         ps.executeUpdate();
-     }
 
      public boolean mailExiste(User user) {
          try {
-             String requete = "select * from UTILISATEUR where identifiantu =\"" + user.getMail();
+             String requete = "select * from UTILISATEUR where identifiantu = '" + user.getMail()+"'";
              ResultSet rs=st.executeQuery(requete);
              return true;
              } catch (SQLException e) { 
@@ -474,19 +456,16 @@ public class Requetes {
              }
      }
 
-     public char getRole(String mail) {
-         try {
-             String requete = "select * from UTILISATEUR where identifiantu =\"" + mail;
+     public char getRole(String mail) throws SQLException {
+         
+             String requete = "select * from UTILISATEUR where identifiantu = '" + mail+"'";
              ResultSet rs=st.executeQuery(requete);
              return rs.getString("role_utilidsa").toCharArray()[0];
-         }catch (SQLException e) { 
-             throw e;
-         }
      }
 
-     public void editUser(User utilisateur, User editedUser) {
+     public void editUser(User utilisateur, User editedUser) throws SQLException{
          supprimerUser(editedUser.getMail());
-         newUser(utilisateur);
+         ajouterUser(utilisateur);
      } 
 }
 
