@@ -430,67 +430,64 @@ public class Requetes {
         ps.executeUpdate();
     }
 
-    // public boolean UtilisateurExist(User user) throws SQLException {
-    //     try {
-    //     String requete = "select * from UTILISATEUR where identifiantu = \"" + user.getMail();
-    //     ResultSet rs=st.executeQuery(requete);
-    //     return false;
-    //     } catch (SQLException e) { 
-    //         return true;
-    //     }
-    // }
+    public boolean UtilisateurExist(User user) throws SQLException {
+         try {
+         String requete = "select * from UTILISATEUR where identifiantu = \"" + user.getMail();
+         ResultSet rs=st.executeQuery(requete);
+         return false;
+         } catch (SQLException e) { 
+             return true;
+         }
+     }
 
     
-    // public boolean LoginCorrect(User user) throws SQLException {
-    //     try {
-    //     String requete = "select * from UTILISATEUR where identifiantu =\"" + user.getMail() + "\"and motdepasse\"" + user.getMdp();
-    //     ResultSet rs=st.executeQuery(requete);
-    //     return true;
-    //     } catch (SQLException e) { 
-    //         return false;
-    //     }
-    // }
+     public boolean LoginCorrect(User user) throws SQLException {
+         try {
+           String requete = "select * from UTILISATEUR where identifiantu =\"" + user.getMail() + "\"and motdepasse\"" + user.getMdp();
+         ResultSet rs=st.executeQuery(requete);
+         return true;
+         } catch (SQLException e) { 
+             return false;
+         }
+     }
     
 
+     public void ajouterUser(User utilisateur) {
+        
+         supprimerUser(utilisateur.getMail());
+        
+         PreparedStatement ps = this.connexion.prepareStatement("insert into utilisateur(identifiantu, motdepasse, role_utilidsa) values (?, ?, ?)");
+         ps.setString(1, utilisateur.getMail());
+         ps.setString(2, utilisateur.getMdp());
+         ps.setString(3, ""+utilisateur.getRole());
+
+         ps.executeUpdate();
+     }
+
+     public boolean mailExiste(User user) {
+         try {
+             String requete = "select * from UTILISATEUR where identifiantu =\"" + user.getMail();
+             ResultSet rs=st.executeQuery(requete);
+             return true;
+             } catch (SQLException e) { 
+                 return false;
+             }
+     }
+
+     public char getRole(String mail) {
+         try {
+             String requete = "select * from UTILISATEUR where identifiantu =\"" + mail;
+             ResultSet rs=st.executeQuery(requete);
+             return rs.getString("role_utilidsa").toCharArray()[0];
+         }catch (SQLException e) { 
+             throw e;
+         }
+     }
+
+     public void editUser(User utilisateur, User editedUser) {
+         supprimerUser(editedUser.getMail());
+         newUser(utilisateur);
+     } 
 }
-
-
-    // public void ajouterUser(User utilisateur) {
-        
-    //     supprimerUser(utilisateur.getMail());
-        
-    //     PreparedStatement ps = this.connexion.prepareStatement("insert into utilisateur(identifiantu, motdepasse, role_utilidsa) values (?, ?, ?)");
-    //     ps.setString(1, utilisateur.getMail());
-    //     ps.setString(2, utilisateur.getMdp());
-    //     ps.setString(3, ""+utilisateur.getRole());
-
-    //     ps.executeUpdate();
-    // }
-
-    // public boolean mailExiste(User user) {
-    //     try {
-    //         String requete = "select * from UTILISATEUR where identifiantu =\"" + user.getMail();
-    //         ResultSet rs=st.executeQuery(requete);
-    //         return true;
-    //         } catch (SQLException e) { 
-    //             return false;
-    //         }
-    // }
-
-    // public char getRole(String mail) {
-    //     try {
-    //         String requete = "select * from UTILISATEUR where identifiantu =\"" + mail;
-    //         ResultSet rs=st.executeQuery(requete);
-    //         return rs.getString("role_utilidsa").toCharArray()[0];
-    //     }catch (SQLException e) { 
-    //         throw e;
-    //     }
-    // }
-
-    // public void editUser(User utilisateur, User editedUser) {
-    //     supprimerUser(editedUser.getMail());
-    //     newUser(utilisateur);
-    // }
-    
 
 
