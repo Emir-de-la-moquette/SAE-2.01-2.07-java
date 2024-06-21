@@ -1,9 +1,4 @@
-
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class Requetes {
     private ConnexionMySQL connexion;
@@ -15,7 +10,6 @@ public class Requetes {
     }
 
     public void ajouterAthlete(Athlete athlete) throws SQLException {
-
         supprimerAthlete(athlete.getID());
         
         PreparedStatement ps = this.connexion.prepareStatement("insert into Athlete(id_Athlete, NomAt, PrenomAT, SexeAT, stats_Force, stats_Endurance, stats_agilite) values (?, ?, ?, ?, ?, ?, ?)");
@@ -136,10 +130,10 @@ public class Requetes {
         joSupprimePays(nomPays);
 
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from Pays where nom_pays = " + nomPays);
+        ResultSet rs = this.st.executeQuery("select * from Pays where nom_pays = '" + nomPays + "'");
 
         if (rs.next()) {
-            PreparedStatement ps = this.connexion.prepareStatement("delete from Pays where nom_pays = " + nomPays);
+            PreparedStatement ps = this.connexion.prepareStatement("delete from Pays where nom_pays = '" + nomPays + "'");
             ps.executeUpdate();
         }
     }
@@ -147,22 +141,22 @@ public class Requetes {
     public void supprimerSport(String nomSport) throws SQLException {
         epreuveSupprimeSport(nomSport);
         joSupprimeSport(nomSport);
-        
+
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from Sport where nom_sport = " + nomSport);
+        ResultSet rs = this.st.executeQuery("select * from Sport where nom_sport = '" + nomSport + "'");
 
         if (rs.next()) {
-            PreparedStatement ps = this.connexion.prepareStatement("delete from Sport where nom_sport = " + nomSport);
+            PreparedStatement ps = this.connexion.prepareStatement("delete from Sport where nom_sport = '" + nomSport + "'");
             ps.executeUpdate();
         }
     }
 
     public void supprimerJO(String nomJO) throws SQLException {
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from JeuxOlympique where nomJO = " + nomJO);
+        ResultSet rs = this.st.executeQuery("select * from JeuxOlympique where nomJO = '" + nomJO + "'");
 
         if (rs.next()) {
-            PreparedStatement ps = this.connexion.prepareStatement("delete from JeuxOlympique where nomJO = " + nomJO);
+            PreparedStatement ps = this.connexion.prepareStatement("delete from JeuxOlympique where nomJO = '" + nomJO + "'");
             ps.executeUpdate();
         }
     }
@@ -240,6 +234,9 @@ public class Requetes {
     }
 
 
+
+
+
     public void equipeSupprimeAthlete(int idAthlete) throws SQLException {
         this.st = this.connexion.createStatement();
         ResultSet rs = this.st.executeQuery("select * from ContenirEQ_ATH where id_Athlete = " + idAthlete);
@@ -252,10 +249,10 @@ public class Requetes {
 
     public void joSupprimeSport(String nomSport) throws SQLException {
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from ContenirJO_SP where nom_sport = " + nomSport);
+        ResultSet rs = this.st.executeQuery("select * from ContenirJO_SP where nom_sport = '" + nomSport + "'");
 
         if (rs.next()) {
-            PreparedStatement ps = this.connexion.prepareStatement("delete from ContenirJO_SP where nom_sport = " + nomSport);
+            PreparedStatement ps = this.connexion.prepareStatement("delete from ContenirJO_SP where nom_sport = '" + nomSport + "'");
             ps.executeUpdate();
         }
     }
@@ -272,10 +269,10 @@ public class Requetes {
 
     public void joSupprimePays(String nomPays) throws SQLException {
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from ContenirJO_PAYS where nom_pays = " + nomPays);
+        ResultSet rs = this.st.executeQuery("select * from ContenirJO_PAYS where nom_pays = '" + nomPays + "'");
 
         if (rs.next()) {
-            PreparedStatement ps = this.connexion.prepareStatement("delete from ContenirJO_PAYS where nom_pays = " + nomPays);
+            PreparedStatement ps = this.connexion.prepareStatement("delete from ContenirJO_PAYS where nom_pays = '" + nomPays + "'");
             ps.executeUpdate();
         }
     }
@@ -292,10 +289,10 @@ public class Requetes {
 
     public void epreuveSupprimeSport(String nomSport) throws SQLException {
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from ContenirEP_SP where nom_sport = " + nomSport);
+        ResultSet rs = this.st.executeQuery("select * from ContenirEP_SP where nom_sport = '" + nomSport + "'");
 
         if (rs.next()) {
-            PreparedStatement ps = this.connexion.prepareStatement("delete from ContenirEP_SP where nom_sport = " + nomSport);
+            PreparedStatement ps = this.connexion.prepareStatement("delete from ContenirEP_SP where nom_sport = '" + nomSport + "'");
             ps.executeUpdate();
         }
     }
