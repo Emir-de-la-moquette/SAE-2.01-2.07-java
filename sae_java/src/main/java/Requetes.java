@@ -77,10 +77,9 @@ public class Requetes {
     public void ajouterSport(Sport sport) throws SQLException {
         supprimerSport(sport.getNomSport());
 
-        PreparedStatement ps = this.connexion.prepareStatement("insert into Sport(nom_sport, nb_joueur) values (?, ?)");
+        PreparedStatement ps = this.connexion.prepareStatement("insert into Sport(nom_sport) values (?)");
 
         ps.setString(1, sport.getNomSport());
-        // ps.setInt(2, sport.get);
         ps.executeUpdate();
     }
 
@@ -168,6 +167,15 @@ public class Requetes {
         }
     }
 
+    public void supprimerUser(String mail) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from Utilisateur where idantifiantu = " + mail);
+
+        if (rs.next()) {
+            PreparedStatement ps = this.connexion.prepareStatement("delete from utilisateur where idantifiantu = " + mail);
+            ps.executeUpdate();
+        }
+    }
 
 
     // public Map<String, Integer> triPaysParOr() throws SQLException {
@@ -379,12 +387,63 @@ public class Requetes {
     
     public boolean LoginCorrect(User user) throws SQLException {
         try {
-        String requete = "select * from UTILISATEUR where identifiantu =\"" + user.getMail() + "\"and motdepasse\"" + user.getMdp();
+        String requete = "select * from UTILISATEUR where identifiantu =\"" + user.getMail() + "\"and motdepasse\"" + User.decrypteMDP(user.getMdp());
         ResultSet rs=st.executeQuery(requete);
         return true;
         } catch (SQLException e) { 
             return false;
         }
+    }
+
+
+    public boolean cleExiste(char role, String cleActivation) {
+        try {
+            String requete = "select * from ACTIVATION where roleuse =\"" + role;
+            ResultSet rs=st.executeQuery(requete);
+            while(rs.next()){
+                if(rs.getString("cleact").equals(cleActivation)) return true;
+            }
+            return false;
+        }catch (SQLException e) { 
+            return false;
+        }
+    }
+
+    public void newUser(User utilisateur) {
+        
+        supprimerUser(utilisateur.getMail());
+        
+        PreparedStatement ps = this.connexion.prepareStatement("insert into utilisateur(identifiantu, motdepasse, role_utilidsa) values (?, ?, ?)");
+        ps.setString(1, utilisateur.getMail());
+        ps.setString(2, utilisateur.getMdp());
+        ps.setString(3, ""+utilisateur.getRole());
+
+        ps.executeUpdate();
+    }
+
+    public boolean mailExiste(User user) {
+        try {
+            String requete = "select * from UTILISATEUR where identifiantu =\"" + user.getMail();
+            ResultSet rs=st.executeQuery(requete);
+            return true;
+            } catch (SQLException e) { 
+                return false;
+            }
+    }
+
+    public char getRole(String mail) {
+        try {
+            String requete = "select * from UTILISATEUR where identifiantu =\"" + mail;
+            ResultSet rs=st.executeQuery(requete);
+            return rs.getString("role_utilidsa").toCharArray()[0];
+        }catch (SQLException e) { 
+            throw e;
+        }
+    }
+
+    public void editUser(User utilisateur, User editedUser) {
+        supprimerUser(editedUser.getMail());
+        newUser(utilisateur);
     }
     
 

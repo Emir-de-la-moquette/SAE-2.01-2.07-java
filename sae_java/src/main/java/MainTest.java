@@ -41,40 +41,40 @@ class MainTest {
         JO2024.ajoutePays(allemagne);
 
         // Hommes
-        Athlete atl1 = new Athlete(1, "John", "Doe", 'H', 20, 20, 20);
-        Athlete atl2 = new Athlete(2, "Mike", "Johnson", 'H', 10, 10, 10);
+        Athlete atl1 = new Athlete("John", "Doe", 'H', 20, 20, 20);
+        Athlete atl2 = new Athlete("Mike", "Johnson", 'H', 10, 10, 10);
 
-        Athlete atl3 = new Athlete(3, "Luke", "Brown", 'H', 10, 10, 10);
-        Athlete atl4 = new Athlete(4, "Chris", "Evans", 'H', 0, 0, 0);
+        Athlete atl3 = new Athlete("Luke", "Brown", 'H', 10, 10, 10);
+        Athlete atl4 = new Athlete("Chris", "Evans", 'H', 0, 0, 0);
 
-        Athlete atl5 = new Athlete(5, "David", "Garcia", 'H', 9, 7, 8);
-        Athlete atl6 = new Athlete(6, "James", "Smith", 'H', 17, 15, 13);
+        Athlete atl5 = new Athlete("David", "Garcia", 'H', 9, 7, 8);
+        Athlete atl6 = new Athlete("James", "Smith", 'H', 17, 15, 13);
 
-        Athlete atl7 = new Athlete(7, "Robert", "Wilson", 'H', 6, 9, 12);
-        Athlete atl8 = new Athlete(8, "Michael", "Martinez", 'H', 20, 18, 19);
+        Athlete atl7 = new Athlete("Robert", "Wilson", 'H', 6, 9, 12);
+        Athlete atl8 = new Athlete("Michael", "Martinez", 'H', 20, 18, 19);
 
-        Athlete atl9 = new Athlete(9, "William", "Lopez", 'H', 11, 14, 10);
-        Athlete atl10 = new Athlete(10, "Thomas", "Anderson", 'H', 12, 13, 15);
+        Athlete atl9 = new Athlete("William", "Lopez", 'H', 11, 14, 10);
+        Athlete atl10 = new Athlete( "Thomas", "Anderson", 'H', 12, 13, 15);
 
-        Athlete atl11 = new Athlete(11, "Charles", "Perez", 'H', 8, 16, 14);
-        Athlete atl12 = new Athlete(12, "Daniel", "Thompson", 'H', 19, 17, 20);
-
-
+        Athlete atl11 = new Athlete("Charles", "Perez", 'H', 8, 16, 14);
+        Athlete atl12 = new Athlete("Daniel", "Thompson", 'H', 19, 17, 20);
 
 
-        Equipe equipeUScaca = new Equipe(1, 1, 'H');
-        Equipe equipeFRcaca = new Equipe(2, 1, 'H');
-        Equipe equipePLcaca = new Equipe(3, 1, 'H');
-        Equipe equipeCNcaca = new Equipe(4, 1, 'H');
-        Equipe equipeALcaca = new Equipe(5, 1, 'H');
+
+
+        Equipe equipeUScaca = new Equipe(1, 'H');
+        Equipe equipeFRcaca = new Equipe( 1, 'H');
+        Equipe equipePLcaca = new Equipe( 1, 'H');
+        Equipe equipeCNcaca = new Equipe( 1, 'H');
+        Equipe equipeALcaca = new Equipe( 1, 'H');
         System.out.println("GOOD");
 
 
-        Equipe equipeUSrace = new Equipe(Equipe.getNewId(), 3, 'H');
-        Equipe equipeFRrace = new Equipe(Equipe.getNewId(), 3, 'H');
-        Equipe equipePLrace = new Equipe(Equipe.getNewId(), 3, 'H');
-        Equipe equipeCNrace = new Equipe(Equipe.getNewId(), 3, 'H');
-        Equipe equipeALrace = new Equipe(Equipe.getNewId(), 3, 'H');
+        Equipe equipeUSrace = new Equipe(3, 'H');
+        Equipe equipeFRrace = new Equipe(3, 'H');
+        Equipe equipePLrace = new Equipe(3, 'H');
+        Equipe equipeCNrace = new Equipe(3, 'H');
+        Equipe equipeALrace = new Equipe(3, 'H');
         System.out.println("GOOD");
         
         france.participer(equipeFRcaca);

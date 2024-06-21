@@ -10,7 +10,7 @@ public class User {
 
     public User(String mail, String mdp, char role){
         this.mail = mail;
-        this.mdp = mdp;
+        this.mdp = User.crypteMDP(mdp);
         this.role = role;
     }
 

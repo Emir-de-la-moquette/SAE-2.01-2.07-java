@@ -120,6 +120,9 @@ create table ContenirEP_SP(
 );
 
 
+
+
+
 ALTER TABLE JeuxOlympique ADD FOREIGN KEY (nom_sport) REFERENCES Sport(nom_sport);
 ALTER TABLE Athlete ADD FOREIGN KEY (id_Equipe) REFERENCES Equipe(id_Equipe);
 ALTER TABLE Pays ADD FOREIGN KEY (nomJO) REFERENCES JeuxOlympique(nomJO);
@@ -150,7 +153,17 @@ create TABLE UTILISATEUR(
 
 );
 
+create table ACTIVATION(
+    roleuse CHAR(1),
+    cleact VARCHAR(20),
+    PRIMARY KEY (roleuse)
+);
 
+insert into activation (roleuse, cleact) VALUES 
+    ('O', "clefeur"),
+    ('O', "act123"),
+    ('A', "obamaBattleroyale69")
+;
 
 /*  
 
