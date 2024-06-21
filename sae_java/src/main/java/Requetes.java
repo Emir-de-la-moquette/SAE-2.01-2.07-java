@@ -405,6 +405,18 @@ public class Requetes {
         }
     }
 
+    public void ajouterUser(User user) throws SQLException {
+
+
+        PreparedStatement ps = this.connexion.prepareStatement("insert into UTILISATEUR(identifiantu, motdepasse , role_utilidsa) values (?, ?, ?)");
+        ps.setString(1, user.getMail());
+        ps.setString(2, user.getMdp());
+        ps.setString(3, String.valueOf(user.getRole()));
+
+        ps.executeUpdate();
+    }
+
+
     
         
     public void ajouteAdmin() throws SQLException {
