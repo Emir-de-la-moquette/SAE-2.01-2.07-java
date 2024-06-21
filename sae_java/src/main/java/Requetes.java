@@ -281,4 +281,79 @@ public class Requetes {
             ps.executeUpdate();
         }
     }
+
+    // select
+
+    public void EquipeGetAthlete(int idEquipe, int idAthlete) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from ContenirEQ_ATH where id_Athlete = " + idAthlete + " and id_Equipe = " + idEquipe);
+
+    }
+
+    public void joGetSport(String nomJO, String nomSport) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from ContenirJO_SP where nom_sport = " + nomSport + " and nomJO = " + nomJO);
+
+    }
+
+    public void joGetEpreuve(String nomJO, int idEpreuve) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from ContenirJO_EP where nomJO = " + nomJO + " and id_Epreuve = " + idEpreuve);
+
+    }
+
+    public void joGetPays(String nomJO, String nomPays) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from ContenirJO_PAYS where nomJO = " + nomJO + " and nom_pays = " + nomPays);
+
+    }
+
+    public void paysGetEquipe(String nomPays, int idEquipe) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from ContenirPAYS_EQ where nom_pays = " + nomPays + " and id_Equipe = " + idEquipe);
+
+    }
+
+    public void epreuveGetSport(int idEpreuve, String nomSport) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from ContenirEP_SP where id_Epreuve = " + idEpreuve + " and nom_sport = " + nomSport);
+
+    }
+
+    
+    public void getAthlete(int idAthlete) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from Athlete where id_Athlete = " + idAthlete);
+        
+    }
+
+    public void getEquipe(int idEquipe) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from Equipe where id_Equipe = " + idEquipe);
+
+    }
+
+    public void getEpreuve(int idEpreuve) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from Epreuve where id_Epreuve = " + idEpreuve);
+
+    }
+
+    public void getPays(String nomPays) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from Pays where nom_pays = " + nomPays);
+
+    }
+
+    public void getSport(String nomSport) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from Sport where nom_sport = " + nomSport);
+
+    }
+
+    public void getJO(String nomJO) throws SQLException {
+        this.st = this.connexion.createStatement();
+        ResultSet rs = this.st.executeQuery("select * from JeuxOlympique where nomJO = " + nomJO);
+
+    }
 }
