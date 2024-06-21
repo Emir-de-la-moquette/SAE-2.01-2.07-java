@@ -26,7 +26,7 @@ public class AppJDBC {
 
     public void editUser(User utilisateur, User editedUser) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'editUser'");
+        throw new UnsupportedOperationException("Unimplemented method 'editUsera'");
     }
     
 }
