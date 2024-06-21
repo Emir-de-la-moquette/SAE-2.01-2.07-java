@@ -30,11 +30,11 @@ public class CSVmanager<T> {
 
         try (BufferedReader line = new BufferedReader(new FileReader(chemin))) {
 
-            if(Cache.getDATA("Athlete")!=null && Cache.getDATA("Athlete").size() != 0) lesAthletes = (List<Athlete>)Cache.getDATAAs("Athlete", Athlete.class);
-            if(Cache.getDATA("Epreuve")!=null &&Cache.getDATA("Epreuve").size() != 0) lesEpreuves = (List<Epreuve>)Cache.getDATAAs("Epreuve", Epreuve.class);
-            if(Cache.getDATA("Equipe")!=null &&Cache.getDATA("Equipe").size() != 0) lesEquipes = (List<Equipe>)Cache.getDATAAs("Equipe", Equipe.class);
-            if(Cache.getDATA("Sport")!=null &&Cache.getDATA("Sport").size() != 0) lesSports = (List<Sport>)Cache.getDATAAs("Sport",Sport.class);
-            if(Cache.getDATA("Pays")!=null &&Cache.getDATA("Pays").size() != 0) lesPays = (List<Pays>)Cache.getDATAAs("Pays", Pays.class);
+            if(Cache.getDATA(Athlete.class)!=null && Cache.getDATA(Athlete.class).size() != 0) lesAthletes = (List<Athlete>)Cache.getDATAAs(Athlete.class);
+            if(Cache.getDATA(Epreuve.class)!=null &&Cache.getDATA(Epreuve.class).size() != 0) lesEpreuves = (List<Epreuve>)Cache.getDATAAs(Epreuve.class);
+            if(Cache.getDATA(Equipe.class)!=null &&Cache.getDATA(Equipe.class).size() != 0) lesEquipes = (List<Equipe>)Cache.getDATAAs(Equipe.class);
+            if(Cache.getDATA(Sport.class)!=null &&Cache.getDATA(Sport.class).size() != 0) lesSports = (List<Sport>)Cache.getDATAAs(Sport.class);
+            if(Cache.getDATA(Pays.class)!=null &&Cache.getDATA(Pays.class).size() != 0) lesPays = (List<Pays>)Cache.getDATAAs(Pays.class);
         
             // List<Athlete> feur = Cache.getDATAAs("Athlete", Athlete.class);
             

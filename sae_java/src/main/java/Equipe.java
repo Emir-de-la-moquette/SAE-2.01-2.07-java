@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Equipe implements Participation<Athlete>, Data {
+public class Equipe implements Participation<Athlete>, Data<Integer> {
 
     private static List<Integer> lesID = new ArrayList<>();
 
@@ -28,14 +28,24 @@ public class Equipe implements Participation<Athlete>, Data {
         this.sexeEquipe = sexeEquipe;
 
         
-        Cache.setDATA("Equipe", this);
+        Cache.setDATA(Equipe.class, this);
     }
+
+    
 
     /*
     *reccupere l'identifiant d
     */
-    public int getID() {
-        return this.IDequipe;
+    @Override
+    public Integer getID() {
+        return IDequipe;
+    }
+    @Override
+    public void supprID(){
+        lesID.remove(IDequipe);
+    }
+    public void clearID(){
+        lesID = new ArrayList<>();
     }
 
     /*

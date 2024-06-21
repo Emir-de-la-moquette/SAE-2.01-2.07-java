@@ -2,7 +2,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pays implements Participation<Equipe>, Data {
+public class Pays implements Participation<Equipe>, Data<String> {
 
     public static List<String> lesID = new ArrayList<>();
 
@@ -16,7 +16,21 @@ public class Pays implements Participation<Equipe>, Data {
         this.Nompays = nomPays;
         this.lesEquipes = new ArrayList<>();
 
-        Cache.setDATA("Pays", this);
+        Cache.setDATA(Pays.class, this);
+    }
+
+
+
+    @Override
+    public String getID() {
+        return Nompays;
+    }
+    @Override
+    public void supprID(){
+        lesID.remove(Nompays);
+    }
+    public void clearID(){
+        lesID = new ArrayList<>();
     }
 
     /*
