@@ -96,9 +96,9 @@ public class Requetes {
         equipeSupprimeAthlete(idAthlete);
 
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from Athlete where id_Athlete = " + idAthlete);
+        ResultSet rs = this.st.executeQuery("select * from Athlete where id_Athlete = '" + idAthlete + "'");
         if (rs.next()) {
-            PreparedStatement ps = this.connexion.prepareStatement("delete from Athlete where id_Athlete = " + idAthlete);
+            PreparedStatement ps = this.connexion.prepareStatement("delete from Athlete where id_Athlete = '" + idAthlete + "'");
             ps.executeUpdate();
         }
     }
@@ -107,10 +107,10 @@ public class Requetes {
         paysSupprimeEquipe(idEquipe);
 
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from Equipe where id_Equipe = " + idEquipe);
+        ResultSet rs = this.st.executeQuery("select * from Equipe where id_Equipe = '" + idEquipe + "'");
 
         if (rs.next()) {
-            PreparedStatement ps = this.connexion.prepareStatement("delete from Equipe where id_Equipe = " + idEquipe);
+            PreparedStatement ps = this.connexion.prepareStatement("delete from Equipe where id_Equipe = '" + idEquipe + "'");
             ps.executeUpdate();
         }
     }
@@ -119,10 +119,10 @@ public class Requetes {
         joSupprimeEpreuve(idEpreuve);
 
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from Epreuve where id_Epreuve = " + idEpreuve);
+        ResultSet rs = this.st.executeQuery("select * from Epreuve where id_Epreuve = " + idEpreuve + "'");
 
         if (rs.next()) {
-            PreparedStatement ps = this.connexion.prepareStatement("delete from Epreuve where id_Epreuve = " + idEpreuve);
+            PreparedStatement ps = this.connexion.prepareStatement("delete from Epreuve where id_Epreuve = '" + idEpreuve + "'");
             ps.executeUpdate();
         }
     }
@@ -164,10 +164,10 @@ public class Requetes {
 
     public void supprimerUser(String mail) throws SQLException {
         this.st = this.connexion.createStatement();
-        ResultSet rs = this.st.executeQuery("select * from Utilisateur where idantifiantu = " + mail);
+        ResultSet rs = this.st.executeQuery("select * from Utilisateur where idantifiantu = '" + mail+"'");
 
         if (rs.next()) {
-            PreparedStatement ps = this.connexion.prepareStatement("delete from utilisateur where idantifiantu = " + mail);
+            PreparedStatement ps = this.connexion.prepareStatement("delete from utilisateur where idantifiantu = '" + mail+"'");
             ps.executeUpdate();
         }
     }
